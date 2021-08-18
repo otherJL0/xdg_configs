@@ -12,4 +12,4 @@ vim.cmd [[runtime plugin/astronauta.vim]]
 require('config.treesitter')
 
 -- Load themes
-require('themes/breeze_dark')
+-- require('themes/breeze_dark')
