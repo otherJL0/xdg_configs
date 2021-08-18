@@ -3,7 +3,7 @@
 # Link all home config files to home directory
 for home_config in $(ls -A home)
 do
-  ln -s "$(pwd)/${home_config}" "${HOME}/.${home_config}"
+  ln -s "$(pwd)/home/${home_config}" "${HOME}/.${home_config}"
 done
 
 # Link all config files to xdg config directory
