@@ -1,7 +1,8 @@
 require('nvim-treesitter.configs').setup({
 	-- ensure_installed = require('config.treesitter.languages')
 	highlight = {
-		enable = true
+		enable = true,
+    additional_vim_regex_highlighting = false,
 	},
 	incremental_selection = {
 		enable = true,
