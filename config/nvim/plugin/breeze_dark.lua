@@ -313,3 +313,197 @@ Group.new('TSVariable', colors.Variable, colors.BackgroundColor, nil)
 -- 							*hl-TSVariableBuiltin*
 Group.new('TSVariableBuiltin', colors.Builtin, colors.BackgroundColor, nil)
 -- Variable names that are defined by the languages, like `this` or `self`.
+--
+--
+-- 						*hl-ColorColumn*
+-- Group.new('ColorColumn', colors.Others, colors.BackgroundColor, nil)
+--	used for the columns set with 'colorcolumn'
+---- 						*hl-Conceal*
+-- Group.new('Conceal', colors.Others, colors.BackgroundColor, nil)
+--		placeholder characters substituted for concealed
+---- 	text (see 'conceallevel')
+---- 						*hl-Cursor*
+-- Group.new('Cursor', colors.Others, colors.BackgroundColor, nil)
+--		character under the cursor
+-- Group.new('lCursor', colors.Others, colors.BackgroundColor, nil)
+--		the character under the cursor when |language-mapping|
+---- 	is used (see 'guicursor')
+---- 						*hl-CursorIM*
+-- Group.new('CursorIM', colors.Others, colors.BackgroundColor, nil)
+--	like Cursor, but used when in IME mode |CursorIM|
+---- 						*hl-CursorColumn*
+-- Group.new('CursorColumn', colors.Others, colors.BackgroundColor, nil)
+--	Screen-column at the cursor, when 'cursorcolumn' is set.
+---- 						*hl-CursorLine*
+-- Group.new('CursorLine', colors.Others, colors.BackgroundColor, nil)
+--	Screen-line at the cursor, when 'cursorline' is set.
+---- 	Low-priority if foreground (ctermfg OR guifg) is not set.
+---- 						*hl-Directory*
+-- Group.new('Directory', colors.Others, colors.BackgroundColor, nil)
+--	directory names (and other special names in listings)
+---- 						*hl-DiffAdd*
+-- Group.new('DiffAdd', colors.Others, colors.BackgroundColor, nil)
+--		diff mode: Added line |diff.txt|
+---- 						*hl-DiffChange*
+-- Group.new('DiffChange', colors.Others, colors.BackgroundColor, nil)
+--	diff mode: Changed line |diff.txt|
+---- 						*hl-DiffDelete*
+-- Group.new('DiffDelete', colors.Others, colors.BackgroundColor, nil)
+--	diff mode: Deleted line |diff.txt|
+---- 						*hl-DiffText*
+-- Group.new('DiffText', colors.Others, colors.BackgroundColor, nil)
+--	diff mode: Changed text within a changed line |diff.txt|
+---- 						*hl-EndOfBuffer*
+-- Group.new('EndOfBuffer', colors.Others, colors.BackgroundColor, nil)
+--	filler lines (~) after the end of the buffer.
+---- 	By default, this is highlighted like |hl-NonText|.
+---- 						*hl-TermCursor*
+-- Group.new('TermCursor', colors.Others, colors.BackgroundColor, nil)
+--	cursor in a focused terminal
+---- 						*hl-TermCursorNC*
+-- Group.new('TermCursorNC', colors.Others, colors.BackgroundColor, nil)
+--	cursor in an unfocused terminal
+---- 						*hl-ErrorMsg*
+-- Group.new('ErrorMsg', colors.Others, colors.BackgroundColor, nil)
+--	error messages on the command line
+---- 						*hl-VertSplit*
+-- Group.new('VertSplit', colors.Others, colors.BackgroundColor, nil)
+--	the column separating vertically split windows
+---- 						*hl-Folded*
+-- Group.new('Folded', colors.Others, colors.BackgroundColor, nil)
+--		line used for closed folds
+---- 						*hl-FoldColumn*
+-- Group.new('FoldColumn', colors.Others, colors.BackgroundColor, nil)
+--	'foldcolumn'
+---- 						*hl-SignColumn*
+-- Group.new('SignColumn', colors.Others, colors.BackgroundColor, nil)
+--	column where |signs| are displayed
+---- 						*hl-IncSearch*
+-- Group.new('IncSearch', colors.Others, colors.BackgroundColor, nil)
+--	'incsearch' highlighting; also used for the text replaced with
+---- 	":s///c"
+---- 						*hl-Substitute*
+-- Group.new('Substitute', colors.Others, colors.BackgroundColor, nil)
+--	|:substitute| replacement text highlighting
+--
+---- 						*hl-LineNr*
+Group.new('LineNr', colors.LineNumbers, colors.BackgroundColor, nil)
+--		Line number for ":number" and ":#" commands, and when 'number'
+---- 	or 'relativenumber' option is set.
+---- 						*hl-CursorLineNr*
+Group.new('CursorLineNr', colors.CurrentLine, colors.CurrentLine, nil)
+--	Like LineNr when 'cursorline' is set and 'cursorlineopt' is
+---- 	set to "number" or "both", or 'relativenumber' is set, for
+---- 	the cursor line.
+---- 						*hl-MatchParen*
+-- Group.new('MatchParen', colors.Others, colors.BackgroundColor, nil)
+--	The character under the cursor or just before it, if it
+---- 	is a paired bracket, and its match. |pi_paren.txt|
+--
+---- 						*hl-ModeMsg*
+-- Group.new('ModeMsg', colors.Others, colors.BackgroundColor, nil)
+--		'showmode' message (e.g., "-- INSERT --")
+---- 						*hl-MsgArea*
+-- Group.new('MsgArea', colors.Others, colors.BackgroundColor, nil)
+--		Area for messages and cmdline
+---- 						*hl-MsgSeparator*
+-- Group.new('MsgSeparator', colors.Others, colors.BackgroundColor, nil)
+--	Separator for scrolled messages, `msgsep` flag of 'display'
+---- 						*hl-MoreMsg*
+-- Group.new('MoreMsg', colors.Others, colors.BackgroundColor, nil)
+--		|more-prompt|
+---- 						*hl-NonText*
+-- Group.new('NonText', colors.Others, colors.BackgroundColor, nil)
+--		'@' at the end of the window, characters from 'showbreak'
+---- 	and other characters that do not really exist in the text
+---- 	(e.g., ">" displayed when a double-wide character doesn't
+---- 	fit at the end of the line). See also |hl-EndOfBuffer|.
+---- 						*hl-Normal*
+-- Group.new('Normal', colors.Others, colors.BackgroundColor, nil)
+--		normal text
+---- 						*hl-NormalFloat*
+-- Group.new('NormalFloat', colors.Others, colors.BackgroundColor, nil)
+--	Normal text in floating windows.
+---- 						*hl-NormalNC*
+-- Group.new('NormalNC', colors.Others, colors.BackgroundColor, nil)
+--	normal text in non-current windows
+---- 						*hl-Pmenu*
+-- Group.new('Pmenu', colors.Others, colors.BackgroundColor, nil)
+--		Popup menu: normal item.
+---- 						*hl-PmenuSel*
+-- Group.new('PmenuSel', colors.Others, colors.BackgroundColor, nil)
+--	Popup menu: selected item.
+---- 						*hl-PmenuSbar*
+-- Group.new('PmenuSbar', colors.Others, colors.BackgroundColor, nil)
+--	Popup menu: scrollbar.
+---- 						*hl-PmenuThumb*
+-- Group.new('PmenuThumb', colors.Others, colors.BackgroundColor, nil)
+--	Popup menu: Thumb of the scrollbar.
+---- 						*hl-Question*
+-- Group.new('Question', colors.Others, colors.BackgroundColor, nil)
+--	|hit-enter| prompt and yes/no questions
+---- 						*hl-QuickFixLine*
+-- Group.new('QuickFixLine', colors.Others, colors.BackgroundColor, nil)
+--	Current |quickfix| item in the quickfix window. Combined with
+----                |hl-CursorLine| when the cursor is there.
+---- 						*hl-Search*
+-- Group.new('Search', colors.Others, colors.BackgroundColor, nil)
+--		Last search pattern highlighting (see 'hlsearch').
+---- 	Also used for similar items that need to stand out.
+---- 						*hl-SpecialKey*
+-- Group.new('SpecialKey', colors.Others, colors.BackgroundColor, nil)
+--	Unprintable characters: text displayed differently from what
+---- 	it really is. But not 'listchars' whitespace. |hl-Whitespace|
+---- 						*hl-SpellBad*
+-- Group.new('SpellBad', colors.Others, colors.BackgroundColor, nil)
+--	Word that is not recognized by the spellchecker. |spell|
+---- 	Combined with the highlighting used otherwise.
+---- 						*hl-SpellCap*
+-- Group.new('SpellCap', colors.Others, colors.BackgroundColor, nil)
+--	Word that should start with a capital. |spell|
+---- 	Combined with the highlighting used otherwise.
+---- 						*hl-SpellLocal*
+-- Group.new('SpellLocal', colors.Others, colors.BackgroundColor, nil)
+--	Word that is recognized by the spellchecker as one that is
+---- 	used in another region. |spell|
+---- 	Combined with the highlighting used otherwise.
+---- 						*hl-SpellRare*
+-- Group.new('SpellRare', colors.Others, colors.BackgroundColor, nil)
+--	Word that is recognized by the spellchecker as one that is
+---- 	hardly ever used. |spell|
+---- 	Combined with the highlighting used otherwise.
+---- 						*hl-StatusLine*
+-- Group.new('StatusLine', colors.Others, colors.BackgroundColor, nil)
+--	status line of current window
+---- 						*hl-StatusLineNC*
+-- Group.new('StatusLineNC', colors.Others, colors.BackgroundColor, nil)
+--	status lines of not-current windows
+---- 	Note: if this is equal to "StatusLine" Vim will use "^^^" in
+---- 	the status line of the current window.
+---- 						*hl-TabLine*
+-- Group.new('TabLine', colors.Others, colors.BackgroundColor, nil)
+--		tab pages line, not active tab page label
+---- 						*hl-TabLineFill*
+-- Group.new('TabLineFill', colors.Others, colors.BackgroundColor, nil)
+--	tab pages line, where there are no labels
+---- 						*hl-TabLineSel*
+-- Group.new('TabLineSel', colors.Others, colors.BackgroundColor, nil)
+--	tab pages line, active tab page label
+---- 						*hl-Title*
+-- Group.new('Title', colors.Others, colors.BackgroundColor, nil)
+--		titles for output from ":set all", ":autocmd" etc.
+---- 						*hl-Visual*
+-- Group.new('Visual', colors.Others, colors.BackgroundColor, nil)
+--		Visual mode selection
+---- 							*hl-VisualNOS*
+-- Group.new('VisualNOS', colors.Others, colors.BackgroundColor, nil)
+--	Visual mode selection when vim is "Not Owning the Selection".
+---- 						*hl-WarningMsg*
+-- Group.new('WarningMsg', colors.Others, colors.BackgroundColor, nil)
+--	warning messages
+---- 						*hl-Whitespace*
+-- Group.new('Whitespace', colors.Others, colors.BackgroundColor, nil)
+--	"nbsp", "space", "tab" and "trail" in 'listchars'
+---- 						*hl-WildMenu*
+-- Group.new('WildMenu', colors.Others, colors.BackgroundColor, nil)
+--	current match in 'wildmenu' completion
