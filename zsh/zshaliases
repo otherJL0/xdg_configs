@@ -1,6 +1,7 @@
 # Oldie but a goodie
 alias ls='ls --color=always'
-alias ll='ls -la --color=always'
+alias ll='ls -la'
+alias lR='ls -lR'
 
 # Git
 alias gs='git status'
