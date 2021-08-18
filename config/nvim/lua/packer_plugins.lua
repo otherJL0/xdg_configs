@@ -22,8 +22,8 @@ return require('packer').startup({function()
 	})
 
 	-- Eyecandy
-	use('folke/tokyonight.nvim')
 	use('kyazdani42/nvim-web-devicons')
+	use('tjdevries/colorbuddy.nvim')
 
 
   end,
