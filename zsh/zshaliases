@@ -1,0 +1,15 @@
+# Oldie but a goodie
+alias ls='ls --color=always'
+alias ll='ls -la --color=always'
+
+# Git
+alias gs='git status'
+alias gss='git status -s'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gcM='git commit -am'
+alias ga='git add'
+alias gA='git add -A'
+alias gl='git log'
+alias gb='git branch'
+alias gch='git checkout'

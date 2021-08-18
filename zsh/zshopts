@@ -1,0 +1,15 @@
+# Adding Bash comforts...
+setopt INTERACTIVE_COMMENTS
+setopt BRACE_EXPAND
+setopt DOT_GLOB
+
+# Attempt to correct mispellings
+setopt CORRECT
+setopt CORRECT_ALL
+
+# History
+setopt INC_APPEND_HISTORY
+setopt BANG_HIST
+setopt EXTENDED_HISTORY
+setopt HIST_ALLOW_CLOBBER # make history 'pipable'
+setopt HIST_IGNORE_SPACE 
