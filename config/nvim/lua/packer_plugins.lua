@@ -2,14 +2,7 @@ return require('packer').startup({function()
   use 'wbthomason/packer.nvim'
 
 	-- Essentials
-	use({
-    'neovim/nvim-lspconfig',
-    ft = {
-      'go',
-      'lua',
-      'python',
-      'json'
-    }})
+	use({'neovim/nvim-lspconfig'})
 	use({'nvim-telescope/telescope.nvim'})
 	use({'nvim-lua/plenary.nvim'})
 	use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
