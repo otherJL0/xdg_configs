@@ -1,6 +1,5 @@
 return {
   cmd = { 'pyright-langserver', '--stdio' },
-  on_attach = {},
   filetypes = { 'python' },
   settings = {
     python = {
