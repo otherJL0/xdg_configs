@@ -1,3 +1,4 @@
+vim.opt.termguicolors = true
 if not pcall(require, 'packer') then
   require('config.initialize').install_packer()
 	vim.cmd [['qall!]]
