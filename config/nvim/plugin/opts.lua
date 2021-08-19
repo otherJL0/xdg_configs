@@ -1,3 +1,5 @@
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = 'both'
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.wildignore = '__pycache__'
