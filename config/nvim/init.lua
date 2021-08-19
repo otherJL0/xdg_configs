@@ -13,3 +13,4 @@ require('config.treesitter')
 
 -- Load themes
 -- require('themes/breeze_dark')
+require('themes/nightfox')
