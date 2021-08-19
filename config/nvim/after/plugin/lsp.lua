@@ -7,6 +7,14 @@ local function load_config(language_server)
 end
 
 local language_servers = {
+  'sorbet',
+  'dockerls',
+  'tsserver',
+  'clangd',
+  'cmake',
+  'jsonls',
+  'bashls',
+  'gopls',
   'pyright',
 }
 
