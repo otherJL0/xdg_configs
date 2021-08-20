@@ -1,7 +1,6 @@
 vim.opt.termguicolors = true
 if not pcall(require, 'packer') then
   require('config.initialize').install_packer()
-	vim.cmd [['qall!]]
 else
 	require('packer_plugins')
 end
@@ -16,3 +15,5 @@ require('config.treesitter')
 -- require('themes/breeze_dark')
 -- require('themes.nightfox')
 require('themes.tokyonight')
+
+require('config.compe')
