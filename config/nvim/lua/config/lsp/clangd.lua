@@ -1,4 +1,8 @@
 return {
+  init_options = {
+    clangdFileStatus = true
+  },
+  handlers = require('lsp-status').extensions.clangd.setup(),
   cmd = { 'clangd', '--background-index' },
   filetypes = { 'c', 'cpp', 'h', 'hpp' },
   root_dir = require('lspconfig.util').root_pattern(
