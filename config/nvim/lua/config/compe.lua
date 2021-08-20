@@ -24,7 +24,7 @@ require'compe'.setup {
     path = true,
     buffer = true,
     nvim_lsp = true,
-    nvim_lua = true,
+    nvim_lua = false,
   },
 }
 
