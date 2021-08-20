@@ -29,7 +29,14 @@ local buffer_percentage = function()
     local fraction = math.floor(
       100 * vim.api.nvim_win_get_cursor(0)[1] / vim.api.nvim_buf_line_count(0)
     )
-    return string.format('%d%%%%', fraction)
+    local percentage = string.format('%d%%%%', fraction)
+    if fraction < 10 then
+      return '  ' .. percentage
+    elseif fraction < 100 then
+      return ' ' .. percentage
+    else
+      return percentage
+    end
 end
 
 require('el').setup({
@@ -47,10 +54,11 @@ require('el').setup({
     local right = {
       '[',
       builtin.line_with_width(3),
-      ':',
-      builtin.column_with_width(2),
-      ':',
+      '/',
+      function() return vim.api.nvim_buf_line_count(buffer) end,
+      '(',
       buffer_percentage,
+      ')',
       ']'
     }
 

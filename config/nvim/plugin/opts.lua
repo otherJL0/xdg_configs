@@ -46,3 +46,4 @@ vim.opt.mouse = 'n'
 vim.opt.formatoptions = vim.opt.formatoptions
 vim.opt.joinspaces = false -- Two spaces and grade school, we're done
 vim.opt.fillchars = { eob = '~' }
+vim.opt.colorcolumn = {80}
