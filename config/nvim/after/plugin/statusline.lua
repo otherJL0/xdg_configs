@@ -2,7 +2,8 @@ local builtin = require('el.builtin')
 local extensions = require('el.extensions')
 local sections = require('el.sections')
 local subscribe = require('el.subscribe')
-local lsp_statusline = require('el.plugins.lsp_status')
+-- local lsp_statusline = require('el.plugins.lsp_status')
+local lsp_status = require('lsp-status')
 local helper = require('el.helper')
 
 local git_icon = subscribe.buf_autocmd("el_file_icon", "BufRead", function(_, bufnr)
@@ -49,6 +50,7 @@ require('el').setup({
     }
 
     local middle = {
+      lsp_status.status
     }
 
     local right = {

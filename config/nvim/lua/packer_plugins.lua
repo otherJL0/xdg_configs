@@ -64,7 +64,6 @@ return require('packer').startup({function()
   use({'kyazdani42/nvim-tree.lua'})
   use({'mhartington/formatter.nvim'})
   use({'glepnir/lspsaga.nvim'})
-  use({'lukas-reineke/indent-blankline.nvim'})
   use({
     'akinsho/nvim-bufferline.lua',
     config = function()
