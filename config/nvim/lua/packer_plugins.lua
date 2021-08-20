@@ -72,8 +72,9 @@ return require('packer').startup({function()
   })
   use({'tjdevries/express_line.nvim'})
 
-  use { 
+  use({ 
     "vhyrro/neorg",
+    branch = 'unstable',
     config = function()
         require('neorg').setup {
             -- Tell Neorg what modules to load
@@ -91,7 +92,8 @@ return require('packer').startup({function()
         }
     end,
     requires = "nvim-lua/plenary.nvim"
-}
+})
+use({'hrsh7th/nvim-compe'})
 
 
 
