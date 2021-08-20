@@ -1,5 +1,7 @@
 local nnoremap = vim.keymap.nnoremap
 
+nnoremap({'<C-f>', require('config.telescope').find_files})
+nnoremap({'<C-g>', require('config.telescope').live_grep})
 nnoremap({' ff', require('config.telescope').find_files})
 nnoremap({' lg', require('config.telescope').live_grep})
 nnoremap({' mp', require('config.telescope').man_pages})

@@ -57,6 +57,12 @@ require('el').setup({
 
     local right = {
       '[',
+      function() 
+        local cwd = vim.split(vim.fn.getcwd(), '/')
+        return cwd[#cwd] .. '/'
+      end,
+      builtin.file_relative,
+      '] [',
       builtin.line_with_width(3),
       '/',
       function() return vim.api.nvim_buf_line_count(buffer) end,
