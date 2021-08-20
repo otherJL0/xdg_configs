@@ -40,6 +40,12 @@ local buffer_percentage = function()
     end
 end
 
+local function relative_filepath()
+  local full_path = builtin.full_file
+  local cwd = vim.fn.getcwd()
+  return vim.split(full_path, cwd)[2]
+end
+
 require('el').setup({
   generator = function(window, buffer)
     local left = {
@@ -57,11 +63,11 @@ require('el').setup({
 
     local right = {
       '[',
-      function() 
+      function()
         local cwd = vim.split(vim.fn.getcwd(), '/')
         return cwd[#cwd] .. '/'
       end,
-      builtin.file_relative,
+      relative_filepath,
       '] [',
       builtin.line_with_width(3),
       '/',
