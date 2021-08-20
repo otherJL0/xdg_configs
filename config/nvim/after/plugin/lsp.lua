@@ -1,5 +1,7 @@
 local lspconfig = require('lspconfig')
 local lsp_status = require('lsp-status')
+local nnoremap = vim.keymap.nnoremap
+local nvim_command = vim.api.nvim_command
 
 local function on_attach(client)
   vim.lsp.set_log_level(0)
@@ -18,7 +20,7 @@ local function on_attach(client)
 
   vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  lps_status.on_attach(client)
+  require('lsp-status').on_attach(client)
 
   -- nnoremap { 'K', vim.lsp.buf.hover }
   nnoremap({ 'K', vim.lsp.buf.signature_help })
@@ -72,12 +74,14 @@ local language_servers = {
   'bashls',
   'gopls',
   'pyright',
+  'sumneko_lua',
 }
 
 lsp_status.register_progress()
 for _, language_server in ipairs(language_servers) do
   local configs = load_config(language_server)
-  configs.on_attach = on_attach
-  configs.capabilities = vim.tbl_extend('keep', configs.capabilities or {}, lsp_status.capabilities)
-  lspconfig[language_server].setup({configs})
+  lspconfig[language_server].setup(vim.tbl_deep_extend('force', {
+    on_attach = on_attach,
+    capabilities = vim.tbl_extend('keep', configs.capabilities or {}, lsp_status.capabilities),
+  }, configs))
 end

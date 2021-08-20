@@ -12,6 +12,7 @@ require('nvim-treesitter.configs').setup({
 	-- ensure_installed = require('config.treesitter.languages')
 	highlight = {
 		enable = true,
+    use_languagetree = true,
     additional_vim_regex_highlighting = false,
 	},
 	incremental_selection = {
@@ -23,7 +24,13 @@ require('nvim-treesitter.configs').setup({
 			node_decremental = 'grm',
 		},
 	},
-	indent = { indent = { enable = true } },
+	indent = { enable = true },
+
+  query_linter = {
+    enable = true,
+    use_virtual_text = true,
+    lint_events = { "BufWrite", "CursorHold" },
+  },
 
 	refactor = require('config.treesitter.refactor'),
 	textobjects = require('config.treesitter.textobjects'),
