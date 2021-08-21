@@ -40,11 +40,6 @@ local buffer_percentage = function()
     end
 end
 
-local function relative_filepath()
-  local full_path = builtin.full_file
-  local cwd = vim.fn.getcwd()
-  return vim.split(full_path, cwd)[2]
-end
 
 require('el').setup({
   generator = function(window, buffer)
@@ -57,18 +52,11 @@ require('el').setup({
 
     local middle = {
       lsp_statusline.server_progress,
-      lsp_statusline.current_function,
       lsp_statusline.segment,
     }
 
     local right = {
       '[',
-      function()
-        local cwd = vim.split(vim.fn.getcwd(), '/')
-        return cwd[#cwd] .. '/'
-      end,
-      relative_filepath,
-      '] [',
       builtin.line_with_width(3),
       '/',
       function() return vim.api.nvim_buf_line_count(buffer) end,
