@@ -13,7 +13,7 @@ require('config.treesitter')
 
 -- Load themes
 -- require('themes/breeze_dark')
--- require('themes.nightfox')
-require('themes.tokyonight')
+require('themes.nightfox')
+-- require('themes.tokyonight')
 
 require('config.compe')
