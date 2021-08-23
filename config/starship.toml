@@ -17,6 +17,9 @@ truncation_length = 1
 [docker_context]
 symbol = " "
 
+[dotnet]
+disabled = true
+
 [elixir]
 symbol = " "
 
