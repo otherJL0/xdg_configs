@@ -13,7 +13,19 @@ require('config.treesitter')
 
 -- Load themes
 -- require('themes/breeze_dark')
-require('themes.nightfox')
--- require('themes.tokyonight')
+-- require('themes.nightfox')
+require('themes.tokyonight')
 
 require('config.compe')
+
+local nnoremap = vim.keymap.nnoremap
+
+function PRINT()
+  local content = vim.fn.input('PRINT ')
+  local result = string.format([[vim.notify(vim.inspect(%s))]], content)
+  vim.fn.luaeval(result)
+end
+
+nnoremap({'  p',  PRINT })
+
+
