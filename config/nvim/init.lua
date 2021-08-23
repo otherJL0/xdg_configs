@@ -26,8 +26,12 @@ function PRINT()
     prompt = 'PRINT ' ,
     completion = 'lua',
   })
-  local result = string.format([[vim.notify(vim.inspect(%s))]], content)
-  vim.fn.luaeval(result)
+  if not pcall(vim.fn.luaeval, content) then
+    vim.notify('Input not recognized')
+  else
+    local result = string.format([[vim.notify(vim.inspect(%s))]], content)
+    vim.fn.luaeval(result)
+  end
 end
 
 nnoremap({'  p',  PRINT })
