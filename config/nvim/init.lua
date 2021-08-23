@@ -21,11 +21,16 @@ require('config.compe')
 local nnoremap = vim.keymap.nnoremap
 
 function PRINT()
-  local content = vim.fn.input('PRINT ')
+  local content = vim.fn.input({
+    prompt = 'PRINT ' ,
+    default = '', 
+    completion = 'lua',
+    cancelreturn = '',
+    highlight = '' 
+  })
   local result = string.format([[vim.notify(vim.inspect(%s))]], content)
   vim.fn.luaeval(result)
 end
 
 nnoremap({'  p',  PRINT })
-
-
+vim.loop.oslu
