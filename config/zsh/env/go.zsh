@@ -1,7 +1,7 @@
 # Controls whether the go command runs in module-aware mode or GOPATH mode.
 # May be "off", "on", or "auto".
 # See https://golang.org/ref/mod#mod-commands.
-export GO111MODULE=auto
+export GO111MODULE=on
 
 # The gccgo command to run for 'go build -compiler=gccgo'.
 # GCCGO
