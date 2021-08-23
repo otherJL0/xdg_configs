@@ -1,24 +1,24 @@
 # Controls whether the go command runs in module-aware mode or GOPATH mode.
 # May be "off", "on", or "auto".
 # See https://golang.org/ref/mod#mod-commands.
-GO111MODULE=auto
+export GO111MODULE=auto
 
 # The gccgo command to run for 'go build -compiler=gccgo'.
 # GCCGO
 
 # The architecture, or processor, for which to compile code.
 # Examples are amd64, 386, arm, ppc64.
-GOARCH=amd64
+export GOARCH=amd64
 
 # The directory where 'go install' will install a command.
-GOBIN=$HOME/.go/bin
+export GOBIN="$HOME/.go/bin"
 
 # The directory where the go command will store cached
 # information for reuse in future builds.
-GOCACHE=$XDG_CACHE_HOME/go
+export GOCACHE=$XDG_CACHE_HOME/go
 
 # The directory where the go command will store downloaded modules.
-GOMODCACHE=$XDG_CACHE_HOME/gomod
+export GOMODCACHE=$XDG_CACHE_HOME/gomod
 
 # Enable various debugging facilities. See 'go doc runtime'
 # for details.
@@ -45,7 +45,7 @@ GOMODCACHE=$XDG_CACHE_HOME/gomod
 
 # The operating system for which to compile code.
 # Examples are linux, darwin, windows, netbsd.
-GOOS=linux
+export GOOS=linux
 
 # For more details see: 'go help gopath'.
 # GOPATH
