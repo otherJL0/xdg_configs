@@ -63,7 +63,8 @@ require('el').setup({
       '(',
       buffer_percentage,
       ')',
-      ']'
+      ']',
+      builtin.filetype
     }
 
     return vim.tbl_flatten({left, {sections.split}, middle, {sections.split}, right})
