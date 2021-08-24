@@ -1,5 +1,5 @@
 return require('packer').startup({function()
-  use 'wbthomason/packer.nvim'
+  use({'wbthomason/packer.nvim'})
 
 	-- Essentials
 	use({'neovim/nvim-lspconfig'})
@@ -53,6 +53,7 @@ return require('packer').startup({function()
 	-- use({'tjdevries/colorbuddy.nvim'})
   use({'EdenEast/nightfox.nvim'})
   use({'folke/tokyonight.nvim'})
+  use({'tanvirtin/monokai.nvim'})
 
   -- Extras
   use({'folke/trouble.nvim'})

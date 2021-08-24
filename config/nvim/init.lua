@@ -10,11 +10,14 @@ vim.cmd [[runtime plugin/astronauta.vim]]
 
 -- Load Treesitter
 require('config.treesitter')
+vim.opt.termguicolors = true
 
 -- Load themes
 -- require('themes/breeze_dark')
 -- require('themes.nightfox')
-require('themes.tokyonight')
+-- require('themes.tokyonight')
+require('monokai')
+vim.cmd('colorscheme monokai_pro')
 
 require('config.compe')
 
