@@ -11,7 +11,7 @@ source ${XDG_CONFIG_HOME}/zsh/zshaliases
 source ${XDG_CONFIG_HOME}/zsh/zshcompletions
 #
 # Source Zsh Command Line Editing
-source ${XDG_CONFIG_HOME}/zsh/zshcli
+source ${XDG_CONFIG_HOME}/zsh/line_editor.zsh
 
 eval "$(starship init zsh)"
 

@@ -11,3 +11,4 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
+bindkey '^R' history-incremental-search-backward
