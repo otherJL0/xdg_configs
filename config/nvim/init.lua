@@ -3,3 +3,5 @@ if not pcall(require, "packer") then
 end
 
 require("packer_plugins")
+vim.cmd("runtime plugin/astronauta.vim")
+require("config.opts")
