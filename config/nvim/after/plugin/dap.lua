@@ -96,11 +96,7 @@ dap.configurations.c = dap.configurations.cpp
 
 dap.adapters.python = {
   type = 'executable',
-  command = function()
-    if vim.env.CONDA_PYTHON_EXE then
-      return vim.env.CONDA_PYTHON_EXE
-    end
-  end,
+  command = 'python',
   args = { '-m', 'debugpy.adapter' },
 }
 
@@ -123,6 +119,8 @@ dap.configurations.python = {
         return cwd .. '/venv/bin/python'
       elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
         return cwd .. '/.venv/bin/python'
+      elseif vim.fn.executable(vim.env.CONDA_PYTHON_EXE) == 1 then
+        return vim.env.CONDA_PYTHON_EXE
       else
         return '/usr/bin/python'
       end
