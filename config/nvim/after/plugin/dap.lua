@@ -128,11 +128,14 @@ dap.configurations.python = {
   },
 }
 
+local ui = require('dapui')
+ui.setup()
 local nnoremap = vim.keymap.nnoremap
 
 nnoremap({'<F8>', dap.toggle_breakpoint})
 nnoremap({'<F9>', dap.continue})
 nnoremap({'<F7>', dap.reverse_continue})
-nnoremap({'<F4>', dap.repl.open})
+-- nnoremap({'<F4>', dap.repl.open})
+nnoremap({'<F4>', ui.toggle})
 nnoremap({'<F2>', dap.step_over})
 nnoremap({'<F1>', dap.step_into})

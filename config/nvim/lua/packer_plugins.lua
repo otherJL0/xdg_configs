@@ -100,6 +100,7 @@ return require('packer').startup({function()
   })
   use({'hrsh7th/nvim-compe'})
   use({'mfussenegger/nvim-dap'})
+  use({'rcarriga/nvim-dap-ui'})
 
 
 
