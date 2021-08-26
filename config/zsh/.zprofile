@@ -4,7 +4,7 @@ export EDITOR=nvim
 source $ZDOTDIR/env/go.zsh
 
 typeset -U PATH path
-path+=("$HOME/.local/bin" "$HOME/.local/share/coursier/bin" "$GOBIN")
+path+=("$HOME/.local/bin" "$HOME/.local/share/coursier/bin" "$GOBIN" "$HOME/.cargo/bin")
 export PATH
 
 
