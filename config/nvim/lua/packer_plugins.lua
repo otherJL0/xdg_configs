@@ -6,6 +6,7 @@ local function my_plugins()
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
   use({ "tjdevries/astronauta.nvim" })
   use({ "nvim-lua/lsp-status.nvim" })
+  use({ "hrsh7th/nvim-cmp" })
 end
 
 return require("packer").startup({
