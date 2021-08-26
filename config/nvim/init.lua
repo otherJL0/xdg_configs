@@ -1,6 +1,5 @@
-if pcall(require, "packer") == 1 then
-  require("plugins")
-else
+if not pcall(require, "packer") then
   require("config.setup").install_packer()
-  vim.notify("Packer installed")
+else
+  require("plugins")
 end
