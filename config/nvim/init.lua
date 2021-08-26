@@ -15,9 +15,9 @@ vim.opt.termguicolors = true
 -- Load themes
 -- require('themes/breeze_dark')
 -- require('themes.nightfox')
--- require('themes.tokyonight')
-require('monokai')
-vim.cmd('colorscheme monokai_pro')
+require('themes.tokyonight')
+-- require('monokai')
+-- vim.cmd('colorscheme monokai_pro')
 
 require('config.compe')
 

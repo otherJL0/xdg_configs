@@ -57,7 +57,11 @@ return require('packer').startup({function()
 
   -- Extras
   use({'folke/trouble.nvim'})
-  use({'folke/which-key.nvim'})
+  use({
+    'folke/which-key.nvim',
+    config = function()
+      require('which-key').setup{}
+    end})
   use({'folke/todo-comments.nvim'})
   use({'folke/zen-mode.nvim'})
   use({'folke/lua-dev.nvim'})
@@ -93,8 +97,9 @@ return require('packer').startup({function()
         }
     end,
     requires = "nvim-lua/plenary.nvim"
-})
-use({'hrsh7th/nvim-compe'})
+  })
+  use({'hrsh7th/nvim-compe'})
+  use({'mfussenegger/nvim-dap'})
 
 
 
