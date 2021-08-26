@@ -95,9 +95,13 @@ dap.configurations.c = dap.configurations.cpp
 
 
 dap.adapters.python = {
-  type = 'executable';
-  command = 'path/to/virtualenvs/debugpy/bin/python';
-  args = { '-m', 'debugpy.adapter' };
+  type = 'executable',
+  command = function()
+    if vim.env.CONDA_PYTHON_EXE then
+      return vim.env.CONDA_PYTHON_EXE
+    end
+  end,
+  args = { '-m', 'debugpy.adapter' },
 }
 
 dap.configurations.python = {
