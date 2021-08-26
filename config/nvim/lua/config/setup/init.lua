@@ -15,9 +15,9 @@ function M.install_packer()
     string.format("git clone %s %s", "https://github.com/wbthomason/packer.nvim", packer_dir .. "packer.nvim")
   )
 
-	vim.notify("Packer installed!")
-	vim.fn.input("Press return to close neovim")
-	vim.cmd("quitall!")
+  vim.notify("Packer installed!")
+  vim.fn.input("Press return to close neovim")
+  vim.cmd("quitall!")
 end
 
 return M
