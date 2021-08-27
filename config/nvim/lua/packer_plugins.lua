@@ -7,6 +7,7 @@ local function my_plugins()
   use({ "tjdevries/astronauta.nvim" })
   use({ "nvim-lua/lsp-status.nvim" })
   use({ "hrsh7th/nvim-cmp" })
+  use({ 'rose-pine/neovim', as = 'rose-pine' })
 end
 
 return require("packer").startup({
