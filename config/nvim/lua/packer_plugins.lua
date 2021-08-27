@@ -12,6 +12,13 @@ local function my_plugins()
     "hoob3rt/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
   })
+
+  -- Git plugins
+  use({
+    "lewis6991/gitsigns.nvim",
+    "TimUntersberger/neogit",
+    "sindrets/diffview.nvim",
+  })
 end
 
 return require("packer").startup({
