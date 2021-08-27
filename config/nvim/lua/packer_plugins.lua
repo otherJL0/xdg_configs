@@ -19,6 +19,9 @@ local function my_plugins()
     "TimUntersberger/neogit",
     "sindrets/diffview.nvim",
   })
+
+  -- Lua
+  use({ "folke/lua-dev.nvim" })
 end
 
 return require("packer").startup({
