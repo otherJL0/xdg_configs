@@ -5,11 +5,11 @@ return {
 
     --
     keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
+      -- You can use the capture groups defined in textobjects.scm
+      ["af"] = "@function.outer",
+      ["if"] = "@function.inner",
+      ["ac"] = "@class.outer",
+      ["ic"] = "@class.inner",
     },
 
     --
@@ -24,7 +24,7 @@ return {
     },
 
     --
-     move = {
+    move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
@@ -48,7 +48,7 @@ return {
     --
     lsp_interop = {
       enable = true,
-      border = 'none',
+      border = "none",
       peek_definition_code = {
         ["df"] = "@function.outer",
         ["dF"] = "@class.outer",

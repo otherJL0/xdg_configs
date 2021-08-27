@@ -3,7 +3,7 @@ require("nvim-treesitter.configs").setup({
 
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = false
+    additional_vim_regex_highlighting = false,
   },
 
   incremental_selection = {
@@ -17,7 +17,7 @@ require("nvim-treesitter.configs").setup({
   },
 
   indent = {
-    enable = true
+    enable = true,
   },
 
   refactor = require("config.treesitter.refactor"),
@@ -25,5 +25,4 @@ require("nvim-treesitter.configs").setup({
   textobjects = require("config.treesitter.textobjects"),
 
   playground = require("config.treesitter.playground"),
-
 })
