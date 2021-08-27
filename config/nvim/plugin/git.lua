@@ -69,7 +69,6 @@ neogit.setup {
   }
 }
 
-<<<<<<< HEAD
 gitsigns.setup({
   signs = {
     add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
@@ -135,5 +134,3 @@ gitsigns.setup({
     enable = false
   },
 })
-=======
->>>>>>> f06765e5e68753be94e2e06989e4292535f84ef2
