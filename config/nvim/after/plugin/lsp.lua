@@ -1,10 +1,25 @@
 local lspconfig = require("lspconfig")
 local lsp_status = require("lsp-status")
+local nvim_command = vim.api.nvim_command
 
 local function on_attach(client)
   vim.lsp.set_log_level(0)
   require("lsp-status").on_attach(client)
   require("lsp_signature").on_attach()
+
+  if client.resolved_capabilities.document_highlight then
+    nvim_command([[autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()]])
+    nvim_command([[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]])
+    nvim_command([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
+  end
+
+  if client.resolved_capabilities.document_formatting then
+    nnoremap({ " F", vim.lsp.buf.formatting })
+    nvim_command([[augroup Format]])
+    nvim_command([[autocmd! * <buffer>]])
+    nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]])
+    nvim_command([[augroup END]])
+  end
 end
 
 local function load_config(language_server)
