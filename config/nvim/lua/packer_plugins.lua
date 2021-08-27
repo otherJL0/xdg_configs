@@ -107,6 +107,12 @@ local function my_plugins()
     end,
     requires = "nvim-lua/plenary.nvim",
   })
+
+  -- Lsp extras
+  use({
+    "ray-x/lsp_signature.nvim",
+    "glepnir/lspsaga.nvim",
+  })
 end
 
 return require("packer").startup({

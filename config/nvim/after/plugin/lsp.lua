@@ -1,24 +1,10 @@
 local lspconfig = require("lspconfig")
 local lsp_status = require("lsp-status")
-local nnoremap = vim.keymap.nnoremap
 
 local function on_attach(client)
   vim.lsp.set_log_level(0)
   require("lsp-status").on_attach(client)
-
-  nnoremap({ "<C-K>", vim.lsp.buf.signature_help })
-  nnoremap({ "K", vim.lsp.buf.hover })
-  nnoremap({ " ca", vim.lsp.buf.code_action })
-  nnoremap({ "gr", vim.lsp.buf.references })
-  nnoremap({ "gD", vim.lsp.buf.declaration })
-  nnoremap({ "gd", vim.lsp.buf.definition })
-  nnoremap({ "[d", vim.lsp.diagnostic.goto_prev })
-  nnoremap({ "]d", vim.lsp.diagnostic.goto_next })
-  nnoremap({ " D", vim.lsp.diagnostic.set_loclist })
-  nnoremap({ "gi", vim.lsp.buf.implementation })
-  nnoremap({ " K", vim.lsp.buf.type_definition })
-  nnoremap({ " e", vim.lsp.diagnostic.show_line_diagnostics })
-  nnoremap({ " R", vim.lsp.buf.rename })
+  require("lsp_signature").on_attach()
 end
 
 local function load_config(language_server)
@@ -47,3 +33,17 @@ for _, language_server in ipairs(language_servers) do
     capabilities = vim.tbl_extend("keep", configs.capabilities or {}, capabilities),
   }, configs))
 end
+
+local nnoremap = vim.keymap.nnoremap
+local vnoremap = vim.keymap.vnoremap
+nnoremap({ "gh", require("lspsaga.provider").lsp_finder })
+
+nnoremap({ "ca", require("lspsaga.codeaction").code_action })
+vnoremap({ "ca", require("lspsaga.codeaction").range_code_action })
+
+nnoremap({ "K", require("lspsaga.hover").render_hover_doc })
+nnoremap({ "<C-K>", require("lspsaga.signaturehelp").signature_help })
+
+nnoremap({ "gd", require("lspsaga.provider").preview_definition })
+
+nnoremap({ "gI", require("config.telescope").ivy_lsp_implementations })
