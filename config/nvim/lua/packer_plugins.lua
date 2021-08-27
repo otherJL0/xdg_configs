@@ -7,7 +7,11 @@ local function my_plugins()
   use({ "tjdevries/astronauta.nvim" })
   use({ "nvim-lua/lsp-status.nvim" })
   use({ "hrsh7th/nvim-cmp" })
-  use({ 'rose-pine/neovim', as = 'rose-pine' })
+  use({ "rose-pine/neovim", as = "rose-pine" })
+  use({
+    "hoob3rt/lualine.nvim",
+    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+  })
 end
 
 return require("packer").startup({
