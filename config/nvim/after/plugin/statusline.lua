@@ -1,5 +1,9 @@
 local lualine = require("lualine")
 
+local function pwd()
+  return vim.fn.getcwd()
+end
+
 lualine.setup({
   options = {
     theme = "rose-pine",
@@ -9,7 +13,7 @@ lualine.setup({
     -- component_separators = { "", "" },
   },
   tabline = {
-    lualine_a = {},
+    lualine_a = { pwd },
     lualine_b = { "filename" },
     lualine_c = {},
     lualine_x = {},
