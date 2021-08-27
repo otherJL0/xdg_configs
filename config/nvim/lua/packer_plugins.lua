@@ -133,7 +133,6 @@ local function my_plugins()
           inactive = true,
         },
       })
-      require("twilight").enable()
     end,
   })
 end
