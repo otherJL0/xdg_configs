@@ -4,6 +4,12 @@ return {
   },
   handlers = require("lsp-status").extensions.clangd.setup(),
   cmd = { "clangd", "--background-index" },
-  filetypes = { "c", "cpp", "h", "hpp", "cc" },
+  filetypes = {
+    "c",
+    "cpp",
+    "h",
+    "hpp",
+    "cc",
+  },
   root_dir = require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt", ".clangd"),
 }
