@@ -1,9 +1,10 @@
+local use = require("packer").use
+
 local function my_plugins()
   use({ "wbthomason/packer.nvim" })
   use({ "neovim/nvim-lspconfig" })
   use({ "nvim-telescope/telescope.nvim" })
   use({ "nvim-lua/plenary.nvim" })
-  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
   use({ "tjdevries/astronauta.nvim" })
   use({ "nvim-lua/lsp-status.nvim" })
   use({ "rose-pine/neovim", as = "rose-pine" })
@@ -12,6 +13,14 @@ local function my_plugins()
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
   })
 
+  -- Treesitter
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    "nvim-treesitter/nvim-treesitter-refactor",
+    "nvim-treesitter/playground",
+    run = ":TSUpdate",
+  })
   -- Git plugins
   use({
     "lewis6991/gitsigns.nvim",
