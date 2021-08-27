@@ -52,6 +52,39 @@ local function my_plugins()
       require("project_nvim").setup({})
     end,
   })
+
+  use({
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup({
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      })
+    end,
+  })
+
+  use({
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup({
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      })
+    end,
+  })
+
+  use({
+    "b3nj5m1n/kommentary",
+    config = function()
+      require("kommentary.config").use_extended_mappings()
+      require("kommentary.config").configure_language("default", {
+        prefer_single_line_comments = true,
+      })
+    end,
+  })
 end
 
 return require("packer").startup({

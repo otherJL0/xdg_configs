@@ -15,5 +15,6 @@ return require("lua-dev").setup({
       sumneko_cmd .. operating_system .. "/lua-language-server",
       lua_language_server_dir .. "/main.lua",
     },
+    root_dir = require("lspconfig.util").root_pattern("init.lua", "stylua.toml", ".luacheckrc"),
   },
 })
