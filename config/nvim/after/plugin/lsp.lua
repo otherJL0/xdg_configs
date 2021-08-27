@@ -46,4 +46,4 @@ nnoremap({ "<C-K>", require("lspsaga.signaturehelp").signature_help })
 
 nnoremap({ "gd", require("lspsaga.provider").preview_definition })
 
-nnoremap({ "gI", require("config.telescope").ivy_lsp_implementations })
+nnoremap({ "gI", require("config.telescope").lsp_implementations })
