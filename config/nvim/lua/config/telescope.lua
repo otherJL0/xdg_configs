@@ -1,3 +1,5 @@
+require("telescope").load_extension("projects")
+
 local function ivy_live_grep()
   require("telescope.builtin").live_grep(require("telescope.themes").get_ivy({}))
 end

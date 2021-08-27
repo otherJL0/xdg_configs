@@ -38,8 +38,20 @@ local function my_plugins()
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-nvim-lua",
   })
-
   use({ "windwp/nvim-autopairs" })
+
+  use({
+    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
+    "nvim-telescope/telescope-dap.nvim",
+  })
+
+  use({
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup({})
+    end,
+  })
 end
 
 return require("packer").startup({
