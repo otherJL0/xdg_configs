@@ -18,9 +18,9 @@ lualine.setup({
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { "branch" },
+    lualine_b = { "branch", "diff" },
     lualine_c = { "diff" },
-    lualine_x = { "location" },
+    lualine_x = { require("lsp-status").status },
     lualine_y = { "filetype" },
     lualine_z = { "location" },
   },

@@ -6,7 +6,6 @@ local function my_plugins()
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
   use({ "tjdevries/astronauta.nvim" })
   use({ "nvim-lua/lsp-status.nvim" })
-  use({ "hrsh7th/nvim-cmp" })
   use({ "rose-pine/neovim", as = "rose-pine" })
   use({
     "hoob3rt/lualine.nvim",
@@ -22,6 +21,14 @@ local function my_plugins()
 
   -- Lua
   use({ "folke/lua-dev.nvim" })
+
+  -- Cmp and plugins
+  use({
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-nvim-lua",
+  })
 end
 
 return require("packer").startup({

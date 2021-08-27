@@ -33,8 +33,11 @@ local language_servers = {
 lsp_status.register_progress()
 for _, language_server in ipairs(language_servers) do
   local configs = load_config(language_server)
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+  capabilities = vim.tbl_extend("keep", capabilities, lsp_status.capabilities)
   lspconfig[language_server].setup(vim.tbl_deep_extend("force", {
     on_attach = on_attach,
-    capabilities = vim.tbl_extend("keep", configs.capabilities or {}, lsp_status.capabilities),
+    capabilities = vim.tbl_extend("keep", configs.capabilities or {}, capabilities),
   }, configs))
 end
