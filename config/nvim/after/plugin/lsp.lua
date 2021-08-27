@@ -28,6 +28,12 @@ end
 
 local language_servers = {
   "sumneko_lua",
+  "pyright",
+  "gopls",
+  "clangd",
+  "denols",
+  "clangd",
+  "cmake",
 }
 
 lsp_status.register_progress()
