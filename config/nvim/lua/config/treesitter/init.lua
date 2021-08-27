@@ -24,5 +24,7 @@ require("nvim-treesitter.configs").setup({
 
   textobjects = require("config.treesitter.textobjects"),
 
-  playground = require("config.treesitter.playground"),
+  playground = require("config.treesitter.playground").playground,
+
+  query_linter = require("config.treesitter.playground").query_linter,
 })
