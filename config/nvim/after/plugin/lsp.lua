@@ -1,3 +1,5 @@
+local nnoremap = vim.keymap.nnoremap
+local vnoremap = vim.keymap.vnoremap
 local lspconfig = require("lspconfig")
 local lsp_status = require("lsp-status")
 local nvim_command = vim.api.nvim_command
@@ -49,8 +51,6 @@ for _, language_server in ipairs(language_servers) do
   }, configs))
 end
 
-local nnoremap = vim.keymap.nnoremap
-local vnoremap = vim.keymap.vnoremap
 nnoremap({ "gh", require("lspsaga.provider").lsp_finder })
 
 nnoremap({ "ca", require("lspsaga.codeaction").code_action })
