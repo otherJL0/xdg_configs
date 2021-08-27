@@ -70,11 +70,26 @@ cmp.setup({
   },
 })
 
-require("nvim-autopairs").setup({})
+require("nvim-autopairs").setup({
+  check_ts = true,
+})
+
+require("nvim-treesitter.configs").setup({
+  autopairs = { enable = true },
+})
 
 -- you need setup cmp first put this after cmp.setup()
 require("nvim-autopairs.completion.cmp").setup({
   map_cr = true, --  map <CR> on insert mode
   map_complete = true, -- it will auto insert `(` after select function or method item
   auto_select = true, -- automatically select the first item
+})
+
+local endwise = require("nvim-autopairs.ts-rule").endwise
+require("nvim-autopairs").add_rules({
+  -- 'then$' is a lua regex
+  -- 'end' is a match pair
+  -- 'lua' is a filetype
+  -- 'if_statement' is a treesitter name. set it = nil to skip check with treesitter
+  endwise("then$", "end", "lua", "if_statement"),
 })
