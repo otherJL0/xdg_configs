@@ -1,3 +1,41 @@
 [user]
-  name = otherJL0
-  email = jonathanglopez@gmail.com
+    name = otherJL0
+    email = jonathanglopez@gmail.com
+
+[core]
+    quotepath = true
+
+[color]
+    ui = auto
+
+[merge]
+    tool = nvimMerge
+
+[mergetool]
+    prompt = false
+
+[mergetool "nvimMerge"]
+    cmd = nvim -c "DiffviewOpen"
+
+[diff]
+    tool = nvimDiff
+
+[difftool]
+        prompt = false
+
+[difftool "nvimDiff"]
+    cmd = nvim -c "Gitsigns diffthis"
+
+[pager]
+    diff = delta
+    log = delta
+    reflow = delta
+    show = delta
+
+[delta]
+    line-numbers = true
+    side-by-side = true
+    navigate = true
+
+[interactive]
+    diffFilter = delta --color-only
