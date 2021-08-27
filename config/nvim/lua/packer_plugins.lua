@@ -108,10 +108,33 @@ local function my_plugins()
     requires = "nvim-lua/plenary.nvim",
   })
 
+  use({
+    "romgrk/nvim-treesitter-context",
+    config = function()
+      require("treesitter-context").setup({
+        enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+        throttle = true, -- Throttles plugin updates (may improve performance)
+      })
+    end,
+  })
+
   -- Lsp extras
   use({
     "ray-x/lsp_signature.nvim",
     "glepnir/lspsaga.nvim",
+  })
+
+  use({
+    "folke/twilight.nvim",
+    config = function()
+      require("twilight").setup({
+        dimming = {
+          alpha = 0.1,
+          inactive = true,
+        },
+      })
+      require("twilight").enable()
+    end,
   })
 end
 
