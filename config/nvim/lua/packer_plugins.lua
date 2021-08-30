@@ -135,6 +135,8 @@ local function my_plugins()
       })
     end,
   })
+
+  use({ "vim-denops/denops.vim" })
 end
 
 return require("packer").startup({
