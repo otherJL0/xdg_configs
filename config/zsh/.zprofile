@@ -2,6 +2,7 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 source $ZDOTDIR/env/go.zsh
+source $ZDOTDIR/env/cmake.zsh
 
 typeset -U PATH path
 path+=(
