@@ -4,8 +4,8 @@ setopt BRACE_EXPAND
 setopt DOT_GLOB
 
 # Attempt to correct mispellings
-setopt CORRECT
-setopt CORRECT_ALL
+# setopt CORRECT
+# setopt CORRECT_ALL
 
 # History
 export HISTFILE=~/.zsh_history
