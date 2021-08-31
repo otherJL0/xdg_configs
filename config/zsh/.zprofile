@@ -11,6 +11,7 @@ path+=(
 "$GOBIN" 
 "$HOME/.cargo/bin"
 "$HOME/.jbang/bin"
+"$HOME/.ghcup/bin"
 )
 export PATH
 
