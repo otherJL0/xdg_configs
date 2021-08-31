@@ -36,6 +36,7 @@ local language_servers = {
   "clangd",
   "denols",
   "clangd",
+  "jsonls",
   "cmake",
 }
 
