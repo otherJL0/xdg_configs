@@ -4,6 +4,6 @@ vim.opt.softtabstop = 2
 
 vim.cmd([[
   augroup JqxPopulate
-    autocmd BufRead *.json :JqxList
+    autocmd BufWritePre *.json :JqxList
   augroup END
 ]])
