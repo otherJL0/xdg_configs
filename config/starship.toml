@@ -85,3 +85,9 @@ disabled = false
 threshold = -1
 style = "bold dimmed green"
 format = "$symbol [${ram}( | ${swap})]($style) "
+
+[nodejs]
+detect_extensions = []
+
+[deno]
+detect_folders = ["deno", "denops"]
