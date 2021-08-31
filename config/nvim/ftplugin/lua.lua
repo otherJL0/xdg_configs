@@ -5,6 +5,7 @@ vim.opt.softtabstop = 2
 -- Add nvim/lua files to path
 vim.opt.path:append(vim.fn.stdpath("config") .. "/lua")
 vim.opt.include = [[\v<((do|load)file|require)[^''"]*[''"]\zs[^''"]+]]
+vim.opt.includeexpr = vim.fn.substitute(vim.v.fname, "\\.", "/", "g")
 
 vim.cmd([[
   augroup StyluaAuto
