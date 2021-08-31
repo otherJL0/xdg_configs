@@ -53,8 +53,8 @@ end
 
 nnoremap({ "gh", require("lspsaga.provider").lsp_finder })
 
-nnoremap({ "ca", require("lspsaga.codeaction").code_action })
-vnoremap({ "ca", require("lspsaga.codeaction").range_code_action })
+nnoremap({ " ca", require("lspsaga.codeaction").code_action })
+vnoremap({ " ca", require("lspsaga.codeaction").range_code_action })
 
 nnoremap({ "K", require("lspsaga.hover").render_hover_doc })
 nnoremap({ "<C-K>", require("lspsaga.signaturehelp").signature_help })
