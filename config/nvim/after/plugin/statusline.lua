@@ -6,7 +6,7 @@ end
 
 lualine.setup({
   options = {
-    theme = "rose-pine",
+    theme = "onedark",
     section_separators = "",
     component_separators = "",
     -- section_separators = { "", "" },

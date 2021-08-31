@@ -7,7 +7,7 @@ local function my_plugins()
   use({ "nvim-lua/plenary.nvim" })
   use({ "tjdevries/astronauta.nvim" })
   use({ "nvim-lua/lsp-status.nvim" })
-  use({ "rose-pine/neovim", as = "rose-pine" })
+  use({ "navarasu/onedark.nvim" })
   use({
     "hoob3rt/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },

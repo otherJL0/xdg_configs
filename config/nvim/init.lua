@@ -5,6 +5,6 @@ end
 require("packer_plugins")
 vim.cmd("runtime plugin/astronauta.vim")
 require("config.opts")
-require("themes.rose_pine")
+require("themes.onedark")
 
 require("config.treesitter")
