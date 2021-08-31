@@ -137,6 +137,10 @@ local function my_plugins()
   })
 
   use({ "vim-denops/denops.vim" })
+  use({
+    "gennaro-tedesco/nvim-jqx",
+    ft = { "json" },
+  })
 end
 
 return require("packer").startup({
