@@ -1,0 +1,9 @@
+[ui]
+username = Jonathan Lopez <jonathan.lopez@hey.com>
+verbose = True
+
+[fsmonitor]
+mode = paranoid
+timeout = 10.0
+walk_on_invalidate = true
+warn_when_unused = true
