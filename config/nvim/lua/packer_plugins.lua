@@ -4,11 +4,11 @@ local impatient
 if vim.fn.has("mac") == 1 then
   vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
   impatient = {
-    "lewis6991/impatient",
+    "lewis6991/impatient.nvim",
     rocks = "mpack",
   }
 end
-impatient = { "lewis6991/impatient" }
+impatient = { "lewis6991/impatient.nvim" }
 
 local function my_plugins()
   use({ "wbthomason/packer.nvim" })
