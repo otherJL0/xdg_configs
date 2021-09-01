@@ -2,6 +2,7 @@ local use = require("packer").use
 
 local function my_plugins()
   use({ "wbthomason/packer.nvim" })
+  use({ "lewis6991/impatient.nvim" })
   use({ "neovim/nvim-lspconfig" })
   use({ "nvim-telescope/telescope.nvim" })
   use({ "nvim-lua/plenary.nvim" })

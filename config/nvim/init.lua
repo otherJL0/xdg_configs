@@ -4,6 +4,7 @@ end
 
 require("packer_plugins")
 vim.cmd("runtime plugin/astronauta.vim")
+require("impatient")
 require("config.opts")
 require("themes.onedark")
 
