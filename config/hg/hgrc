@@ -16,14 +16,14 @@ showfunc = true
 absorb = 
 histedit = 
 rebase = 
-evolve = /root/.mozbuild/evolve/hgext3rd/evolve
+evolve = ~/.mozbuild/evolve/hgext3rd/evolve
 fsmonitor = 
 blackbox = 
 shelve = 
-clang-format = /root/.mozbuild/version-control-tools/hgext/clang-format
-js-format = /root/.mozbuild/version-control-tools/hgext/js-format
+clang-format = ~/.mozbuild/version-control-tools/hgext/clang-format
+js-format = ~/.mozbuild/version-control-tools/hgext/js-format
 show = 
-push-to-try = /root/.mozbuild/version-control-tools/hgext/push-to-try
+push-to-try = ~/.mozbuild/version-control-tools/hgext/push-to-try
 [rebase]
 experimental.inmemory = yes
 [alias]

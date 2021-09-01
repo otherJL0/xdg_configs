@@ -20,7 +20,6 @@ return {
       semanticTokens = true,
       usePlaceholders = true,
       matcher = "CaseSensitive",
-      experimentalPostfixCompletions = true,
       analyses = {
         unusedparams = true,
         unusedwrite = true,
@@ -31,7 +30,7 @@ return {
 
       staticcheck = true,
       annotations = { bounds = true, escape = true, inline = true },
-      hoverKind = "FullDocumentation",
+      hoverKind = "Structured",
       linkTarget = "pkg.go.dev",
       linksInHover = true,
       importShortcut = "Both",
