@@ -14,7 +14,7 @@ lualine.setup({
   },
   tabline = {
     lualine_a = { pwd },
-    lualine_b = { "filename" },
+    lualine_b = { { "filename", path = 1 } },
     lualine_c = {},
     lualine_x = {},
     lualine_y = { "filetype" },
@@ -23,7 +23,7 @@ lualine.setup({
   sections = {
     lualine_a = { "mode" },
     lualine_b = { "branch", "diff" },
-    lualine_c = { { "filename", path = 1 } },
+    lualine_c = { { "filename", path = 0 } },
     lualine_x = { require("lsp-status").status },
     lualine_y = {},
     lualine_z = { "location" },
