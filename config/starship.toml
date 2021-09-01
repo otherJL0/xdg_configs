@@ -81,8 +81,6 @@ format = '\[[$symbol$context( \($namespace\))]($style)\]'
 [lua]
 format = '\[[$symbol($version)]($style)\]'
 
-[memory_usage]
-
 [nim]
 symbol = " "
 format = '\[[$symbol($version)]($style)\]'
