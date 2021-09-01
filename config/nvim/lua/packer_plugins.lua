@@ -1,8 +1,18 @@
 local use = require("packer").use
 
+local impatient
+if vim.fn.has("mac") == 1 then
+  vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
+  impatient = {
+    "lewis6991/impatient",
+    rocks = "mpack",
+  }
+end
+impatient = { "lewis6991/impatient" }
+
 local function my_plugins()
   use({ "wbthomason/packer.nvim" })
-  use({ "lewis6991/impatient.nvim" })
+  use(impatient)
   use({ "neovim/nvim-lspconfig" })
   use({ "nvim-telescope/telescope.nvim" })
   use({ "nvim-lua/plenary.nvim" })
