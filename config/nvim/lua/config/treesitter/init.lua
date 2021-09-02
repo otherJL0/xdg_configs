@@ -38,3 +38,6 @@ require("nvim-treesitter.configs").setup({
 
   query_linter = require("config.treesitter.playground").query_linter,
 })
+
+vim.opt.foldmethod = "expr"
+vim.cmd([[set foldexpr=nvim_treesitter#foldexpr()]])
