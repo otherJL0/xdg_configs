@@ -18,6 +18,7 @@ opt.inccommand = "nosplit"
 opt.mouse = "n" -- Only allow mouse in normal mode
 opt.cmdheight = 1
 opt.scrolloff = 10
+opt.indentexpr = ""
 
 -- Highlight on yank
 vim.api.nvim_exec(
