@@ -38,6 +38,7 @@ local language_servers = {
   "clangd",
   "jsonls",
   "cmake",
+  "rust_analyzer",
 }
 
 lsp_status.register_progress()
