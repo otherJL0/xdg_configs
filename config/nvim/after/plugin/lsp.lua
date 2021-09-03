@@ -64,3 +64,34 @@ nnoremap({ "<C-K>", require("lspsaga.signaturehelp").signature_help })
 nnoremap({ "gd", require("lspsaga.provider").preview_definition })
 
 nnoremap({ "gI", require("config.telescope").lsp_implementations })
+
+local efm_attach = function(client)
+  if client.resolved_capabilities.document_formatting then
+    vim.api.nvim_command([[augroup Format]])
+    vim.api.nvim_command([[autocmd! * <buffer>]])
+    vim.api.nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]])
+    vim.api.nvim_command([[augroup END]])
+  end
+end
+
+local formatters = {}
+formatters.python = require("config.lsp.efm.python")
+
+require("lspconfig").efm.setup({
+  init_options = { documentFormatting = true },
+  on_attach = efm_attach,
+  filetypes = { "python" },
+  -- filetypes = { 'lua' },
+  settings = {
+    -- rootMarkers = { ".git/" },
+    languages = {
+      -- lua = { formatters.lua.luaformat },
+      python = {
+        formatters.python.black,
+        formatters.python.isort,
+        formatters.python.flake8,
+        formatters.python.mypy,
+      },
+    },
+  },
+})
