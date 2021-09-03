@@ -12,6 +12,7 @@ path+=(
 "$HOME/.cargo/bin"
 "$HOME/.jbang/bin"
 "$HOME/.ghcup/bin"
+"$HOME/bin"
 )
 export PATH
 
