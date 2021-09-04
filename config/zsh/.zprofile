@@ -11,6 +11,7 @@ path+=(
 "$GOBIN" 
 "$HOME/.cargo/bin"
 "$HOME/.jbang/bin"
+"$HOME/.jbang/currentjdk/bin"
 "$HOME/.ghcup/bin"
 "$HOME/bin"
 )
