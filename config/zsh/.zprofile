@@ -20,3 +20,5 @@ export PATH
 
 export JAVA_HOME="/home/jlopez/.cache/coursier/jvm/openjdk@1.11.0-2"
 export PATH="$PATH:/home/jlopez/.cache/coursier/jvm/openjdk@1.11.0-2/bin"
+
+eval $(opam env)
