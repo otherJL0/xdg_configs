@@ -42,3 +42,6 @@ if [ "$TERM" = "linux" ]; then
   # get rid of artifacts
   clear
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
