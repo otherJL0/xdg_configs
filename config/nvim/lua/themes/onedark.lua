@@ -13,3 +13,5 @@ vim.g.onedark_diagnostics_undercurl = false
 
 vim.g.onedark_darker_diagnostics = false
 require("onedark").setup()
+
+vim.g.lualine_theme = "onedark"

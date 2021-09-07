@@ -22,3 +22,5 @@ nightfox.setup({
 
 -- Load the configuration set above and apply the colorscheme
 nightfox.load()
+
+vim.g.lualine_theme = "nightfox"
