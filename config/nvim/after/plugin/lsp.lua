@@ -39,7 +39,7 @@ local language_servers = {
   "jsonls",
   "cmake",
   "rust_analyzer",
-  "ocamlsp",
+  "ocamllsp",
 }
 
 lsp_status.register_progress()
