@@ -8,7 +8,11 @@ local function my_plugins()
   use({ "nvim-lua/plenary.nvim" })
   use({ "tjdevries/astronauta.nvim" })
   use({ "nvim-lua/lsp-status.nvim" })
-  use({ "navarasu/onedark.nvim" })
+  -- Colorschemes
+  use({
+    "navarasu/onedark.nvim",
+    "EdenEast/nightfox.nvim",
+  })
   use({
     "hoob3rt/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },

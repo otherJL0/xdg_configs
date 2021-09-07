@@ -10,6 +10,7 @@ end
 
 vim.cmd("runtime plugin/astronauta.vim")
 require("config.opts")
-require("themes.onedark")
+-- require("themes.onedark")
+require("themes.nightfox")
 
 require("config.treesitter")
