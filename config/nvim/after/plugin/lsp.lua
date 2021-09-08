@@ -44,7 +44,7 @@ end
 
 local function load_config(language_server)
   local language_server_config = "config.lsp." .. language_server
-  if pcall("require", language_server_config) then
+  if pcall(require, language_server_config) then
     return require(language_server_config)
   end
   return {}
