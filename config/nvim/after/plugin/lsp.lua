@@ -44,7 +44,10 @@ end
 
 local function load_config(language_server)
   local language_server_config = "config.lsp." .. language_server
-  return require(language_server_config)
+  if pcall("require", language_server_config) then
+    return require(language_server_config)
+  end
+  return {}
 end
 
 local language_servers = {
@@ -59,6 +62,8 @@ local language_servers = {
   "rust_analyzer",
   "ocamllsp",
   "bashls",
+  "dockerls",
+  "yamlls",
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
