@@ -73,6 +73,7 @@ local language_servers = {
   "cmake",
   "rust_analyzer",
   "ocamllsp",
+  "bashls",
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
