@@ -125,11 +125,6 @@ local function my_plugins()
 
   -- Lsp extras
   use({
-    "ray-x/lsp_signature.nvim",
-    "glepnir/lspsaga.nvim",
-  })
-
-  use({
     "folke/twilight.nvim",
     config = function()
       require("twilight").setup({
