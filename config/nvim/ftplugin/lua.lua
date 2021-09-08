@@ -11,7 +11,7 @@ vim.opt.suffixesadd:append("/init.lua")
 vim.opt.include = [[\v<((do|load)file|require)[^''"]*[''"]\zs[^''"]+]]
 
 vim.opt.includeexpr = string.gsub(vim.v.fname, "%.", "/")
--- vim.cmd([[set includeexpr=substitute(v:fname,'\\.','/','g')]])
+vim.cmd([[set includeexpr=substitute(v:fname,'\\.','/','g')]])
 vim.cmd([[
   augroup StyluaAuto
     autocmd BufWritePre *.lua :lua require("config.stylua").format()
