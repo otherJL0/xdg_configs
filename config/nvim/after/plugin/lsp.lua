@@ -4,10 +4,42 @@ local lspconfig = require("lspconfig")
 local lsp_status = require("lsp-status")
 local nvim_command = vim.api.nvim_command
 
-local function on_attach(client)
+local function on_attach(client, bufnr)
   vim.lsp.set_log_level(0)
   require("lsp-status").on_attach(client)
-  require("lsp_signature").on_attach()
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  local opts = { noremap = true, silent = true }
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(
+    bufnr,
+    "n",
+    "<leader>wl",
+    "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+    opts
+  )
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(
+    bufnr,
+    "n",
+    "<leader>so",
+    [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]],
+    opts
+  )
 
   if client.resolved_capabilities.document_highlight then
     nvim_command([[autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()]])
@@ -16,6 +48,7 @@ local function on_attach(client)
   end
 
   if client.resolved_capabilities.document_formatting then
+    vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
     nnoremap({ " F", vim.lsp.buf.formatting })
     nvim_command([[augroup Format]])
     nvim_command([[autocmd! * <buffer>]])
@@ -42,45 +75,46 @@ local language_servers = {
   "ocamllsp",
 }
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    "documentation",
+    "detail",
+    "additionalTextEdits",
+  },
+}
+capabilities = vim.tbl_extend("keep", capabilities, lsp_status.capabilities)
+
 lsp_status.register_progress()
 for _, language_server in ipairs(language_servers) do
   local configs = load_config(language_server)
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-  capabilities = vim.tbl_extend("keep", capabilities, lsp_status.capabilities)
   lspconfig[language_server].setup(vim.tbl_deep_extend("force", {
     on_attach = on_attach,
     capabilities = vim.tbl_extend("keep", configs.capabilities or {}, capabilities),
   }, configs))
 end
 
-nnoremap({ "gh", require("lspsaga.provider").lsp_finder })
-
-nnoremap({ " ca", require("lspsaga.codeaction").code_action })
-vnoremap({ " ca", require("lspsaga.codeaction").range_code_action })
-
-nnoremap({ "K", require("lspsaga.hover").render_hover_doc })
-nnoremap({ "<C-K>", require("lspsaga.signaturehelp").signature_help })
-
-nnoremap({ "gd", require("lspsaga.provider").preview_definition })
-
 nnoremap({ "gI", require("config.telescope").lsp_implementations })
-
-local efm_attach = function(client)
-  if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_command([[augroup Format]])
-    vim.api.nvim_command([[autocmd! * <buffer>]])
-    vim.api.nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]])
-    vim.api.nvim_command([[augroup END]])
-  end
-end
-
-local formatters = {}
-formatters.python = require("config.lsp.efm.python")
 
 require("lspconfig").efm.setup({
   init_options = { documentFormatting = true },
-  on_attach = efm_attach,
+  on_attach = function(client)
+    if client.resolved_capabilities.document_formatting then
+      vim.api.nvim_command([[augroup Format]])
+      vim.api.nvim_command([[autocmd! * <buffer>]])
+      vim.api.nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]])
+      vim.api.nvim_command([[augroup END]])
+    end
+  end,
   filetypes = { "python" },
   -- filetypes = { 'lua' },
   settings = {
@@ -88,10 +122,7 @@ require("lspconfig").efm.setup({
     languages = {
       -- lua = { formatters.lua.luaformat },
       python = {
-        formatters.python.black,
-        formatters.python.isort,
-        formatters.python.flake8,
-        formatters.python.mypy,
+        require("config.lsp.efm.python"),
       },
     },
   },

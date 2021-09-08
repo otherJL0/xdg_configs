@@ -1,55 +1,14 @@
 local cmp = require("cmp")
-local compare = require("cmp.config.compare")
-local types = require("cmp.types")
+local luasnip = require("luasnip")
 
-local WIDE_HEIGHT = 40
+vim.o.completeopt = "menuone,noselect"
 
 cmp.setup({
-  completion = {
-    autocomplete = {
-      types.cmp.TriggerEvent.TextChanged,
-    },
-    completeopt = "menu,menuone,noselect",
-    keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
-    keyword_length = 1,
-    get_trigger_characters = function(trigger_characters)
-      return trigger_characters
-    end,
-  },
-
   snippet = {
-    expand = function()
-      error("snippet engine is not configured.")
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
     end,
   },
-
-  preselect = types.cmp.PreselectMode.Item,
-
-  documentation = {
-    border = { "", "", "", " ", "", "", "", " " },
-    winhighlight = "NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder",
-    maxwidth = math.floor((WIDE_HEIGHT * 2) * (vim.o.columns / (WIDE_HEIGHT * 2 * 16 / 9))),
-    maxheight = math.floor(WIDE_HEIGHT * (WIDE_HEIGHT / vim.o.lines)),
-  },
-
-  confirmation = {
-    default_behavior = types.cmp.ConfirmBehavior.Insert,
-  },
-
-  sorting = {
-    priority_weight = 2,
-    comparators = {
-      compare.offset,
-      compare.exact,
-      compare.score,
-      compare.kind,
-      compare.sort_text,
-      compare.length,
-      compare.order,
-    },
-  },
-
-  --
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -58,18 +17,33 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
+      behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }),
+    ["<Tab>"] = function(fallback)
+      if vim.fn.pumvisible() == 1 then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-n>", true, true, true), "n")
+      elseif luasnip.expand_or_jumpable() then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+      else
+        fallback()
+      end
+    end,
+    ["<S-Tab>"] = function(fallback)
+      if vim.fn.pumvisible() == 1 then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-p>", true, true, true), "n")
+      elseif luasnip.jumpable(-1) then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+      else
+        fallback()
+      end
+    end,
   },
-
   sources = {
-    { name = "path" },
     { name = "nvim_lsp" },
-    { name = "nvim_lua" },
+    { name = "luasnip" },
   },
 })
-
 require("nvim-autopairs").setup({
   check_ts = true,
 })
