@@ -25,11 +25,5 @@ return {
       paths = true,
     },
   },
-  root_dir = require("lspconfig.util").root_pattern(
-    "package.json",
-    "tsconfig.json",
-    ".git",
-    "import_map.json",
-    "app.tsx"
-  ),
+  root_dir = require("lspconfig.util").root_pattern("tsconfig.json", "import_map.json", "app.tsx"),
 }

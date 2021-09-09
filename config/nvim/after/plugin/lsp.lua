@@ -64,6 +64,7 @@ local language_servers = {
   "bashls",
   "dockerls",
   "yamlls",
+  "rome",
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
