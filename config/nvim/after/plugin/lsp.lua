@@ -51,20 +51,21 @@ local function load_config(language_server)
 end
 
 local language_servers = {
-  "sumneko_lua",
-  "pyright",
-  "gopls",
-  "clangd",
-  "denols",
-  "clangd",
-  "jsonls",
-  "cmake",
-  "rust_analyzer",
-  "ocamllsp",
   "bashls",
+  "clangd",
+  "clangd",
+  "cmake",
+  "denols",
   "dockerls",
-  "yamlls",
+  "gopls",
+  "html",
+  "jsonls",
+  "ocamllsp",
+  "pyright",
   "rome",
+  "rust_analyzer",
+  "sumneko_lua",
+  "yamlls",
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

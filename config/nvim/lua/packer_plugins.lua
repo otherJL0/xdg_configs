@@ -45,6 +45,13 @@ local function my_plugins()
     "hrsh7th/cmp-nvim-lua",
   })
   use({ "windwp/nvim-autopairs" })
+  use({
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+    ft = { "html", "xml" },
+  })
 
   use({
     "mfussenegger/nvim-dap",
