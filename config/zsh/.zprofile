@@ -14,6 +14,7 @@ path+=(
 "$HOME/.jbang/currentjdk/bin"
 "$HOME/.ghcup/bin"
 "$HOME/.yarn/bin"
+"$HOME/.deno/bin"
 "$HOME/bin"
 )
 export PATH
