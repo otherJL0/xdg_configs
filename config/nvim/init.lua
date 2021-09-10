@@ -14,3 +14,6 @@ require("config.opts")
 require("themes.nightfox")
 
 require("config.treesitter")
+
+-- Quickly enter command mode
+vim.keymap.nnoremap({ "  ", ":" })
