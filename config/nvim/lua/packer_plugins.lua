@@ -14,6 +14,7 @@ local function my_plugins()
     "navarasu/onedark.nvim",
     "EdenEast/nightfox.nvim",
   })
+  use("Iron-E/nvim-soluarized")
   use({
     "hoob3rt/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
