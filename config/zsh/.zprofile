@@ -24,3 +24,7 @@ export JAVA_HOME="/home/jlopez/.cache/coursier/jvm/openjdk@1.11.0-2"
 export PATH="$PATH:/home/jlopez/.cache/coursier/jvm/openjdk@1.11.0-2/bin"
 
 eval $(opam env)
+
+# Neovim 
+export PACKER_START="${XDG_DATA_HOME}/nvim/site/pack/packer/start"
+export PACKER_OPT="${XDG_DATA_HOME}/nvim/site/pack/packer/opt"
