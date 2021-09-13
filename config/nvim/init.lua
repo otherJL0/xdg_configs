@@ -18,3 +18,6 @@ require("config.treesitter")
 
 -- Quickly enter command mode
 vim.keymap.nnoremap({ "  ", ":" })
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
