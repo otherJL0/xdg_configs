@@ -13,7 +13,8 @@ require("config.opts")
 -- require("themes.onedark")
 -- require("themes.nightfox")
 -- require("themes.solarized")
-require("themes.github")
+-- require("themes.github")
+require("themes.monokai")
 
 require("config.treesitter")
 
