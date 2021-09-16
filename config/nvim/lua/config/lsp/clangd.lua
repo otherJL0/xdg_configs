@@ -11,5 +11,10 @@ return {
     "hpp",
     "cc",
   },
-  root_dir = require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt", ".clangd"),
+  root_dir = require("lspconfig.util").root_pattern(
+    "compile_commands.json",
+    "CMakeLists.txt",
+    "compile_flags.txt",
+    ".clangd"
+  ),
 }
