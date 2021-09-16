@@ -16,6 +16,7 @@ path+=(
 "$HOME/.yarn/bin"
 "$HOME/.deno/bin"
 "$HOME/bin"
+"$HOME/.luarocks/bin"
 )
 export PATH
 
@@ -28,3 +29,9 @@ eval $(opam env)
 # Neovim 
 export PACKER_START="${XDG_DATA_HOME}/nvim/site/pack/packer/start"
 export PACKER_OPT="${XDG_DATA_HOME}/nvim/site/pack/packer/opt"
+eval "$(zoxide init zsh)"
+eval "$(mcfly init zsh)"
+export MCFLY_KEY_SCHEME=vim
+export MCFLY_FUZZY=true
+export MCFLY_INTERFACE_VIEW=BOTTOM
+export MCFLY_RESULTS_SORT=LAST_RUN
