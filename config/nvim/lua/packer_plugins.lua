@@ -152,6 +152,8 @@ local function my_plugins()
     "gennaro-tedesco/nvim-jqx",
     ft = { "json" },
   })
+
+  use({ "akinsho/flutter-tools.nvim", ft = "dart" })
 end
 
 return require("packer").startup({
