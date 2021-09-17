@@ -9,6 +9,7 @@ local function my_plugins()
   use({ "tjdevries/astronauta.nvim" })
   use({ "nvim-lua/lsp-status.nvim" })
   use({ "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" })
+  use({ "liuchengxu/vista.vim" })
   -- Colorschemes
   use({
     "navarasu/onedark.nvim",
