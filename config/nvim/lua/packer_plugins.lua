@@ -18,8 +18,9 @@ local function my_plugins()
   use("Iron-E/nvim-soluarized")
   use({ "projekt0n/github-nvim-theme" })
   use("tanvirtin/monokai.nvim")
+  use({ "Pocco81/Catppuccino.nvim" })
   use({
-    "hoob3rt/lualine.nvim",
+    "Famiu/feline.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
   })
 
