@@ -62,7 +62,6 @@ local language_servers = {
   "jsonls",
   "ocamllsp",
   "pyright",
-  "rome",
   "rust_analyzer",
   "sumneko_lua",
   "yamlls",

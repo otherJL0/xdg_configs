@@ -17,6 +17,7 @@ path+=(
 "$HOME/.deno/bin"
 "$HOME/bin"
 "$HOME/.luarocks/bin"
+"/usr/local/cuda-11.4/bin"
 )
 export PATH
 
@@ -35,3 +36,5 @@ export MCFLY_KEY_SCHEME=vim
 export MCFLY_FUZZY=true
 export MCFLY_INTERFACE_VIEW=BOTTOM
 export MCFLY_RESULTS_SORT=LAST_RUN
+export LD_LIBRARY_PATH=/usr/local/cuda-11.4/lib64\
+                         ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
