@@ -17,7 +17,6 @@ path+=(
 "$HOME/.deno/bin"
 "$HOME/bin"
 "$HOME/.luarocks/bin"
-"/usr/local/cuda-11.4/bin"
 )
 export PATH
 
