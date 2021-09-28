@@ -16,9 +16,3 @@ alias gb='git branch'
 alias gch='git checkout'
 alias gph='git push'
 alias gpl='git pull'
-
-clang_version=14
-for file in /usr/bin/{clang,ll{vm,db}}*-${clang_version};do
-    versionless_alias=${${file:t}//-14/}
-    alias $versionless_alias=${file}
-done
