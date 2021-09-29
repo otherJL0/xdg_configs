@@ -32,7 +32,6 @@ sudo zypper install apache-arrow-devel{,-static} \
   julia{,-{devel,doc}} \
   kcachegrind \
   kdebugsettings \
-  kdevelop5{,-plugin-{python3,ruby}} \
   kdiff3 \
   kexi \
   kget \
@@ -46,8 +45,8 @@ sudo zypper install apache-arrow-devel{,-static} \
   libtool \
   lldb12{,-devel} \
   llvm12{,-{devel,doc,polly}} \
+  man \
   make \
-  massif-visualizer5 \
   minikube \
   mlocate \
   ncurses{,-devel} \
@@ -68,6 +67,7 @@ sudo zypper install apache-arrow-devel{,-static} \
   tmux \
   umbrello \
   valgrind \
+  wget \
   yakuake \
   yarn \
   zlib-devel \
@@ -75,7 +75,7 @@ sudo zypper install apache-arrow-devel{,-static} \
 
 # Ad-hoc installs next
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-wget https://github.com/digitalocean/doctl/releases/download/v1.64.0/doctl-1.64.0-linux-amd64.tar.gz
+wget -O - https://github.com/digitalocean/doctl/releases/download/v1.64.0/doctl-1.64.0-linux-amd64.tar.gz | tar xzf -&& mv doctl ~/.local/bin/
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer
 curl -fLo cs https://git.io/coursier-cli-"$(uname | tr LD ld)" && chmod +x cs && ./cs install cs && rm cs
