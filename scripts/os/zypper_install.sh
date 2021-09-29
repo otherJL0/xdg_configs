@@ -1,9 +1,4 @@
-sudo zypper addrepo http://download.opensuse.org/repositories/KDE:/Unstable:/Frameworks/openSUSE_Factory
-sudo zypper addrepo http://download.opensuse.org/repositories/KDE:/Unstable:/Extra/KDE_Unstable_Frameworks_openSUSE_Factory
-sudo zypper addrepo http://download.opensuse.org/repositories/KDE:/Unstable:/Qt/openSUSE_Tumbleweed/
-sudo zypper addrepo http://download.opensuse.org/repositories/KDE:/Unstable:/Applications/KDE_Unstable_Frameworks_openSUSE_Factory
 sudo zypper addrepo https://cli.github.com/packages/rpm/gh-cli.repo
-sudo zypper addrepo https://download.opensuse.org/repositories/server:/database/openSUSE_Tumbleweed/
 sudo zypper addrepo https://download.opensuse.org/repositories/server:/database/openSUSE_Tumbleweed/server:database.repo
 sudo zypper addrepo https://download.opensuse.org/repositories/mozilla/openSUSE_Tumbleweed/mozilla.repo
 sudo zypper addrepo https://download.opensuse.org/repositories/science/openSUSE_Tumbleweed/science.repo
@@ -26,6 +21,7 @@ sudo zypper install apache-arrow-devel{,-static} \
   gettext-tools \
   gh \
   git{,-delta} \
+  gzip \
   heaptrack{,-{devel,gui}} \
   helm \
   hg \
@@ -53,6 +49,7 @@ sudo zypper install apache-arrow-devel{,-static} \
   neochat \
   ninja \
   nodejs-common \
+  npm \
   okteta{,-{data,devel,part}} \
   opam \
   openssl \
@@ -95,6 +92,7 @@ done
 
 yarn global add yaml-language-server
 yarn global add ansible-language-server
+
 
 # Pipx installs
 pipx_modules=(
