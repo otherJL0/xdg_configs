@@ -1,3 +1,7 @@
+sudo zypper addrepo http://download.opensuse.org/repositories/KDE:/Unstable:/Frameworks/openSUSE_Factory
+sudo zypper addrepo http://download.opensuse.org/repositories/KDE:/Unstable:/Extra/KDE_Unstable_Frameworks_openSUSE_Factory
+sudo zypper addrepo http://download.opensuse.org/repositories/KDE:/Unstable:/Qt/openSUSE_Tumbleweed/
+sudo zypper addrepo http://download.opensuse.org/repositories/KDE:/Unstable:/Applications/KDE_Unstable_Frameworks_openSUSE_Factory
 sudo zypper addrepo https://cli.github.com/packages/rpm/gh-cli.repo
 sudo zypper addrepo https://download.opensuse.org/repositories/server:/database/openSUSE_Tumbleweed/
 sudo zypper addrepo https://download.opensuse.org/repositories/server:/database/openSUSE_Tumbleweed/server:database.repo
