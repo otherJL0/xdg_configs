@@ -1,16 +1,10 @@
-# Start starship prompt
+# Eval programs
 eval "$(starship init zsh)"
+eval $(opam env)
+eval "$(zoxide init zsh)"
+eval "$(mcfly init zsh)"
 autoload -Uz compinit
 compinit
-
-# Source Zsh Options
-source ${XDG_CONFIG_HOME}/zsh/zshopts
-
-# Source Zsh Aliases
-source ${XDG_CONFIG_HOME}/zsh/zshaliases
-
-# Source Zsh Completions
-source ${XDG_CONFIG_HOME}/zsh/zshcompletions
 
 ## Zsh Command Line Editing
 
@@ -92,3 +86,5 @@ for app ("$applications[@]"); do
         source <($app completion zsh)
     fi
 done
+
+
