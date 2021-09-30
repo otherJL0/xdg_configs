@@ -134,3 +134,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ~/.cargo/bin/cargo install zoxide
 ~/.cargo/bin/cargo install mcfly
 ~/.cargo/bin/cargo install deno --locked
+
+# Install nerdfonts
+wget -P ~/.fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
+unzip ~/.fonts/JetBrainsMono.zip -d ~/.fonts
+rm -f ~/.fonts/*indow*
+rm -f ~/.fonts/*zip*
+fc-cache -vf
