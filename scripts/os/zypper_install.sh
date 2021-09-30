@@ -13,7 +13,6 @@ sudo zypper install apache-arrow-devel{,-static} \
   cantor \
   clazy \
   cmake \
-  curl \
   dolphin-plugins \
   elisa \
   fd \
@@ -21,10 +20,8 @@ sudo zypper install apache-arrow-devel{,-static} \
   gettext-tools \
   gh \
   git{,-delta} \
-  gzip \
   heaptrack{,-{devel,gui}} \
   helm \
-  hg \
   julia{,-{devel,doc}} \
   kcachegrind \
   kdebugsettings \
@@ -41,7 +38,6 @@ sudo zypper install apache-arrow-devel{,-static} \
   libtool \
   lldb12{,-devel} \
   llvm12{,-{devel,doc,polly}} \
-  man \
   make \
   minikube \
   mlocate \
@@ -49,7 +45,6 @@ sudo zypper install apache-arrow-devel{,-static} \
   neochat \
   ninja \
   nodejs-common \
-  npm \
   okteta{,-{data,devel,part}} \
   opam \
   openssl \
@@ -65,7 +60,6 @@ sudo zypper install apache-arrow-devel{,-static} \
   umbrello \
   valgrind \
   watchman \
-  wget \
   yakuake \
   yarn \
   zlib-devel \
@@ -117,6 +111,7 @@ for module in ${pipx_modules[@]}; do
 done
 
 # Ad-hoc installs next
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 wget -O - https://github.com/digitalocean/doctl/releases/download/v1.64.0/doctl-1.64.0-linux-amd64.tar.gz | tar xzf -&& mv doctl ~/.local/bin/
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -138,5 +133,4 @@ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ~/.cargo/bin/cargo install stylua
 ~/.cargo/bin/cargo install zoxide
 ~/.cargo/bin/cargo install mcfly
-~/.cargo/bin/cargo install starship
 ~/.cargo/bin/cargo install deno --locked
