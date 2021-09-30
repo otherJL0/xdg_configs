@@ -1,3 +1,15 @@
+# Clang
+export CC=clang
+export CXX=clang++
+
+# CMake
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
+export CMAKE_BUILD_TYPE=Release
+export CMAKE_DISABLE32BIT=ON
+
+
+
+### Golang
 # Controls whether the go command runs in module-aware mode or GOPATH mode.
 # May be "off", "on", or "auto".
 # See https://golang.org/ref/mod#mod-commands.
