@@ -17,6 +17,7 @@ path+=(
 "$HOME/.deno/bin"
 "$HOME/bin"
 "$HOME/.luarocks/bin"
+"$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin"
 )
 export PATH
 
