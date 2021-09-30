@@ -64,6 +64,7 @@ sudo zypper install apache-arrow-devel{,-static} \
   tmux \
   umbrello \
   valgrind \
+  watchman \
   wget \
   yakuake \
   yarn \
