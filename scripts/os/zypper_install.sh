@@ -135,6 +135,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ~/.cargo/bin/cargo install mcfly
 ~/.cargo/bin/cargo install deno --locked
 
+# Install rust analyzer
+~/.cargo/bin/rustup +nightly component add rust-analyzer-preview
+
 # Install nerdfonts
 wget -P ~/.fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
 unzip ~/.fonts/JetBrainsMono.zip -d ~/.fonts
