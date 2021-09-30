@@ -82,7 +82,7 @@ applications=(
 )
 
 for app ("$applications[@]"); do
-    if (( ${+commands[apt]} )); then
+    if (( ${+commands[$app]} )); then
         source <($app completion zsh)
     fi
 done
