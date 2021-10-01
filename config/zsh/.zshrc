@@ -1,60 +1,90 @@
+# Eval programs
+eval "$(starship init zsh)"
+eval $(opam env)
+eval "$(zoxide init zsh)"
+eval "$(mcfly init zsh)"
 autoload -Uz compinit
 compinit
 
-# Source Zsh Options
-source ${XDG_CONFIG_HOME}/zsh/zshopts
+## Zsh Command Line Editing
 
-# Source Zsh Aliases
-source ${XDG_CONFIG_HOME}/zsh/zshaliases
+# Vi mode settings
+bindkey -v
+export KEYTIMEOUT=1
 
-# Source Zsh Completions
-source ${XDG_CONFIG_HOME}/zsh/zshcompletions
-#
-# Source Zsh Command Line Editing
-source ${XDG_CONFIG_HOME}/zsh/line_editor.zsh
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'j' vi-down-line-or-history
 
-eval "$(starship init zsh)"
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# rose pine colors
-if [ "$TERM" = "linux" ]; then
-  /bin/echo -e "
-  \e]P0403c58
-  \e]P1ea6f91
-  \e]P29bced7
-  \e]P3f1ca93
-  \e]P434738e
-  \e]P5c3a5e6
-  \e]P6eabbb9
-  \e]P7faebd7
-  \e]P86f6e85
-  \e]P9ea6f91
-  \e]PA9bced7
-  \e]PBf1ca93
-  \e]PC34738e
-  \e]PDc3a5e6
-  \e]PEeabbb9
-  \e]PFffffff
-  "
-  # get rid of artifacts
-  clear
-fi
+## Zsh Aliases
+# Oldie but a goodie
+alias ls='ls --color=always'
+alias ll='ls -la'
+alias lR='ls -lR'
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/jlopez/.local/share/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/jlopez/.local/share/miniconda/etc/profile.d/conda.sh" ]; then
-        . "/home/jlopez/.local/share/miniconda/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/jlopez/.local/share/miniconda/bin:$PATH"
+# Git
+alias gs='git status'
+alias gss='git status -s'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gcM='git commit -am'
+alias ga='git add'
+alias gA='git add -A'
+alias gl='git log'
+alias gb='git branch'
+alias gch='git checkout'
+alias gph='git push'
+alias gpl='git pull'
+
+
+
+## Zsh Options
+# Adding Bash comforts...
+setopt INTERACTIVE_COMMENTS
+setopt BRACE_EXPAND
+setopt DOT_GLOB
+
+# Attempt to correct mispellings
+# setopt CORRECT
+# setopt CORRECT_ALL
+
+# History
+export HISTFILE="$HOME/.zsh_history"
+export HISTFILESIZE=1000000
+export HISTSIZE=1000000
+export SAVEHIST=$HISTSIZE
+export HISTTIMEFORMAT="[%F %T] "
+
+setopt BANG_HIST
+setopt EXTENDED_HISTORY
+setopt HIST_ALLOW_CLOBBER # make history 'pipable'
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE 
+setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY
+
+
+## Zsh Completions
+applications=(
+    kubectl
+    helm
+    kubeadm
+    doctl
+    minikube
+)
+
+for app ("$applications[@]"); do
+    if (( ${+commands[$app]} )); then
+        source <($app completion zsh)
     fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+done
+
 

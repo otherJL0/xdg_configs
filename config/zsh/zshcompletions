@@ -1,5 +1,0 @@
-source <(kubectl completion zsh)
-source <(helm completion zsh)
-source <(kubeadm completion zsh)
-source <(doctl completion zsh)
-source <(minikube completion zsh)
