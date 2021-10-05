@@ -2,10 +2,15 @@ sudo zypper addrepo https://cli.github.com/packages/rpm/gh-cli.repo
 sudo zypper addrepo https://download.opensuse.org/repositories/server:/database/openSUSE_Tumbleweed/server:database.repo
 sudo zypper addrepo https://download.opensuse.org/repositories/mozilla/openSUSE_Tumbleweed/mozilla.repo
 sudo zypper addrepo https://download.opensuse.org/repositories/science/openSUSE_Tumbleweed/science.repo
+sudo zypper addrepo https://download.opensuse.org/repositories/shells/openSUSE_Tumbleweed.shells.repo
+sudo zypper addrepo https://download.opensuse.org/repositories/shells/openSUSE_Tumbleweed/shells.repo
+sudo zypper addrepo https://download.opensuse.org/repositories/science:/GPU:/Intel-OpenCL/openSUSE_Tumbleweed/science:GPU:Intel-OpenCL.repo
+sudo zypper addrepo https://download.opensuse.org/repositories/science:/machinelearning/openSUSE_Tumbleweed/science:machinelearning.repo
 
 sudo zypper refresh
+sudo zypper update --allow-vendor-change -y
 
-sudo zypper install apache-arrow-devel{,-static} \
+sudo zypper install -y apache-arrow-devel{,-static} \
   auto{conf,make} \
   bison \
   buildah \
