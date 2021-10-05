@@ -19,15 +19,23 @@ active.left = {
     end,
     right_sep = " ",
   },
-
+  { provider = "file_type", right_sep = " " },
   { provider = "git_branch" },
   { provider = "git_diff_added" },
   { provider = "git_diff_removed" },
   { provider = "git_diff_changed" },
 }
 
+active.middle = {
+  { provider = "diagnostic_errors", right_sep = " " },
+  { provider = "diagnostic_warnings", right_sep = " " },
+  { provider = "diagnostic_hints", right_sep = " " },
+  { provider = "diagnostic_info", right_sep = " " },
+}
+
 active.right = {
-  { provider = "position" },
+  { provider = "lsp_client_names", right_sep = " " },
+  { provider = "position", right_sep = ":" },
   { provider = "line_percentage" },
 }
 
