@@ -1,9 +1,4 @@
 # Eval programs
-eval "$(starship init zsh)"
-eval $(opam env)
-eval "$(zoxide init zsh)"
-eval "$(mcfly init zsh)"
-eval "$(pyenv init -)"
 autoload -Uz compinit
 compinit
 
