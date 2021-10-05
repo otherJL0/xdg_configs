@@ -3,6 +3,7 @@ eval "$(starship init zsh)"
 eval $(opam env)
 eval "$(zoxide init zsh)"
 eval "$(mcfly init zsh)"
+eval "$(pyenv init -)"
 autoload -Uz compinit
 compinit
 
@@ -34,7 +35,7 @@ alias gs='git status'
 alias gss='git status -s'
 alias gc='git commit'
 alias gcm='git commit -m'
-alias gcM='git commit -am'
+alias gcam='git commit -am'
 alias ga='git add'
 alias gA='git add -A'
 alias gl='git log'
@@ -42,6 +43,7 @@ alias gb='git branch'
 alias gch='git checkout'
 alias gph='git push'
 alias gpl='git pull'
+alias gdiff='git difftool'
 
 
 

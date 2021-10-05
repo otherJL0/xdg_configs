@@ -29,3 +29,9 @@ export MCFLY_KEY_SCHEME=vim
 export MCFLY_FUZZY=true
 export MCFLY_INTERFACE_VIEW=BOTTOM
 export MCFLY_RESULTS_SORT=LAST_RUN
+
+
+# Pyenv setup
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
