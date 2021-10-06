@@ -24,7 +24,7 @@ local function on_attach(client, bufnr)
   nnoremap({ " e", vim.diagnostic.show_line_diagnostics })
   nnoremap({ "[d", vim.diagnostic.goto_prev })
   nnoremap({ "]d", vim.diagnostic.goto_next })
-  nnoremap({ " q", vim.diagnostic.set_loclist })
+  nnoremap({ " q", vim.diagnostic.setloclist })
 
   if client.resolved_capabilities.document_highlight then
     nvim_command([[autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()]])
