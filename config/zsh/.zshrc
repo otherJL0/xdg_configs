@@ -1,4 +1,5 @@
 # Eval programs
+eval "$(starship init zsh)"
 autoload -Uz compinit
 compinit
 
@@ -21,7 +22,13 @@ bindkey -M vicmd v edit-command-line
 
 ## Zsh Aliases
 # Oldie but a goodie
-alias ls='ls --color=always'
+if [[ $(uname) -eq "Darwin" ]]
+then
+    alias ls='ls -G'
+else
+    alias ls='ls --color=always'
+fi
+
 alias ll='ls -la'
 alias lR='ls -lR'
 
