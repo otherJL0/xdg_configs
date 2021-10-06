@@ -8,6 +8,8 @@ for _, plugin in pairs({ "impatient", "packer_plugins" }) do
   end
 end
 
+require("config.globals")
+
 vim.cmd("runtime plugin/astronauta.vim")
 require("config.opts")
 require("themes.catppuccino")
