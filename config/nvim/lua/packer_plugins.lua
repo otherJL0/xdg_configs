@@ -155,6 +155,7 @@ local function my_plugins()
     "gennaro-tedesco/nvim-jqx",
     ft = { "json" },
   })
+  use({ "jbyuki/one-small-step-for-vimkind" })
 end
 
 return require("packer").startup({
