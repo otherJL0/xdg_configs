@@ -51,7 +51,7 @@ local function load_config(language_server)
 end
 
 local language_servers = {
-  "bashls",
+  -- "bashls",
   "clangd",
   "clangd",
   "cmake",
