@@ -1,14 +1,23 @@
-sudo zypper addrepo https://cli.github.com/packages/rpm/gh-cli.repo
-sudo zypper addrepo https://download.opensuse.org/repositories/server:/database/openSUSE_Tumbleweed/server:database.repo
-sudo zypper addrepo https://download.opensuse.org/repositories/mozilla/openSUSE_Tumbleweed/mozilla.repo
-sudo zypper addrepo https://download.opensuse.org/repositories/science/openSUSE_Tumbleweed/science.repo
-sudo zypper addrepo https://download.opensuse.org/repositories/shells/openSUSE_Tumbleweed.shells.repo
-sudo zypper addrepo https://download.opensuse.org/repositories/shells/openSUSE_Tumbleweed/shells.repo
-sudo zypper addrepo https://download.opensuse.org/repositories/science:/GPU:/Intel-OpenCL/openSUSE_Tumbleweed/science:GPU:Intel-OpenCL.repo
-sudo zypper addrepo https://download.opensuse.org/repositories/science:/machinelearning/openSUSE_Tumbleweed/science:machinelearning.repo
+tw_repos=(
+https://cli.github.com/packages/rpm/gh-cli.repo
+https://download.opensuse.org/repositories/KDE:/Applications/KDE_Frameworks5_openSUSE_Tumbleweed/KDE:Applications.repo
+https://download.opensuse.org/repositories/KDE:/Extra/KDE_Frameworks5_openSUSE_Tumbleweed/KDE:Extra.repo
+https://download.opensuse.org/repositories/KDE:/Frameworks5/openSUSE_Factory/KDE:Frameworks5.repo
+https://download.opensuse.org/repositories/mozilla/openSUSE_Tumbleweed/mozilla.repo
+https://download.opensuse.org/repositories/science/openSUSE_Tumbleweed/science.repo
+https://download.opensuse.org/repositories/science:/GPU:/Intel-OpenCL/openSUSE_Tumbleweed/science:GPU:Intel-OpenCL.repo
+https://download.opensuse.org/repositories/science:/machinelearning/openSUSE_Tumbleweed/science:machinelearning.repo
+https://download.opensuse.org/repositories/server:/database/openSUSE_Tumbleweed/server:database.repo
+https://download.opensuse.org/repositories/shells/openSUSE_Tumbleweed.shells.repo
+https://download.opensuse.org/repositories/shells/openSUSE_Tumbleweed/shells.repo
+)
+for repo in ${tw_repos[@]}; do 
+  sudo zypper addrepo ${repo}
+done
+sudo zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NVIDIA
 
 sudo zypper refresh
-sudo zypper update --allow-vendor-change -y
+sudo zypper -vy dup --allow-vendor-change
 
 sudo zypper install -y apache-arrow-devel{,-static} \
   auto{conf,make} \
