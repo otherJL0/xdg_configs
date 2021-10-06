@@ -21,10 +21,10 @@ local function on_attach(client, bufnr)
   nnoremap({ "gr", vim.lsp.buf.references })
   nnoremap({ " ca", vim.lsp.buf.code_action })
   vnoremap({ " ca", vim.lsp.buf.range_code_action })
-  nnoremap({ " e", vim.lsp.diagnostic.show_line_diagnostics })
-  nnoremap({ "[d", vim.lsp.diagnostic.goto_prev })
-  nnoremap({ "]d", vim.lsp.diagnostic.goto_next })
-  nnoremap({ " q", vim.lsp.diagnostic.set_loclist })
+  nnoremap({ " e", vim.diagnostic.show_line_diagnostics })
+  nnoremap({ "[d", vim.diagnostic.goto_prev })
+  nnoremap({ "]d", vim.diagnostic.goto_next })
+  nnoremap({ " q", vim.diagnostic.set_loclist })
 
   if client.resolved_capabilities.document_highlight then
     nvim_command([[autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()]])
@@ -51,7 +51,7 @@ local function load_config(language_server)
 end
 
 local language_servers = {
-  -- "bashls",
+  "bashls",
   "clangd",
   "clangd",
   "cmake",
