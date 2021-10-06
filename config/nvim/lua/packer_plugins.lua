@@ -25,13 +25,16 @@ local function my_plugins()
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
   })
 
-  -- Treesitter
   use({
     "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  })
+  -- Treesitter
+  use({
     "nvim-treesitter/nvim-treesitter-textobjects",
     "nvim-treesitter/nvim-treesitter-refactor",
     "nvim-treesitter/playground",
-    run = ":TSUpdate",
+    requires = "nvim-treesitter/nvim-treesitter",
   })
   -- Git plugins
   use({
@@ -75,11 +78,7 @@ local function my_plugins()
   use({
     "folke/which-key.nvim",
     config = function()
-      require("which-key").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
+      require("which-key").setup({})
     end,
   })
 
@@ -87,11 +86,7 @@ local function my_plugins()
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require("trouble").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
+      require("trouble").setup({})
     end,
   })
 
@@ -135,6 +130,7 @@ local function my_plugins()
         throttle = true, -- Throttles plugin updates (may improve performance)
       })
     end,
+    requires = "nvim-treesitter/nvim-treesitter",
   })
 
   -- Lsp extras
