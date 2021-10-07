@@ -21,9 +21,7 @@ bindkey -M vicmd v edit-command-line
 
 
 ## Zsh Aliases
-# Oldie but a goodie
-if [[ $(uname) -eq "Darwin" ]]
-then
+if [ Darwin = `uname` ]; then
     alias ls='ls -G'
 else
     alias ls='ls --color=always'
