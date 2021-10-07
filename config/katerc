@@ -16,7 +16,7 @@ Modified Notification=false
 Recent File List Entry Count=10
 Restore Window Configuration=true
 Save Meta Infos=true
-Show Full Path in Title=false
+Show Full Path in Title=true
 Show Menu Bar=true
 Show Status Bar=true
 Show Tab Bar=true
@@ -60,7 +60,7 @@ Swap Sync Interval=15
 Tab Handling=2
 Tab Width=4
 Trailing Marker Size=1
-Word Wrap=false
+Word Wrap=true
 Word Wrap Column=80
 
 [KTextEditor Editor]
@@ -74,7 +74,7 @@ Color Theme=Breeze Dark
 Font=JetBrainsMono Nerd Font,11,-1,5,50,0,0,0,0,0
 Show Indentation Lines=false
 Show Whole Bracket Expression=false
-Word Wrap Marker=false
+Word Wrap Marker=true
 
 [KTextEditor View]
 Allow Mark Menu=true
@@ -163,6 +163,9 @@ RemoveExtension=false
 RunPrefix=
 SetEditor=false
 
+[MainWindow]
+eDP-1 Window-Maximized 1920x1080=true
+
 [PluginSymbolViewer]
 ExpandTree=false
 SortSymbols=false
@@ -171,6 +174,16 @@ ViewTypes=false
 
 [Replicode]
 replicodePath=
+
+[filetree]
+editShade=34,84,111
+listMode=false
+shadingEnabled=true
+showCloseButton=false
+showFullPathOnRoots=false
+showToolbar=true
+sortRole=0
+viewShade=66,73,74
 
 [lspclient]
 AutoHover=true
