@@ -1,5 +1,6 @@
 # Eval programs
 eval "$(starship init zsh)"
+fpath+="${ZDOTDIR}/.zfunc"
 autoload -Uz compinit
 compinit
 
