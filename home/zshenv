@@ -125,3 +125,7 @@ export GOOS=linux
 # Lists version control commands that may be used with matching servers.
 # See 'go help vcs'.
 # GOVCS
+
+
+# Rust environment varianles
+export RUSTUP_HOME="${HOME}/.rustup"

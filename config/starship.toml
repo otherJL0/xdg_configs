@@ -63,6 +63,7 @@ format = '\[[$symbol($version)]($style)\]'
 [hg_branch]
 symbol = " "
 format = '\[[$symbol$branch]($style)\]'
+disabled = false
 
 [java]
 symbol = " "
