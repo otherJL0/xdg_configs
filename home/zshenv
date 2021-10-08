@@ -6,6 +6,7 @@ export XDG_CACHE_HOME="${HOME}/.cache"
 
 export VISUAL=nvim
 export EDITOR=nvim
+export MANPAGER='nvim +Man!'
 
 typeset -U PATH path
 path+=(
