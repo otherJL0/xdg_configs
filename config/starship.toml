@@ -67,6 +67,7 @@ disabled = false
 
 [java]
 symbol = " "
+version_format = "${major}.${minor}"
 format = '\[[$symbol($version)]($style)\]'
 
 [julia]
@@ -92,6 +93,7 @@ format = '\[[$symbol$state( \($name\))]($style)\]'
 
 [nodejs]
 detect_extensions = []
+version_format = "${major}.${minor}"
 format = '\[[$symbol($version)]($style)\]'
 
 [ocaml]
@@ -117,6 +119,7 @@ format = '\[[$symbol($version)]($style)\]'
 
 [python]
 symbol = " "
+version_format = "${major}.${minor}"
 format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
 
 [red]
@@ -128,6 +131,7 @@ format = '\[[$symbol($version)]($style)\]'
 
 [rust]
 symbol = " "
+version_format = "${major}.${minor}"
 format = '\[[$symbol($version)]($style)\]'
 
 [scala]
