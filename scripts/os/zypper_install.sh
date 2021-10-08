@@ -19,16 +19,21 @@ sudo zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NV
 sudo zypper refresh
 sudo zypper -vy dup --allow-vendor-change
 
-sudo zypper install -y apache-arrow-devel{,-static} \
+sudo zypper install -y \
+  apache-arrow-devel{,-static} \
   auto{conf,make} \
+  bat \
   bison \
   buildah \
   calligra{,-{devel,doc,extras-{okular,filemanagertemplates,dolphin,converter},karbon,sheets,plan,tools,words,stage}} \
   cantor \
+  ccache \
   clazy \
   cmake \
+  cscope \
   dolphin-plugins \
   elisa \
+  extra-cmake-modules{,-doc} \
   fd \
   gcc{,-c++} \
   gettext-tools \
@@ -67,15 +72,20 @@ sudo zypper install -y apache-arrow-devel{,-static} \
   python39-{poetry,pipx,pip} \
   ripgrep \
   rocs \
+  rr \
   ruby3.0{,-{devel{,-extra},doc{,-ri}}} \
+  sccache \
   sqlite{3,browser} \
+  starship \
   tellico \
   tmux \
   umbrello \
   valgrind \
   watchman \
+  wl-clipboard \
   yakuake \
   yarn \
+  zip \
   zlib-devel \
   zsh
 
@@ -125,7 +135,6 @@ for module in ${pipx_modules[@]}; do
 done
 
 # Ad-hoc installs next
-sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 wget -O - https://github.com/digitalocean/doctl/releases/download/v1.64.0/doctl-1.64.0-linux-amd64.tar.gz | tar xzf -&& mv doctl ~/.local/bin/
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
