@@ -151,6 +151,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ~/.go/bin/go install github.com/go-delve/delve/cmd/dlv@latest
 ~/.go/bin/go install github.com/vultr/vultr-cli@latest
 ~/.go/bin/go install github.com/mattn/efm-langserver@latest
+~/.go/bin/go install github.com/digitalocean/doctl@latest
+
 
 # Cargo installs
 ~/.cargo/bin/cargo install stylua
