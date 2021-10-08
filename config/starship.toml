@@ -173,6 +173,6 @@ format = "[SHLVL:$shlvl]($style) "
 [memory_usage]
 symbol = " "
 disabled = false
-threshold = -1
+threshold = 50
 style = "bold dimmed green"
 format = '\[$symbol[$ram( | $swap)]($style)\]'
