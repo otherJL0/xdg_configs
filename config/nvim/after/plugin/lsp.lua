@@ -6,7 +6,7 @@ local nvim_command = vim.api.nvim_command
 
 local function on_attach(client, bufnr)
   vim.lsp.set_log_level(0)
-  require("lsp-status").on_attach(client)
+  lsp_status.on_attach(client)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   nnoremap({ "gD", vim.lsp.buf.declaration })

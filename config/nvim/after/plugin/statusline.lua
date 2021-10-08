@@ -27,10 +27,11 @@ active.left = {
 }
 
 active.middle = {
-  { provider = "diagnostic_errors", right_sep = " " },
-  { provider = "diagnostic_warnings", right_sep = " " },
-  { provider = "diagnostic_hints", right_sep = " " },
-  { provider = "diagnostic_info", right_sep = " " },
+  {
+    provider = function()
+      return require("lsp-status").status()
+    end,
+  },
 }
 
 active.right = {
