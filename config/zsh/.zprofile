@@ -1,6 +1,8 @@
 export VISUAL=nvim
 export EDITOR=nvim
 
+export MANPAGER='nvim +Man!'
+
 typeset -U PATH path
 path+=(
 "$HOME/.local/bin"

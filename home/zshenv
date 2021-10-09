@@ -4,28 +4,6 @@ export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_CACHE_HOME="${HOME}/.cache"
 . "$HOME/.cargo/env"
 
-export VISUAL=nvim
-export EDITOR=nvim
-export MANPAGER='nvim +Man!'
-
-typeset -U PATH path
-path+=(
-"$HOME/.local/bin"
-"$HOME/.local/share/coursier/bin"
-"$GOBIN" 
-"$HOME/.cargo/bin"
-"$HOME/.jbang/bin"
-"$HOME/.jbang/currentjdk/bin"
-"$HOME/.ghcup/bin"
-"$HOME/.yarn/bin"
-"$HOME/.deno/bin"
-"$HOME/bin"
-"$HOME/.luarocks/bin"
-"$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin"
-)
-export PATH
-
-
 export JAVA_HOME="/home/jlopez/.cache/coursier/jvm/openjdk@1.11.0-2"
 export PATH="$PATH:/home/jlopez/.cache/coursier/jvm/openjdk@1.11.0-2/bin"
 
