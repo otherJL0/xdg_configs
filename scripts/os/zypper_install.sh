@@ -28,6 +28,7 @@ sudo zypper install -y \
   calligra{,-{devel,doc,extras-{okular,filemanagertemplates,dolphin,converter},karbon,sheets,plan,tools,words,stage}} \
   cantor \
   ccache \
+  clang{,-{doc,tools.devel}} \
   clazy \
   cmake \
   cscope \
@@ -38,6 +39,7 @@ sudo zypper install -y \
   gcc{,-c++} \
   gettext-tools \
   gh \
+  giflib-devel \
   git{,-delta} \
   heaptrack{,-{devel,gui}} \
   helm \
@@ -53,10 +55,16 @@ sudo zypper install -y \
   ktimetracker \
   kubernetes1.22-{client,kube{adm,let},controller-manager,apiserver} \
   latte-dock \
+  libXpm-devel libXpm-tools \
+  libdbusmenu-{tools,gtk3-devel,qt5-devel} \
   libevent-devel \
+  libgnutls-devel \
+  libjpeg8-devel \
+  libnotify-tools \
+  libtiff-devel \
   libtool \
-  lldb12{,-devel} \
-  llvm12{,-{devel,doc,polly}} \
+  lldb{,-devel} \
+  llvm{,-{devel,doc,polly}} \
   make \
   minikube \
   mlocate \
@@ -69,6 +77,8 @@ sudo zypper install -y \
   openssl \
   podman \
   postgresql13{,-{devel,docs,llvmjit,plpython,server}} \
+  pyenv \
+  python3-{lldb,clang} \
   python39-{poetry,pipx,pip} \
   ripgrep \
   rocs \
@@ -116,19 +126,19 @@ yarn global add ansible-language-server
 # Pipx installs
 pipx_modules=(
 black
-flake8
-isort
-mypy
-mycli
-httpie
 cmake-language-server
+flake8
+httpie
 interrogate
 ipython
+isort
+litecli
+meson
+mycli
+mypy
+pre-commit
 ptpython
 tox
-pre-commit
-meson
-litecli
 )
 for module in ${pipx_modules[@]}; do 
   pipx install ${module}
