@@ -64,6 +64,7 @@ local language_servers = {
   "pyright",
   "rust_analyzer",
   "sumneko_lua",
+  "texlab",
   "yamlls",
 }
 
