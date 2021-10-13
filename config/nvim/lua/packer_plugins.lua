@@ -11,6 +11,8 @@ local function my_plugins()
   use({ "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" })
   use({ "liuchengxu/vista.vim" })
   use({ "monaqa/dial.nvim" })
+  use({ "mhartington/formatter.nvim" })
+  use({ "mfussenegger/nvim-lint" })
   -- Colorschemes
   use({
     "navarasu/onedark.nvim",
