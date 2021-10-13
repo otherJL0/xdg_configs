@@ -1,3 +1,5 @@
+#!/bin/bash
+
 tw_repos=(
 https://cli.github.com/packages/rpm/gh-cli.repo
 https://download.opensuse.org/repositories/KDE:/Applications/KDE_Frameworks5_openSUSE_Tumbleweed/KDE:Applications.repo
@@ -11,8 +13,8 @@ https://download.opensuse.org/repositories/server:/database/openSUSE_Tumbleweed/
 https://download.opensuse.org/repositories/shells/openSUSE_Tumbleweed.shells.repo
 https://download.opensuse.org/repositories/shells/openSUSE_Tumbleweed/shells.repo
 )
-for repo in ${tw_repos[@]}; do 
-  sudo zypper addrepo ${repo}
+for repo in "${tw_repos[@]}"; do 
+  sudo zypper addrepo "${repo}"
 done
 sudo zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NVIDIA
 
@@ -20,6 +22,7 @@ sudo zypper refresh
 sudo zypper -vy dup --allow-vendor-change
 
 sudo zypper install -y \
+  ShellCheck \
   apache-arrow-devel{,-static} \
   auto{conf,make} \
   bat \
@@ -88,6 +91,7 @@ sudo zypper install -y \
   sqlite{3,browser} \
   starship \
   tellico \
+  texlive-chktex-{bin,doc} \
   tmux \
   umbrello \
   valgrind \
