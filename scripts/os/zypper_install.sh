@@ -106,21 +106,22 @@ sudo zypper install -y \
 
 # Npm and yarn
 pkgs=(
-pyright
 @angular/language-server
-vscode-langservers-extracted
+@elm-tooling/elm-language-server
+bash-language-server
 dockerfile-language-server-nodejs
 elm
-elm-test
 elm-format
-@elm-tooling/elm-language-server
+elm-test
+pyright
 typescript
 typescript-language-server
 vim-language-server
 vls
+vscode-langservers-extracted
 )
-for pkg in ${pkgs[@]}; do
-    sudo npm install -g ${pkg}
+for pkg in "${pkgs[@]}"; do
+    sudo npm install -g "${pkg}"
 done
 
 yarn global add yaml-language-server
@@ -144,15 +145,15 @@ pre-commit
 ptpython
 tox
 )
-for module in ${pipx_modules[@]}; do 
-  pipx install ${module}
+for module in "${pipx_modules[@]}"; do 
+  pipx install "${module}"
 done
 
 # Ad-hoc installs next
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 wget -O - https://github.com/digitalocean/doctl/releases/download/v1.64.0/doctl-1.64.0-linux-amd64.tar.gz | tar xzf -&& mv doctl ~/.local/bin/
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer
+curl -LO "https://get.golang.org/$(uname)/go_installer" && chmod +x go_installer && ./go_installer && rm go_installer
 curl -fLo cs https://git.io/coursier-cli-"$(uname | tr LD ld)" && chmod +x cs && ./cs install cs && rm cs
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
