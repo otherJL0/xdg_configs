@@ -13,6 +13,7 @@ local function my_plugins()
   use({ "monaqa/dial.nvim" })
   use({ "mhartington/formatter.nvim" })
   use({ "mfussenegger/nvim-lint" })
+  use({ "jose-elias-alvarez/null-ls.nvim" })
   -- Colorschemes
   use({
     "navarasu/onedark.nvim",

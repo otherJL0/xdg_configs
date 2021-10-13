@@ -39,6 +39,9 @@ local function on_attach(client, bufnr)
     nvim_command([[autocmd! * <buffer>]])
     nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]])
     nvim_command([[augroup END]])
+  else
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
   end
 end
 
