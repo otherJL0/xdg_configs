@@ -204,6 +204,8 @@ local function my_plugins()
   use({
     "beauwilliams/focus.nvim",
     config = function()
+      vim.cmd("hi link UnfocusedWindow CursorLine")
+      vim.cmd("hi link FocusedWindow VisualNOS")
       require("focus").setup({
         excluded_filetypes = { "toggleterm" },
         excluded_buftypes = { "help", "prompt", "nofile" },
@@ -212,10 +214,8 @@ local function my_plugins()
         number = false,
         relativenumber = false,
         hybridnumber = true,
-        winhightlight = true,
+        winhighlight = true,
       })
-      vim.cmd("hi link UnfocusedWindow CursorLine")
-      vim.cmd("hi link FocusedWindow VisualNOS")
     end,
   })
 end
