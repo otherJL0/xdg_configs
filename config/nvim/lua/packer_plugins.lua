@@ -200,6 +200,24 @@ local function my_plugins()
     ft = { "json" },
   })
   use({ "jbyuki/one-small-step-for-vimkind" })
+
+  use({
+    "beauwilliams/focus.nvim",
+    config = function()
+      require("focus").setup({
+        excluded_filetypes = { "toggleterm" },
+        excluded_buftypes = { "help", "prompt", "nofile" },
+        cursorline = true,
+        signcolumn = false,
+        number = false,
+        relativenumber = false,
+        hybridnumber = true,
+        winhightlight = true,
+      })
+      vim.cmd("hi link UnfocusedWindow CursorLine")
+      vim.cmd("hi link FocusedWindow VisualNOS")
+    end,
+  })
 end
 
 return require("packer").startup({
