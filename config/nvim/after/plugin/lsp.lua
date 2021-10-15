@@ -8,6 +8,11 @@ local function on_attach(client, bufnr)
   vim.lsp.set_log_level(0)
   lsp_status.on_attach(client)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  nnoremap({ "gpd", require("goto-preview").goto_preview_definition })
+  nnoremap({ "gpi", require("goto-preview").goto_preview_implementation })
+  nnoremap({ "gP", require("goto-preview").close_all_win })
+  -- Only set if you have telescope installed
+  nnoremap({ "gpr", require("goto-preview").goto_preview_references })
 
   nnoremap({ "gD", vim.lsp.buf.declaration })
   nnoremap({ "gd", vim.lsp.buf.definition })

@@ -252,6 +252,12 @@ local function my_plugins()
       })
     end,
   })
+  use({
+    "rmagatti/goto-preview",
+    config = function()
+      require("goto-preview").setup({})
+    end,
+  })
 end
 
 return require("packer").startup({
