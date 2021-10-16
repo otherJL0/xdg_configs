@@ -4,10 +4,31 @@ local lspconfig = require("lspconfig")
 local lsp_status = require("lsp-status")
 local nvim_command = vim.api.nvim_command
 
+local border = {
+  { "┌", "FloatBorder" },
+  { "─", "FloatBorder" },
+  { "┐", "FloatBorder" },
+  { "│", "FloatBorder" },
+  { "┘", "FloatBorder" },
+  { "─", "FloatBorder" },
+  { "└", "FloatBorder" },
+  { "│", "FloatBorder" },
+}
+
 local function on_attach(client, bufnr)
   vim.lsp.set_log_level(0)
   lsp_status.on_attach(client)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  -- Fancy borders
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+
+  nnoremap({ "gpd", require("goto-preview").goto_preview_definition })
+  nnoremap({ "gpi", require("goto-preview").goto_preview_implementation })
+  nnoremap({ "gP", require("goto-preview").close_all_win })
+  -- Only set if you have telescope installed
+  nnoremap({ "gpr", require("goto-preview").goto_preview_references })
 
   nnoremap({ "gD", vim.lsp.buf.declaration })
   nnoremap({ "gd", vim.lsp.buf.definition })
@@ -39,6 +60,9 @@ local function on_attach(client, bufnr)
     nvim_command([[autocmd! * <buffer>]])
     nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]])
     nvim_command([[augroup END]])
+  else
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
   end
 end
 

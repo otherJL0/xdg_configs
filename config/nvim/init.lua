@@ -21,3 +21,6 @@ vim.keymap.nnoremap({ "  ", ":" })
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
+
+-- Hacky ctrl-a ctrl-c
+vim.keymap.nnoremap({ "ya%", "mzggy99999y'z" })
