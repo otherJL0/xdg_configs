@@ -12,7 +12,7 @@ local active = {
         return {
           name = vi_mode_utils.get_mode_highlight_name(),
           fg = vi_mode_utils.get_mode_color(),
-          style = "none",
+          style = "BOLD",
         }
       end,
       right_sep = " ",
