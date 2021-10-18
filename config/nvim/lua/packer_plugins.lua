@@ -264,7 +264,6 @@ local function my_plugins()
     "lukas-reineke/indent-blankline.nvim",
     config = function()
       require("indent_blankline").setup({
-        char = "|",
         show_trailing_blankline_indent = true,
         buftype_exclude = { "nofile", "terminal" },
         show_end_of_line = true,
@@ -281,6 +280,20 @@ local function my_plugins()
           "except",
           "with",
           "match",
+          "table",
+        },
+        context_pattern_highlight = {
+          ["class"] = "Structure",
+          ["function"] = "Function",
+          ["method"] = "Function",
+          ["for"] = "Repeat",
+          ["if"] = "Conditional",
+          ["else"] = "Conditional",
+          ["try"] = "Exception",
+          ["except"] = "Exception",
+          ["with"] = "Keyword",
+          ["match"] = "Conditional",
+          ["table"] = "Structure",
         },
       })
     end,
