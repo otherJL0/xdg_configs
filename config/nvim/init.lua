@@ -24,5 +24,3 @@ vim.opt.softtabstop = 4
 
 -- Hacky ctrl-a ctrl-c
 vim.keymap.nnoremap({ "ya%", "mzggy99999y'z" })
-vim.keymap.nnoremap({ "j", "j^" })
-vim.keymap.nnoremap({ "k", "k^" })
