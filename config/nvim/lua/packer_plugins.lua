@@ -214,7 +214,7 @@ local function my_plugins()
         signcolumn = false,
         number = false,
         relativenumber = false,
-        hybridnumber = true,
+        hybridnumber = false,
         winhighlight = false,
       })
     end,
@@ -257,6 +257,20 @@ local function my_plugins()
     "rmagatti/goto-preview",
     config = function()
       require("goto-preview").setup({})
+    end,
+  })
+
+  use({
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("indent_blankline").setup({
+        char = "|",
+        show_trailing_blankline_indent = true,
+        buftype_exclude = { "nofile", "terminal" },
+        show_end_of_line = true,
+        space_char_blankline = " ",
+        show_current_context = true,
+      })
     end,
   })
 end
