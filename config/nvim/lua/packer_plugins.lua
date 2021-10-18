@@ -270,6 +270,18 @@ local function my_plugins()
         show_end_of_line = true,
         space_char_blankline = " ",
         show_current_context = true,
+        context_patterns = {
+          "class",
+          "function",
+          "method",
+          "for",
+          "if",
+          "else",
+          "try",
+          "except",
+          "with",
+          "match",
+        },
       })
     end,
   })
