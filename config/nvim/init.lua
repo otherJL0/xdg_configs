@@ -2,7 +2,7 @@ if not pcall(require, "packer") then
   require("config.setup").install_packer()
 end
 
-for _, plugin in pairs({ "impatient", "packer_plugins" }) do
+for _, plugin in pairs({ "impatient", "packer_plugins", "packer_compiled" }) do
   if pcall(require, plugin) then
     require(plugin)
   end
