@@ -282,6 +282,11 @@ local function my_plugins()
           "match",
           "table",
           "import",
+          "var",
+          "struct",
+          "case",
+          "default",
+          "return",
         },
         context_pattern_highlight = {
           ["class"] = "Structure",
@@ -296,6 +301,11 @@ local function my_plugins()
           ["match"] = "Conditional",
           ["table"] = "Structure",
           ["import"] = "Include",
+          ["var"] = "Statement",
+          ["struct"] = "Structure",
+          ["case"] = "Label",
+          ["default"] = "Label",
+          ["return"] = "Keyword",
         },
       })
     end,
