@@ -177,6 +177,29 @@ local function my_plugins()
       require("treesitter-context").setup({
         enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
         throttle = true, -- Throttles plugin updates (may improve performance)
+        patterns = {
+          default = {
+            "class",
+            "function",
+            "method",
+            "for",
+            "if",
+            "else",
+            "try",
+            "except",
+            "with",
+            "match",
+            "table",
+            "import",
+            "var",
+            "struct",
+            "case",
+            "default",
+            "return",
+            "const",
+            "list",
+          },
+        },
       })
     end,
     requires = "nvim-treesitter/nvim-treesitter",
@@ -288,6 +311,7 @@ local function my_plugins()
           "default",
           "return",
           "const",
+          "list",
         },
         context_pattern_highlight = {
           ["class"] = "Structure",
@@ -308,6 +332,7 @@ local function my_plugins()
           ["default"] = "Label",
           ["return"] = "Keyword",
           ["const"] = "Keyword",
+          ["list"] = "Structure",
         },
       })
     end,
