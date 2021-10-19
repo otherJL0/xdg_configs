@@ -1,3 +1,13 @@
+-- Quickly enter command mode
+vim.keymap.nnoremap({ "  ", ":" })
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+
+-- Hacky ctrl-a ctrl-c
+vim.keymap.nnoremap({ "ya%", "mzggy99999y'z" })
+vim.keymap.nnoremap({ "da%", "ggd99999d" })
+
 local opt = vim.opt
 
 -- Wild menu
@@ -76,3 +86,5 @@ opt.fillchars = { eob = "~" }
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
+
+require("themes.catppuccino")
