@@ -1,4 +1,5 @@
 local catppuccino = require("catppuccino")
+vim.o.termguicolors = true
 
 -- configure it
 catppuccino.setup({
