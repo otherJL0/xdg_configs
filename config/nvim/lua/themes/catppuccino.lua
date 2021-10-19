@@ -41,8 +41,8 @@ catppuccino.setup({
     },
     which_key = true,
     indent_blankline = {
-      enabled = false,
-      colored_indent_levels = false,
+      enabled = true,
+      colored_indent_levels = true,
     },
     dashboard = false,
     neogit = true,
