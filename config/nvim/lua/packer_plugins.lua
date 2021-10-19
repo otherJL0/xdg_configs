@@ -287,6 +287,7 @@ local function my_plugins()
           "case",
           "default",
           "return",
+          "const",
         },
         context_pattern_highlight = {
           ["class"] = "Structure",
@@ -306,6 +307,7 @@ local function my_plugins()
           ["case"] = "Label",
           ["default"] = "Label",
           ["return"] = "Keyword",
+          ["const"] = "Keyword",
         },
       })
     end,
