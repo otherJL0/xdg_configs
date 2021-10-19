@@ -1,12 +1,8 @@
 if not pcall(require, "packer") then
   require("config.setup").install_packer()
 end
-
-for _, plugin in pairs({ "impatient", "packer_plugins", "packer_compiled" }) do
-  if pcall(require, plugin) then
-    require(plugin)
-  end
-end
+require("impatient").enable_profile()
+require("config.packer")
 
 require("config.globals")
 
