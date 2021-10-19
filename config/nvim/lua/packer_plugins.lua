@@ -281,6 +281,7 @@ local function my_plugins()
           "with",
           "match",
           "table",
+          "import",
         },
         context_pattern_highlight = {
           ["class"] = "Structure",
@@ -294,6 +295,7 @@ local function my_plugins()
           ["with"] = "Keyword",
           ["match"] = "Conditional",
           ["table"] = "Structure",
+          ["import"] = "Include",
         },
       })
     end,
