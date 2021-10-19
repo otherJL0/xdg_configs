@@ -21,3 +21,23 @@ vim.opt.softtabstop = 4
 -- Hacky ctrl-a ctrl-c
 vim.keymap.nnoremap({ "ya%", "mzggy99999y'z" })
 vim.keymap.nnoremap({ "da%", "ggd99999d" })
+
+local language_servers = {
+  "bashls",
+  "clangd",
+  "clangd",
+  "cmake",
+  "denols",
+  "dockerls",
+  "gopls",
+  "html",
+  "jsonls",
+  "ocamllsp",
+  "pyright",
+  "rust_analyzer",
+  "sumneko_lua",
+  "texlab",
+  "yamlls",
+}
+
+require("config.lsp").launch(language_servers)
