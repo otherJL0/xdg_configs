@@ -126,7 +126,7 @@ local function my_plugins()
       vim.fn.system(curl_cmd)
       vim.fn.system(tar_cmd)
     end,
-    ft = { "java", "gradle", "maven" },
+    -- ft = { "java", "gradle", "maven" },
   })
 end
 
