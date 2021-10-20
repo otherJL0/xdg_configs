@@ -82,4 +82,3 @@ require("twilight").setup({
   },
 })
 
-require("nvim-ts-autotag").setup()

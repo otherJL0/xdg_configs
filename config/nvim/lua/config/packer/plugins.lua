@@ -10,6 +10,7 @@ local function my_plugins()
     "nvim-telescope/telescope.nvim",
     "nvim-treesitter/nvim-treesitter",
     "hrsh7th/nvim-cmp",
+    "kyazdani42/nvim-web-devicons",
   })
 
   -- LSP Extras
@@ -103,6 +104,9 @@ local function my_plugins()
   use({
     "windwp/nvim-ts-autotag",
     ft = { "html", "xml" },
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
   })
   use({
     "gennaro-tedesco/nvim-jqx",
