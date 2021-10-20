@@ -31,10 +31,55 @@ require("nvim-treesitter.configs").setup({
   },
 
   refactor = require("config.treesitter.refactor"),
-
   textobjects = require("config.treesitter.textobjects"),
-
   playground = require("config.treesitter.playground").playground,
-
   query_linter = require("config.treesitter.playground").query_linter,
 })
+
+local ts_patterns = {
+  ["class"] = "Structure",
+  ["function"] = "Function",
+  ["method"] = "Function",
+  ["for"] = "Repeat",
+  ["if"] = "Conditional",
+  ["else"] = "Conditional",
+  ["try"] = "Exception",
+  ["except"] = "Exception",
+  ["with"] = "Keyword",
+  ["match"] = "Conditional",
+  ["table"] = "Structure",
+  ["import"] = "Include",
+  ["var"] = "Statement",
+  ["struct"] = "Structure",
+  ["case"] = "Label",
+  ["default"] = "Label",
+  ["return"] = "Keyword",
+  ["const"] = "Keyword",
+  ["list"] = "Structure",
+}
+require("treesitter-context").setup({
+  enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+  throttle = true, -- Throttles plugin updates (may improve performance)
+  patterns = {
+    default = vim.tbl_keys(ts_patterns),
+  },
+})
+
+require("indent_blankline").setup({
+  show_trailing_blankline_indent = true,
+  buftype_exclude = { "nofile", "terminal" },
+  show_end_of_line = true,
+  space_char_blankline = " ",
+  show_current_context = true,
+  context_patterns = vim.tbl_keys(ts_patterns),
+  context_pattern_highlight = ts_patterns,
+})
+
+require("twilight").setup({
+  dimming = {
+    alpha = 0.1,
+    inactive = true,
+  },
+})
+
+require("nvim-ts-autotag").setup()
