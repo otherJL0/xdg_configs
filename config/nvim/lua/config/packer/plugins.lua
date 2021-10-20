@@ -112,6 +112,11 @@ local function my_plugins()
     "gennaro-tedesco/nvim-jqx",
     ft = { "json" },
   })
+
+  use({
+    "mfussenegger/nvim-jdtls",
+    ft = { "java", "gradle", "maven" },
+  })
 end
 
 return require("packer").startup({
