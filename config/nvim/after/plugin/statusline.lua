@@ -28,12 +28,24 @@ local active = {
   ------------
   {
     {
+      -- Workspace directory
+      provider = function()
+        local workspace_folders = vim.lsp.buf.list_workspace_folders()
+        local workspace = ""
+        if #workspace_folders == 1 then
+          workspace = string.gsub(workspace_folders[1], vim.env.HOME, "~")
+        end
+        return workspace .. "/"
+      end,
+    },
+    {
       provider = {
         name = "file_info",
         opts = {
           type = "relative",
         },
       },
+      icon = "",
     },
   },
 
