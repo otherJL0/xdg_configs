@@ -1,10 +1,19 @@
 local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
 
-parser_configs.norg = {
-  install_info = {
-    url = "https://github.com/vhyrro/tree-sitter-norg",
-    files = { "src/parser.c", "src/scanner.cc" },
-    branch = "main",
+parser_configs = {
+  norg = {
+    install_info = {
+      url = "https://github.com/vhyrro/tree-sitter-norg",
+      files = { "src/parser.c", "src/scanner.cc" },
+      branch = "main",
+    },
+  },
+  lua = {
+    install_info = {
+      url = "https://github.com/tjdevries/tree-sitter-lua",
+      files = { "src/parser.c", "src/scanner.cc" },
+      branch = "main",
+    },
   },
 }
 
@@ -67,7 +76,7 @@ require("treesitter-context").setup({
 
 require("indent_blankline").setup({
   show_trailing_blankline_indent = true,
-  buftype_exclude = { "nofile", "terminal" },
+  buftype_exclude = { "nofile", "terminal", "help" },
   show_end_of_line = true,
   space_char_blankline = " ",
   show_current_context = true,
@@ -81,4 +90,3 @@ require("twilight").setup({
     inactive = true,
   },
 })
-
