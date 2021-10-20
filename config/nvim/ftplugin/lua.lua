@@ -13,8 +13,17 @@ vim.opt.include = [[\v<((do|load)file|require)[^''"]*[''"]\zs[^''"]+]]
 vim.opt.includeexpr = string.gsub(vim.v.fname, "%.", "/")
 vim.cmd([[set includeexpr=substitute(v:fname,'\\.','/','g')]])
 
--- vim.cmd([[
---   augroup StyluaAuto
---     autocmd BufWritePre *.lua :lua require("config.stylua").format()
---   augroup END
--- ]])
+vim.keymap.nnoremap({
+  "  p",
+  function()
+    local ts_utils = require("nvim-treesitter.ts_utils")
+    local start_node = ts_utils.get_node_at_cursor()
+    local parent = start_node
+    while string.match(parent:type(), "variable_declaration") == nil do
+      parent = parent:parent()
+    end
+    local rhs = ts_utils.get_named_children(parent)[2]
+    local lua_code = table.concat(ts_utils.get_node_text(rhs, 0), " ")
+    vim.notify(vim.inspect(vim.fn.luaeval(lua_code)))
+  end,
+})

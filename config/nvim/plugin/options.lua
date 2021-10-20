@@ -1,5 +1,5 @@
 -- Quickly enter command mode
-vim.keymap.nnoremap({ "  ", ":" })
+vim.keymap.nnoremap({ "  c", ":" })
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
