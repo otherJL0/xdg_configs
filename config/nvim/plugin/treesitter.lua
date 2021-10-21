@@ -1,6 +1,13 @@
 local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
 
 parser_configs = {
+  lua = {
+    install_info = {
+      url = "https://github.com/tjdevries/tree-sitter-lua",
+      files = { "src/parser.c", "src/scanner.cc" },
+      branch = "main",
+    },
+  },
   norg = {
     install_info = {
       url = "https://github.com/vhyrro/tree-sitter-norg",
@@ -8,9 +15,9 @@ parser_configs = {
       branch = "main",
     },
   },
-  lua = {
+  qml = {
     install_info = {
-      url = "https://github.com/tjdevries/tree-sitter-lua",
+      url = "https://github.com/otherJL0/tree-sitter-qml",
       files = { "src/parser.c", "src/scanner.cc" },
       branch = "main",
     },
