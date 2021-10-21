@@ -112,22 +112,6 @@ local function my_plugins()
     "gennaro-tedesco/nvim-jqx",
     ft = { "json" },
   })
-
-  use({
-    "mfussenegger/nvim-jdtls",
-    run = function()
-      local jdtls_dir = vim.fn.stdpath("cache") .. "/jdtls"
-      local latest_url = "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-latest.tar.gz"
-      local temp_destination = "/tmp/jdtls.tar.gz"
-      local target_destination = string.format("%s/jdtls", vim.fn.stdpath("cache"))
-      vim.fn.mkdir(target_destination)
-      local curl_cmd = string.format("curl -o %s %s", temp_destination, latest_url)
-      local tar_cmd = string.format("tar xf %s -C %s", temp_destination, target_destination)
-      vim.fn.system(curl_cmd)
-      vim.fn.system(tar_cmd)
-    end,
-    -- ft = { "java", "gradle", "maven" },
-  })
 end
 
 return require("packer").startup({
