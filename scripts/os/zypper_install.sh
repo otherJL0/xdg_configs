@@ -167,6 +167,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ~/.go/bin/go install github.com/vultr/vultr-cli@latest
 ~/.go/bin/go install github.com/mattn/efm-langserver@latest
 ~/.go/bin/go install github.com/digitalocean/doctl@latest
+~/.go/bin/go install golang.org/dl/gotip@latest
+~/.go/bin/gotip download
 
 
 # Cargo installs
