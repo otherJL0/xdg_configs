@@ -99,6 +99,14 @@ local function my_plugins()
 
   -- Filetype specific plugins
   use({
+    "jakewvincent/texmagic.nvim",
+    config = function()
+      require("texmagic").setup({
+        -- Config goes here; leave blank for defaults
+      })
+    end,
+  })
+  use({
     "vhyrro/neorg",
     branch = "unstable",
     requires = "nvim-lua/plenary.nvim",
