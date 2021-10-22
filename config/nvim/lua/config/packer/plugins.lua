@@ -99,22 +99,6 @@ local function my_plugins()
 
   -- Filetype specific plugins
   use({
-    "jakewvincent/texmagic.nvim",
-    config = function()
-      require("texmagic").setup({
-        engines = {
-          tectonic = { -- This has the same name as a default engine but would
-            -- be preferred over the same-name default if defined
-            executable = "tectonic",
-
-            args = { "%f", "--synctex", "--keep-logs", "--keep-intermediates" },
-            isContinuous = true,
-          },
-        },
-      })
-    end,
-  })
-  use({
     "vhyrro/neorg",
     branch = "unstable",
     requires = "nvim-lua/plenary.nvim",

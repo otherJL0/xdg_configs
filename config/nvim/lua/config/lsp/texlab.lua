@@ -5,7 +5,15 @@ return {
     texlab = {
       auxDirectory = ".",
       bibtexFormatter = "texlab",
-      build = _G.TeXMagicBuildConfig,
+      build = {
+        executable = "tectonic",
+        args = {
+          "%f",
+          "--synctex",
+          "--keep-logs",
+          "--keep-intermediates",
+        },
+      },
       chktex = {
         onEdit = true,
         onOpenAndSave = true,
@@ -13,7 +21,8 @@ return {
       diagnosticsDelay = 300,
       formatterLineLength = 80,
       forwardSearch = {
-        args = {},
+        executable = "okular",
+        args = { "--unique", "file:%p#src:%l%f" },
       },
       latexFormatter = "latexindent",
       latexindent = {
