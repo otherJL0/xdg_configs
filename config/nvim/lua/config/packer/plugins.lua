@@ -102,7 +102,15 @@ local function my_plugins()
     "jakewvincent/texmagic.nvim",
     config = function()
       require("texmagic").setup({
-        -- Config goes here; leave blank for defaults
+        engines = {
+          tectonic = { -- This has the same name as a default engine but would
+            -- be preferred over the same-name default if defined
+            executable = "tectonic",
+
+            args = { "%f", "--synctex", "--keep-logs", "--keep-intermediates" },
+            isContinuous = true,
+          },
+        },
       })
     end,
   })

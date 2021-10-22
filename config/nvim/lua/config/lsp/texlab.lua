@@ -5,12 +5,7 @@ return {
     texlab = {
       auxDirectory = ".",
       bibtexFormatter = "texlab",
-      build = {
-        args = { "%f", "--synctex", "--keep-logs", "--keep-intermediates" },
-        executable = "tectonic",
-        forwardSearchAfter = true,
-        onSave = true,
-      },
+      build = _G.TeXMagicBuildConfig,
       chktex = {
         onEdit = true,
         onOpenAndSave = true,
