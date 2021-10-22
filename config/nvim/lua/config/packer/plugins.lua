@@ -76,6 +76,7 @@ local function my_plugins()
   -- Misc
   use({
     "Famiu/feline.nvim",
+    "Iron-E/nvim-libmodal",
     "tjdevries/astronauta.nvim",
     "L3MON4D3/LuaSnip",
     "monaqa/dial.nvim",
