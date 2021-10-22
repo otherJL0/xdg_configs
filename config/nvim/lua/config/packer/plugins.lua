@@ -20,6 +20,7 @@ local function my_plugins()
     "ahmedkhalf/project.nvim",
     "liuchengxu/vista.vim",
     "rmagatti/goto-preview",
+    "onsails/lspkind-nvim",
     requires = "neovim/lspconfig",
   })
 
