@@ -40,11 +40,16 @@ cmp.setup({
     end,
   },
   sources = {
-    { name = "nvim_lsp" },
-    { name = "path" },
-    { name = "nvim_lua" },
-    { name = "buffer" },
-    { name = "luasnip" },
+    { name = "nvim_lsp", keyword_length = 3 },
+    { name = "buffer", keyword_length = 5 },
+    { name = "path", keyword_lenth = 3 },
+    { name = "nvim_lua", keyword_length = 5 },
+    { name = "luasnip", keyword_length = 2 },
+  },
+
+  experimental = {
+    native_menu = false,
+    ghost_text = true,
   },
 })
 require("nvim-autopairs").setup({

@@ -7,4 +7,3 @@ require("impatient").enable_profile()
 require("config.globals")
 
 vim.cmd("runtime plugin/astronauta.vim")
-
