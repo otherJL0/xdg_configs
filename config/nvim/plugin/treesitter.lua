@@ -55,6 +55,7 @@ local ts_patterns = {
   ["function"] = "Function",
   ["method"] = "Function",
   ["for"] = "Repeat",
+  ["while"] = "Repeat",
   ["if"] = "Conditional",
   ["else"] = "Conditional",
   ["try"] = "Exception",
