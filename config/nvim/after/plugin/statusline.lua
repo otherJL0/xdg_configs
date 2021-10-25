@@ -1,4 +1,23 @@
 local vi_mode_utils = require("feline.providers.vi_mode")
+local cp_api = require("catppuccino.api.colors")
+local err, colors = cp_api.get_colors("dark_catppuccino")
+
+local vi_mode_colors = {
+  NORMAL = colors.green,
+  INSERT = colors.red,
+  VISUAL = colors.magenta,
+  OP = colors.green,
+  BLOCK = colors.blue,
+  REPLACE = colors.violet,
+  ["V-REPLACE"] = colors.violet,
+  ENTER = colors.cyan,
+  MORE = colors.cyan,
+  SELECT = colors.orange,
+  COMMAND = colors.green,
+  SHELL = colors.green,
+  TERM = colors.green,
+  NONE = colors.yellow,
+}
 
 local active = {
   ----------
@@ -35,6 +54,7 @@ local active = {
         if #workspace_folders == 1 then
           workspace = string.gsub(workspace_folders[1], vim.env.HOME, "~")
         end
+        workspace = ""
         return workspace .. "/"
       end,
     },
@@ -74,8 +94,8 @@ local inactive = {
         return "-- INACTIVE --"
       end,
       hl = {
-        fg = "black",
-        bg = "white",
+        fg = colors.bg_highlight,
+        bg = colors.comment,
       },
     },
   },
@@ -92,7 +112,7 @@ local inactive = {
       },
       hl = {
         fg = "black",
-        bg = "white",
+        bg = colors.comment,
       },
     },
   },
@@ -105,16 +125,18 @@ local inactive = {
         return "-- INACTIVE --"
       end,
       hl = {
-        fg = "black",
-        bg = "white",
+        fg = colors.bg_highlight,
+        bg = colors.comment,
       },
     },
   },
 }
 
 require("feline").setup({
+  default_bg = colors.bg_highlight,
   components = {
     active = active,
     inactive = inactive,
   },
+  vi_mode_colors = vi_mode_colors,
 })

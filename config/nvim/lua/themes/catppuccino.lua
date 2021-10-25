@@ -3,7 +3,7 @@ vim.o.termguicolors = true
 
 -- configure it
 catppuccino.setup({
-  colorscheme = "soft_manilo",
+  colorscheme = "dark_catppuccino",
   transparency = false,
   term_colors = true,
   styles = {
