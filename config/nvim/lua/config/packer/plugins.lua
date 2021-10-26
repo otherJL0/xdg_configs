@@ -102,7 +102,7 @@ local function my_plugins()
   use({
     "nvim-neorg/neorg",
     branch = "unstable",
-    requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
+    requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope", "jbyuki/nabla.nvim" },
   })
   use({
     "windwp/nvim-ts-autotag",
