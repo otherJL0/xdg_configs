@@ -71,6 +71,8 @@ local ts_patterns = {
   ["return"] = "Keyword",
   ["const"] = "Keyword",
   ["list"] = "Structure",
+  ["object"] = "Structure",
+  ["array"] = "Structure",
 }
 require("treesitter-context").setup({
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
