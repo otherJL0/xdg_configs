@@ -26,6 +26,7 @@ cmp.setup({
     { name = "buffer", keyword_length = 5 },
     { name = "path", keyword_lenth = 3 },
     { name = "luasnip", keyword_length = 2 },
+    { name = "rg", keyword_length = 5 },
   },
 
   formatting = {

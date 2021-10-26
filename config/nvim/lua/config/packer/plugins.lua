@@ -62,6 +62,7 @@ local function my_plugins()
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lua",
     "saadparwaiz1/cmp_luasnip",
+    "lukas-reineke/cmp-rg",
     requires = "hrsh7th/nvim-cmp",
   })
 
@@ -112,7 +113,7 @@ local function my_plugins()
   })
   use({
     "gennaro-tedesco/nvim-jqx",
-    ft = { "json" },
+    ft = {},
   })
 end
 
