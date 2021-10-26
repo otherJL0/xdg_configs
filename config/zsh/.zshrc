@@ -49,6 +49,7 @@ alias gdifftool='git difftool'
 alias gl='git log'
 alias gph='git push'
 alias gpl='git pull'
+alias gr='git restore'
 alias gs='git status'
 alias gss='git status -s'
 
