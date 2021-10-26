@@ -21,6 +21,7 @@ cmp.setup({
     }),
   },
   sources = {
+    { name = "neorg" },
     { name = "nvim_lua", keyword_length = 5 },
     { name = "nvim_lsp", keyword_length = 3 },
     { name = "buffer", keyword_length = 5 },

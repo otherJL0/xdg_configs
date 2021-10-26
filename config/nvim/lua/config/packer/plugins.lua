@@ -100,9 +100,9 @@ local function my_plugins()
 
   -- Filetype specific plugins
   use({
-    "vhyrro/neorg",
+    "nvim-neorg/neorg",
     branch = "unstable",
-    requires = "nvim-lua/plenary.nvim",
+    requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
   })
   use({
     "windwp/nvim-ts-autotag",
