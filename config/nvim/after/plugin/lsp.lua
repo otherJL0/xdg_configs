@@ -8,6 +8,7 @@ local language_servers = {
   "denols",
   "dockerls",
   "gopls",
+  "hls",
   "html",
   "jsonls",
   "ocamllsp",
