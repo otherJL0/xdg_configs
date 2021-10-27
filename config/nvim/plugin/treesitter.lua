@@ -24,6 +24,26 @@ parser_configs.qml = {
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = "maintained",
+  ignore_install = {
+    "beancount",
+    "devicetree",
+    "elixir",
+    "erlang",
+    "godot",
+    "glimmer",
+    "godot-resource",
+    "heex",
+    "ledger",
+    "php",
+    "pioasm",
+    "surface",
+    "supercollider",
+    "swift",
+    "tlaplus",
+    "turtle",
+    "verilog",
+    "yang",
+  },
 
   highlight = {
     enable = true,
