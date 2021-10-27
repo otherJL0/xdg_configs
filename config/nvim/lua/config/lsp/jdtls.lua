@@ -40,7 +40,7 @@ local cmd = {
   "-noverify",
   "-Xmx1G",
   "-jar",
-  jar_path.jdtls,
+  vim.fn.glob(jar_path.jdtls),
   "-configuration",
   string.format("%s/config_%s", dir_path.jdtls, os_config()),
   "-data",

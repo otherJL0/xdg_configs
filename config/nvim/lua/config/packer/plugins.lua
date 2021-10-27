@@ -17,7 +17,6 @@ local function my_plugins()
   use({
     "nvim-lua/lsp-status.nvim",
     "jose-elias-alvarez/null-ls.nvim",
-    "ahmedkhalf/project.nvim",
     "liuchengxu/vista.vim",
     "rmagatti/goto-preview",
     "onsails/lspkind-nvim",
@@ -118,6 +117,17 @@ local function my_plugins()
   use({
     "gennaro-tedesco/nvim-jqx",
     ft = {},
+  })
+  use({
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("telescope").load_extension("projects")
+      require("project_nvim").setup({
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      })
+    end,
   })
 end
 

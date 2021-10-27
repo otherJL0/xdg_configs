@@ -1,4 +1,3 @@
-require("project_nvim").setup({})
 require("goto-preview").setup({})
 local language_servers = {
   "bashls",
