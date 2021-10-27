@@ -112,6 +112,10 @@ local function my_plugins()
     end,
   })
   use({
+    "mfussenegger/nvim-jdtls",
+    ft = { "maven", "mvn", "gradle", "java" },
+  })
+  use({
     "gennaro-tedesco/nvim-jqx",
     ft = {},
   })
