@@ -119,7 +119,12 @@ local function my_plugins()
     ft = {},
   })
 
-  use({ "Olical/conjure" })
+  use({
+    "Olical/conjure",
+    cmd = "ConjureSchool",
+    requires = { "Olical/aniseed" },
+    ft = { "fennel", "scheme", "scm" },
+  })
   use({
     "ahmedkhalf/project.nvim",
     config = function()
