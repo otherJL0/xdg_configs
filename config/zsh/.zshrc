@@ -26,6 +26,7 @@ bindkey -M vicmd v edit-command-line
 ## Zsh Aliases
 if [ Darwin = `uname` ]; then
     alias ls='ls -G'
+    export PATH="/usr/local/opt/llvm/bin:$PATH"
 else
     alias ls='ls --color=always'
 fi
