@@ -1,3 +1,4 @@
+local inoremap = vim.keymap.inoremap
 local nnoremap = vim.keymap.nnoremap
 local vnoremap = vim.keymap.vnoremap
 local lspconfig = require("lspconfig")
@@ -36,6 +37,7 @@ local function on_attach(client, bufnr)
   nnoremap({ "K", vim.lsp.buf.hover })
   nnoremap({ "gi", vim.lsp.buf.implementation })
   nnoremap({ "<C-k>", vim.lsp.buf.signature_help })
+  inoremap({ "<C-k>", vim.lsp.buf.signature_help })
   nnoremap({ " wa", vim.lsp.buf.add_workspace_folder })
   nnoremap({ " wr", vim.lsp.buf.remove_workspace_folder })
   nnoremap({ " D", vim.lsp.buf.type_definition })
