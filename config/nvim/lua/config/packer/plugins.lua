@@ -119,10 +119,7 @@ local function my_plugins()
     ft = {},
   })
 
-  use({
-    "Olical/conjure",
-    ft = { "scm", "scheme", "clojure" },
-  })
+  use({ "Olical/conjure" })
   use({
     "ahmedkhalf/project.nvim",
     config = function()
