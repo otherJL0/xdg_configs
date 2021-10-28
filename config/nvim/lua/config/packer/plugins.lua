@@ -62,7 +62,8 @@ local function my_plugins()
     "hrsh7th/cmp-nvim-lua",
     "saadparwaiz1/cmp_luasnip",
     "lukas-reineke/cmp-rg",
-    requires = "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-nvim-lsp-document-symbol",
+    requires = { "hrsh7th/nvim-cmp", "hrsh7th/cmp-cmdline" },
   })
 
   -- Debug

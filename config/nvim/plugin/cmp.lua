@@ -72,3 +72,17 @@ require("nvim-autopairs").add_rules({
   -- 'if_statement' is a treesitter name. set it = nil to skip check with treesitter
   endwise("then$", "end", "lua", "if_statement"),
 })
+
+require("cmp").setup.cmdline(":", {
+  sources = {
+    { name = "cmdline" },
+  },
+})
+
+require("cmp").setup.cmdline("/", {
+  sources = cmp.config.sources({
+    { name = "nvim_lsp_document_symbol" },
+  }, {
+    { name = "buffer" },
+  }),
+})
