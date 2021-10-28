@@ -2,7 +2,6 @@ require("goto-preview").setup({})
 local language_servers = {
   "bashls",
   "clangd",
-  "clangd",
   "cmake",
   "denols",
   "dockerls",
