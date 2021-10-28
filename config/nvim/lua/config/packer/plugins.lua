@@ -118,6 +118,11 @@ local function my_plugins()
     "gennaro-tedesco/nvim-jqx",
     ft = {},
   })
+
+  use({
+    "Olical/conjure",
+    ft = { "scm", "scheme", "clojure" },
+  })
   use({
     "ahmedkhalf/project.nvim",
     config = function()
