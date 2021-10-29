@@ -25,7 +25,6 @@ local function on_attach(client, bufnr)
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 
-  nnoremap({ "gI", require("config.telescope").lsp_implementations })
   nnoremap({ "gpd", require("goto-preview").goto_preview_definition })
   nnoremap({ "gpi", require("goto-preview").goto_preview_implementation })
   nnoremap({ "gP", require("goto-preview").close_all_win })
