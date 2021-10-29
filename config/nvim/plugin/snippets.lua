@@ -11,6 +11,15 @@ local d = luasnip.dynamic_node
 local events = require("luasnip.util.events")
 
 snippets.lua = {
+  snippet({ trig = "lsnip", desc = "lua snippet" }, {
+    t({ [[snippet({ trig = "]] }),
+    i(1),
+    t({ [[", descr = "]] }),
+    i(2),
+    t({ [["}, {]], "  " }),
+    i(0),
+    t({ ",", "})," }),
+  }),
   snippet({ trig = "lreq", desc = "local require" }, {
     t({ "local " }),
     i(1),
@@ -98,11 +107,44 @@ snippets.python = {
     t({ "):", "        " }),
     i(0),
   }),
+  snippet({ trig = "itertools", descr = "import itertools" }, {
+    t({ "import itertools as it", "" }),
+    i(0),
+  }),
+  snippet({ trig = "numpy", descr = "import numpy" }, {
+    t({ "import numpy as np", "" }),
+    i(0),
+  }),
+  snippet({ trig = "pandas", descr = "import pandas" }, {
+    t({ "import pandas as pd", "" }),
+    i(0),
+  }),
 }
 snippets.javascript = {
   snippet({ trig = "rule", description = "grammar rule" }, {
     i(1),
     t({ ": $ => " }),
     i(0),
+  }),
+}
+
+snippets.go = {
+  snippet({ trig = "fun", descr = "function" }, {
+    t({ "func " }),
+    i(1),
+    t({ "(" }),
+    i(2),
+    t({ ")" }),
+    i(3),
+    t({ "{", "    " }),
+    i(0),
+    t({ "}" }),
+  }),
+  snippet({ trig = "tstruct", descr = "struct definition" }, {
+    t({ "type " }),
+    i(1),
+    t({ " struct {", "    " }),
+    i(0),
+    t({ "}" }),
   }),
 }
