@@ -79,7 +79,7 @@ snippets.python = {
     t({ ":", "    " }),
     i(0),
   }),
-  snippet({ trig = "Def", descr = "def func_name" }, {
+  snippet({ trig = "def", descr = "def func_name" }, {
     t({ "def " }),
     i(1),
     t({ "(" }),
@@ -99,7 +99,7 @@ snippets.python = {
     t({ "]" }),
     i(0),
   }),
-  snippet({ trig = "Class", descr = "class" }, {
+  snippet({ trig = "class", descr = "class" }, {
     t({ "class " }),
     i(1),
     t({ ":", "    def __init__(self" }),
@@ -146,5 +146,23 @@ snippets.go = {
     t({ " struct {", "    " }),
     i(0),
     t({ "}" }),
+  }),
+}
+
+snippets.json = {
+  snippet({ trig = "==", descr = "equality" }, {
+    t({ [[{"==": []] }),
+    i(0),
+    t({ [[]}]] }),
+  }),
+  snippet({ trig = "var", descr = "{var: value}" }, {
+    t({ [[{"var": "]] }),
+    i(0),
+    t({ [["}]] }),
+  }),
+  snippet({ trig = "visible", descr = "visible" }, {
+    t({ [[{"visible": ]] }),
+    i(0),
+    t({ [[}]] }),
   }),
 }
