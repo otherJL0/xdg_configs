@@ -1,6 +1,10 @@
 local nnoremap = vim.keymap.nnoremap
 local actions = require("telescope.actions")
-require("telescope").load_extension("projects")
+-- require("telescope").extensions.packer.plugins()
+-- require("telescope").load_extension("projects")
+-- require("telescope").load_extension("frecency")
+-- require("telescope").load_extension("cheat")
+-- require("telescope").load_extension("smart_history")
 require("telescope").setup({
   defaults = {
     mappings = {
@@ -23,4 +27,5 @@ nnoremap({ " ff", ivy.find_files })
 nnoremap({ " fg", ivy.live_grep })
 nnoremap({ " fh", ivy.help_tags })
 nnoremap({ " fj", ivy.file_browser })
+nnoremap({ " fm", ivy.man_pages })
 nnoremap({ "gI", ivy.lsp_implementations })

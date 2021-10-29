@@ -33,18 +33,13 @@ local function my_plugins()
   })
 
   -- Telescope Extras
-  use({
-    "nvim-telescope/telescope-frecency.nvim",
-    "nvim-telescope/telescope-packer.nvim",
-    "nvim-telescope/telescope-cheat.nvim",
-    "nvim-telescope/telescope-github.nvim",
-    config = function()
-      require("telescope").extensions.packer.plugins()
-      require("telescope").load_extension("frecency")
-      require("telescope").load_extension("cheat")
-      require("telescope").load_extension("smart_history")
-    end,
-  })
+  -- use({
+  --   "nvim-telescope/telescope-frecency.nvim",
+  --   "nvim-telescope/telescope-smart-history.nvim",
+  --   "nvim-telescope/telescope-packer.nvim",
+  --   "nvim-telescope/telescope-cheat.nvim",
+  --   "nvim-telescope/telescope-github.nvim",
+  -- })
 
   -- Colorschemes
   use({
