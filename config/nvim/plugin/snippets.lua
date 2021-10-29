@@ -1,16 +1,15 @@
 local luasnip = require("luasnip")
 local snippets = luasnip.snippets
 local snippet = luasnip.snippet
-local sn = luasnip.snippet_node
-local isn = luasnip.indent_snippet_node
 local t = luasnip.text_node
 local i = luasnip.insert_node
-local f = luasnip.function_node
-local c = luasnip.choice_node
-local d = luasnip.dynamic_node
-local events = require("luasnip.util.events")
 
 snippets.lua = {
+  snippet({ trig = "inspect", descr = "vim.notify(vim.inspect())" }, {
+    t({ "vim.notify(vim.inspect(" }),
+    i(0),
+    t({ "))" }),
+  }),
   snippet({ trig = "lsnip", desc = "lua snippet" }, {
     t({ [[snippet({ trig = "]] }),
     i(1),
