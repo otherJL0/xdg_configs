@@ -1,4 +1,3 @@
-local inoremap = vim.keymap.inoremap
 local luasnip = require("luasnip")
 local snippets = luasnip.snippets
 local snippet = luasnip.snippet
@@ -13,13 +12,28 @@ local events = require("luasnip.util.events")
 
 snippets.lua = {
   snippet({ trig = "lreq", desc = "local require" }, {
-    i(1),
     t({ "local " }),
     i(1),
     t({ [[ = require("]] }),
     i(2),
     t({ [[")]] }),
     i(0),
+  }),
+  snippet({ trig = "lfun", desc = "local function" }, {
+    t({ "local function " }),
+    i(1),
+    t({ "(" }),
+    i(2),
+    t({ ")", "  " }),
+    i(0),
+    t({ "", "end" }),
+  }),
+  snippet({ trig = "ltab", desc = "local {}" }, {
+    t({ "local " }),
+    i(1),
+    t({ " = {", "  " }),
+    i(0),
+    t({ "", "}" }),
   }),
 }
 
@@ -34,7 +48,7 @@ snippets.python = {
       "    main()",
     }),
   }),
-  snippet({ trig = "sqltable", descr = "class Table(SQLModel, table=True)" }, {
+  snippet({ trig = "sqltable", descr = "class __TABLENAME__(SQLModel, table=True)" }, {
     t({ "class " }),
     i(1),
     t({
