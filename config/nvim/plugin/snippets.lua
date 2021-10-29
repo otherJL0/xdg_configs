@@ -64,6 +64,40 @@ snippets.python = {
     }),
     i(0),
   }),
+  snippet({ trig = "dclass", descr = "dataclass" }, {
+    t({ "@dataclass", "class " }),
+    i(1),
+    t({ ":", "    " }),
+    i(0),
+  }),
+  snippet({ trig = "Def", descr = "def func_name" }, {
+    t({ "def " }),
+    i(1),
+    t({ "(" }),
+    i(2),
+    t({ ")" }),
+    i(3),
+    t({ ":", "    " }),
+    i(0),
+  }),
+  snippet({ trig = "lcomp", descr = "list comprehension" }, {
+    t({ "[" }),
+    i(1),
+    t({ " for " }),
+    i(2),
+    t({ " in " }),
+    i(3),
+    t({ "]" }),
+    i(0),
+  }),
+  snippet({ trig = "Class", descr = "class" }, {
+    t({ "class " }),
+    i(1),
+    t({ ":", "    def __init__(self" }),
+    i(2),
+    t({ "):", "        " }),
+    i(0),
+  }),
 }
 snippets.javascript = {
   snippet({ trig = "rule", description = "grammar rule" }, {
