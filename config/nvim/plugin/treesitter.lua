@@ -29,6 +29,8 @@ parser_configs.qml = {
   },
 }
 
+parser_configs.query.used_by = "scheme"
+
 require("nvim-treesitter.configs").setup({
   ensure_installed = "maintained",
   ignore_install = {
