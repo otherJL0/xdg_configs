@@ -28,6 +28,12 @@ snippets.lua = {
     i(0),
     t({ "", "end" }),
   }),
+  snippet({ trig = "tab", desc = "{}" }, {
+    i(1),
+    t({ " = {", "  " }),
+    i(0),
+    t({ "", "}" }),
+  }),
   snippet({ trig = "ltab", desc = "local {}" }, {
     t({ "local " }),
     i(1),
@@ -56,6 +62,13 @@ snippets.python = {
       "    id: Optional[int] = Field(default=None, primary_key=True)",
       "    ",
     }),
+    i(0),
+  }),
+}
+snippets.javascript = {
+  snippet({ trig = "rule", description = "grammar rule" }, {
+    i(1),
+    t({ ": $ => " }),
     i(0),
   }),
 }
