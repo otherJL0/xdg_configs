@@ -81,8 +81,6 @@ local function my_plugins()
     "tjdevries/astronauta.nvim",
     "L3MON4D3/LuaSnip",
     "monaqa/dial.nvim",
-    "mhartington/formatter.nvim",
-    "mfussenegger/nvim-lint",
     "numToStr/Comment.nvim",
     "chentau/marks.nvim",
     "beauwilliams/focus.nvim",
