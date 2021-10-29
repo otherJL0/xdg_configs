@@ -1,3 +1,11 @@
+-- Automatically install when editing
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+
 local use = require("packer").use
 
 local function my_plugins()
@@ -30,6 +38,7 @@ local function my_plugins()
     "Pocco81/Catppuccino.nvim",
     "tanvirtin/monokai.nvim",
     "projekt0n/github-nvim-theme",
+    opt = true,
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
   })
 
