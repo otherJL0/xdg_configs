@@ -4,8 +4,10 @@ return {
   settings = {
     python = {
       analysis = {
-        autoSearchPaths = true,
         autoImportCompletions = true,
+        autoSearchPaths = true,
+        diagnosticMode = "workspace",
+        typeCheckingMode = "strict",
         useLibraryCodeForTypes = true,
       },
     },
