@@ -114,6 +114,7 @@ local function my_plugins()
     end,
     requires = "kyazdani42/nvim-web-devicons",
   })
+  use({ "rcarriga/nvim-notify" })
 
   -- Filetype specific plugins
   use({
