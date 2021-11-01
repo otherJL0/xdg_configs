@@ -7,6 +7,11 @@ return {
   init_options = {
     provideFormatter = true,
   },
+  settings = {
+    json = {
+      schemas = require("schemastore").json.schemas(),
+    },
+  },
   capabilities = capabilities,
   commands = {
     Format = {
