@@ -1,4 +1,3 @@
-local inoremap = vim.keymap.inoremap
 local nnoremap = vim.keymap.nnoremap
 local vnoremap = vim.keymap.vnoremap
 local lspconfig = require("lspconfig")

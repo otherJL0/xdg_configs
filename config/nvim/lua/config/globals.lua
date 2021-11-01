@@ -1,3 +1,4 @@
+--# selene: allow(unscoped_variables,unused_variable)
 P = function(v)
   print(vim.inspect(v))
   return v
