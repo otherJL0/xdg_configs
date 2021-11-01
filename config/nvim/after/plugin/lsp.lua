@@ -5,6 +5,7 @@ local language_servers = {
   "cmake",
   "denols",
   "dockerls",
+  "elmls",
   "gopls",
   "hls",
   "html",
