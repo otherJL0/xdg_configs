@@ -7,8 +7,10 @@ vim.cmd([[
 ]])
 
 local use = require("packer").use
+local use_rocks = require("packer").use_rocks
 
 local function my_plugins()
+  use_rocks({ "tl", "cyan", { "teal-language-server", server = "https://luarocks.org/dev" } })
   -- Essential
   use({
     "wbthomason/packer.nvim",
