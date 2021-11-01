@@ -25,6 +25,7 @@ local ivy = setmetatable({}, {
 
 nnoremap({ " ff", ivy.find_files })
 nnoremap({ " fg", ivy.live_grep })
+nnoremap({ " fG", ivy.grep_string })
 nnoremap({ " fh", ivy.help_tags })
 nnoremap({ " fj", ivy.file_browser })
 nnoremap({ " fm", ivy.man_pages })
