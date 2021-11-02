@@ -21,8 +21,27 @@ local border = {
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 
-vim.o.updatetime = 250
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]])
+-- vim.o.updatetime = 100
+-- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.show_line_diagnostics()]])
+-- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.notify("Hello test")]])
+-- It's good practice to namespace custom handlers to avoid collisions
+vim.diagnostic.handlers["my/notify"] = {
+  show = function(namespace, bufnr, diagnostics, opts)
+    -- In our example, the opts table has a "log_level" option
+    local level = opts["my/notify"].log_level
+
+    local name = vim.diagnostic.get_namespace(namespace).name
+    local msg = string.format("%d diagnostics in buffer %d from %s", #diagnostics, bufnr, name)
+    vim.notify(msg, level)
+  end,
+}
+
+-- Users can configure the handler
+vim.diagnostic.config({
+  ["my/notify"] = {
+    log_level = vim.log.levels.INFO,
+  },
+})
 
 vim.cmd([[
   highlight LspDiagnosticsLineNrError guibg=#51202A guifg=#FF0000 gui=bold
