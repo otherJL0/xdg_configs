@@ -1,3 +1,4 @@
+vim.g.mapleader = " "
 if not pcall(require, "packer") then
   require("config.setup").install_packer()
 end
