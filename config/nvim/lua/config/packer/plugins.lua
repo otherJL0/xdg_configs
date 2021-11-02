@@ -113,7 +113,6 @@ local function my_plugins()
 
     config = function()
       require("which-key").setup({})
-      require("trouble").setup({})
     end,
     requires = "kyazdani42/nvim-web-devicons",
   })

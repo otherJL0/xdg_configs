@@ -23,7 +23,7 @@ local ivy = setmetatable({}, {
   end,
 })
 
-nnoremap({ " ff", ivy.find_files })
+nnoremap({ " ff", ivy.git_files })
 nnoremap({ " fg", ivy.live_grep })
 nnoremap({ " fG", ivy.grep_string })
 nnoremap({ " fh", ivy.help_tags })
