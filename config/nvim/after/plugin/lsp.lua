@@ -21,8 +21,8 @@ local border = {
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 
--- vim.o.updatetime = 100
--- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.show_line_diagnostics()]])
+vim.o.updatetime = 200
+vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(0,{focusable = false,scope = "cursor"})]])
 -- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.notify("Hello test")]])
 -- It's good practice to namespace custom handlers to avoid collisions
 -- vim.diagnostic.handlers["my/notify"] = {
