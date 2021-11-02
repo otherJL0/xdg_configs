@@ -13,7 +13,6 @@ return {
     enable = true,
     lint = true,
     unstable = true,
-    importMap = "import_map.json",
     codeLens = {
       implementations = true,
       references = true,
@@ -25,11 +24,5 @@ return {
       paths = true,
     },
   },
-  root_dir = require("lspconfig.util").root_pattern(
-    "package.json",
-    "tsconfig.json",
-    "import_map.json",
-    "mod.ts",
-    "app.tsx"
-  ),
+  root_dir = require("lspconfig.util").root_pattern("denops/", "package.json", "tsconfig.json", "mod.ts", "app.tsx"),
 }
