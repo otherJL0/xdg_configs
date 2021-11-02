@@ -22,7 +22,6 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 
 vim.o.updatetime = 200
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(0,{ focusable = false, scope = "cursor", border = "single", })]])
 -- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.notify("Hello test")]])
 -- It's good practice to namespace custom handlers to avoid collisions
 -- vim.diagnostic.handlers["my/notify"] = {
@@ -98,5 +97,12 @@ require("lspconfig")["null-ls"].setup({
     if client.resolved_capabilities.document_formatting then
       vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
     end
+  end,
+})
+
+vim.keymap.nnoremap({
+  " k",
+  function()
+    vim.diagnostic.open_float(0, { focusable = false, scope = "cursor", border = "single" })
   end,
 })
