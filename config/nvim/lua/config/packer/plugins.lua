@@ -146,9 +146,7 @@ local function my_plugins()
       vim.cmd([[let g:conjure#client#scheme#stdio#command = "csi -quiet -:c"]])
       vim.cmd([[let g:conjure#client#scheme#stdio#prompt_pattern = "\n-#;%d-> "]])
     end,
-    cmd = "ConjureSchool",
     requires = { "Olical/aniseed" },
-    ft = { "fennel", "scheme", "scm" },
   })
   use({
     "ahmedkhalf/project.nvim",
