@@ -29,7 +29,7 @@ parser_configs.qml = {
   },
 }
 
-parser_configs.query.used_by = "scheme"
+parser_configs.query.used_by = "scm"
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = "maintained",
