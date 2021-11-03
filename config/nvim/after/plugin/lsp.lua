@@ -103,6 +103,6 @@ require("lspconfig")["null-ls"].setup({
 vim.keymap.nnoremap({
   " k",
   function()
-    vim.diagnostic.open_float(0, { focusable = false, scope = "cursor", border = "single" })
+    vim.diagnostic.open_float(0, { focusable = false, scope = "line", border = "single" })
   end,
 })
