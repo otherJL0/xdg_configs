@@ -29,7 +29,16 @@ parser_configs.qml = {
   },
 }
 
+-- parser_configs.crystal = {
+--   install_info = {
+--     url = "https://github.com/keidax/tree-sitter-crystal",
+--     files = { "src/parser.c", "src/scanner.c" },
+--     branch = "main",
+--   },
+-- }
+
 parser_configs.query.used_by = "scm"
+parser_configs.ruby.used_by = "crystal"
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = "maintained",
