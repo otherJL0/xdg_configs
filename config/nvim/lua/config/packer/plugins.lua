@@ -96,10 +96,14 @@ local function my_plugins()
     "jbyuki/one-small-step-for-vimkind",
   })
 
+  use({
+    "Dkendal/nvim-minor-mode",
+    "gpanders/nvim-parinfer",
+    "ggandor/lightspeed.nvim",
+  })
   -- Misc
   use({
     "Famiu/feline.nvim",
-    "Iron-E/nvim-libmodal",
     "tjdevries/astronauta.nvim",
     "L3MON4D3/LuaSnip",
     "monaqa/dial.nvim",
