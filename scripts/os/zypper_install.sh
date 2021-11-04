@@ -14,7 +14,7 @@ https://download.opensuse.org/repositories/shells/openSUSE_Tumbleweed.shells.rep
 https://download.opensuse.org/repositories/shells/openSUSE_Tumbleweed/shells.repo
 )
 for repo in "${tw_repos[@]}"; do 
-  sudo zypper addrepo "${repo}"
+  sudo zypper addrepo "$repo"
 done
 sudo zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NVIDIA
 
@@ -121,7 +121,7 @@ vls
 vscode-langservers-extracted
 )
 for pkg in "${pkgs[@]}"; do
-    sudo npm install -g "${pkg}"
+    sudo npm install -g "$pkg"
 done
 
 yarn global add yaml-language-server
@@ -146,7 +146,7 @@ ptpython
 tox
 )
 for module in "${pipx_modules[@]}"; do 
-  pipx install "${module}"
+  pipx install "$module"
 done
 
 # Ad-hoc installs next
