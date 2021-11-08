@@ -52,15 +52,10 @@ snippets.lua = {
 }
 
 snippets.python = {
-  snippet({ trig = "main", descr = [[if __name__ == "__main__"]] }, {
-    t({
-      [[def main():]],
-      "    pass",
-      "",
-      "",
-      [[if __name__ == "__main__":]],
-      "    main()",
-    }),
+  snippet({ trig = "main", descr = [[if __name__ == "__main__]] }, {
+    t({ "def main():", "    return" }),
+    i(0),
+    t({ "", "", "", [[if __name__ == "__main__":]], "    main()" }),
   }),
   snippet({ trig = "sqltable", descr = "class __TABLENAME__(SQLModel, table=True)" }, {
     t({ "class " }),
@@ -119,6 +114,7 @@ snippets.python = {
     i(0),
   }),
 }
+
 snippets.javascript = {
   snippet({ trig = "rule", description = "grammar rule" }, {
     i(1),
