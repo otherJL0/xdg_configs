@@ -25,6 +25,11 @@ local active = {
   ----------
   {
     {
+      provider = function()
+        return vim.g.minor_mode .. " "
+      end,
+    },
+    {
       provider = "vi_mode",
       icon = "",
       hl = function()
@@ -40,12 +45,6 @@ local active = {
     { provider = "git_diff_added" },
     { provider = "git_diff_removed" },
     { provider = "git_diff_changed" },
-  },
-
-  ------------
-  -- MIDDLE --
-  ------------
-  {
     {
       provider = {
         name = "file_info",
