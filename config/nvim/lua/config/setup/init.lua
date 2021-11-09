@@ -17,7 +17,7 @@ function M.install_packer()
 
   vim.notify("Packer installed!")
   vim.cmd("packadd packer.nvim")
-  require("packer_plugins")
+  require("config.packer")
   require("packer").sync()
   vim.fn.input("Press return to close neovim")
   vim.cmd("quitall!")
