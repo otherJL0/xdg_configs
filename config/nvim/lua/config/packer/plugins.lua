@@ -99,7 +99,6 @@ local function my_plugins()
   use({
     "Dkendal/nvim-minor-mode",
     "gpanders/nvim-parinfer",
-    "ggandor/lightspeed.nvim",
   })
   -- Misc
   use({
