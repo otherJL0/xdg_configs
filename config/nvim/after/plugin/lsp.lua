@@ -121,12 +121,12 @@ require("lspconfig")["null-ls"].setup({
   end,
 })
 
-vim.keymap.nnoremap({
-  "<C-k>",
-  function()
-    vim.diagnostic.open_float(0, { focusable = false, scope = "line", border = "single" })
-  end,
-})
+-- vim.keymap.nnoremap({
+--   "<C-k>",
+--   function()
+--     vim.diagnostic.open_float(0, { focusable = false, scope = "line", border = "single" })
+--   end,
+-- })
 
 vim.keymap.nnoremap({
   " k",
