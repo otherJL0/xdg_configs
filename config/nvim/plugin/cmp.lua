@@ -18,7 +18,7 @@ cmp.setup({
   },
   mapping = {
 
-    ["<C-n>"] = cmp.mapping(function(fallback)
+    ["<C-k>"] = cmp.mapping(function(fallback)
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       elseif cmp.visible() then
@@ -46,7 +46,7 @@ cmp.setup({
       "s",
     }),
     -- ["<C-p>"] = cmp.mapping.select_prev_item(),
-    -- ["<C-n>"] = cmp.mapping.select_next_item(),
+    ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
@@ -58,12 +58,12 @@ cmp.setup({
     }),
   },
   sources = {
+    { name = "luasnip" },
     { name = "neorg" },
     { name = "nvim_lua", keyword_length = 5 },
     { name = "nvim_lsp", keyword_length = 3 },
     { name = "buffer", keyword_length = 5 },
     { name = "path", keyword_lenth = 3 },
-    { name = "luasnip" },
     { name = "rg", keyword_length = 5 },
   },
 
