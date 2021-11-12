@@ -101,6 +101,21 @@ snippets.python = {
     t({ "):", "        " }),
     i(0),
   }),
+  snippet({ trig = "tclass", descr = "class (unittest.TestCase):" }, {
+    t({ "class Test" }),
+    i(1),
+    t({ "(unittest.TestCase):", "    def test_" }),
+    i(2),
+    t({ "(self):", "        " }),
+    i(0),
+    t({ "", "", [[if  __name__ == "__main__":]], "    unittest.main()" }),
+  }),
+  snippet({ trig = "test_case" }, {
+    t({ "def test_" }),
+    i(1),
+    t({ "(self):", "    " }),
+    i(0),
+  }),
   snippet({ trig = "itertools", descr = "import itertools" }, {
     t({ "import itertools as it", "" }),
     i(0),
