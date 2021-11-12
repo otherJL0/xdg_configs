@@ -117,8 +117,6 @@ dap.configurations.python = {
         return cwd .. "/venv/bin/python"
       elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
         return cwd .. "/.venv/bin/python"
-      elseif vim.fn.executable(vim.env.CONDA_PYTHON_EXE) == 1 then
-        return vim.env.CONDA_PYTHON_EXE
       else
         return vim.env.HOME .. "/.asdf/shims/python3"
       end
