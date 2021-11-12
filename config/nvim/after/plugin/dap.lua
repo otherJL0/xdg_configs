@@ -96,7 +96,7 @@ dap.configurations.go = {
 
 dap.adapters.python = {
   type = "executable",
-  command = "python3",
+  command = "py",
   args = { "-m", "debugpy.adapter" },
 }
 
@@ -111,22 +111,18 @@ dap.configurations.python = {
 
     -- program = "/Users/jlopez/caboodle/wf/load_and_electric_generation/scripts/wf_listing.py", -- This configuration will launch the current file if used.
     program = "${file}", -- This configuration will launch the current file if used.
-    pythonPath = "/usr/local/opt/python@3.9/bin/python3.9",
-    --   function()
-    --   -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-    --   -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-    --   -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
-    --   local cwd = vim.fn.getcwd()
-    --   if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
-    --     return cwd .. "/venv/bin/python"
-    --   elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-    --     return cwd .. "/.venv/bin/python"
-    --   elseif vim.fn.executable(vim.env.CONDA_PYTHON_EXE) == 1 then
-    --     return vim.env.CONDA_PYTHON_EXE
-    --   else
-    --     return "/usr/local/opt/python@3.9/bin/python3.9"
-    --   end
-    -- end,
+    pythonPath = function()
+      local cwd = vim.fn.getcwd()
+      if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+        return cwd .. "/venv/bin/python"
+      elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+        return cwd .. "/.venv/bin/python"
+      elseif vim.fn.executable(vim.env.CONDA_PYTHON_EXE) == 1 then
+        return vim.env.CONDA_PYTHON_EXE
+      else
+        return vim.env.HOME .. "/.asdf/shims/python3"
+      end
+    end,
   },
 }
 
