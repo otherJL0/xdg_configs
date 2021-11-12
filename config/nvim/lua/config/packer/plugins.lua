@@ -121,12 +121,6 @@ local function my_plugins()
     requires = "kyazdani42/nvim-web-devicons",
   })
   use({ "rcarriga/nvim-notify" })
-  use({
-    "luukvbaal/stabilize.nvim",
-    config = function()
-      require("stabilize").setup()
-    end,
-  })
 
   -- Filetype specific plugins
   use({
