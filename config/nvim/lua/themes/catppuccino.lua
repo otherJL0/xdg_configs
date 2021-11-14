@@ -1,8 +1,8 @@
-local catppuccino = require("catppuccino")
+local catppuccin = require("catppuccin")
 vim.o.termguicolors = true
 
 -- configure it
-catppuccino.setup({
+catppuccin.setup({
   colorscheme = "dark_catppuccino",
   transparency = false,
   term_colors = true,
@@ -57,4 +57,4 @@ catppuccino.setup({
   },
 })
 -- Lua
-vim.cmd([[colorscheme catppuccino]])
+vim.cmd([[colorscheme catppuccin]])

@@ -108,3 +108,5 @@ export GOOS=linux
 
 # Rust environment varianles
 export RUSTUP_HOME="${HOME}/.rustup"
+
+export PYTHONDEVMODE=1

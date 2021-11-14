@@ -48,7 +48,7 @@ local function my_plugins()
   use({
     "navarasu/onedark.nvim",
     "EdenEast/nightfox.nvim",
-    "Pocco81/Catppuccino.nvim",
+    "catppuccin/nvim",
     "tanvirtin/monokai.nvim",
     "projekt0n/github-nvim-theme",
     opt = true,

@@ -1,6 +1,6 @@
 local vi_mode_utils = require("feline.providers.vi_mode")
-local cp_api = require("catppuccino.api.colors")
-local err, colors = cp_api.get_colors("dark_catppuccino")
+local cp_api = require("catppuccin.api.colors")
+local colors = cp_api.get_colors()
 
 local vi_mode_colors = {
   NORMAL = colors.green,
