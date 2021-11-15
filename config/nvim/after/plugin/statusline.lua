@@ -1,6 +1,17 @@
 local vi_mode_utils = require("feline.providers.vi_mode")
 local cp_api = require("catppuccin.api.colors")
+local cp_style = require("catppuccin.core.mapper").apply().base
 local colors = cp_api.get_colors()
+colors.white = colors.catppuccin0
+colors.green = colors.catppuccin7
+colors.red = colors.catppuccin2
+colors.violet = colors.catppuccin4
+colors.magenta = colors.catppuccin5
+colors.yellow = colors.catppuccin8
+colors.orange = colors.catppuccin6
+colors.blue = colors.catppuccin9
+colors.cyan = colors.catppuccin10
+colors.comment = cp_style.Comment.fg
 
 local vi_mode_colors = {
   NORMAL = colors.green,
