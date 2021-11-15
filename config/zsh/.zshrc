@@ -104,6 +104,23 @@ done
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+
 if [ -f $HOME/.asdf/asdf.sh ]; then
     source $HOME/.asdf/asdf.sh
 fi
+
+
+brew_asdf_path="/usr/local/opt/asdf/libexec/asdf.sh"
+if [ -f $brew_asdf_path ]; then
+    source $brew_asdf_path
+fi
+
+pythonpath="/usr/local/opt/python@3."
+if [ -L ${pythonpath}9/bin/python3 ]; then
+    export PATH="${pythonpath}9/bin:$PATH"
+fi
+
+if [ -L ${pythonpath}10/bin/python3 ]; then
+    export PATH="${pythonpath}10/bin:$PATH"
+fi
+
