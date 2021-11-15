@@ -164,6 +164,9 @@ local function my_plugins()
     end,
   })
   use({ "b0o/SchemaStore.nvim" })
+  use({
+    "norcalli/nvim-colorizer.lua",
+  })
 end
 
 return require("packer").startup({
