@@ -88,6 +88,7 @@ local language_servers = {
   "ocamllsp",
   "pyright",
   "sumneko_lua",
+  "taplo",
   "teal",
   "texlab",
   "yamlls",
