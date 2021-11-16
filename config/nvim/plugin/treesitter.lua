@@ -1,22 +1,13 @@
 local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+require("nvim-treesitter.install").prefer_git = true
 
 -- parser_configs.lua = {
 --   install_info = {
 --     url = "https://github.com/tjdevries/tree-sitter-lua",
 --     files = { "src/parser.c", "src/scanner.cc" },
---     branch = "main",
---   },
--- }
--- parser_configs.sql = {
---   install_info = {
---     url = "https://github.com/tjdevries/tree-sitter-sql",
---     files = { "src/parser.c" },
 --     branch = "master",
 --   },
 -- }
-
-require("nvim-treesitter.install").prefer_git = true
-
 parser_configs.sqlite = {
   install_info = {
     url = "https://github.com/returntocorp/tree-sitter-sqlite",
@@ -38,7 +29,6 @@ parser_configs.qml = {
     branch = "main",
   },
 }
-
 parser_configs.cue = {
   install_info = {
     url = "https://github.com/eonpatapon/tree-sitter-cue",
@@ -46,15 +36,6 @@ parser_configs.cue = {
     branch = "main",
   },
 }
-
--- parser_configs.crystal = {
---   install_info = {
---     url = "https://github.com/keidax/tree-sitter-crystal",
---     files = { "src/parser.c", "src/scanner.c" },
---     branch = "main",
---   },
--- }
-
 parser_configs.query.used_by = "scm"
 parser_configs.ruby.used_by = "crystal"
 
