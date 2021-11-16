@@ -14,6 +14,7 @@ parser_configs.sqlite = {
     files = { "src/parser.c" },
     branch = "main",
   },
+  filetype = "sql",
 }
 parser_configs.norg = {
   install_info = {
