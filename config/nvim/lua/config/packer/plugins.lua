@@ -171,6 +171,9 @@ local function my_plugins()
   use({
     "simrat39/rust-tools.nvim",
     ft = { "rust", "cargo" },
+    config = function()
+      require("config.rust_tools")
+    end,
   })
 
   use({

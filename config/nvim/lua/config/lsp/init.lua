@@ -103,6 +103,7 @@ capabilities = vim.tbl_extend("keep", capabilities, lsp_status.capabilities)
 
 lsp_status.register_progress()
 return {
+  on_attach = on_attach,
   launch = function(servers)
     for _, language_server in ipairs(servers) do
       local configs = load_config(language_server)
