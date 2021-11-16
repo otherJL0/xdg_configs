@@ -22,19 +22,19 @@ return {
         runBuildScripts = true,
         useRustcWrapperForBuildScripts = true,
         noDefaultFeatures = false,
-        target = nil,
+        target = vim.NIL,
         noSysroot = false,
       },
       checkOnSave = {
         enable = true,
-        allFeatures = nil,
+        allFeatures = vim.NIL,
         allTargets = true,
         command = "check",
-        noDefaultFeatures = nil,
-        target = nil,
+        noDefaultFeatures = vim.NIL,
+        target = vim.NIL,
         extraArgs = {},
-        features = nil,
-        overrideCommand = nil,
+        features = vim.NIL,
+        overrideCommand = vim.NIL,
       },
       completion = {
         addCallArgumentSnippets = true,
@@ -49,16 +49,20 @@ return {
           enable = true,
         },
       },
+      debug = {
+        engine = "auto",
+        openDebugPane = true,
+      },
       diagnostics = {
         enable = true,
         enableExperimental = true,
         disabled = {},
-        remapPrefix = {},
+        remapPrefix = vim.empty_dict(),
         warningsAsHint = {},
         warningsAsInfo = {},
       },
       experimental = {
-        procAttrMacros = false,
+        procAttrMacros = true,
       },
       files = {
         watcher = "client",
@@ -72,7 +76,6 @@ return {
         strings = true,
       },
       hover = {
-
         documentation = true,
         linksInHover = true,
       },
@@ -81,14 +84,16 @@ return {
         enable = true,
         gotoTypeDef = true,
         implementations = true,
-        references = false,
+        references = true,
         run = true,
       },
       inlayHints = {
+        enable = true,
         chainingHints = true,
         maxLength = 25,
         parameterHints = true,
         typeHints = true,
+        hideNamedConstructorHints = false,
       },
       joinLines = {
         joinElseIf = true,
@@ -101,38 +106,38 @@ return {
         enable = true,
         implementations = true,
         run = true,
-        methodReferences = false,
-        references = false,
+        methodReferences = true,
+        references = true,
+        enumVariantReferences = true,
         forceCustomCommands = true,
       },
       linkedProjects = {},
-      lruCapacity = nil,
+      lruCapacity = 128,
       notifications = {
-
         cargoTomlNotFound = true,
       },
       procMacro = {
         enable = true,
-        server = nil,
+        server = vim.NIL,
       },
       runnables = {
-
-        overrideCargo = nil,
+        overrideCargo = vim.NIL,
         cargoExtraArgs = {},
       },
-      rustcSource = nil,
+      rustcSource = vim.NIL,
       rustfmt = {
-
         extraArgs = {},
-        overrideCommand = nil,
-        enableRangeFormatting = false,
+        overrideCommand = vim.NIL,
+        enableRangeFormatting = true,
+      },
+      updates = {
+        channel = "nightly",
       },
       workspace = {
-
         symbol = {
           search = {
-            scope = "workspace",
-            kind = "only_types",
+            scope = "workspace_and_dependencies",
+            kind = "all_symbols",
           },
         },
       },
