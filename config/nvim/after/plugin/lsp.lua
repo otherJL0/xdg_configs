@@ -87,7 +87,6 @@ local language_servers = {
   "jsonls",
   "ocamllsp",
   "pyright",
-  "rust_analyzer",
   "sumneko_lua",
   "teal",
   "texlab",
