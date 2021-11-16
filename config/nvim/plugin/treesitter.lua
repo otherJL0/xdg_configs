@@ -7,11 +7,21 @@ local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
 --     branch = "main",
 --   },
 -- }
-parser_configs.sql = {
+-- parser_configs.sql = {
+--   install_info = {
+--     url = "https://github.com/tjdevries/tree-sitter-sql",
+--     files = { "src/parser.c" },
+--     branch = "master",
+--   },
+-- }
+
+require("nvim-treesitter.install").prefer_git = true
+
+parser_configs.sqlite = {
   install_info = {
-    url = "https://github.com/tjdevries/tree-sitter-sql",
+    url = "https://github.com/returntocorp/tree-sitter-sqlite",
     files = { "src/parser.c" },
-    branch = "master",
+    branch = "main",
   },
 }
 parser_configs.norg = {

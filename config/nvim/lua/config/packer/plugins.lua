@@ -23,6 +23,7 @@ local function my_plugins()
     "hrsh7th/nvim-cmp",
     "kyazdani42/nvim-web-devicons",
   })
+  use({ "tjdevries/tree-sitter-lua", opt = true })
 
   -- LSP Extras
   use({
