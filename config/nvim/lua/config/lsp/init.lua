@@ -2,7 +2,6 @@ local nnoremap = vim.keymap.nnoremap
 local vnoremap = vim.keymap.vnoremap
 local lspconfig = require("lspconfig")
 local lsp_status = require("lsp-status")
-local nvim_command = vim.api.nvim_command
 
 local function on_attach(client, bufnr)
   lsp_status.on_attach(client)
@@ -38,18 +37,18 @@ local function on_attach(client, bufnr)
   end
 
   if client.resolved_capabilities.document_highlight then
-    nvim_command([[autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()]])
-    nvim_command([[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]])
-    nvim_command([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
+    vim.api.nvim_command([[autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()]])
+    vim.api.nvim_command([[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]])
+    vim.api.nvim_command([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
   end
 
   if client.resolved_capabilities.document_formatting then
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
     nnoremap({ " F", vim.lsp.buf.formatting })
-    nvim_command([[augroup Format]])
-    nvim_command([[autocmd! * <buffer>]])
-    nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]])
-    nvim_command([[augroup END]])
+    vim.api.nvim_command([[augroup Format]])
+    vim.api.nvim_command([[autocmd! * <buffer>]])
+    vim.api.nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]])
+    vim.api.nvim_command([[augroup END]])
   else
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
