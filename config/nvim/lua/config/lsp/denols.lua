@@ -2,10 +2,15 @@ return {
   cmd = { "deno", "lsp" },
   filetypes = {
     "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "jsx",
     "typescript",
     "typescriptreact",
+    "typescript.tsx",
     "tsx",
   },
+
   -- handlers = {
   --   ["textDocument/definition"] =
   --   ["textDocument/references"] = <function 1>
@@ -14,11 +19,13 @@ return {
     enable = true,
     lint = true,
     unstable = true,
+  },
+  settings = {
     codeLens = {
       implementations = true,
       references = true,
       referencesAllFunctions = true,
-      test = true,
+      -- test = true,
     },
     suggest = {
       autoImports = true,
