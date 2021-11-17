@@ -1,6 +1,7 @@
 return {
   cmd = { "deno", "lsp" },
   filetypes = {
+    "javascript",
     "typescript",
     "typescriptreact",
     "tsx",
