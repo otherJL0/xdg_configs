@@ -78,6 +78,7 @@ local language_servers = {
   "bashls",
   "clangd",
   "cmake",
+  "cssls",
   "denols",
   "dockerls",
   "elmls",
