@@ -1,4 +1,6 @@
 # Eval programs
+eval "$(mcfly init zsh)"
+eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 fpath+="${ZDOTDIR}/.zfunc"
 autoload -Uz compinit
@@ -124,3 +126,4 @@ if [ -L ${pythonpath}10/bin/python3 ]; then
     export PATH="${pythonpath}10/bin:$PATH"
 fi
 
+eval "$(opam env)"
