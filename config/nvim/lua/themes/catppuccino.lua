@@ -1,5 +1,5 @@
 local catppuccin = require("catppuccin")
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
 
 -- configure it
 catppuccin.setup({
