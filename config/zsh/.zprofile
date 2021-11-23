@@ -22,7 +22,7 @@ path+=(
 )
 export PATH
 
-export JAVA_HOME="/home/jlopez/.cache/coursier/jvm/openjdk@1.11.0-2"
+export JAVA_HOME="$XDG_CACHE_HOME/coursier/jvm/openjdk@1.11.0-2"
 export PATH="$PATH:/home/jlopez/.cache/coursier/jvm/openjdk@1.11.0-2/bin"
 
 # Neovim
