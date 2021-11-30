@@ -71,6 +71,7 @@ local language_servers = {
   "pyright",
   "sumneko_lua",
   "taplo",
+  "typeprof",
   "texlab",
   "yamlls",
 }
