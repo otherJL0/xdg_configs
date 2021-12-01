@@ -53,17 +53,15 @@ telescope.load_extension("fzf")
 
 local ivy = setmetatable({}, {
   __index = function(_, function_call)
-    local ok, call = pcall(function()
+    local extensions = vim.tbl_keys(telescope.extensions)
+    if vim.tbl_contains(extensions, function_call) then
       return function()
         telescope.extensions[function_call][function_call](themes.get_ivy({}))
       end
-    end)
-    if not ok then
-      return function()
-        require("telescope.builtin")[function_call](themes.get_ivy({}))
-      end
     end
-    return call
+    return function()
+      require("telescope.builtin")[function_call](themes.get_ivy({}))
+    end
   end,
 })
 
