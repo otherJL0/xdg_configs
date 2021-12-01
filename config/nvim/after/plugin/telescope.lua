@@ -56,7 +56,7 @@ local ivy = setmetatable({}, {
     local extensions = vim.tbl_keys(telescope.extensions)
     if vim.tbl_contains(extensions, function_call) then
       return function()
-        telescope.extensions[function_call][function_call](themes.get_ivy({}))
+        require("telescope").extensions[function_call][function_call](themes.get_ivy({}))
       end
     end
     return function()
@@ -66,10 +66,23 @@ local ivy = setmetatable({}, {
 })
 
 nnoremap({ " ff", ivy.git_files })
-nnoremap({ " fg", ivy.live_grep_raw })
+nnoremap({
+  " fg",
+  function()
+    telescope.extensions.live_grep_raw.live_grep_raw(themes.get_ivy({}))
+  end,
+})
 nnoremap({ " fG", ivy.grep_string })
 nnoremap({ " fh", ivy.help_tags })
 nnoremap({ " fj", ivy.file_browser })
 nnoremap({ " fm", ivy.man_pages })
 nnoremap({ "gI", ivy.lsp_implementations })
-nnoremap({ " fp", ivy.project })
+-- nnoremap({ " fp", ivy.project })
+nnoremap({
+  " fp",
+  function()
+    local config = themes.get_ivy({})
+    config.display_type = "full"
+    telescope.extensions.project.project(config)
+  end,
+})
