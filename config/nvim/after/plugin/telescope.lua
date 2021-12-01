@@ -51,32 +51,27 @@ telescope.load_extension("ui-select")
 telescope.load_extension("file_browser")
 telescope.load_extension("fzf")
 
-local ivy = {
-  builtin = {},
-  extensions = {},
-}
-
-ivy.builtin = setmetatable({}, {
+local ivy = setmetatable({}, {
   __index = function(_, function_call)
-    return function()
-      require("telescope.builtin")[function_call](themes.get_ivy({}))
+    local ok, call = pcall(function()
+      return function()
+        telescope.extensions[function_call][function_call](themes.get_ivy({}))
+      end
+    end)
+    if not ok then
+      return function()
+        require("telescope.builtin")[function_call](themes.get_ivy({}))
+      end
     end
+    return call
   end,
 })
 
-ivy.extensions = setmetatable({}, {
-  __index = function(_, function_call)
-    return function()
-      telescope.extensions[function_call][function_call](themes.get_ivy({}))
-    end
-  end,
-})
-
-nnoremap({ " ff", ivy.builtin.git_files })
-nnoremap({ " fg", ivy.extensions.live_grep_raw })
-nnoremap({ " fG", ivy.builtin.grep_string })
-nnoremap({ " fh", ivy.builtin.help_tags })
-nnoremap({ " fj", ivy.extensions.file_browser })
-nnoremap({ " fm", ivy.builtin.man_pages })
-nnoremap({ "gI", ivy.builtin.lsp_implementations })
-nnoremap({ " fp", ivy.extensions.project })
+nnoremap({ " ff", ivy.git_files })
+nnoremap({ " fg", ivy.live_grep_raw })
+nnoremap({ " fG", ivy.grep_string })
+nnoremap({ " fh", ivy.help_tags })
+nnoremap({ " fj", ivy.file_browser })
+nnoremap({ " fm", ivy.man_pages })
+nnoremap({ "gI", ivy.lsp_implementations })
+nnoremap({ " fp", ivy.project })
