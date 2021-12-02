@@ -12,7 +12,7 @@ require("config.globals")
 
 vim.cmd("runtime plugin/astronauta.vim")
 
-require("themes.catppuccino")
+require("themes.catppuccin")
 require("config.minor_modes")
 
 vim.g.minor_mode = ""

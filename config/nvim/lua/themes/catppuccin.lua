@@ -3,7 +3,6 @@ vim.opt.termguicolors = true
 
 -- configure it
 catppuccin.setup({
-  colorscheme = "dark_catppuccino",
   transparency = false,
   term_colors = true,
   styles = {
@@ -51,7 +50,7 @@ catppuccin.setup({
     barbar = false,
     bufferline = false,
     markdown = true,
-    lightspeed = false,
+    lightspeed = true,
     ts_rainbow = false,
     hop = false,
   },
