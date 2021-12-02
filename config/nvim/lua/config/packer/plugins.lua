@@ -25,6 +25,10 @@ local function my_plugins()
   })
   use({ "tjdevries/tree-sitter-lua", opt = true })
 
+  use({
+    "ggandor/lightspeed.nvim",
+  })
+
   -- LSP Extras
   use({
     "nvim-lua/lsp-status.nvim",
