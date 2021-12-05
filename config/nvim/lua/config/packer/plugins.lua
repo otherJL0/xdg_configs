@@ -158,8 +158,8 @@ local function my_plugins()
   use({
     "Olical/conjure",
     config = function()
-      vim.cmd([[let g:conjure#client#scheme#stdio#command = "csi -quiet -:c"]])
-      vim.cmd([[let g:conjure#client#scheme#stdio#prompt_pattern = "\n-#;%d-> "]])
+      vim.cmd([[ let g:conjure#client#scheme#stdio#command = "petite"]])
+      vim.cmd([[let g:conjure#client#scheme#stdio#prompt_pattern = "> $?"]])
     end,
     requires = { "Olical/aniseed" },
   })
