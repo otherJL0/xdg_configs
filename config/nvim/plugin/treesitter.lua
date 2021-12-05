@@ -44,7 +44,7 @@ parser_configs.sexp = {
     files = { "src/parser.c" },
     branch = "main",
   },
-  filetype = { "scm", "sc", "sm" },
+  filetype = { "scheme", "lisp" },
 }
 -- parser_configs.query.used_by = "scm"
 -- parser_configs.ruby.used_by = "crystal"
