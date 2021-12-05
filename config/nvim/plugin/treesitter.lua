@@ -37,8 +37,17 @@ parser_configs.cue = {
     branch = "main",
   },
 }
-parser_configs.query.used_by = "scm"
-parser_configs.ruby.used_by = "crystal"
+
+parser_configs.sexp = {
+  install_info = {
+    url = "https://github.com/AbstractMachinesLab/tree-sitter-sexp",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = { "scm", "sc", "sm" },
+}
+-- parser_configs.query.used_by = "scm"
+-- parser_configs.ruby.used_by = "crystal"
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = "maintained",
