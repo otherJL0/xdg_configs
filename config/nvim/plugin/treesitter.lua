@@ -8,6 +8,7 @@ require("nvim-treesitter.install").prefer_git = true
 --     branch = "master",
 --   },
 -- }
+
 parser_configs.sqlite = {
   install_info = {
     url = "https://github.com/returntocorp/tree-sitter-sqlite",
@@ -16,6 +17,7 @@ parser_configs.sqlite = {
   },
   filetype = "sql",
 }
+
 parser_configs.norg = {
   install_info = {
     url = "https://github.com/nvim-neorg/tree-sitter-norg",
@@ -23,31 +25,31 @@ parser_configs.norg = {
     branch = "main",
   },
 }
-parser_configs.qml = {
+
+parser_configs.norg_meta = {
   install_info = {
-    url = "https://github.com/otherJL0/tree-sitter-qml",
+    url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
     files = { "src/parser.c" },
     branch = "main",
   },
 }
-parser_configs.cue = {
+
+parser_configs.norg_table = {
   install_info = {
-    url = "https://github.com/eonpatapon/tree-sitter-cue",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
+    files = { "src/parser.c" },
     branch = "main",
   },
 }
 
 parser_configs.sexp = {
   install_info = {
-    url = "https://github.com/AbstractMachinesLab/tree-sitter-sexp",
+    url = "https://github.com/tree-sitter-orchard/tree-sitter-sexp",
     files = { "src/parser.c" },
     branch = "main",
   },
   filetype = { "scheme", "lisp" },
 }
--- parser_configs.query.used_by = "scm"
--- parser_configs.ruby.used_by = "crystal"
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = "maintained",
