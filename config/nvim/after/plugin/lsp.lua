@@ -69,9 +69,10 @@ local language_servers = {
   "jsonls",
   "ocamllsp",
   "pyright",
+  "solargraph",
   "sumneko_lua",
   "taplo",
-  "typeprof",
+  -- "typeprof",
   "texlab",
   "yamlls",
 }
