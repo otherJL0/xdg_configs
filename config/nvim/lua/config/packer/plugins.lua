@@ -168,14 +168,14 @@ local function my_plugins()
     ft = {},
   })
 
-  use({
-    "Olical/conjure",
-    config = function()
-      vim.cmd([[ let g:conjure#client#scheme#stdio#command = "petite"]])
-      vim.cmd([[let g:conjure#client#scheme#stdio#prompt_pattern = "> $?"]])
-    end,
-    requires = { "Olical/aniseed" },
-  })
+  -- use({
+  --   "Olical/conjure",
+  --   config = function()
+  --     vim.cmd([[ let g:conjure#client#scheme#stdio#command = "petite"]])
+  --     vim.cmd([[let g:conjure#client#scheme#stdio#prompt_pattern = "> $?"]])
+  --   end,
+  --   requires = { "Olical/aniseed" },
+  -- })
   use({
     "ahmedkhalf/project.nvim",
     config = function()
