@@ -53,6 +53,7 @@ catppuccin.setup({
     lightspeed = true,
     ts_rainbow = false,
     hop = false,
+    cmp = true,
   },
 })
 -- Lua
