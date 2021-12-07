@@ -7,7 +7,7 @@ vim.cmd([[
 ]])
 
 local use = require("packer").use
-local use_rocks = require("packer").use_rocks
+-- local use_rocks = require("packer").use_rocks
 
 local function my_plugins()
   -- use_rocks({ "tl", "cyan", { "teal-language-server", server = "https://luarocks.org/dev" } })
@@ -131,7 +131,13 @@ local function my_plugins()
     end,
     requires = "kyazdani42/nvim-web-devicons",
   })
-  use({ "rcarriga/nvim-notify" })
+
+  -- UI
+  use({
+    "rcarriga/nvim-notify",
+    "stevearc/dressing.nvim",
+    "MunifTanjim/nui.nvim",
+  })
 
   -- Filetype specific plugins
   use({
