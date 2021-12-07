@@ -69,6 +69,7 @@ local language_servers = {
   "jsonls",
   "ocamllsp",
   "pyright",
+  "racket_langserver",
   "solargraph",
   "sumneko_lua",
   "taplo",
