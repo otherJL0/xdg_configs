@@ -42,6 +42,14 @@ parser_configs.norg_table = {
   },
 }
 
+parser_configs.racket = {
+  install_info = {
+    url = "https://github.com/tautologico/tree-sitter-racket",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+}
+
 parser_configs.sexp = {
   install_info = {
     url = "https://github.com/tree-sitter-orchard/tree-sitter-sexp",
