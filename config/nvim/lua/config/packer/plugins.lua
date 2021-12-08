@@ -205,6 +205,15 @@ local function my_plugins()
   })
 
   use({
+    "akinsho/flutter-tools.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("flutter-tools").setup({ require("config.lsp.flutter") }) -- use defaults
+    end,
+    ft = { "dart" },
+  })
+
+  use({
     "Saecki/crates.nvim",
     event = { "BufRead Cargo.toml" },
     requires = { { "nvim-lua/plenary.nvim" } },
