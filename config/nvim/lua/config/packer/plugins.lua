@@ -165,7 +165,11 @@ local function my_plugins()
   })
   use({
     "gennaro-tedesco/nvim-jqx",
-    ft = {},
+    ft = { "json" },
+  })
+  use({
+    "theHamsta/nvim-treesitter-commonlisp",
+    "vlime/vlime",
   })
 
   -- use({
