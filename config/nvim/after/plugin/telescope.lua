@@ -51,21 +51,46 @@ telescope.load_extension("ui-select")
 telescope.load_extension("file_browser")
 telescope.load_extension("fzf")
 
-local ivy = setmetatable({}, {
+local ivy = setmetatable({
+  project_files = function()
+    local opts = themes.get_ivy({
+      layout_config = {
+        preview_cutoff = 1, -- Preview should always show (unless previewer = false)
+
+        width = function(_, max_columns, _)
+          return math.min(max_columns, 80)
+        end,
+      },
+    })
+    local ok = pcall(require("telescope.builtin").git_files, opts)
+    if not ok then
+      require("telescope.builtin").find_files(opts)
+    end
+  end,
+}, {
   __index = function(_, function_call)
     local extensions = vim.tbl_keys(telescope.extensions)
+    local opts = themes.get_ivy({
+      layout_config = {
+        preview_cutoff = 1, -- Preview should always show (unless previewer = false)
+
+        width = function(_, max_columns, _)
+          return math.min(max_columns, 80)
+        end,
+      },
+    })
     if vim.tbl_contains(extensions, function_call) then
       return function()
-        require("telescope").extensions[function_call][function_call](themes.get_ivy({}))
+        require("telescope").extensions[function_call][function_call](opts)
       end
     end
     return function()
-      require("telescope.builtin")[function_call](themes.get_ivy({}))
+      require("telescope.builtin")[function_call](opts)
     end
   end,
 })
 
-nnoremap({ " ff", ivy.git_files })
+nnoremap({ " ff", ivy.project_files })
 nnoremap({
   " fg",
   function()
