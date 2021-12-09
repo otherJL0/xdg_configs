@@ -16,3 +16,11 @@ require("themes.catppuccin")
 require("config.minor_modes")
 
 vim.g.minor_mode = ""
+
+function P(element)
+  print(vim.inspect(element))
+end
+
+function PN(element)
+  vim.notify(vim.inspect(element))
+end
