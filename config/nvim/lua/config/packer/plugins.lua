@@ -114,7 +114,7 @@ local function my_plugins()
   })
   -- Misc
   use({
-    "Famiu/feline.nvim",
+    "tjdevries/express_line.nvim",
     "tjdevries/astronauta.nvim",
     "L3MON4D3/LuaSnip",
     "monaqa/dial.nvim",

@@ -1,140 +1,75 @@
-local vi_mode_utils = require("feline.providers.vi_mode")
-local cp_api = require("catppuccin.api.colors")
-local cp_style = require("catppuccin.core.mapper").apply().base
-local colors = cp_api.get_colors()
-colors.white = colors.catppuccin0
-colors.green = colors.catppuccin7
-colors.red = colors.catppuccin2
-colors.violet = colors.catppuccin4
-colors.magenta = colors.catppuccin5
-colors.yellow = colors.catppuccin8
-colors.orange = colors.catppuccin6
-colors.blue = colors.catppuccin9
-colors.cyan = colors.catppuccin10
-colors.comment = cp_style.Comment.fg
+-- TODO: Need to add those sweet sweet lsp workspace diagnostic counts
 
-local vi_mode_colors = {
-  NORMAL = colors.green,
-  INSERT = colors.red,
-  VISUAL = colors.magenta,
-  OP = colors.green,
-  BLOCK = colors.blue,
-  REPLACE = colors.violet,
-  ["V-REPLACE"] = colors.violet,
-  ENTER = colors.cyan,
-  MORE = colors.cyan,
-  SELECT = colors.orange,
-  COMMAND = colors.green,
-  SHELL = colors.green,
-  TERM = colors.green,
-  NONE = colors.yellow,
-}
+RELOAD("el")
+require("el").reset_windows()
 
-local active = {
-  ----------
-  -- LEFT --
-  ----------
-  {
-    {
-      provider = function()
-        return vim.g.minor_mode .. " "
-      end,
-    },
-    {
-      provider = "vi_mode",
-      icon = "",
-      hl = function()
-        return {
-          name = vi_mode_utils.get_mode_highlight_name(),
-          fg = vi_mode_utils.get_mode_color(),
-          style = "BOLD",
-        }
-      end,
-      right_sep = " ",
-    },
-    { provider = "git_branch" },
-    { provider = "git_diff_added" },
-    { provider = "git_diff_removed" },
-    { provider = "git_diff_changed" },
-    {
-      provider = {
-        name = "file_info",
-        opts = {
-          type = "relative",
-        },
-      },
-      icon = "",
-    },
-  },
+local builtin = require("el.builtin")
+local extensions = require("el.extensions")
+local sections = require("el.sections")
+local subscribe = require("el.subscribe")
+local lsp_statusline = require("el.plugins.lsp_status")
 
-  -----------
-  -- RIGHT --
-  -----------
-  {
-    {
-      provider = function()
-        return require("lsp-status").status()
-      end,
-    },
-    { provider = "lsp_client_names", right_sep = " " },
-    { provider = "position", right_sep = ":" },
-    { provider = "line_percentage" },
-  },
-}
+local git_icon = subscribe.buf_autocmd("el_file_icon", "BufRead", function(_, bufnr)
+  local icon = extensions.file_icon(_, bufnr)
+  if icon then
+    return icon .. " "
+  end
 
-local inactive = {
-  ----------
-  -- LEFT --
-  ----------
-  {
-    {
-      provider = function()
-        return "-- INACTIVE --"
-      end,
-      hl = {
-        fg = colors.bg_highlight,
-        bg = colors.comment,
-      },
-    },
-  },
-  ------------
-  -- MIDDLE --
-  ------------
-  {
-    {
-      provider = {
-        name = "file_info",
-        opts = {
-          type = "relative",
-        },
-      },
-      hl = {
-        fg = "black",
-        bg = colors.comment,
-      },
-    },
-  },
-  -----------
-  -- RIGHT --
-  -----------
-  {
-    {
-      provider = function()
-        return "-- INACTIVE --"
-      end,
-      hl = {
-        fg = colors.bg_highlight,
-        bg = colors.comment,
-      },
-    },
-  },
-}
+  return ""
+end)
 
-require("feline").setup({
-  default_bg = colors.bg_highlight,
-  components = {
-    active = active,
-    inactive = inactive,
-  },
-  vi_mode_colors = vi_mode_colors,
+local git_branch = subscribe.buf_autocmd("el_git_branch", "BufEnter", function(window, buffer)
+  local branch = extensions.git_branch(window, buffer)
+  if branch then
+    return " " .. extensions.git_icon() .. " " .. branch
+  end
+end)
+
+local git_changes = subscribe.buf_autocmd("el_git_changes", "BufWritePost", function(window, buffer)
+  return extensions.git_changes(window, buffer)
+end)
+
+local show_current_func = function(window, buffer)
+  if buffer.filetype == "lua" then
+    return ""
+  end
+
+  return lsp_statusline.current_function(window, buffer)
+end
+
+require("el").setup({
+  generator = function(_, _)
+    local mode = extensions.gen_mode({ format_string = " %s " })
+
+    local items = {
+      { mode, required = true },
+      { git_branch },
+      { " " },
+      { sections.split, required = true },
+      { git_icon },
+      -- { sections.maximum_width(builtin.responsive_file(140, 90), 0.40), required = true },
+      { sections.collapse_builtin({ { " " }, { builtin.modified_flag } }) },
+      { sections.split, required = true },
+      { show_current_func },
+      { lsp_statusline.server_progress },
+      -- { ws_diagnostic_counts },
+      { git_changes },
+      { "[" },
+      { builtin.line_with_width(3) },
+      { ":" },
+      { builtin.column_with_width(2) },
+      { "]" },
+      {
+        sections.collapse_builtin({
+          "[",
+          builtin.help_list,
+          builtin.readonly_list,
+          "]",
+        }),
+      },
+      { builtin.filetype },
+    }
+
+    return items
+  end,
 })
