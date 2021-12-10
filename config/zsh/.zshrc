@@ -85,28 +85,6 @@ setopt HIST_SAVE_NO_DUPS
 setopt INC_APPEND_HISTORY
 
 
-## Zsh Completions
-applications=(
-    kubectl
-    helm
-    kubeadm
-    doctl
-    minikube
-)
-
-for app ("$applications[@]"); do
-    if (( ${+commands[$app]} )); then
-        source <($app completion zsh)
-    fi
-done
-
-# Custom completion commands
-source <(deno completions zsh)
-source <(poetry completions zsh)
-source <(gh completion --shell zsh)
-
-
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -132,3 +110,26 @@ if [ -L ${pythonpath}10/bin/python3 ]; then
 fi
 
 eval "$(opam env)"
+
+## Zsh Completions
+applications=(
+    kubectl
+    helm
+    kubeadm
+    doctl
+    minikube
+)
+
+for app ("$applications[@]"); do
+    if (( ${+commands[$app]} )); then
+        source <($app completion zsh)
+    fi
+done
+
+# Custom completion commands
+source <(deno completions zsh)
+source <(poetry completions zsh)
+source <(gh completion --shell zsh)
+
+
+
