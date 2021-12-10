@@ -125,11 +125,3 @@ for app ("$applications[@]"); do
         source <($app completion zsh)
     fi
 done
-
-# Custom completion commands
-source <(deno completions zsh)
-source <(poetry completions zsh)
-source <(gh completion --shell zsh)
-
-
-
