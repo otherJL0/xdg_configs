@@ -3,8 +3,12 @@ require("trouble").setup({
   height = 10, -- height of the trouble list when position is top or bottom
   width = 50, -- width of the list when position is left or right
   icons = true, -- use devicons for filenames
-  -- "lsp_workspace_diagnostics", "lsp_document_diagnostics", "quickfix", "lsp_references", "loclist"
-  mode = "lsp_document_diagnostics",
+  -- "workspace_diagnostics",
+  --"document_diagnostics",
+  -- "quickfix",
+  --"lsp_references",
+  --"loclist"
+  mode = "document_diagnostics",
   fold_open = "", -- icon used for open folds
   fold_closed = "", -- icon used for closed folds
   group = true, -- group results by file
@@ -44,7 +48,7 @@ require("trouble").setup({
     information = "",
     other = "﫠",
   },
-  use_lsp_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
+  use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
 })
 
 -- Lua
@@ -55,12 +59,7 @@ vim.api.nvim_set_keymap(
   "<cmd>Trouble lsp_workspace_diagnostics<cr>",
   { silent = true, noremap = true }
 )
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>xd",
-  "<cmd>Trouble lsp_document_diagnostics<cr>",
-  { silent = true, noremap = true }
-)
+vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
