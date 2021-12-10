@@ -59,6 +59,14 @@ parser_configs.sexp = {
   filetype = { "scheme", "lisp" },
 }
 
+parser_configs.toml = {
+  install_info = {
+    url = "https://github.com/ikatyang/tree-sitter-toml",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "master",
+  },
+}
+
 require("nvim-treesitter.configs").setup({
   ensure_installed = "maintained",
   ignore_install = {
