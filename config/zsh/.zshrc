@@ -100,6 +100,11 @@ for app ("$applications[@]"); do
     fi
 done
 
+# Custom completion commands
+source <(deno completions zsh)
+source <(poetry completions zsh)
+source <(gh completion --shell zsh)
+
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
