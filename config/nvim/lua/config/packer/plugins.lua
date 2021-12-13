@@ -32,11 +32,35 @@ local function my_plugins()
   -- LSP Extras
   use({
     "nvim-lua/lsp-status.nvim",
-    "jose-elias-alvarez/null-ls.nvim",
     "liuchengxu/vista.vim",
     "rmagatti/goto-preview",
     "onsails/lspkind-nvim",
     requires = "neovim/lspconfig",
+  })
+
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+
+    config = function()
+      require("null-ls").setup({
+        sources = {
+          require("null-ls").builtins.formatting.stylua,
+          require("null-ls").builtins.formatting.black,
+          require("null-ls").builtins.formatting.isort,
+          require("null-ls").builtins.formatting.shfmt,
+          require("null-ls").builtins.diagnostics.hadolint,
+          require("null-ls").builtins.diagnostics.flake8,
+          require("null-ls").builtins.completion.spell,
+        },
+        on_attach = function(client)
+          if client.resolved_capabilities.document_formatting then
+            vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+          end
+        end,
+      })
+    end,
+
+    ft = { "python", "lua", "bash", "dockerfile" },
   })
 
   -- Telescope Extras

@@ -81,22 +81,6 @@ local language_servers = {
 require("config.lsp").launch(language_servers)
 
 -- register any number of sources simultaneously
-require("null-ls").setup({
-  sources = {
-    require("null-ls").builtins.formatting.stylua,
-    require("null-ls").builtins.formatting.black,
-    require("null-ls").builtins.formatting.isort,
-    require("null-ls").builtins.formatting.shfmt,
-    require("null-ls").builtins.diagnostics.hadolint,
-    require("null-ls").builtins.diagnostics.flake8,
-    require("null-ls").builtins.completion.spell,
-  },
-  on_attach = function(client)
-    if client.resolved_capabilities.document_formatting then
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-    end
-  end,
-})
 vim.keymap.nnoremap({
   " k",
   function()
