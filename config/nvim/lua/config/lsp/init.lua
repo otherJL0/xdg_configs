@@ -32,8 +32,7 @@ local function on_attach(client, bufnr)
   nnoremap({ " q", vim.diagnostic.setloclist })
 
   if client.resolved_capabilities.code_lens then
-    -- vim.notify(vim.inspect(client.resolved_capabilities))
-    require("virtualtypes").on_attach(client, bufnr)
+    vim.notify(vim.inspect(client.resolved_capabilities))
   end
 
   if client.resolved_capabilities.document_highlight then

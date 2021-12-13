@@ -32,7 +32,6 @@ local function my_plugins()
   -- LSP Extras
   use({
     "nvim-lua/lsp-status.nvim",
-    "jubnzv/virtual-types.nvim",
     "jose-elias-alvarez/null-ls.nvim",
     "liuchengxu/vista.vim",
     "rmagatti/goto-preview",
