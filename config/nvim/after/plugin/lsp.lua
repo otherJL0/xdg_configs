@@ -80,37 +80,18 @@ local language_servers = {
 
 require("config.lsp").launch(language_servers)
 
-local null_ls = require("null-ls")
-
 -- register any number of sources simultaneously
-local sources = {
-  null_ls.builtins.code_actions.gitsigns,
-  null_ls.builtins.diagnostics.flake8,
-  null_ls.builtins.diagnostics.hadolint,
-  null_ls.builtins.formatting.black,
-  null_ls.builtins.formatting.isort,
-  null_ls.builtins.formatting.shellharden,
-  null_ls.builtins.formatting.shfmt,
-  null_ls.builtins.formatting.stylua,
-}
-
-null_ls.config({ sources = sources })
-
-require("lspconfig")["null-ls"].setup({
-  on_attach = function(client)
-    if client.resolved_capabilities.document_formatting then
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-    end
-  end,
+require("null-ls").setup({
+    sources = {
+        require("null-ls").builtins.formatting.stylua,
+        require("null-ls").builtins.formatting.black,
+        require("null-ls").builtins.formatting.isort,
+        require("null-ls").builtins.formatting.shfmt,
+        require("null-ls").builtins.diagnostics.hadolint,
+        require("null-ls").builtins.diagnostics.flake8,
+        require("null-ls").builtins.completion.spell,
+    },
 })
-
--- vim.keymap.nnoremap({
---   "<C-k>",
---   function()
---     vim.diagnostic.open_float(0, { focusable = false, scope = "line", border = "single" })
---   end,
--- })
-
 vim.keymap.nnoremap({
   " k",
   function()
