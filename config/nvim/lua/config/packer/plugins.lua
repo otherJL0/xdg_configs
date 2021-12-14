@@ -36,6 +36,7 @@ local function my_plugins()
     "rmagatti/goto-preview",
     "onsails/lspkind-nvim",
     requires = "neovim/lspconfig",
+    opt = true,
   })
 
   use({
@@ -140,6 +141,7 @@ local function my_plugins()
     "tjdevries/express_line.nvim",
     "windwp/windline.nvim",
     "nvim-lualine/lualine.nvim",
+    opt = true,
   })
   -- Misc
   use({
