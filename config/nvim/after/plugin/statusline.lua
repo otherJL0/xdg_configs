@@ -13,6 +13,25 @@ local git_branch = subscribe.buf_autocmd("el_git_branch", "BufEnter", function(w
   end
 end)
 
+local buffer_position = function()
+  local result = {
+    "[",
+    builtin.line_with_width(3),
+    ":",
+    builtin.column_with_width(3),
+    "]",
+  }
+  return vim.fn.join(result)
+end
+
+local attached_buffers = function()
+  local result = {}
+  for _, lsp_client in ipairs(vim.lsp.get_active_clients()) do
+    table.insert(result, lsp_client.name)
+  end
+  return "[" .. vim.fn.join(result, "][") .. "]"
+end
+
 require("el").setup({
   generator = function(_, _)
     local mode = extensions.gen_mode({ format_string = " %s " })
@@ -39,27 +58,10 @@ require("el").setup({
       -- RIGHT --
       -----------
       {
-        {
-          function()
-            local result = {}
-            for _, lsp_client in ipairs(vim.lsp.get_active_clients()) do
-              table.insert(result, lsp_client.name)
-            end
-            return "[" .. vim.fn.join(result, "][") .. "]"
-          end,
-        },
-        {
-          function()
-            local result = {
-              "[",
-              builtin.line_with_width(3),
-              ":",
-              builtin.column_with_width(3),
-              "]",
-            }
-            return vim.fn.join(result)
-          end,
-        },
+        -- { lsp_status.status() },
+        { require("el.plugins.lsp_status").segment },
+        { attached_buffers },
+        { buffer_position },
         { builtin.filetype },
       },
     }
