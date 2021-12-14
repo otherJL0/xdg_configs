@@ -172,7 +172,6 @@ local function my_plugins()
   -- Filetype specific plugins
   use({
     "nvim-neorg/neorg",
-    branch = "unstable",
     requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope", "jbyuki/nabla.nvim" },
   })
   use({
@@ -195,14 +194,15 @@ local function my_plugins()
     "vlime/vlime",
   })
 
-  -- use({
-  --   "Olical/conjure",
-  --   config = function()
-  --     vim.cmd([[ let g:conjure#client#scheme#stdio#command = "petite"]])
-  --     vim.cmd([[let g:conjure#client#scheme#stdio#prompt_pattern = "> $?"]])
-  --   end,
-  --   requires = { "Olical/aniseed" },
-  -- })
+  use({
+    "Olical/conjure",
+    config = function()
+      vim.cmd([[ let g:conjure#client#scheme#stdio#command = "petite"]])
+      vim.cmd([[let g:conjure#client#scheme#stdio#prompt_pattern = "> $?"]])
+    end,
+    ft = { "scheme", "guile", "fennel" },
+    requires = { "Olical/aniseed" },
+  })
   use({
     "ahmedkhalf/project.nvim",
     config = function()
