@@ -135,9 +135,14 @@ local function my_plugins()
     "Dkendal/nvim-minor-mode",
     "gpanders/nvim-parinfer",
   })
-  -- Misc
+  -- Status lines
   use({
     "tjdevries/express_line.nvim",
+    "windwp/windline.nvim",
+    "nvim-lualine/lualine.nvim",
+  })
+  -- Misc
+  use({
     "tjdevries/astronauta.nvim",
     "L3MON4D3/LuaSnip",
     "monaqa/dial.nvim",
@@ -153,13 +158,6 @@ local function my_plugins()
       require("which-key").setup({})
     end,
     requires = "kyazdani42/nvim-web-devicons",
-  })
-
-  use({
-    "luukvbaal/stabilize.nvim",
-    config = function()
-      require("stabilize").setup()
-    end,
   })
 
   -- UI
