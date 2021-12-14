@@ -32,6 +32,15 @@ local attached_buffers = function()
   return "[" .. vim.fn.join(result, "][") .. "]"
 end
 
+local function workspace_directory()
+  local directories = vim.lsp.buf.list_workspace_folders()
+  if #directories == 0 then
+    return ""
+  end
+
+  return vim.fn.fnamemodify(directories[1], ":t") .. "/"
+end
+
 require("el").setup({
   generator = function(_, _)
     local mode = extensions.gen_mode({ format_string = " %s " })
@@ -50,6 +59,7 @@ require("el").setup({
       ------------
       {
         { sections.split, required = true },
+        { workspace_directory },
         { builtin.file_relative },
         { sections.split, required = true },
       },
