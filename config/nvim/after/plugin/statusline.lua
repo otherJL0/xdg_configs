@@ -39,9 +39,27 @@ require("el").setup({
       -- RIGHT --
       -----------
       {
-        { builtin.line_with_width(3) },
-        { ":" },
-        { builtin.column_with_width(3) },
+        {
+          function()
+            local result = {}
+            for _, lsp_client in ipairs(vim.lsp.get_active_clients()) do
+              table.insert(result, lsp_client.name)
+            end
+            return "[" .. vim.fn.join(result, "][") .. "]"
+          end,
+        },
+        {
+          function()
+            local result = {
+              "[",
+              builtin.line_with_width(3),
+              ":",
+              builtin.column_with_width(3),
+              "]",
+            }
+            return vim.fn.join(result)
+          end,
+        },
         { builtin.filetype },
       },
     }
