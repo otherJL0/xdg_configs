@@ -152,7 +152,6 @@ local function my_plugins()
     "monaqa/dial.nvim",
     "numToStr/Comment.nvim",
     "chentau/marks.nvim",
-    "beauwilliams/focus.nvim",
     "vim-denops/denops.vim",
     "folke/lua-dev.nvim",
     "folke/which-key.nvim",
