@@ -63,9 +63,8 @@ basic.ft = {
     if width > breakpoint_width then
       return {
         { " ", "" },
-        { "ft[", "magenta" },
         { b_components.file_type(), "magenta" },
-        { "]" },
+        { " ", "" },
       }
     else
       return {
@@ -88,7 +87,6 @@ basic.file_position = {
     return {
       { b_components.line_col_lua, "white" },
       { b_components.progress_lua, "" },
-      { " ", "" },
     }
   end,
 }
@@ -180,12 +178,12 @@ local default = {
     { git_comps.git_branch(), { "magenta", "black" }, breakpoint_width },
     basic.git,
     basic.divider,
-    basic.ft,
     { " ", hl_list.Black },
     basic.lsp_name,
     basic.lsp_diagnos,
     { " ", hl_list.Black },
     basic.file_position,
+    basic.ft,
     basic.square_mode,
   },
   inactive = {
