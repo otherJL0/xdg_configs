@@ -209,6 +209,14 @@ windline.setup({
     floatline_active,
   },
   tabline = {
+    template = {
+      normal_end = {
+        function(data)
+          return vim.fn.tabpagewinnr(data.tab_index, "$")
+        end,
+        { "blue", "red" },
+      },
+    },
     tab_end = {
       { "%=", { "NormalFg", "NormalBg" } },
       {
@@ -216,6 +224,17 @@ windline.setup({
           return vim.fn.tabpagewinnr(tab_index, "$")
         end,
         { "green", "NormalBg" },
+      },
+      {
+        function()
+          local directories = vim.lsp.buf.list_workspace_folders()
+          if #directories == 0 then
+            return ""
+          end
+
+          return " " .. vim.fn.fnamemodify(directories[1], ":t") .. "/"
+        end,
+        { "blue", "NormalBg" },
       },
       {
         function()
