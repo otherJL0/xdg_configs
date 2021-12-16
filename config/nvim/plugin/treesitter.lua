@@ -128,6 +128,11 @@ require("nvim-treesitter.configs").setup({
       "#F7C196",
     },
   },
+
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
 })
 
 local ts_patterns = {

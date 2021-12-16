@@ -103,6 +103,7 @@ local function my_plugins()
     "romgrk/nvim-treesitter-context",
     "folke/twilight.nvim",
     "windwp/nvim-autopairs",
+    "SmiteshP/nvim-gps",
     requires = "nvim-treesitter/nvim-treesitter",
     run = "TSUpdate",
   })
@@ -153,6 +154,7 @@ local function my_plugins()
     "L3MON4D3/LuaSnip",
     "monaqa/dial.nvim",
     "numToStr/Comment.nvim",
+    "JoosepAlviste/nvim-ts-context-commentstring",
     "chentau/marks.nvim",
     "vim-denops/denops.vim",
     "folke/lua-dev.nvim",

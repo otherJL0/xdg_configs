@@ -5,6 +5,18 @@ local state = _G.WindLine.state
 
 local lsp_comps = require("windline.components.lsp")
 local git_comps = require("windline.components.git")
+local gps = require("nvim-gps")
+gps.setup()
+
+local gps_component = {
+  function()
+    if gps.is_available() then
+      return gps.get_location()
+    end
+    return ""
+  end,
+  { "white", "black" },
+}
 
 local hl_list = {
   Black = { "white", "black" },
@@ -177,6 +189,8 @@ local default = {
     basic.square_mode,
     { git_comps.git_branch(), { "magenta", "black" }, breakpoint_width },
     basic.git,
+    { " ", hl_list.Black },
+    gps_component,
     basic.divider,
     { " ", hl_list.Black },
     basic.lsp_name,
@@ -235,12 +249,6 @@ windline.setup({
           return " " .. vim.fn.fnamemodify(directories[1], ":t") .. "/"
         end,
         { "blue", "NormalBg" },
-      },
-      {
-        function()
-          return " " .. vim.fn.strftime("%H:%M:%S") .. " "
-        end,
-        { "red", "NormalBg" },
       },
     },
   },
