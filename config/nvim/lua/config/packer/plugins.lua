@@ -182,10 +182,6 @@ local function my_plugins()
   })
   use({
     "windwp/nvim-ts-autotag",
-    ft = { "html", "xml" },
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
   })
   use({
     "mfussenegger/nvim-jdtls",
