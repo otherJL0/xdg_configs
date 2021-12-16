@@ -5,6 +5,17 @@ local lsp_status = require("lsp-status")
 
 local function on_attach(client, bufnr)
   lsp_status.on_attach(client)
+  vim.cmd(
+    [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb({float = { enabled = true }, virtual_text = { enabled = true }})]]
+  )
+  require("lsp_signature").on_attach({
+    bind = true,
+    handler_opts = {
+      border = "double", -- double, rounded, single, shadow, none
+    },
+    extra_trigger_chars = { "(", "," },
+    toggle_key = "<C-x>",
+  }) -- Note: add in lsp client on-attach
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 

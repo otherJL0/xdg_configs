@@ -35,6 +35,8 @@ local function my_plugins()
   use({
     "nvim-lua/lsp-status.nvim",
     "liuchengxu/vista.vim",
+    "kosayoda/nvim-lightbulb",
+    "ray-x/lsp_signature.nvim",
     "rmagatti/goto-preview",
     "onsails/lspkind-nvim",
     requires = "neovim/lspconfig",
