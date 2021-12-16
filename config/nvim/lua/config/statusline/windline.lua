@@ -17,6 +17,12 @@ local gps_component = {
   end,
   { "white", "black" },
 }
+local lsp_status = {
+  function()
+    return require("lsp-status").status()
+  end,
+  { "white", "black" },
+}
 
 local hl_list = {
   Black = { "white", "black" },
@@ -52,7 +58,7 @@ basic.lsp_diagnos = {
     yellow = { "yellow", "black" },
     blue = { "blue", "black" },
   },
-  width = breakpoint_width,
+  -- width = breakpoint_width,
   text = function(bufnr)
     if lsp_comps.check_lsp(bufnr) then
       return {
@@ -71,22 +77,12 @@ basic.ft = {
     white = { "white", "black" },
     magenta = { "magenta", "black" },
   },
-  text = function(_, _, width)
-    if width > breakpoint_width then
-      return {
-        { " ", "" },
-        { b_components.file_type(), "magenta" },
-        { " ", "" },
-      }
-    else
-      return {
-        { b_components.cache_file_size(), "default" },
-        { " ", "" },
-        { b_components.cache_file_name("[No Name]", "unique"), "magenta" },
-        { " ", "" },
-        { b_components.file_modified(" "), "magenta" },
-      }
-    end
+  text = function(_, _, _)
+    return {
+      { " ", "" },
+      { b_components.file_type(), "magenta" },
+      { " ", "" },
+    }
   end,
 }
 basic.file_position = {
@@ -166,7 +162,7 @@ local floatline_active = {
 }
 
 basic.lsp_name = {
-  width = breakpoint_width,
+  -- width = breakpoint_width,
   name = "lsp_name",
   hl_colors = {
     magenta = { "magenta", "black" },
@@ -193,6 +189,7 @@ local default = {
     gps_component,
     basic.divider,
     { " ", hl_list.Black },
+    lsp_status,
     basic.lsp_name,
     basic.lsp_diagnos,
     { " ", hl_list.Black },
