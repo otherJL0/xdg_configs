@@ -1,8 +1,8 @@
 local nnoremap = vim.keymap.nnoremap
 local vnoremap = vim.keymap.vnoremap
-local lspconfig = require("lspconfig")
 local lsp_status = require("lsp-status")
 local aerial = require("aerial")
+local lspconfig = require("lspconfig")
 
 -- Aerial does not set any mappings by default, so you'll want to set some up
 aerial.register_attach_cb(function(bufnr)
@@ -133,5 +133,23 @@ return {
         capabilities = vim.tbl_extend("keep", configs.capabilities or {}, capabilities),
       }, configs))
     end
+  end,
+
+  launch_teal = function()
+    require("lspconfig.configs").teal = {
+      default_config = {
+        cmd = {
+          "teal-language-server",
+          "logging=on", -- use this to enable logging in /tmp/teal-language-server.log
+        },
+        filetypes = { "teal" },
+        root_dir = lspconfig.util.root_pattern("tlconfig.lua", ".git"),
+        settings = {},
+      },
+    }
+    lspconfig.teal.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+    })
   end,
 }
