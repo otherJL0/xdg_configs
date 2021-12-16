@@ -125,6 +125,7 @@ local function my_plugins()
     "saadparwaiz1/cmp_luasnip",
     "lukas-reineke/cmp-rg",
     "hrsh7th/cmp-nvim-lsp-document-symbol",
+    "dmitmel/cmp-cmdline-history",
     requires = { "hrsh7th/nvim-cmp", "hrsh7th/cmp-cmdline" },
   })
 
