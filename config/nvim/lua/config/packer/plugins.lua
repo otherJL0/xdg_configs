@@ -174,6 +174,7 @@ local function my_plugins()
     "stevearc/dressing.nvim",
     "MunifTanjim/nui.nvim",
     "p00f/nvim-ts-rainbow",
+    "code-biscuits/nvim-biscuits",
   })
 
   -- Filetype specific plugins
