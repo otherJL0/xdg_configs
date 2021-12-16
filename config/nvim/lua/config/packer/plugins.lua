@@ -170,6 +170,7 @@ local function my_plugins()
     "rcarriga/nvim-notify",
     "stevearc/dressing.nvim",
     "MunifTanjim/nui.nvim",
+    "p00f/nvim-ts-rainbow",
   })
 
   -- Filetype specific plugins

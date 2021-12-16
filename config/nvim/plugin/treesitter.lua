@@ -114,6 +114,20 @@ require("nvim-treesitter.configs").setup({
   textobjects = require("config.treesitter.textobjects"),
   playground = require("config.treesitter.playground").playground,
   query_linter = require("config.treesitter.playground").query_linter,
+
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    colors = {
+      "#A4B9EF",
+      "#B3E1A3",
+      "#ECBFBD",
+      "#C6AAE8",
+      "#F0AFE1",
+      "#E28C8C",
+      "#F7C196",
+    },
+  },
 })
 
 local ts_patterns = {
@@ -145,7 +159,7 @@ local ts_patterns = {
 }
 require("treesitter-context").setup({
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-  throttle = true, -- Throttles plugin updates (may improve performance)
+  throttle = false, -- Throttles plugin updates (may improve performance)
   patterns = {
     default = vim.tbl_keys(ts_patterns),
   },
