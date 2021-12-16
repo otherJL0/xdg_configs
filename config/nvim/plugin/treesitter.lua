@@ -50,6 +50,14 @@ parser_configs.racket = {
   },
 }
 
+parser_configs.wren = {
+  install_info = {
+    url = "https://github.com/otherJL0/tree-sitter-wren",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+}
+
 parser_configs.sexp = {
   install_info = {
     url = "https://github.com/tree-sitter-orchard/tree-sitter-sexp",
