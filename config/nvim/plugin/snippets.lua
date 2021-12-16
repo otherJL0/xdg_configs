@@ -176,3 +176,7 @@ snippets.json = {
     t({ [[}]] }),
   }),
 }
+
+snippets.javascript = {
+  snippet({ trig = "ts", descr = "Tree-sitter rule" }, { i(1), t(": ($) => "), i(0), t(",") }),
+}
