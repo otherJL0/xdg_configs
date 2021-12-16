@@ -8,9 +8,10 @@ local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
-vim.o.completeopt = "menuone,noselect"
-
 cmp.setup({
+  completion = {
+    completeopt = "menu,menuone,noinsert,noselect",
+  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -69,8 +70,17 @@ cmp.setup({
 
   formatting = {
     format = require("lspkind").cmp_format({
-      with_text = false,
+      with_text = true,
       maxwidth = 50,
+      menu = {
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        neorg = "[Neorg]",
+        rg = "[Rg]",
+        path = "[Path]",
+      },
     }),
   },
   experimental = {
