@@ -20,15 +20,7 @@ vim.g.aerial = {
   default_direction = "prefer_right",
 
   -- A list of all symbols to display. Set to false to display all symbols.
-  filter_kind = {
-    "Class",
-    "Constructor",
-    "Enum",
-    "Function",
-    "Interface",
-    "Method",
-    "Struct",
-  },
+  filter_kind = false,
 
   -- Enum: split_width, full_width, last, none
   -- Determines line highlighting mode when multiple buffers are visible
@@ -42,25 +34,25 @@ vim.g.aerial = {
   link_tree_to_folds = true,
 
   -- Fold the tree when folding code. Only works when manage_folds is enabled
-  link_folds_to_tree = false,
+  link_folds_to_tree = true,
 
   -- Use symbol tree for folding. Set to true or false to enable/disable
   -- 'auto' will manage folds if your previous foldmethod was 'manual'
   manage_folds = "auto",
 
   -- The maximum width of the aerial window
-  max_width = 40,
+  max_width = 50,
 
   -- The minimum width of the aerial window.
   -- To disable dynamic resizing, set this to be equal to max_width
-  min_width = 10,
+  min_width = 30,
 
   -- Set default symbol icons to use Nerd Font icons (see https://www.nerdfonts.com/)
   nerd_font = "auto",
 
   -- Whether to open aerial automatically when entering a buffer.
   -- Can also be specified per-filetype as a map (see below)
-  open_automatic = false,
+  open_automatic = true,
 
   -- If open_automatic is true, only open aerial if the source buffer is at
   -- least this long
@@ -71,7 +63,7 @@ vim.g.aerial = {
 
   -- Set to true to only open aerial at the far right/left of the editor
   -- Default behavior opens aerial relative to current window
-  placement_editor_edge = false,
+  placement_editor_edge = true,
 
   -- Run this command after jumping to a symbol (false will disable)
   post_jump_cmd = "normal! zz",
@@ -82,7 +74,7 @@ vim.g.aerial = {
   -- Options for opening aerial in a floating win
   float = {
     -- Controls border appearance. Passed to nvim_open_win
-    border = "rounded",
+    border = "double",
 
     -- Controls row offset from cursor. Passed to nvim_open_win
     row = 1,
@@ -124,8 +116,6 @@ vim.g.aerial = {
   open_automatic = {
     -- use underscore to specify the default behavior
     ["_"] = true,
-    python = false,
-    rust = false,
   },
 }
 
@@ -134,8 +124,6 @@ vim.g.aerial = {
   backends = {
     -- use underscore to specify the default behavior
     ["_"] = { "lsp", "treesitter" },
-    python = { "treesitter" },
-    rust = { "lsp" },
   },
 }
 
@@ -151,14 +139,14 @@ vim.g.aerial = {
 -- You can also override the default icons.
 -- Note that if you are using lspkind-nvim, aerial will use it for icons
 -- https://github.com/onsails/lspkind-nvim
-vim.g.aerial = {
-  icons = {
-    Class = "",
-    -- The icon to use when a class has been collapsed in the tree
-    ClassCollapsed = "喇",
-    Function = "",
-    Constant = "[c]",
-    -- The default icon to use when any symbol is collapsed in the tree
-    Collapsed = "▶",
-  },
-}
+-- vim.g.aerial = {
+--   icons = {
+--     Class = "",
+--     -- The icon to use when a class has been collapsed in the tree
+--     ClassCollapsed = "喇",
+--     Function = "",
+--     Constant = "[c]",
+--     -- The default icon to use when any symbol is collapsed in the tree
+--     Collapsed = "▶",
+--   },
+-- }

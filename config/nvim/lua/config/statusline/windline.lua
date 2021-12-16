@@ -189,7 +189,6 @@ local default = {
     gps_component,
     basic.divider,
     { " ", hl_list.Black },
-    lsp_status,
     basic.lsp_name,
     basic.lsp_diagnos,
     { " ", hl_list.Black },
@@ -230,12 +229,13 @@ windline.setup({
     },
     tab_end = {
       { "%=", { "NormalFg", "NormalBg" } },
-      {
-        function(tab_index)
-          return vim.fn.tabpagewinnr(tab_index, "$")
-        end,
-        { "green", "NormalBg" },
-      },
+      lsp_status,
+      -- {
+      --   function(tab_index)
+      --     return vim.fn.tabpagewinnr(tab_index, "$")
+      --   end,
+      --   { "green", "NormalBg" },
+      -- },
       {
         function()
           local directories = vim.lsp.buf.list_workspace_folders()
