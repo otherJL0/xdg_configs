@@ -125,3 +125,9 @@ for app ("$applications[@]"); do
         source <($app completion zsh)
     fi
 done
+
+
+luajit_activation="${HOME}/.local/share/hererocks/luajit/bin/activate"
+if [ -f $luajit_activation ]; then
+    source $luajit_activation
+fi
