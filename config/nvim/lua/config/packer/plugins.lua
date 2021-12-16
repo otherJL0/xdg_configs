@@ -172,6 +172,7 @@ local function my_plugins()
   use({
     "rcarriga/nvim-notify",
     "stevearc/dressing.nvim",
+    "stevearc/aerial.nvim",
     "MunifTanjim/nui.nvim",
     "p00f/nvim-ts-rainbow",
     "code-biscuits/nvim-biscuits",
@@ -221,6 +222,14 @@ local function my_plugins()
   use({ "b0o/SchemaStore.nvim" })
   use({
     "norcalli/nvim-colorizer.lua",
+  })
+
+  use({
+    "stevearc/stickybuf.nvim",
+    config = function()
+      require("stickybuf").setup({})
+      vim.cmd([[autocmd BufEnter * if &winfixwidth || &winfixheight | silent! PinBuffer | endif]])
+    end,
   })
 
   use({
