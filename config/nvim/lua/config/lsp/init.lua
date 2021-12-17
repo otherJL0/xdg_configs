@@ -54,9 +54,9 @@ local function on_attach(client, bufnr)
   nnoremap({ "]d", vim.diagnostic.goto_next })
   nnoremap({ " q", vim.diagnostic.setloclist })
 
-  if client.resolved_capabilities.code_lens then
-    vim.notify(vim.inspect(client.resolved_capabilities))
-  end
+  -- if client.resolved_capabilities.code_lens then
+  --   vim.notify(vim.inspect(client.resolved_capabilities))
+  -- end
 
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_command([[autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()]])
