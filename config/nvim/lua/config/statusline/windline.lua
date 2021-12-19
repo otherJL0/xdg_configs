@@ -24,6 +24,11 @@ local lsp_status = {
   { "white", "black" },
 }
 
+local current_signature = function(width)
+  local sig = require("lsp_signature").status_line(width)
+  return sig.label .. "🐼" .. sig.hint
+end
+
 local hl_list = {
   Black = { "white", "black" },
   White = { "black", "white" },
@@ -118,6 +123,17 @@ basic.git = {
   end,
 }
 
+basic.signature = {
+  name = "signature",
+  hl_colors = {
+    default = hl_list.NormalBg,
+    green_light = { "green_light", "NormalBg" },
+  },
+  text = function(_, _, width, _)
+    return { { " ", "default" }, { current_signature(width), "green_light" }, { " ", "default" } }
+  end,
+}
+
 local quickfix = {
   filetypes = { "qf", "Trouble" },
   active = {
@@ -187,6 +203,7 @@ local default = {
     basic.git,
     { " ", hl_list.Black },
     gps_component,
+    basic.signature,
     basic.divider,
     { " ", hl_list.Black },
     basic.lsp_name,
