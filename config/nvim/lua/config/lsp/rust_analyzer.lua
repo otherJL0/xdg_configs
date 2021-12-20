@@ -10,7 +10,10 @@ return {
         importEnforceGranularity = false,
         importPrefix = "plain",
         importGroup = true,
-        allowMergingIntoGlobImports = true,
+        allowMergingIntoGlobImports = false,
+      },
+      cache = {
+        warmup = true,
       },
       callInfo = {
         full = true,
@@ -137,8 +140,8 @@ return {
       workspace = {
         symbol = {
           search = {
-            scope = "workspace_and_dependencies",
-            kind = "all_symbols",
+            scope = "workspace",
+            kind = "only_types",
           },
         },
       },
