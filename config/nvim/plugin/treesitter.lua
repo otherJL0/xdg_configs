@@ -174,6 +174,7 @@ local ts_patterns = {
   ["type_declaration"] = "Structure",
   ["value_declaration"] = "Structure",
   ["let_in_expr"] = "Structure",
+  ["call_expression"] = "Function",
 }
 require("treesitter-context").setup({
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
