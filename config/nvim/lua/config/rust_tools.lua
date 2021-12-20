@@ -60,7 +60,7 @@ local opts = {
       right_align_padding = 7,
 
       -- The color of the hints
-      highlight = "Comment",
+      highlight = "TSTypeBuiltin",
     },
 
     hover_actions = {
