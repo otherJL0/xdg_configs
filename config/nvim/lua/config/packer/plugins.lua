@@ -53,6 +53,7 @@ local function my_plugins()
           require("null-ls").builtins.formatting.black,
           require("null-ls").builtins.formatting.isort,
           require("null-ls").builtins.formatting.shfmt,
+          require("null-ls").builtins.diagnostics.mypy,
           require("null-ls").builtins.diagnostics.hadolint,
           require("null-ls").builtins.diagnostics.flake8,
           require("null-ls").builtins.completion.spell,
