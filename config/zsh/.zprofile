@@ -18,7 +18,7 @@ path+=(
 	"$HOME/.luarocks/bin"
 	"$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin"
 	"./node_modules/.bin"
-	"./.venv/.bin"
+	"./.venv/bin"
 	"$HOME/.cache/nvim/packer_hererocks/2.1.0-beta3/bin/"
 )
 export PATH
