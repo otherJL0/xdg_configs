@@ -53,6 +53,7 @@ local function my_plugins()
           require("null-ls").builtins.formatting.isort,
           require("null-ls").builtins.formatting.shfmt,
           require("null-ls").builtins.formatting.black.with({
+            prefer_local = ".venve/bin",
             extra_args = { "----target-version", "py310" },
           }),
           -- require("null-ls").builtins.diagnostics.mypy,
