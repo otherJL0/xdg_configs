@@ -128,6 +128,10 @@ snippets.python = {
     t({ "import pandas as pd", "" }),
     i(0),
   }),
+  snippet({ trig = "enum", descr = "_ = auto()" }, {
+    i(0),
+    t({ " = auto()" }),
+  }),
 }
 
 snippets.javascript = {
