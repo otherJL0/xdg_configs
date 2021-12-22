@@ -3,10 +3,21 @@ if status is-interactive
     starship init fish | source
     zoxide init fish | source
     mcfly init fish | source
-    source ~/.asdf/asdf.fish
+
+    # Linux
+    if test -f ~/.asdf/asdf.fish
+        source ~/.asdf/asdf.fish
+    end
+    
+    # Macbook
+    if test -f /usr/local/opt/asdf/libexec/asdf.fish
+        source /usr/local/opt/asdf/libexec/asdf.fish 
+    end
+
 end
 
 set -gx MANPAGER nvim +Man!
+set --erase fish_greeting
 function fish_user_key_bindings
     # Execute this once per mode that emacs bindings should be used in
     fish_default_key_bindings -M insert
