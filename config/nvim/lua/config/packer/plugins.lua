@@ -45,19 +45,21 @@ local function my_plugins()
     "jose-elias-alvarez/null-ls.nvim",
 
     config = function()
-      require("null-ls").setup({
+      local null_ls = require("null-ls")
+      null_ls.setup({
         sources = {
-          require("null-ls").builtins.formatting.stylua,
-          require("null-ls").builtins.formatting.isort,
-          require("null-ls").builtins.formatting.shfmt,
-          require("null-ls").builtins.formatting.black.with({
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.isort,
+          null_ls.builtins.formatting.shfmt,
+          null_ls.builtins.formatting.fish_indent,
+          null_ls.builtins.formatting.black.with({
             prefer_local = ".venve/bin",
             extra_args = { "----target-version", "py310" },
           }),
-          -- require("null-ls").builtins.diagnostics.mypy,
-          require("null-ls").builtins.diagnostics.hadolint,
-          require("null-ls").builtins.diagnostics.flake8,
-          require("null-ls").builtins.completion.spell,
+          -- null_ls.builtins.diagnostics.mypy,
+          null_ls.builtins.diagnostics.hadolint,
+          null_ls.builtins.diagnostics.flake8,
+          null_ls.builtins.completion.spell,
         },
         on_attach = function(client)
           if client.resolved_capabilities.document_formatting then
