@@ -19,7 +19,6 @@ end)
 local function on_attach(client, bufnr)
   lsp_status.on_attach(client)
   aerial.on_attach(client)
-  vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
   require("lsp_signature").on_attach({
     bind = true,
     handler_opts = {
