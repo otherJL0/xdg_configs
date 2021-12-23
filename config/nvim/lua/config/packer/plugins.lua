@@ -186,6 +186,7 @@ local function my_plugins()
   use({
     "nvim-neorg/neorg",
     requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope", "jbyuki/nabla.nvim" },
+    after = "nvim-treesitter", -- Ensures that neorg loads after nvim-treesitter
   })
   use({
     "windwp/nvim-ts-autotag",
