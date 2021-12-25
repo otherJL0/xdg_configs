@@ -48,7 +48,7 @@ local opts = {
       other_hints_prefix = " => ",
 
       -- whether to align to the length of the longest line in the file
-      max_len_align = true,
+      max_len_align = false,
 
       -- padding from the left if max_len_align is true
       max_len_align_padding = 1,
@@ -60,7 +60,7 @@ local opts = {
       right_align_padding = 7,
 
       -- The color of the hints
-      highlight = "TSTypeBuiltin",
+      highlight = "TSComment",
     },
 
     hover_actions = {
