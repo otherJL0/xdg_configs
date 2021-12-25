@@ -69,7 +69,7 @@ local function my_plugins()
       })
     end,
 
-    ft = { "python", "lua", "bash", "dockerfile" },
+    ft = { "python", "lua", "bash", "dockerfile", "md", "markdown", "norg", "rst" },
   })
 
   -- Telescope Extras
@@ -130,6 +130,7 @@ local function my_plugins()
     "lukas-reineke/cmp-rg",
     "hrsh7th/cmp-nvim-lsp-document-symbol",
     "dmitmel/cmp-cmdline-history",
+    "f3fora/cmp-spell",
     requires = { "hrsh7th/nvim-cmp", "hrsh7th/cmp-cmdline" },
   })
 
@@ -185,7 +186,12 @@ local function my_plugins()
   -- Filetype specific plugins
   use({
     "nvim-neorg/neorg",
-    requires = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope", "jbyuki/nabla.nvim" },
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-neorg/neorg-telescope",
+      "jbyuki/nabla.nvim",
+      "lewis6991/spellsitter.nvim",
+    },
     after = "nvim-treesitter", -- Ensures that neorg loads after nvim-treesitter
   })
   use({
