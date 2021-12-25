@@ -50,3 +50,11 @@ require("neorg").setup({
     float_precision = 0.01,
   },
 })
+
+vim.opt.spell = true
+vim.keymap.nnoremap({
+  "K",
+  function()
+    require("telescope.builtin").spell_suggest(require("telescope.themes").get_cursor({ winblend = 10 }))
+  end,
+})
