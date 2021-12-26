@@ -53,13 +53,14 @@ local function my_plugins()
           null_ls.builtins.formatting.shfmt,
           null_ls.builtins.formatting.fish_indent,
           null_ls.builtins.formatting.black.with({
-            prefer_local = ".venve/bin",
-            extra_args = { "----target-version", "py310" },
+            extra_args = { "--target-version", "py310" },
           }),
           -- null_ls.builtins.diagnostics.mypy,
           null_ls.builtins.diagnostics.hadolint,
           null_ls.builtins.diagnostics.flake8,
-          null_ls.builtins.completion.spell,
+          null_ls.builtins.completion.spell.with({
+            filetypes = { "md", "norg", "neorg", "markdown" },
+          }),
         },
         on_attach = function(client)
           if client.resolved_capabilities.document_formatting then
