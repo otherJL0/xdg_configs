@@ -1,7 +1,7 @@
 # XDG Configuration
-set -gx XDG_CONFIG_HOME $HOME/.config 
-set -gx XDG_DATA_HOME $HOME/.local/share 
-set -gx XDG_CACHE_HOME $HOME/.cache 
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_CACHE_HOME $HOME/.cache
 
 # user path
 set -ga fish_user_paths $HOME/.local/bin
@@ -54,5 +54,3 @@ set -gx fish_user_paths $GOBIN
 set -gx RUSTUP_HOME $HOME/.rustup
 set -gx RUSTUP_TOOLCHAIN nightly-x86_64-unknown-linux-gnu
 set -ga fish_user_paths $RUSTUP_HOME/toolchains/$RUSTUP_TOOLCHAIN/bin
-
-
