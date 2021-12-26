@@ -69,7 +69,7 @@ local function my_plugins()
       })
     end,
 
-    ft = { "python", "lua", "bash", "dockerfile", "md", "markdown", "norg", "rst" },
+    ft = { "fish", "python", "lua", "bash", "dockerfile", "md", "markdown", "norg", "rst" },
   })
 
   -- Telescope Extras

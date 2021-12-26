@@ -61,7 +61,9 @@ cmp.setup({
     { name = "neorg" },
     { name = "nvim_lua", keyword_pattern = "vim." },
     { name = "nvim_lsp", trigger_character = "." },
-    { name = "path", trigger_character = "/" },
+    { name = "path", trigger_character = "/", group_index = 9 },
+    { name = "buffer", group_index = 10 },
+    { name = "rg", group_index = 10 },
   }),
 
   formatting = {
