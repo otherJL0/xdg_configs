@@ -28,3 +28,6 @@ function fish_user_key_bindings
     # The argument specifies the initial mode (insert, "default" or visual).
     fish_vi_key_bindings --no-erase insert
 end
+
+# opam configuration
+source /home/jlopez/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
