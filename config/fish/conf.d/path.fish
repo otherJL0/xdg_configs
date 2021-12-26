@@ -1,16 +1,58 @@
-set PATH "$GOBIN:$PATH"
-set PATH "$PATH:$HOME/.local/bin"
-set PATH "$PATH:$HOME/.local/share/coursier/bin"
-set PATH "$PATH:$HOME/.cargo/bin"
-set PATH "$PATH:$HOME/.jbang/bin"
-set PATH "$PATH:$HOME/.jbang/currentjdk/bin"
-set PATH "$PATH:$HOME/.ghcup/bin"
-set PATH "$PATH:$HOME/.yarn/bin"
-set PATH "$PATH:$HOME/.deno/bin"
-set PATH "$PATH:$HOME/bin"
-set PATH "$PATH:$HOME/.luarocks/bin"
-set PATH "$PATH:$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin"
-set PATH "$PATH:./node_modules/.bin"
-set PATH "$PATH:./.venv/bin"
-set PATH "$PATH:$HOME/.cache/coursier/jvm/openjdk@1.11.0-2/bin"
-set PATH "$PATH:$HOME/.cache/nvim/packer_hererocks/2.1.0-beta3/bin"
+# XDG Configuration
+set -gx XDG_CONFIG_HOME $HOME/.config 
+set -gx XDG_DATA_HOME $HOME/.local/share 
+set -gx XDG_CACHE_HOME $HOME/.cache 
+
+# user path
+set -ga fish_user_paths $HOME/.local/bin
+set -ga fish_user_paths $HOME/.cargo/bin
+set -ga fish_user_paths $HOME/.jbang/bin
+set -ga fish_user_paths $HOME/.jbang/currentjdk/bin
+set -ga fish_user_paths $HOME/.ghcup/bin
+set -ga fish_user_paths $HOME/.yarn/bin
+set -ga fish_user_paths $HOME/.deno/bin
+set -ga fish_user_paths $HOME/bin
+set -ga fish_user_paths $HOME/.luarocks/bin
+set -ga fish_user_paths ./node_modules/.bin
+set -ga fish_user_paths ./.venv/bin
+set -ga fish_user_paths $HOME/.cache/coursier/jvm/openjdk@1.11.0-2/bin
+set -ga fish_user_paths $HOME/.cache/nvim/packer_hererocks/2.1.0-beta3/bin
+
+# Neovim paths
+set -gx NVIM_DATA $XDG_DATA_HOME/nvim
+set -gx NVIM_CACHE $XDG_CACHE_HOME/nvim
+set -gx PACKER_DIR $NVIM_DATA/site/pack/packer
+set -gx PACKER_START $PACKER_DIR/start
+set -gx PACKER_OPT $PACKER_DIR/opt
+
+# Java/Coursier
+set -gx JVM_VENDOR openjdk
+set -gx JVM_VERSION 1.11.0-2
+set -gx COURSIER_CACHE $XDG_CACHE_HOME/coursier
+set -gx COURSIER_DATA $XDG_DATA_HOME/coursier
+set -gx JAVA_HOME $COURSIER_CACHE/jvm/$JVM_VENDOR@$JVM_VERSION
+set -ga fish_user_paths $COURSIER_DATA/bin
+
+# Clang
+set -gx CC clang
+set -gx CXX clang++
+
+# CMake
+set -gx CMAKE_EXPORT_COMPILE_COMMANDS 1
+set -gx CMAKE_BUILD_TYPE Release
+set -gx CMAKE_DISABLE32BIT ON
+
+
+# Golang
+set -gx GOBIN $HOME/.go/bin
+set -gx GOCACHE $XDG_CACHE_HOME/go
+set -gx GOMODCACHE $XDG_CACHE_HOME/gomod
+set -gx fish_user_paths $GOBIN
+
+
+# Rust
+set -gx RUSTUP_HOME $HOME/.rustup
+set -gx RUSTUP_TOOLCHAIN nightly-x86_64-unknown-linux-gnu
+set -ga fish_user_paths $RUSTUP_HOME/toolchains/$RUSTUP_TOOLCHAIN/bin
+
+
