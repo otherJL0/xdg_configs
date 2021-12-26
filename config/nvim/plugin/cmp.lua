@@ -114,22 +114,19 @@ require("nvim-autopairs").add_rules(require("nvim-autopairs.rules.endwise-ruby")
 cmp.setup.cmdline(":", {
   sources = {
     { name = "cmdline" },
-    { name = "path" },
   },
 })
 
 cmp.setup.cmdline("/", {
-  sources = cmp.config.sources({
-    { name = "nvim_lsp_document_symbol" },
-  }, {
+  sources = {
     { name = "buffer" },
-  }),
+  },
 })
 
-for _, cmd_type in ipairs({ ":", "/", "?", "@", "=" }) do
-  cmp.setup.cmdline(cmd_type, {
-    sources = {
-      { name = "cmdline_history" },
-    },
-  })
-end
+-- for _, cmd_type in ipairs({ ":", "/", "?", "@", "=" }) do
+--   cmp.setup.cmdline(cmd_type, {
+--     sources = {
+--       { name = "cmdline_history" },
+--     },
+--   })
+-- end

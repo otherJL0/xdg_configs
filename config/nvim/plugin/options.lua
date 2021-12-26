@@ -13,7 +13,7 @@ local opt = vim.opt
 -- Wild menu
 opt.wildignore = opt.wildignore + { "__pycache__", "*.o", "*~", "*.pyc", "*pycache*" }
 opt.pumblend = 17
-opt.wildmode = opt.wildmode + { "longest", "full" }
+opt.wildmode = { "longest", "full" }
 opt.wildoptions = "pum"
 
 -- Colorful
