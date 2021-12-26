@@ -46,27 +46,23 @@ cmp.setup({
       "i",
       "s",
     }),
-    -- ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
-    -- ["<C-e>"] = cmp.mapping.confirm(),
     ["<CR>"] = cmp.mapping.confirm(),
     ["<C-e>"] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     }),
   },
-  sources = {
+  sources = cmp.config.sources({
     { name = "luasnip" },
     { name = "neorg" },
     { name = "nvim_lua", keyword_pattern = "vim." },
     { name = "nvim_lsp", trigger_character = "." },
-    { name = "buffer", keyword_length = 3 },
     { name = "path", trigger_character = "/" },
-    { name = "rg", keyword_length = 4 },
-  },
+  }),
 
   formatting = {
     format = require("lspkind").cmp_format({
@@ -119,6 +115,7 @@ cmp.setup.cmdline(":", {
 
 cmp.setup.cmdline("/", {
   sources = {
+    { name = "nvim_lsp_document_symbol" },
     { name = "buffer" },
   },
 })
