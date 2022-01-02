@@ -226,6 +226,7 @@ local default = {
 windline.setup({
   colors_name = function(colors)
     -- print(vim.inspect(colors))
+
     -- ADD MORE COLOR HERE ----
     return colors
   end,
@@ -241,7 +242,7 @@ windline.setup({
         function(data)
           return vim.fn.tabpagewinnr(data.tab_index, "$")
         end,
-        { "blue", "red" },
+        { "NormalFg", "NormalBg" },
       },
     },
     tab_end = {
@@ -262,7 +263,7 @@ windline.setup({
 
           return " " .. vim.fn.fnamemodify(directories[1], ":t") .. "/"
         end,
-        { "blue", "NormalBg" },
+        { "NormalFg", "NormalBg" },
       },
     },
   },
