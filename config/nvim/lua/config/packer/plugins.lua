@@ -352,6 +352,10 @@ return require("packer").startup({
   config = {
     ensure_dependencies = true,
     compile_path = vim.fn.stdpath("config") .. "/lua/config/packer/compiled.lua",
+		max_jobs = 10,
+		git = {
+			clone_timeout = 10,
+		},
     display = {
       open_fn = function()
         return require("packer.util").float({ border = "single" })
@@ -359,7 +363,6 @@ return require("packer").startup({
     },
   },
   profile = {
-    enable = true,
-    threshold = 1,
+    enable = false,
   },
 })
