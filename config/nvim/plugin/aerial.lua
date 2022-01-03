@@ -63,14 +63,14 @@ require("aerial").setup({
 
   -- Whether to open aerial automatically when entering a buffer.
   -- Can also be specified per-filetype as a map (see below)
-  open_automatic = true,
+  open_automatic = false,
 
   -- If open_automatic is true, only open aerial if the source buffer is at
   -- least this long
-  open_automatic_min_lines = 0,
+  -- open_automatic_min_lines = 0,
 
   -- If open_automatic is true, only open aerial if there are at least this many symbols
-  open_automatic_min_symbols = 0,
+  -- open_automatic_min_symbols = 0,
 
   -- Set to true to only open aerial at the far right/left of the editor
   -- Default behavior opens aerial relative to current window
