@@ -22,17 +22,7 @@ function M.install_packer()
   require("config.packer.plugins")
   vim.schedule(function()
     require("packer").sync()
-    vim.schedule(function()
-      vim.fn.input("Press return to install plugins")
-      -- vim.cmd("quitall!")
-    end)
   end)
-end
-
-function M.install_ts_grammars()
-  require(vim.fn.stdpath("config") .. "/plugin/treesitter")
-  vim.fn.input("Press return to install plugins")
-  require("nvim-treesitter.install").update()
 end
 
 return M
