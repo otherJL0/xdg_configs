@@ -82,6 +82,7 @@ require("nvim-treesitter.configs").setup({
     "devicetree",
     "elixir",
     "erlang",
+    "fusion",
     "godot",
     "glimmer",
     "godot-resource",

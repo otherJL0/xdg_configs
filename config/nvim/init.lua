@@ -24,7 +24,7 @@ else
     vim.notify(vim.inspect(element))
   end
 
-  -- vim.api.nvim_add_user_command("Inspect", function(element)
-  --   vim.notify(vim.inspect(element))
-  -- end, { nargs = 1 })
+  vim.api.nvim_add_user_command("Inspect", function(element)
+    vim.notify(vim.inspect(element))
+  end, { nargs = 1 })
 end
