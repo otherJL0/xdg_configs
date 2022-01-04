@@ -1,3 +1,4 @@
+set -U fish_greeting
 # XDG Configuration
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx XDG_DATA_HOME $HOME/.local/share

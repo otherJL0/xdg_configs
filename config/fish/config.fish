@@ -8,16 +8,15 @@ if status is-interactive
     if test -f ~/.asdf/asdf.fish
         source ~/.asdf/asdf.fish
     end
-    
+
     # Macbook
     if test -f /usr/local/opt/asdf/libexec/asdf.fish
-        source /usr/local/opt/asdf/libexec/asdf.fish 
+        source /usr/local/opt/asdf/libexec/asdf.fish
     end
 
 end
 
 set -gx MANPAGER nvim +Man!
-set --erase fish_greeting
 function fish_user_key_bindings
     # Execute this once per mode that emacs bindings should be used in
     fish_default_key_bindings -M insert
@@ -30,4 +29,4 @@ function fish_user_key_bindings
 end
 
 # opam configuration
-source /home/jlopez/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+source /home/jlopez/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
