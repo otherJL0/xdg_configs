@@ -41,15 +41,14 @@ def main() -> None:
     for dir in configs.iterdir():
         target = xdg_config_dir / dir.name
         try:
-            target.symlink_to(dir)
-            print(f"Symlink created for {dir}")
-        except FileExistsError:
             if target.is_symlink() and target.readlink() == dir:
                 print(f"\tLink exists for {target}")
             else:
-                if prompt_replacement(target):
-                    remove_existing_path(target)
-                    dir.symlink_to(xdg_config_dir)
+                print(f"Symlink created for {dir}")
+        except FileExistsError:
+            if prompt_replacement(target):
+                remove_existing_path(target)
+            target.symlink_to(dir)
 
 
 if __name__ == "__main__":
