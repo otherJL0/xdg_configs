@@ -5,9 +5,9 @@ set -gx XDG_DATA_HOME $HOME/.local/share
 set -gx XDG_CACHE_HOME $HOME/.cache
 
 # Rust
-set -gx RUSTUP_HOME $HOME/.rustup
-set -gx RUSTUP_TOOLCHAIN nightly-x86_64-unknown-linux-gnu
-set -ga fish_user_paths $RUSTUP_HOME/toolchains/$RUSTUP_TOOLCHAIN/bin
+# set -gx RUSTUP_HOME $HOME/.rustup
+# set -gx RUSTUP_TOOLCHAIN nightly-x86_64-unknown-linux-gnu
+# set -ga fish_user_paths $RUSTUP_HOME/toolchains/$RUSTUP_TOOLCHAIN/bin
 
 # Neovim paths
 set -gx NVIM_DATA $XDG_DATA_HOME/nvim
