@@ -47,7 +47,7 @@ local language_servers = {
   "gopls",
   "hls",
   "html",
-  "jsonls",
+  -- "jsonls",
   "ocamllsp",
   "pyright",
   "racket_langserver",
