@@ -202,10 +202,10 @@ local function my_plugins()
     "mfussenegger/nvim-jdtls",
     ft = { "maven", "mvn", "gradle", "java" },
   })
-  use({
-    "gennaro-tedesco/nvim-jqx",
-    ft = { "json" },
-  })
+  -- use({
+  --   "gennaro-tedesco/nvim-jqx",
+  --   ft = { "" },
+  -- })
   use({
     "theHamsta/nvim-treesitter-commonlisp",
     "vlime/vlime",
