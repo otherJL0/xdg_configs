@@ -1,1 +1,1 @@
-vim.keymap.nnoremap({ "  k", require("nabla").popup })
+vim.keymap.set("n", "  k", require("nabla").popup)

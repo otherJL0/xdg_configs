@@ -13,7 +13,7 @@ else
   require("config.packer")
   require("config.globals")
 
-  vim.cmd("runtime plugin/astronauta.vim")
+  -- vim.cmd("runtime plugin/astronauta.vim")
 
   require("themes.catppuccin")
   require("config.minor_modes")

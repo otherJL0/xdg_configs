@@ -1,6 +1,5 @@
 local dap = require("dap")
 local ui = require("dapui")
-local nnoremap = vim.keymap.nnoremap
 
 dap.set_log_level("TRACE")
 
@@ -165,12 +164,12 @@ require("nvim-dap-virtual-text").setup({
 
 ui.setup()
 
-nnoremap({ "<F8>", dap.toggle_breakpoint })
-nnoremap({ "  bp", dap.toggle_breakpoint })
-nnoremap({ "<F9>", dap.continue })
-nnoremap({ "  c", dap.continue })
-nnoremap({ "<F7>", dap.reverse_continue })
-nnoremap({ "<F4>", ui.toggle })
-nnoremap({ "<F2>", dap.step_over })
-nnoremap({ "<F1>", dap.step_into })
-nnoremap({ " <F5>", dap.terminate })
+vim.keymap.set("n", "<F8>", dap.toggle_breakpoint)
+vim.keymap.set("n", "  bp", dap.toggle_breakpoint)
+vim.keymap.set("n", "<F9>", dap.continue)
+vim.keymap.set("n", "  c", dap.continue)
+vim.keymap.set("n", "<F7>", dap.reverse_continue)
+vim.keymap.set("n", "<F4>", ui.toggle)
+vim.keymap.set("n", "<F2>", dap.step_over)
+vim.keymap.set("n", "<F1>", dap.step_into)
+vim.keymap.set("n", " <F5>", dap.terminate)

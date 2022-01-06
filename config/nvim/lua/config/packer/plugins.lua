@@ -157,7 +157,6 @@ local function my_plugins()
   })
   -- Misc
   use({
-    "tjdevries/astronauta.nvim",
     "L3MON4D3/LuaSnip",
     "monaqa/dial.nvim",
     "numToStr/Comment.nvim",

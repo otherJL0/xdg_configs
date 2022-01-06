@@ -1,12 +1,12 @@
 -- Quickly enter command mode
-vim.keymap.nnoremap({ "  c", ":" })
+vim.keymap.set("n", "  c", ":")
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 
 -- Hacky ctrl-a ctrl-c
-vim.keymap.nnoremap({ "ya%", "mzggy99999y'z" })
-vim.keymap.nnoremap({ "da%", "ggd99999d" })
+vim.keymap.set("n", "ya%", "mzggy99999y'z")
+vim.keymap.set("n", "da%", "ggd99999d")
 
 local opt = vim.opt
 

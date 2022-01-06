@@ -8,7 +8,6 @@ vim.opt.softtabstop = 2
 --   augroup END
 -- ]])
 
-local nnoremap = vim.keymap.nnoremap
 local ts_utils = require("nvim-treesitter.ts_utils")
 
 local function get_json_full_path()
@@ -46,4 +45,4 @@ local function get_json_full_path()
   vim.notify(vim.inspect(full_path))
 end
 
-nnoremap({ "  k", get_json_full_path })
+vim.keymap.set("n", "  k", get_json_full_path)

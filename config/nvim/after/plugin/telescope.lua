@@ -1,6 +1,5 @@
 local telescope = require("telescope")
 local themes = require("telescope.themes")
-local nnoremap = vim.keymap.nnoremap
 local actions = require("telescope.actions")
 
 telescope.setup({
@@ -90,24 +89,18 @@ local ivy = setmetatable({
   end,
 })
 
-nnoremap({ " ff", ivy.project_files })
-nnoremap({
-  " fg",
-  function()
-    telescope.extensions.live_grep_raw.live_grep_raw(themes.get_ivy({}))
-  end,
-})
-nnoremap({ " fG", ivy.grep_string })
-nnoremap({ " fh", ivy.help_tags })
-nnoremap({ " fj", ivy.file_browser })
-nnoremap({ " fm", ivy.man_pages })
-nnoremap({ "gI", ivy.lsp_implementations })
--- nnoremap({ " fp", ivy.project })
-nnoremap({
-  " fp",
-  function()
-    local config = themes.get_ivy({})
-    config.display_type = "full"
-    telescope.extensions.project.project(config)
-  end,
-})
+vim.keymap.set("n", " ff", ivy.project_files)
+vim.keymap.set("n", " fg", function()
+  telescope.extensions.live_grep_raw.live_grep_raw(themes.get_ivy({}))
+end)
+vim.keymap.set("n", " fG", ivy.grep_string)
+vim.keymap.set("n", " fh", ivy.help_tags)
+vim.keymap.set("n", " fj", ivy.file_browser)
+vim.keymap.set("n", " fm", ivy.man_pages)
+vim.keymap.set("n", "gI", ivy.lsp_implementations)
+-- vim.keymap.set("n", " fp", ivy.project )
+vim.keymap.set("n", " fp", function()
+  local config = themes.get_ivy({})
+  config.display_type = "full"
+  telescope.extensions.project.project(config)
+end)

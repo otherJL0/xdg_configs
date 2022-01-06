@@ -1,6 +1,3 @@
-local nnoremap = vim.keymap.nnoremap
-local vnoremap = vim.keymap.vnoremap
-
 local os_config = function()
   if vim.fn.has("mac") == 1 then
     return "mac"
@@ -76,38 +73,38 @@ local on_attach = function(client, bufnr)
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 
-  nnoremap({ "gpd", require("goto-preview").goto_preview_definition })
-  nnoremap({ "gpi", require("goto-preview").goto_preview_implementation })
-  nnoremap({ "gP", require("goto-preview").close_all_win })
+  vim.keymap.set("n", "gpd", require("goto-preview").goto_preview_definition)
+  vim.keymap.set("n", "gpi", require("goto-preview").goto_preview_implementation)
+  vim.keymap.set("n", "gP", require("goto-preview").close_all_win)
   -- Only set if you have telescope installed
-  nnoremap({ "gpr", require("goto-preview").goto_preview_references })
+  vim.keymap.set("n", "gpr", require("goto-preview").goto_preview_references)
 
-  nnoremap({ "gD", vim.lsp.buf.declaration })
-  nnoremap({ "gd", vim.lsp.buf.definition })
-  nnoremap({ "K", vim.lsp.buf.hover })
-  nnoremap({ "gi", vim.lsp.buf.implementation })
-  nnoremap({ " K>", vim.lsp.buf.signature_help })
-  nnoremap({ " wa", vim.lsp.buf.add_workspace_folder })
-  nnoremap({ " wr", vim.lsp.buf.remove_workspace_folder })
-  nnoremap({ " D", vim.lsp.buf.type_definition })
-  nnoremap({ " rn", vim.lsp.buf.rename })
-  nnoremap({ "gr", vim.lsp.buf.references })
-  nnoremap({ " ca", vim.lsp.buf.code_action })
-  vnoremap({ " ca", vim.lsp.buf.range_code_action })
-  -- nnoremap({ " e", vim.diagnostic.show_line_diagnostics })
-  nnoremap({ "[d", vim.diagnostic.goto_prev })
-  nnoremap({ "]d", vim.diagnostic.goto_next })
-  nnoremap({ " q", vim.diagnostic.setloclist })
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+  vim.keymap.set("n", "K", vim.lsp.buf.hover)
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
+  vim.keymap.set("n", " K>", vim.lsp.buf.signature_help)
+  vim.keymap.set("n", " wa", vim.lsp.buf.add_workspace_folder)
+  vim.keymap.set("n", " wr", vim.lsp.buf.remove_workspace_folder)
+  vim.keymap.set("n", " D", vim.lsp.buf.type_definition)
+  vim.keymap.set("n", " rn", vim.lsp.buf.rename)
+  vim.keymap.set("n", "gr", vim.lsp.buf.references)
+  vim.keymap.set("n", " ca", vim.lsp.buf.code_action)
+  vim.keymap.set("v", " ca", vim.lsp.buf.range_code_action)
+  -- vim.keymap.set("n", " e", vim.diagnostic.show_line_diagnostics )
+  vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+  vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+  vim.keymap.set("n", " q", vim.diagnostic.setloclist)
 
   -- Java specific
-  nnoremap({ " di", require("jdtls").organize_imports })
-  nnoremap({ " dt", require("jdtls").test_class })
-  nnoremap({ " dn", require("jdtls").test_nearest_method })
+  vim.keymap.set("n", " di", require("jdtls").organize_imports)
+  vim.keymap.set("n", " dt", require("jdtls").test_class)
+  vim.keymap.set("n", " dn", require("jdtls").test_nearest_method)
   -- nnoremap({" de", require('jdtls').extract_variable(true)<CR>", opts)
-  nnoremap({ " de", require("jdtls").extract_variable })
+  vim.keymap.set("n", " de", require("jdtls").extract_variable)
   -- nnoremap({" dm", require('jdtls').extract_method(true)<CR>", opts)
 
-  -- nnoremap({ " cf", vim.lsp.buf.formatting })
+  -- vim.keymap.set("n", " cf", vim.lsp.buf.formatting )
 
   vim.api.nvim_exec(
     [[
