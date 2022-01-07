@@ -4,9 +4,9 @@ local sumneko_cmd = lua_language_server_dir .. "/bin/"
 
 local operating_system = function()
   if vim.fn.has("mac") == 1 then
-    return "macOS"
+    return "macOS/"
   elseif vim.fn.has("unix") == 1 then
-    return "Linux"
+    return ""
   end
   return ""
 end
@@ -14,7 +14,7 @@ end
 return require("lua-dev").setup({
   lspconfig = {
     cmd = {
-      sumneko_cmd .. operating_system() .. "/lua-language-server",
+      sumneko_cmd .. operating_system() .. "lua-language-server",
       lua_language_server_dir .. "/main.lua",
     },
     root_dir = require("lspconfig.util").root_pattern("init.lua", "stylua.toml", ".luacheckrc"),
