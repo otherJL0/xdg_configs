@@ -44,11 +44,14 @@ def main() -> None:
             if target.is_symlink() and target.readlink() == dir:
                 print(f"\tLink exists for {target}")
             else:
+                target.symlink_to(dir)
                 print(f"Symlink created for {dir}")
         except FileExistsError:
             if prompt_replacement(target):
                 remove_existing_path(target)
-            target.symlink_to(dir)
+                target.symlink_to(dir)
+            else:
+                print(f"Existing {target} was not removed")
 
 
 if __name__ == "__main__":
