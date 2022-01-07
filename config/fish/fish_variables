@@ -21,6 +21,9 @@ SETUVAR _fish_abbr_gr:git\x20restore
 SETUVAR _fish_abbr_grm:git\x20rm\x20\x2dr\x20\x2d\x2dcached
 SETUVAR _fish_abbr_gs:git\x20status
 SETUVAR _fish_abbr_gss:git\x20status\x20\x2ds
+SETUVAR _fish_abbr_gsub:git\x20submodule
+SETUVAR _fish_abbr_gsubup:git\x20submodule\x20update
+SETUVAR _fish_abbr_gsupir:git\x20submodule\x20\x2d\x2dinit\x20\x2d\x2drecursive
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7
