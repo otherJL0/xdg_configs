@@ -30,5 +30,18 @@ else
     vim.notify(vim.inspect(element))
   end, { nargs = 1 })
 
-  vim.keymap.set("n", " <C-l>", vim.diagnostic.hide)
+  vim.g.custom_hide_diagnostic = false
+  vim.keymap.set("n", " <C-l>", function()
+    if vim.tbl_isempty(vim.diagnostic.get(0)) then
+      return
+    end
+
+    if vim.g.custom_hide_diagnostic then
+      vim.g.custom_hide_diagnostic = false
+      vim.diagnostic.show()
+    else
+      vim.g.custom_hide_diagnostic = true
+      vim.diagnostic.hide()
+    end
+  end)
 end
