@@ -31,5 +31,4 @@ else
   end, { nargs = 1 })
 
   vim.keymap.set("n", " <C-l>", vim.diagnostic.hide)
-  local smaple = 0
 end
