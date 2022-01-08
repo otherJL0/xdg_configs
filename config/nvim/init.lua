@@ -13,35 +13,6 @@ else
   require("config.packer")
   require("config.globals")
 
-  -- vim.cmd("runtime plugin/astronauta.vim")
-
   require("themes.catppuccin")
   require("config.minor_modes")
-
-  function P(element)
-    print(vim.inspect(element))
-  end
-
-  function PN(element)
-    vim.notify(vim.inspect(element))
-  end
-
-  vim.api.nvim_add_user_command("Inspect", function(element)
-    vim.notify(vim.inspect(element))
-  end, { nargs = 1 })
-
-  vim.g.custom_hide_diagnostic = false
-  vim.keymap.set("n", " <C-l>", function()
-    if vim.tbl_isempty(vim.diagnostic.get(0)) then
-      return
-    end
-
-    if vim.g.custom_hide_diagnostic then
-      vim.g.custom_hide_diagnostic = false
-      vim.diagnostic.show()
-    else
-      vim.g.custom_hide_diagnostic = true
-      vim.diagnostic.hide()
-    end
-  end)
 end
