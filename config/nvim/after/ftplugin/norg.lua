@@ -52,13 +52,9 @@ require("neorg").setup({
 })
 
 vim.opt.spell = true
-vim.keymap.set(
-	"n",
-  "K",
-  function()
-    require("telescope.builtin").spell_suggest(require("telescope.themes").get_cursor({ winblend = 10 }))
-  end,
-)
+vim.keymap.set("n", "K", function()
+  require("telescope.builtin").spell_suggest(require("telescope.themes").get_cursor({ winblend = 10 }))
+end)
 
 require("spellsitter").setup({
   -- Whether enabled, can be a list of filetypes, e.g. {'python', 'lua'}
