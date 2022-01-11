@@ -20,5 +20,5 @@ abbr -a gmv git mv
 abbr -a grm git rm -r --cached
 abbr -a gsub git submodule
 abbr -a gsubup git submodule update
-abbr -a gsupir git submodule --init --recursive
+abbr -a gsupir git submodule update --init --recursive
 abbr -a gR git restore .
