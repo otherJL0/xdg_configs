@@ -50,17 +50,17 @@ telescope.load_extension("ui-select")
 telescope.load_extension("file_browser")
 telescope.load_extension("fzf")
 
+local opts = themes.get_ivy({
+  layout_config = {
+    preview_cutoff = 1, -- Preview should always show (unless previewer = false)
+
+    width = function(_, max_columns, _)
+      return math.min(max_columns, 80)
+    end,
+  },
+})
 local ivy = setmetatable({
   project_files = function()
-    local opts = themes.get_ivy({
-      layout_config = {
-        preview_cutoff = 1, -- Preview should always show (unless previewer = false)
-
-        width = function(_, max_columns, _)
-          return math.min(max_columns, 80)
-        end,
-      },
-    })
     local ok = pcall(require("telescope.builtin").git_files, opts)
     if not ok then
       require("telescope.builtin").find_files(opts)
@@ -68,21 +68,6 @@ local ivy = setmetatable({
   end,
 }, {
   __index = function(_, function_call)
-    local extensions = vim.tbl_keys(telescope.extensions)
-    local opts = themes.get_ivy({
-      layout_config = {
-        preview_cutoff = 1, -- Preview should always show (unless previewer = false)
-
-        width = function(_, max_columns, _)
-          return math.min(max_columns, 80)
-        end,
-      },
-    })
-    if vim.tbl_contains(extensions, function_call) then
-      return function()
-        require("telescope").extensions[function_call][function_call](opts)
-      end
-    end
     return function()
       require("telescope.builtin")[function_call](opts)
     end
@@ -91,7 +76,7 @@ local ivy = setmetatable({
 
 vim.keymap.set("n", " ff", ivy.project_files)
 vim.keymap.set("n", " fg", function()
-  telescope.extensions.live_grep_raw.live_grep_raw(themes.get_ivy({}))
+  telescope.extensions.live_grep_raw.live_grep_raw(opts)
 end)
 vim.keymap.set("n", " fG", ivy.grep_string)
 vim.keymap.set("n", " fh", ivy.help_tags)
