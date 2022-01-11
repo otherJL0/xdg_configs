@@ -119,7 +119,7 @@ format = '\[[$symbol($version)]($style)\]'
 
 [python]
 symbol = " "
-detect_folders = [".venv"]
+detect_folders = [".venv","venv"]
 python_binary = [".venv/bin/python", "python3", "python"]
 version_format = "${major}.${minor}"
 format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
