@@ -1,14 +1,9 @@
-repos=(
-pkg.osquery.io/rpm/osquery-s3-rpm
-cli.github.com/packages/rpm/gh-cli
-)
-
 curl -L https://pkg.osquery.io/rpm/GPG | sudo tee /etc/pki/rpm-gpg/RPM-GPG-KEY-osquery
-for repo in "${repos[@]}"; do
-  sudo dnf config-manager --add-repo https://pkg.osquery.io/rpm/osquery-s3-rpm
-done
 
-sudo dnf refresh
+sudo dnf config-manager --add-repo https://pkg.osquery.io/rpm/osquery-s3-rpm.repo
+sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+
+sudo dnf reposync
 sudo dnf groupinstall -y --with-optional \
   "C Development Tools" \
   "D Development Tools and Libraries" \
@@ -64,6 +59,7 @@ sudo dnf install -y \
   neochat \
   ninja-build \
   openssl-{devel,static,libs} \
+  osqueyr \
   plocate \
   readline{,-{devel,static}} \
   ripgrep \
