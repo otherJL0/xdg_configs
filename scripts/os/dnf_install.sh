@@ -1,17 +1,4 @@
-curl -L https://pkg.osquery.io/rpm/GPG | sudo tee /etc/pki/rpm-gpg/RPM-GPG-KEY-osquery
-
-sudo dnf config-manager --add-repo https://pkg.osquery.io/rpm/osquery-s3-rpm.repo
-sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
-
-sudo dnf reposync
-sudo dnf groupinstall -y --with-optional \
-  "C Development Tools" \
-  "D Development Tools and Libraries" \
-  "Development Tools" \
-  "Container Management" \
-  "System Tools" \
-
-sudo dnf install -y \
+sudo dnf install --allowerasing \
   alacritty \
   ansible \
   bat \
@@ -47,7 +34,7 @@ sudo dnf install -y \
   latte-dock \
   libcurl{,-devel} \
   libicu{,-{devel,doc}} \
-  libpng{,-{devel,,static,tools}} \
+  libpng{,-{devel,static,tools}} \
   libstdc++{,-{devel,docs,static}} \
   libtree-sitter{,-devel} \
   lld \
@@ -58,13 +45,13 @@ sudo dnf install -y \
   ncurses{,-{libs,devel,static}} \
   neochat \
   ninja-build \
-  openssl-{devel,static,libs} \
-  osqueyr \
+  openssl-{devel,libs} \
+  osquery \
   plocate \
   readline{,-{devel,static}} \
   ripgrep \
   rr \
-  sqlite{,-analyzer,devel,doc,libs} \
+  sqlite{,-{analyzer,devel,doc,libs}} \
   sqlite{browser,man} \
   tmux \
   valgrind \
