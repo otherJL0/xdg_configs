@@ -107,14 +107,14 @@ def configure(repl):
 
     # Use this colorscheme for the code.
     # repl.use_code_colorscheme("default")
-    repl.use_code_colorscheme("monokai")
+    repl.use_code_colorscheme("native")
 
     # Set color depth (keep in mind that not all terminals support true color).
 
     # repl.color_depth = "DEPTH_1_BIT"  # Monochrome.
     # repl.color_depth = "DEPTH_4_BIT"  # ANSI colors only.
-    repl.color_depth = "DEPTH_8_BIT"  # The default, 256 colors.
-    # repl.color_depth = "DEPTH_24_BIT"  # True color.
+    # repl.color_depth = "DEPTH_8_BIT"  # The default, 256 colors.
+    repl.color_depth = "DEPTH_24_BIT"  # True color.
 
     # Min/max brightness
     repl.min_brightness = 0.0  # Increase for dark terminal backgrounds.
