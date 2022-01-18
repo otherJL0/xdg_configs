@@ -63,7 +63,6 @@ cmp.setup({
     { name = "nvim_lsp", trigger_character = ".", group_index = 2 },
     { name = "path", trigger_character = "/", group_index = 9 },
     { name = "buffer", group_index = 10 },
-    { name = "rg", group_index = 10 },
   }),
 
   formatting = {
@@ -76,7 +75,6 @@ cmp.setup({
         luasnip = "[LuaSnip]",
         nvim_lua = "[Lua]",
         neorg = "[Neorg]",
-        rg = "[Rg]",
         path = "[Path]",
       },
     }),

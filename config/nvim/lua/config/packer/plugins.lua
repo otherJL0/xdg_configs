@@ -128,7 +128,6 @@ local function my_plugins()
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lua",
     "saadparwaiz1/cmp_luasnip",
-    "lukas-reineke/cmp-rg",
     "hrsh7th/cmp-nvim-lsp-document-symbol",
     "dmitmel/cmp-cmdline-history",
     "f3fora/cmp-spell",
