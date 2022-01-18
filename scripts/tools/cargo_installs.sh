@@ -1,3 +1,5 @@
+rustup +nightly component add rust-analyzer-preview
+
 cargo install stylua
 cargo install zoxide
 cargo install mcfly
