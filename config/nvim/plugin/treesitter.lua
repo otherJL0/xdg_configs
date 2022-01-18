@@ -23,6 +23,7 @@ local ts_patterns = {
   ["list"] = "Structure",
   ["object"] = "Structure",
   ["array"] = "Structure",
+  ["expression_statement"] = "Structure",
   ["type_declaration"] = "Structure",
   ["value_declaration"] = "Structure",
   ["let_in_expr"] = "Structure",
