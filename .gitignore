@@ -3,3 +3,5 @@ config/zsh/.zcompcache/
 config/zsh/.zsh_sessions/
 .zsh_history
 fish_variables
+casing
+history
