@@ -1,4 +1,6 @@
 set -U fish_greeting
+set -gx EDITOR nvim
+set -gx VISUAL nvim
 # XDG Configuration
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx XDG_DATA_HOME $HOME/.local/share
