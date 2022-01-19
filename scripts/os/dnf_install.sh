@@ -20,7 +20,6 @@ sudo dnf install --allowerasing \
   git-delta \
   graphite2{,-devel} \
   harfbuzz{,-{icu,devel}} \
-  heaptrack \
   helm \
   incron \
   inotify-tools \
