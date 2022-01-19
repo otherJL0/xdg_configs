@@ -1,5 +1,4 @@
 sudo dnf install --allowerasing \
-  alacritty \
   ansible \
   bat \
   below \
@@ -7,10 +6,9 @@ sudo dnf install --allowerasing \
   ccache \
   clang-tools-extra \
   clazy \
-  cmake{,-{data,doc,fedora,filesystem,gui,rpm-macros}} \
+  cmake{,-{data,doc,fedora,filesystem,rpm-macros}} \
   cscope \
   curl \
-  dolphin-plugins \
   extra-cmake-modules \
   fd-find \
   fish \
@@ -27,11 +25,7 @@ sudo dnf install --allowerasing \
   incron \
   inotify-tools \
   julia{,-{common,devel,doc}} \
-  kate{,-plugins} \
-  kcachegrind \
-  kexi{,-libs} \
   kubernetes{,-{client,kubeadm}} \
-  latte-dock \
   libcurl{,-devel} \
   libicu{,-{devel,doc}} \
   libpng{,-{devel,static,tools}} \
@@ -43,7 +37,6 @@ sudo dnf install --allowerasing \
   luajit{,-devel} \
   meson \
   ncurses{,-{libs,devel,static}} \
-  neochat \
   ninja-build \
   openssl-{devel,libs} \
   osquery \
@@ -52,11 +45,9 @@ sudo dnf install --allowerasing \
   ripgrep \
   rr \
   sqlite{,-{analyzer,devel,doc,libs}} \
-  sqlite{browser,man} \
   tmux \
   valgrind \
   watchman \
   wget \
-  wl-clipboard \
   xz{,-{devel,libs,lzma-compat,static}} \
   zlib{,-{devel,static}}
