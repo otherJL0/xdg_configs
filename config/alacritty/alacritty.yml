@@ -228,9 +228,11 @@ live_config_reload: true
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
- program: tmux
-#  args:
-#    - --login
+ program: /usr/local/bin/tmux
+ args:
+    - -u
+    - -l
+    - -T 256:clipboard:ccolour:cstyle:extkeys:focus:margins:mouse:overline:rectfill:RGB:strikethrough:sync:title:usstyle
 
 # Startup directory
 #
