@@ -169,7 +169,7 @@ truncation_length = 1
 [shlvl]
 disabled = false
 style = "bold yellow"
-threshold = 2
+threshold = 3
 format = "[SHLVL:$shlvl]($style) "
 
 [memory_usage]
