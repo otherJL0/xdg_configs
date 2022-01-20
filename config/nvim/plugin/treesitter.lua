@@ -3,6 +3,7 @@ require("config.treesitter")
 local ts_patterns = {
   ["class"] = "Structure",
   ["function"] = "Function",
+  ["closure_expression"] = "Function",
   ["method"] = "Function",
   ["for"] = "Repeat",
   ["while"] = "Repeat",
@@ -28,6 +29,7 @@ local ts_patterns = {
   ["value_declaration"] = "Structure",
   ["let_in_expr"] = "Structure",
   ["call_expression"] = "Function",
+  ["tuple_expression"] = "Structure",
 }
 require("treesitter-context").setup({
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
