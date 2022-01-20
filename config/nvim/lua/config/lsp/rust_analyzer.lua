@@ -6,6 +6,7 @@ return {
   settings = {
     ["rust-analyzer"] = {
       assist = {
+        exprFillDefault = "TODO",
         importGranularity = "crate",
         importEnforceGranularity = false,
         importPrefix = "plain",
@@ -21,24 +22,24 @@ return {
       cargo = {
         autoreload = true,
         allFeatures = false,
-        unsetTest = { "core" },
-        features = {},
+        -- unsetTest = { "core" },
+        -- features = {},
         runBuildScripts = true,
         useRustcWrapperForBuildScripts = true,
-        noDefaultFeatures = false,
-        target = vim.NIL,
+        -- noDefaultFeatures = false,
+        -- target = vim.NIL,
         noSysroot = false,
       },
       checkOnSave = {
         enable = true,
-        allFeatures = vim.NIL,
+        -- allFeatures = vim.NIL,
         allTargets = true,
         command = "check",
-        noDefaultFeatures = vim.NIL,
-        target = vim.NIL,
-        extraArgs = {},
-        features = vim.NIL,
-        overrideCommand = vim.NIL,
+        -- noDefaultFeatures = vim.NIL,
+        -- target = vim.NIL,
+        -- extraArgs = {},
+        -- features = vim.NIL,
+        -- overrideCommand = vim.NIL,
       },
       completion = {
         addCallArgumentSnippets = true,
@@ -60,17 +61,17 @@ return {
       diagnostics = {
         enable = true,
         enableExperimental = true,
-        disabled = {},
-        remapPrefix = vim.empty_dict(),
-        warningsAsHint = {},
-        warningsAsInfo = {},
+        -- disabled = {},
+        -- remapPrefix = vim.empty_dict(),
+        -- warningsAsHint = {},
+        -- warningsAsInfo = {},
       },
       experimental = {
         procAttrMacros = true,
       },
       files = {
         watcher = "client",
-        excludeDirs = {},
+        -- excludeDirs = {},
       },
       highlightRelated = {
         references = true,
@@ -115,23 +116,23 @@ return {
         enumVariantReferences = true,
         forceCustomCommands = true,
       },
-      linkedProjects = {},
-      lruCapacity = 128,
+      -- linkedProjects = {},
+      lruCapacity = 1024,
       notifications = {
         cargoTomlNotFound = true,
       },
       procMacro = {
         enable = true,
-        server = vim.NIL,
+        -- server = vim.NIL,
       },
-      runnables = {
-        overrideCargo = vim.NIL,
-        cargoExtraArgs = {},
-      },
-      rustcSource = vim.NIL,
+      -- runnables = {
+      -- overrideCargo = vim.NIL,
+      -- cargoExtraArgs = {},
+      -- },
+      -- rustcSource = vim.NIL,
       rustfmt = {
-        extraArgs = {},
-        overrideCommand = vim.NIL,
+        -- extraArgs = {},
+        -- overrideCommand = vim.NIL,
         enableRangeFormatting = true,
       },
       updates = {
