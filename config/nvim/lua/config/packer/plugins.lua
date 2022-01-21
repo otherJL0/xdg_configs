@@ -217,7 +217,7 @@ local function my_plugins()
       "jbyuki/nabla.nvim",
       "lewis6991/spellsitter.nvim",
     },
-    after = { "nvim-treesitter", "nvim-telescope", "nvim-cmp" }, -- Ensures that neorg loads after nvim-treesitter
+    after = { "nvim-treesitter", "telescope.nvim", "nvim-cmp" }, -- Ensures that neorg loads after nvim-treesitter
   })
   use({
     "windwp/nvim-ts-autotag",
