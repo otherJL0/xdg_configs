@@ -185,13 +185,39 @@ local function my_plugins()
   -- Filetype specific plugins
   use({
     "nvim-neorg/neorg",
+    config = function()
+      require("neorg").setup({
+        load = {
+          ["core.defaults"] = {},
+          ["core.norg.concealer"] = {},
+          ["core.keybinds"] = {
+            config = {
+              default_keybinds = true,
+              neorg_leader = "<Leader>o",
+            },
+          },
+          ["core.norg.completion"] = {
+            config = {
+              engine = "nvim-cmp",
+            },
+          },
+          ["core.norg.dirman"] = {
+            config = {
+              workspaces = {
+                my_workspace = "~/neorg",
+              },
+            },
+          },
+        },
+      })
+    end,
     requires = {
       "nvim-lua/plenary.nvim",
       "nvim-neorg/neorg-telescope",
       "jbyuki/nabla.nvim",
       "lewis6991/spellsitter.nvim",
     },
-    after = "nvim-treesitter", -- Ensures that neorg loads after nvim-treesitter
+    after = { "nvim-treesitter", "nvim-telescope", "nvim-cmp" }, -- Ensures that neorg loads after nvim-treesitter
   })
   use({
     "windwp/nvim-ts-autotag",
