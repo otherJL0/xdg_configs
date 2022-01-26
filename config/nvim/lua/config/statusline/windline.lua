@@ -247,7 +247,7 @@ windline.setup({
     },
     tab_end = {
       { "%=", { "NormalFg", "NormalBg" } },
-      lsp_status,
+      -- lsp_status,
       -- {
       --   function(tab_index)
       --     return vim.fn.tabpagewinnr(tab_index, "$")

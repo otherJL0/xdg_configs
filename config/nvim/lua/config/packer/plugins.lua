@@ -37,6 +37,7 @@ local function my_plugins()
     "ray-x/lsp_signature.nvim",
     "rmagatti/goto-preview",
     "onsails/lspkind-nvim",
+    "j-hui/fidget.nvim",
     requires = "neovim/lspconfig",
     opt = true,
   })
