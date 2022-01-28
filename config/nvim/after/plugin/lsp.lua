@@ -47,16 +47,17 @@ local language_servers = {
   "gopls",
   "hls",
   "html",
-  -- "jsonls",
   "ocamllsp",
   "pyright",
   "racket_langserver",
   "solargraph",
   "sumneko_lua",
   "taplo",
-  -- "typeprof",
   "texlab",
+  "tsserver",
   "yamlls",
+  -- "jsonls",
+  -- "typeprof",
 }
 
 require("config.lsp").launch(language_servers)
