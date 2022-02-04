@@ -23,8 +23,14 @@ fish_add_path -P $COURSIER_DATA/bin
 # set -ga fish_user_paths $COURSIER_DATA/bin
 
 # Clang
-set -gx CC clang
-set -gx CXX clang++
+set -gx AOCC_HOME /opt/AMD/aocc-compiler-3.2.0
+if test -d $AOCC_HOME
+    set -gx CC "$AOCC_HOME/bin/clang -march=znver3"
+    set -gx CXX "$AOCC_HOME/bin/clang++ -march=znver3"
+else
+    set -gx CC clang
+    set -gx CXX clang++
+end
 
 # CMake
 set -gx CMAKE_EXPORT_COMPILE_COMMANDS 1
