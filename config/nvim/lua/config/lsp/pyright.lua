@@ -21,4 +21,15 @@ return {
       },
     },
   },
+  single_file_support = true,
+  root_dir = require("lspconfig.util").root_pattern(
+    "__init__.py",
+    "__main__.py",
+    "main.py",
+    "pyproject.toml",
+    "pyright.json",
+    "setup.cfg",
+    "setup.py",
+    "src/"
+  ),
 }
