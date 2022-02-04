@@ -63,6 +63,11 @@ fish_add_path -P $HOME/.cache/nvim/packer_hererocks/2.1.0-beta3/bin
 
 # Rust
 set -gx RUSTUP_HOME $HOME/.rustup
-set -gx RUSTUP_TOOLCHAIN nightly-x86_64-unknown-linux-gnu
+
+if test ( uname ) = Darwin
+    set -gx RUSTUP_TOOLCHAIN nightly-x86_64-apple-darwin
+else
+    set -gx RUSTUP_TOOLCHAIN nightly-x86_64-unknown-linux-gnu
+end
 fish_add_path --prepend --path --global $RUSTUP_HOME/toolchains/$RUSTUP_TOOLCHAIN/bin
 # set -ga fish_user_paths $RUSTUP_HOME/toolchains/$RUSTUP_TOOLCHAIN/bin
