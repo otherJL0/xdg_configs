@@ -41,12 +41,7 @@ local function my_plugins()
     opt = true,
   })
 
-  use({
-    "j-hui/fidget.nvim",
-    config = function()
-      require("fidget").setup({})
-    end,
-  })
+  use({ "j-hui/fidget.nvim" })
 
   use({
     "jose-elias-alvarez/null-ls.nvim",
