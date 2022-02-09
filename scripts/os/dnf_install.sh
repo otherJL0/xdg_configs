@@ -23,7 +23,6 @@ sudo dnf install --allowerasing \
   helm \
   incron \
   inotify-tools \
-  julia{,-{common,devel,doc}} \
   kubernetes{,-{client,kubeadm}} \
   libcurl{,-devel} \
   libicu{,-{devel,doc}} \
