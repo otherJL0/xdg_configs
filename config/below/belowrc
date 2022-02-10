@@ -1,0 +1,5 @@
+[cmd]
+next_tab = 'l'
+prev_tab = 'h'
+next_col = 'j'
+prev_col = 'h'
