@@ -41,6 +41,9 @@ local opts = {
       -- wheter to show parameter hints with the inlay hints or not
       show_parameter_hints = true,
 
+      -- whether to show variable name before type hints with the inlay hints or not
+      show_variable_name = true,
+
       -- prefix for parameter hints
       parameter_hints_prefix = " <- ",
 

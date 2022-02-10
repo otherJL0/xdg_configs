@@ -6,7 +6,7 @@ return {
   settings = {
     ["rust-analyzer"] = {
       assist = {
-        exprFillDefault = "TODO",
+        exprFillDefault = "todo",
         importGranularity = "crate",
         importEnforceGranularity = false,
         importPrefix = "plain",
