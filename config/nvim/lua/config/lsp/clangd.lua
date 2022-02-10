@@ -2,6 +2,7 @@ return {
   init_options = {
     clangdFileStatus = true,
   },
+  on_attach = require("config.lsp").on_attach,
   handlers = require("lsp-status").extensions.clangd.setup(),
   cmd = { "clangd", "--background-index" },
   filetypes = {
