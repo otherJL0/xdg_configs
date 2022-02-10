@@ -316,25 +316,28 @@
       </action>
     </keybind>
     <keybind key="W-S-H">
-        <action name="UnmaximizeFull"/>
-        <action name="MaximizeVert"/>
-        <action name="MoveResizeTo">
-            <width>50%</width>
-        </action>
-        <action name="MoveToEdge"><direction>west</direction></action>
+      <action name="UnmaximizeFull"/>
+      <action name="MaximizeVert"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+      </action>
+      <action name="MoveToEdge">
+        <direction>west</direction>
+      </action>
     </keybind>
     <keybind key="W-S-L">
-        <action name="UnmaximizeFull"/>
-        <action name="MaximizeVert"/>
-        <action name="MoveResizeTo">
-            <width>50%</width>
-        </action>
-        <action name="MoveToEdge"><direction>east</direction></action>
+      <action name="UnmaximizeFull"/>
+      <action name="MaximizeVert"/>
+      <action name="MoveResizeTo">
+        <width>50%</width>
+      </action>
+      <action name="MoveToEdge">
+        <direction>east</direction>
+      </action>
     </keybind>
     <keybind key="W-S-O">
-        <action name="ToggleMaximize"/>
+      <action name="ToggleMaximize"/>
     </keybind>
-
     <!-- Keybindings for running applications -->
     <keybind key="W-e">
       <action name="Execute">
