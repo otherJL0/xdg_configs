@@ -17,4 +17,4 @@ else
   require("config.minor_modes")
 end
 
-vim.g.python3_host_prog = vim.fn.stdpath("cache") .. "/venv/bin/python3"
+vim.g.python3_host_prog = vim.fn.stdpath("cache") .. "/.venv/bin/python3"
