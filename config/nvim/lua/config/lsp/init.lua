@@ -83,7 +83,9 @@ local function on_attach(client, bufnr)
     vim.api.nvim_command([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
   end
 
-  if client.resolved_capabilities.document_formatting then
+  client_cmd = vim.split(client.config.cmd[1], "/")
+  server_name = client_cmd[#client_cmd]
+  if client.resolved_capabilities.document_formatting and server_name ~= "lua-language-server" then
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
     vim.keymap.set("n", " F", vim.lsp.buf.formatting)
     vim.api.nvim_command([[augroup Format]])
