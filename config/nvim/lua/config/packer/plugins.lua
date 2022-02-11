@@ -263,8 +263,10 @@ local function my_plugins()
     config = function()
       require("config.lsp.clangd_extensions")
     end,
-    ft = {"c", "cpp", "c++", "h", "hpp", "cc"},
+    ft = { "c", "cpp", "c++", "h", "hpp", "cc" },
   })
+
+  use({ "jose-elias-alvarez/nvim-lsp-ts-utils" })
   use({ "b0o/SchemaStore.nvim" })
   use({
     "norcalli/nvim-colorizer.lua",

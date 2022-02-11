@@ -38,5 +38,5 @@ return {
       },
     },
   },
-  root_dir = require("lspconfig.util").root_pattern("denops/", "tsconfig.json", "mod.ts", "app.tsx"),
+  root_dir = require("lspconfig.util").root_pattern("denops/", "mod.ts", "app.tsx"),
 }
