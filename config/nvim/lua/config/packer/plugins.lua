@@ -267,6 +267,8 @@ local function my_plugins()
   })
 
   use({ "jose-elias-alvarez/nvim-lsp-ts-utils" })
+  use({ "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" })
+  use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
   use({ "b0o/SchemaStore.nvim" })
   use({
     "norcalli/nvim-colorizer.lua",
