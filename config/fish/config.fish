@@ -14,6 +14,9 @@ if status is-interactive
         source /usr/local/opt/asdf/libexec/asdf.fish
     end
 
+    # Colorscheme
+    source ~/.config/fish/colorschemes/nightfox.fish
+
 end
 
 set -gx MANPAGER /usr/local/bin/nvim +Man!
@@ -30,4 +33,5 @@ end
 
 # opam configuration
 source /home/jlopez/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
-set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/jlopez/.ghcup/bin $PATH # ghcup-env
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
+set -gx PATH $HOME/.cabal/bin /home/jlopez/.ghcup/bin $PATH # ghcup-env

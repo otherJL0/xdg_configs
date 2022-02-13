@@ -6,6 +6,7 @@ nightfox.setup({
   fox = "nightfox", -- change the colorscheme to use nordfox
   transparent = false,
   terminal_colors = true,
+  alt_nc = true,
   styles = {
     comments = "ITALIC", -- change style of comments to be italic
     keywords = "bold", -- change style of keywords to be bold

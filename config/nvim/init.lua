@@ -13,7 +13,8 @@ else
   require("config.packer")
   require("config.globals")
 
-  require("themes.catppuccin")
+  -- require("themes.catppuccin")
+  require("themes.nightfox")
   require("config.minor_modes")
 end
 
