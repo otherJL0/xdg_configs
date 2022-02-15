@@ -14,7 +14,8 @@ else
   require("config.globals")
 
   -- require("themes.catppuccin")
-  require("themes.nightfox")
+  -- require("themes.nightfox")
+  require("themes.monokai")
   require("config.minor_modes")
 end
 
