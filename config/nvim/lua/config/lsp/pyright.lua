@@ -12,7 +12,7 @@ return {
         diagnosticSeverityOverrides = {
           reportCallInDefaultInitializer = "warning",
           reportImplicitStringConcatenation = "warning",
-          reportMissingSuperCall = "warning",
+          -- reportMissingSuperCall = "warning",
           reportPropertyTypeMismatch = "warning",
           reportUninitializedInstanceVariable = "warning",
           reportUnnecessaryTypeIgnoreComment = "warning",
