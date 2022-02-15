@@ -1,5 +1,5 @@
 [cmd]
-next_tab = 'l'
-prev_tab = 'h'
-next_col = 'shift-l'
-prev_col = 'shift-h'
+prev_tab = 'H'
+next_tab = 'L'
+left = 'h'
+right = 'l'
