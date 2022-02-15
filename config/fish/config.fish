@@ -15,7 +15,7 @@ if status is-interactive
     end
 
     # Colorscheme
-    source ~/.config/fish/colorschemes/nightfox.fish
+    source ~/.config/fish/colorschemes/catppuccin.fish
 
 end
 
