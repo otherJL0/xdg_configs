@@ -23,19 +23,29 @@ fish_add_path -P $COURSIER_DATA/bin
 # set -ga fish_user_paths $COURSIER_DATA/bin
 
 # Clang
-set -gx AOCC_HOME /opt/AMD/aocc-compiler-3.2.0
-if test -d $AOCC_HOME
-    set -gx CC "$AOCC_HOME/bin/clang -march=znver3"
-    set -gx CXX "$AOCC_HOME/bin/clang++ -march=znver3"
-else
-    set -gx CC clang
-    set -gx CXX clang++
-end
+set -gx CC clang
+set -gx CXX clang++
+# set -gx AOCC_HOME /opt/AMD/aocc-compiler-3.2.0
+# if test -d $AOCC_HOME
+#     set -gx CC "$AOCC_HOME/bin/clang -march=znver3"
+#     set -gx CXX "$AOCC_HOME/bin/clang++ -march=znver3"
+# else
+#     set -gx CC clang
+#     set -gx CXX clang++
+# end
 
 # CMake
 set -gx CMAKE_EXPORT_COMPILE_COMMANDS 1
 set -gx CMAKE_BUILD_TYPE Release
 set -gx CMAKE_DISABLE32BIT ON
+set -gx CMAKE_C_COMPILER_LAUNCHER sccache
+set -gx CMAKE_CXX_COMPILER_LAUNCHER sccache
+
+
+set -gx CCACHE_MAXSIZE 100G
+set -gx CCACHE_DIR ~/.cache/ccache
+set -gx SCCACHE_MAXSIZE 100G
+set -gx SCCACHE_DIR ~/.cache/sccache
 
 
 # Golang
@@ -70,4 +80,11 @@ else
     set -gx RUSTUP_TOOLCHAIN nightly-x86_64-unknown-linux-gnu
 end
 fish_add_path --prepend --path --global $RUSTUP_HOME/toolchains/$RUSTUP_TOOLCHAIN/bin
+set -gx RUSTC_WRAPPER sccache
 # set -ga fish_user_paths $RUSTUP_HOME/toolchains/$RUSTUP_TOOLCHAIN/bin
+
+
+# Python build flags
+set PYTHON_CFLAGS -fPIC
+set PYTHON_CONFIGURE_OPTS --enable-loadable-sqlite-extensions --enable-optimizations --with-lto --with-computed-gotos --enable-profiling
+set PYTHON_MAKE_OPTS -j16
