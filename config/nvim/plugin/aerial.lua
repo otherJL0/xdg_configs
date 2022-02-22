@@ -88,10 +88,10 @@ require("aerial").setup({
     border = "double",
 
     -- Controls row offset from cursor. Passed to nvim_open_win
-    row = 1,
+    -- row = 1,
 
     -- Controls col offset from cursor. Passed to nvim_open_win
-    col = 0,
+    -- col = 0,
 
     -- The maximum height of the floating aerial window
     max_height = 100,
