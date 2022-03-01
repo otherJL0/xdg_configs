@@ -1,4 +1,4 @@
-set asdf_pkgs deno crystal zig esy chezscheme racket opam ruby
+set asdf_pkgs direnv deno crystal zig esy chezscheme racket opam ruby
 
 for pkg in $asdf_pkgs
     asdf plugin add $pkg
