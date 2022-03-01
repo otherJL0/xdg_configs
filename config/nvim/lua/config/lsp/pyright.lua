@@ -3,8 +3,8 @@ return {
   filetypes = { "python" },
   settings = {
     python = {
-      venvPath = "./.venv",
-      pythonPath = "./.venv/bin/python",
+      venvPath = ".venv",
+      pythonPath = ".venv/bin/python",
       analysis = {
         autoImportCompletions = true,
         autoSearchPaths = true,
@@ -27,9 +27,6 @@ return {
   single_file_support = true,
   root_dir = require("lspconfig.util").root_pattern(
     ".venv/",
-    "__init__.py",
-    "__main__.py",
-    "main.py",
     "pyproject.toml",
     "pyright.json",
     "setup.cfg",
