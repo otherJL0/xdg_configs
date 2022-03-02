@@ -36,3 +36,10 @@ source /home/jlopez/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 set -gx PATH $HOME/.cabal/bin /home/jlopez/.ghcup/bin $PATH # ghcup-env
 fzf_configure_bindings --git_log=\cg --git_status=\eg --directory=\cf --history --variables --processes=\ej
+
+# Direnv settings
+set -gx direnv_fish_mode eval_on_arrow
+# set -gx direnv_fish_mode eval_after_arrow
+# set -gx direnv_fish_mode disable_arrow
+asdf exec direnv hook fish | source
+abbr -a direnv asdf exec direnv
