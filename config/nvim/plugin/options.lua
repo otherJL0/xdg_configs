@@ -54,15 +54,12 @@ opt.showmatch = true -- Show matching bracket character when hovering
 opt.hidden = true -- Keep buffers around
 
 -- Highlight on yank
-vim.api.nvim_exec(
-  [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]],
-  false
-)
+vim.api.nvim_create_autocmd("TextYankPost", {
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 
 opt.clipboard = "unnamedplus"
 
@@ -95,6 +92,7 @@ vim.api.nvim_create_autocmd("WinEnter", {
   callback = function()
     vim.opt.cursorline = true
     vim.opt.cursorcolumn = true
+    vim.opt.relativenumber = true
   end,
 })
 
@@ -103,5 +101,6 @@ vim.api.nvim_create_autocmd("WinLeave", {
   callback = function()
     vim.opt.cursorline = false
     vim.opt.cursorcolumn = false
+    vim.opt.relativenumber = false
   end,
 })
