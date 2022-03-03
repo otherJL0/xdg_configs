@@ -38,6 +38,7 @@ opt.expandtab = true
 opt.cursorlineopt = "both"
 opt.cursorline = true
 
+opt.wrap = false
 opt.swapfile = false -- No swap files
 opt.splitbelow = true -- New splits open below
 opt.splitright = true --New vsplits open right
