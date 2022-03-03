@@ -86,5 +86,22 @@ opt.fillchars = { eob = "~" }
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
+vim.opt.colorcolumn = "80"
 
 vim.cmd([[au BufRead,BufNewFile,BufEnter * lua vim.opt.formatoptions:remove({"c", "r", "o"})]])
+
+vim.api.nvim_create_autocmd("WinEnter", {
+  pattern = "*",
+  callback = function()
+    vim.opt.cursorline = true
+    vim.opt.cursorcolumn = true
+  end,
+})
+
+vim.api.nvim_create_autocmd("WinLeave", {
+  pattern = "*",
+  callback = function()
+    vim.opt.cursorline = false
+    vim.opt.cursorcolumn = false
+  end,
+})
