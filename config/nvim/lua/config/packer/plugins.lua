@@ -57,7 +57,7 @@ local function my_plugins()
           null_ls.builtins.formatting.black.with({
             extra_args = { "--target-version", "py310" },
           }),
-          null_ls.builtins.diagnostics.mypy,
+          -- null_ls.builtins.diagnostics.mypy,
           null_ls.builtins.diagnostics.hadolint,
           null_ls.builtins.diagnostics.flake8.with({
             extra_args = { "--extend-ignore=E501" },

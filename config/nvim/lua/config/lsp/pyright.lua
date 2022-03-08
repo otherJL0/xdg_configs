@@ -31,6 +31,7 @@ return {
           reportPropertyTypeMismatch = "warning",
           reportUninitializedInstanceVariable = "warning",
           reportUnknownMemberType = "warning",
+          reportUnknownVariableType = "warning",
           reportUnnecessaryTypeIgnoreComment = "warning",
           reportUnusedCallResult = false,
         },
