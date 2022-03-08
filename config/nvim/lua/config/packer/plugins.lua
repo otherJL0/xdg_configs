@@ -57,16 +57,25 @@ local function my_plugins()
           null_ls.builtins.formatting.black.with({
             extra_args = { "--target-version", "py310" },
           }),
-          -- null_ls.builtins.diagnostics.mypy,
+          null_ls.builtins.diagnostics.mypy,
           null_ls.builtins.diagnostics.hadolint,
-          null_ls.builtins.diagnostics.flake8,
+          null_ls.builtins.diagnostics.flake8.with({
+            extra_args = { "--extend-ignore=E501" },
+          }),
           null_ls.builtins.completion.spell.with({
             filetypes = { "md", "norg", "neorg", "markdown" },
           }),
         },
+        default_timeout = 20000,
+
         on_attach = function(client)
           if client.resolved_capabilities.document_formatting then
-            vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              pattern = "*",
+              callback = function()
+                vim.lsp.buf.formatting_sync()
+              end,
+            })
           end
         end,
       })
