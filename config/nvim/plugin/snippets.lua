@@ -132,6 +132,11 @@ snippets.python = {
     i(0),
     t({ " = auto()" }),
   }),
+  snippet({ trig = "pvar", descr = [[print(f"{VARNAME=}")]] }, {
+    t({ [[print(f"{]] }),
+    i(0),
+    t({ [[=}")]] }),
+  }),
 }
 
 snippets.javascript = {
