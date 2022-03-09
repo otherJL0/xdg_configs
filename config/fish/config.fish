@@ -46,4 +46,8 @@ source /home/jlopez/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 set -gx PATH $HOME/.cabal/bin /home/jlopez/.ghcup/bin $PATH # ghcup-env
 
-source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+if test ( uname ) = Darwin
+    source /opt/homebrew/opt/asdf/libexec/asdf.fish
+    fish_add_path -P /opt/homebrew/bin
+end

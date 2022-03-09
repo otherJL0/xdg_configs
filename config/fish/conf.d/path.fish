@@ -70,7 +70,6 @@ fish_add_path -P ./node_modules/.bin
 fish_add_path -P ./.venv/bin
 fish_add_path -P $HOME/.cache/coursier/jvm/openjdk@1.11.0-2/bin
 fish_add_path -P $HOME/.cache/nvim/packer_hererocks/2.1.0-beta3/bin
-fish_add_path -P /opt/homebrew/bin
 
 # Rust
 set -gx RUSTUP_HOME $HOME/.rustup
