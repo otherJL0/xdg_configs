@@ -1,12 +1,16 @@
 if status is-interactive
+    if test ( uname ) = Darwin
+        fish_add_path -P /opt/homebrew/bin
+    end
     # Linux
     if test -f ~/.asdf/asdf.fish
         source ~/.asdf/asdf.fish
     end
 
     # Macbook
-    if test -f /usr/local/opt/asdf/libexec/asdf.fish
-        source /usr/local/opt/asdf/libexec/asdf.fish
+    set asdf_source /opt/homebrew/opt/asdf/libexec/asdf.fish
+    if test -f $asdf_source
+        source $asdf_source
     end
 
     # Colorscheme
@@ -45,9 +49,3 @@ end
 source /home/jlopez/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 set -gx PATH $HOME/.cabal/bin /home/jlopez/.ghcup/bin $PATH # ghcup-env
-
-
-if test ( uname ) = Darwin
-    source /opt/homebrew/opt/asdf/libexec/asdf.fish
-    fish_add_path -P /opt/homebrew/bin
-end
