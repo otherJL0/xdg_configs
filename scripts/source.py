@@ -36,12 +36,12 @@ def remove_existing_path(target: Path) -> None:
 
 
 def update_local_environment(config_dir: str, target_home_dir: str = ""):
-    make_hidden = False
+    make_hidden = True
     configs: Path = Path.cwd() / config_dir
     target_dir = Path.home()
-    if not target_home_dir:
+    if target_home_dir:
         target_dir = target_dir / target_home_dir
-        make_hidden = True
+        make_hidden = False
     for dir in configs.iterdir():
         target = target_dir / f"{'.' if make_hidden else ''}{dir.name}"
         try:
