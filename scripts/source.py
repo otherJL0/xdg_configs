@@ -35,11 +35,15 @@ def remove_existing_path(target: Path) -> None:
             sys.exit(1)
 
 
-def main() -> None:
-    configs = Path.cwd() / "config"
-    xdg_config_dir = Path.home() / ".config"
+def update_local_environment(config_dir: str, target_home_dir: str = ""):
+    make_hidden = False
+    configs: Path = Path.cwd() / config_dir
+    target_dir = Path.home()
+    if not target_home_dir:
+        target_dir = target_dir / target_home_dir
+        make_hidden = True
     for dir in configs.iterdir():
-        target = xdg_config_dir / dir.name
+        target = target_dir / f"{'.' if make_hidden else ''}{dir.name}"
         try:
             if target.is_symlink() and target.readlink() == dir:
                 print(f"\tLink exists for {target}")
@@ -52,6 +56,29 @@ def main() -> None:
                 target.symlink_to(dir)
             else:
                 print(f"Existing {target} was not removed")
+
+    
+
+
+def main() -> None:
+    update_local_environment("config", ".config")
+    update_local_environment("home")
+    # configs = Path.cwd() / "config"
+    # xdg_config_dir = Path.home() / ".config"
+    # for dir in configs.iterdir():
+    #     target = xdg_config_dir / dir.name
+    #     try:
+    #         if target.is_symlink() and target.readlink() == dir:
+    #             print(f"\tLink exists for {target}")
+    #         else:
+    #             target.symlink_to(dir)
+    #             print(f"Symlink created for {dir}")
+    #     except FileExistsError:
+    #         if prompt_replacement(target):
+    #             remove_existing_path(target)
+    #             target.symlink_to(dir)
+    #         else:
+    #             print(f"Existing {target} was not removed")
 
 
 if __name__ == "__main__":
