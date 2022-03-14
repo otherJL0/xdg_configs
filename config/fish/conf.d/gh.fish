@@ -6,14 +6,16 @@
 #         gh repo clone $target_repo
 #     end
 # end
-function _gh_organization --on-event PWD
-    set -l _current_path ""
+
+function _gh_organization --on-event fish_postexec
+    set -l _current_path (string split / (pwd))
+
     if test $_current_path[-2] = gh
-        set -gx GH_ORG $_current_path[-1]
+        abbr --erase ghclone
+        abbr --add ghclone gh repo clone $_current_path[-1]/
     else
-        set -gx GH_ORG ""
+        abbr --erase ghclone
+        abbr --add ghclone gh repo clone
     end
-
 end
-
 abbr --add ghclone gh repo clone $GH_ORG
