@@ -1,4 +1,4 @@
-# function ghclone -d "Clone repo based on relative path"
+# function ghcl -d "Clone repo based on relative path"
 #     set -l _current_path (string split / (pwd))
 
 #     if test $_current_path[-2] = gh
@@ -11,11 +11,11 @@ function _gh_organization --on-event fish_postexec
     set -l _current_path (string split / (pwd))
 
     if test $_current_path[-2] = gh
-        abbr --erase ghclone
-        abbr --add ghclone gh repo clone $_current_path[-1]/
+        abbr --erase ghcl
+        abbr --add ghcl gh repo clone $_current_path[-1]/
     else
-        abbr --erase ghclone
-        abbr --add ghclone gh repo clone
+        abbr --erase ghcl
+        abbr --add ghcl gh repo clone
     end
 end
-abbr --add ghclone gh repo clone $GH_ORG
+abbr --add ghcl gh repo clone $GH_ORG
