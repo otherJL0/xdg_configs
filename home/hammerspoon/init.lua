@@ -1,3 +1,5 @@
+hs.loadSpoon("EmmyLua")
+
 local function tile_window(direction)
 	return function()
 		local window = hs.window.focusedWindow()

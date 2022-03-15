@@ -13,9 +13,9 @@ local sumneko_configs = require("lua-dev").setup({
   },
 })
 
-local uri = vim.split(vim.uri_from_bufnr(0), "/")
-if vim.tbl_contains(uri, "hammerspoon") then
-  sumneko_configs.settings.Lua.workspace.library = vim.env.HOME .. "/.hammperspoon/Spoons/EmmyLua.spoon/annotations"
-end
+-- local uri = vim.split(vim.uri_from_bufnr(0), "/")
+-- if vim.tbl_contains(uri, "hammerspoon") or vim.tbl_contains(uri, ".hammerspoon") then
+--   sumneko_configs.settings.Lua.workspace.library = vim.env.HOME .. "/.hammperspoon/Spoons/EmmyLua.spoon/annotations"
+-- end
 
 return sumneko_configs
