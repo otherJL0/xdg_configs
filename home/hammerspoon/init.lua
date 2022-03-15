@@ -1,6 +1,3 @@
--- Adding hs as local variable to make language server happy
-local hs
-
 local function tile_window(direction)
 	return function()
 		local window = hs.window.focusedWindow()
