@@ -22,3 +22,5 @@ abbr -a gsub git submodule
 abbr -a gsubup git submodule update
 abbr -a gsupir git submodule update --init --recursive
 abbr -a gR git restore .
+abbr -a branch git symbolic-ref --short HEAD
+abbr -a upstream git push --set-upstream origin (git symbolic-ref --short HEAD)
