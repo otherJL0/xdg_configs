@@ -50,18 +50,22 @@ local function my_plugins()
       local null_ls = require("null-ls")
       null_ls.setup({
         sources = {
-          null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.isort,
-          null_ls.builtins.formatting.shfmt,
-          null_ls.builtins.formatting.fish_indent,
+          null_ls.builtins.formatting.isort.with({
+            command = vim.fn.stdpath("cache") .. "/.venv/bin/isort",
+          }),
           null_ls.builtins.formatting.black.with({
+            command = vim.fn.stdpath("cache") .. "/.venv/bin/black",
             extra_args = { "--target-version", "py310" },
           }),
-          -- null_ls.builtins.diagnostics.mypy,
-          null_ls.builtins.diagnostics.hadolint,
           null_ls.builtins.diagnostics.flake8.with({
+            command = vim.fn.stdpath("cache") .. "/.venv/bin/flake8",
             extra_args = { "--extend-ignore=E501" },
           }),
+          -- null_ls.builtins.diagnostics.mypy,
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.shfmt,
+          null_ls.builtins.formatting.fish_indent,
+          null_ls.builtins.diagnostics.hadolint,
           null_ls.builtins.completion.spell.with({
             filetypes = { "md", "norg", "neorg", "markdown" },
           }),
