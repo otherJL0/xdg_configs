@@ -1,3 +1,3 @@
--- require("config.statusline.express_line")
-require("config.statusline.windline")
--- require("config.statusline.lualine")
+-- Set global status line
+vim.opt.laststatus = 3
+require("config.statusline.express_line")
