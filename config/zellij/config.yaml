@@ -554,10 +554,16 @@ themes:
     - 150
     - 205
     - 251
+    # Try using catppuccin lavendar
     cyan:
-    - 26
-    - 24
-    - 38
+    - 201
+    - 203
+    - 255
+    # Originally uses Catppuccin black1
+    # cyan:
+    # - 26
+    # - 24
+    # - 38
     fg:
     - 217
     - 224
