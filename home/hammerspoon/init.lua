@@ -67,13 +67,13 @@ local function change_window_focus(direction)
 		local window = hs.window.focusedWindow()
 
 		if direction == "left" then
-			window:focusWindowWest({ candidateWindows = nil, frontmost = false, strict = false })
+			window:focusWindowWest(nil, false, false)
 		elseif direction == "right" then
-			window:focusWindowEast({ candidateWindows = nil, frontmost = false, strict = false })
+			window:focusWindowEast(nil, false, false)
 		elseif direction == "top" then
-			window:focusWindowNorth({ candidateWindows = nil, frontmost = false, strict = false })
+			window:focusWindowNorth(nil, false, false)
 		elseif direction == "bottom" then
-			window:focusWindowSouth({ candidateWindows = nil, frontmost = false, strict = false })
+			window:focusWindowSouth(nil, false, false)
 		end
 	end
 end
