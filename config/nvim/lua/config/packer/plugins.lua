@@ -166,6 +166,7 @@ local function my_plugins()
   use({
     "tjdevries/express_line.nvim",
     "windwp/windline.nvim",
+    "feline-nvim/feline.nvim",
     "nvim-lualine/lualine.nvim",
     opt = true,
   })
