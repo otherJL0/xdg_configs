@@ -94,6 +94,7 @@ vim.api.nvim_create_autocmd("WinEnter", {
     vim.opt.cursorline = true
     vim.opt.cursorcolumn = true
     vim.opt.relativenumber = true
+    vim.opt.colorcolumn = "80"
   end,
 })
 
@@ -103,5 +104,6 @@ vim.api.nvim_create_autocmd("WinLeave", {
     vim.opt.cursorline = false
     vim.opt.cursorcolumn = false
     vim.opt.relativenumber = false
+    vim.opt.colorcolumn = ""
   end,
 })
