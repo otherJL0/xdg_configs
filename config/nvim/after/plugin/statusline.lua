@@ -294,7 +294,7 @@ components.active[2][3] = {
     fg = clrs.red,
     bg = sett.bkg,
   },
-  icon = " E:",
+  icon = "  ",
 }
 
 components.active[2][4] = {
@@ -306,7 +306,7 @@ components.active[2][4] = {
     fg = clrs.peach,
     bg = sett.bkg,
   },
-  icon = " W:",
+  icon = "  ",
 }
 
 components.active[2][5] = {
@@ -318,7 +318,7 @@ components.active[2][5] = {
     fg = clrs.yellow,
     bg = sett.bkg,
   },
-  icon = " I:",
+  icon = "  ",
 }
 
 components.active[2][6] = {
@@ -330,7 +330,7 @@ components.active[2][6] = {
     fg = clrs.teal,
     bg = sett.bkg,
   },
-  icon = " H:",
+  icon = " ● ",
   right_sep = invi_sep,
 }
 -- Diagnostics ------>
