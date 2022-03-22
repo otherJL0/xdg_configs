@@ -397,6 +397,8 @@ local function my_plugins()
       require("cmp").setup.buffer({ sources = { { name = "crates" } } })
     end,
   })
+
+  use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
 end
 
 return require("packer").startup({
