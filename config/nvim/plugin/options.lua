@@ -91,19 +91,23 @@ vim.cmd([[au BufRead,BufNewFile,BufEnter * lua vim.opt.formatoptions:remove({"c"
 vim.api.nvim_create_autocmd("WinEnter", {
   pattern = "*",
   callback = function()
-    vim.opt.cursorline = true
-    vim.opt.cursorcolumn = true
-    vim.opt.relativenumber = true
-    vim.opt.colorcolumn = "80"
+    if vim.opt.modifiable then
+      vim.opt.cursorline = true
+      vim.opt.cursorcolumn = true
+      vim.opt.relativenumber = true
+      vim.opt.colorcolumn = "80"
+    end
   end,
 })
 
 vim.api.nvim_create_autocmd("WinLeave", {
   pattern = "*",
   callback = function()
-    vim.opt.cursorline = false
-    vim.opt.cursorcolumn = false
-    vim.opt.relativenumber = false
-    vim.opt.colorcolumn = ""
+    if vim.opt.modifiable then
+      vim.opt.cursorline = false
+      vim.opt.cursorcolumn = false
+      vim.opt.relativenumber = false
+      vim.opt.colorcolumn = ""
+    end
   end,
 })
