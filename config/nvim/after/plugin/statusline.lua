@@ -14,6 +14,8 @@ vim.opt.fillchars = {
   verthoriz = "╋",
 }
 
+local gps = require("nvim-gps")
+
 -- Set global status line
 vim.opt.laststatus = 3
 local lsp = require("feline.providers.lsp")
@@ -134,26 +136,6 @@ local vi_mode_hl = function()
   }
 end
 
--- components.active[1][1] = {
---   provider = assets.vertical_bar_thin,
---   hl = function()
---     return {
---       fg = mode_colors[vim.fn.mode()][2],
---       bg = sett.bkg,
---     }
---   end,
--- }
-
--- components.active[1][2] = {
---   provider = "",
---   hl = function()
---     return {
---       fg = sett.bkg,
---       bg = mode_colors[vim.fn.mode()][2],
---     }
---   end,
--- }
-
 components.active[1][1] = {
   provider = function()
     return " " .. mode_colors[vim.fn.mode()][1] .. " "
@@ -161,46 +143,11 @@ components.active[1][1] = {
   hl = vi_mode_hl,
 }
 
--- there is a dilema: we need to hide Diffs if ther is no git info. We can do that, but this will
--- leave the right_semicircle colored with purple, and since we can't change the color conditonally
--- then the solution is to create two right_semicircles: one with a mauve sett.bkg and the other one normal
--- sett.bkg; both have the same fg (vi mode). The mauve one appears if there is git info, else the one with
--- the normal sett.bkg appears. Fixed :)
-
--- enable if git diffs are not available
--- components.active[1][3] = {
---   provider = assets.vertical_bar_thin,
---   hl = function()
---     return {
---       fg = mode_colors[vim.fn.mode()][2],
---       bg = sett.bkg,
---     }
---   end,
---   enabled = function()
---     return not any_git_changes()
---   end,
--- }
-
--- enable if git diffs are available
--- components.active[1][4] = {
---   provider = assets.vertical_bar_thin,
---   hl = function()
---     return {
---       fg = mode_colors[vim.fn.mode()][2],
---       bg = sett.diffs,
---     }
---   end,
---   enabled = function()
---     return any_git_changes()
---   end,
--- }
--- Current vi mode ------>
-
 components.active[1][2] = {
   provider = "git_branch",
   enabled = is_enabled(shortline, winid, 70),
   hl = {
-    fg = sett.extras,
+    fg = clrs.white,
     bg = sett.bkg,
   },
   icon = "  ",
@@ -236,6 +183,15 @@ components.active[1][5] = {
   icon = "  ",
 }
 
+components.active[1][6] = {
+  provider = function()
+    return gps.get_location()
+  end,
+  enabled = function()
+    return gps.is_available()
+  end,
+}
+
 -- Diagnostics ------>
 -- workspace loader
 components.active[2][1] = {
@@ -246,45 +202,8 @@ components.active[2][1] = {
   },
   right_sep = invi_sep,
 }
-components.active[2][2] = {
-  provider = function()
-    local Lsp = vim.lsp.util.get_progress_messages()[1]
-
-    if Lsp then
-      local msg = Lsp.message or ""
-      local percentage = Lsp.percentage or 0
-      local title = Lsp.title or ""
-      local spinners = {
-        "",
-        "",
-        "",
-      }
-      local success_icon = {
-        "",
-        "",
-        "",
-      }
-      local ms = vim.loop.hrtime() / 1000000
-      local frame = math.floor(ms / 120) % #spinners
-
-      if percentage >= 70 then
-        return string.format(" %%<%s %s %s (%s%%%%) ", success_icon[frame + 1], title, msg, percentage)
-      end
-
-      return string.format(" %%<%s %s %s (%s%%%%) ", spinners[frame + 1], title, msg, percentage)
-    end
-
-    return ""
-  end,
-  enabled = is_enabled(shortline, winid, 80),
-  hl = {
-    fg = clrs.rosewater,
-    bg = sett.bkg,
-  },
-}
-
 -- genral diagnostics (errors, warnings. info and hints)
-components.active[2][3] = {
+components.active[2][2] = {
   provider = "diagnostic_errors",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.ERROR)
@@ -297,7 +216,7 @@ components.active[2][3] = {
   icon = "  ",
 }
 
-components.active[2][4] = {
+components.active[2][3] = {
   provider = "diagnostic_warnings",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.WARN)
@@ -309,7 +228,7 @@ components.active[2][4] = {
   icon = "  ",
 }
 
-components.active[2][5] = {
+components.active[2][4] = {
   provider = "diagnostic_info",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.INFO)
@@ -321,7 +240,7 @@ components.active[2][5] = {
   icon = "  ",
 }
 
-components.active[2][6] = {
+components.active[2][5] = {
   provider = "diagnostic_hints",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.HINT)
@@ -340,7 +259,7 @@ components.active[2][6] = {
 -- ######## Right
 
 -- position
-components.active[2][7] = {
+components.active[2][6] = {
   provider = function()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
 
@@ -352,7 +271,7 @@ components.active[2][7] = {
   hl = vi_mode_hl,
 }
 -- file progess
-components.active[2][8] = {
+components.active[2][7] = {
   provider = function()
     local current_line = vim.fn.line(".")
     local total_line = vim.fn.line("$")
