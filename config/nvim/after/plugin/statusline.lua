@@ -93,13 +93,9 @@ end
 
 -- Initialize the components table
 local components = {
-  active = {},
-  inactive = {},
+  {}, -- left
+  {}, -- right
 }
-
-table.insert(components.active, {}) -- (1) left
-table.insert(components.active, {}) -- (2) center
--- table.insert(components.active, {}) -- (3) right
 
 -- global components
 local invi_sep = {
@@ -136,14 +132,14 @@ local vi_mode_hl = function()
   }
 end
 
-components.active[1][1] = {
+components[1][1] = {
   provider = function()
     return " " .. mode_colors[vim.fn.mode()][1] .. " "
   end,
   hl = vi_mode_hl,
 }
 
-components.active[1][2] = {
+components[1][2] = {
   provider = "git_branch",
   enabled = is_enabled(shortline, winid, 70),
   hl = {
@@ -156,7 +152,7 @@ components.active[1][2] = {
 }
 
 -- Diffs ------>
-components.active[1][3] = {
+components[1][3] = {
   provider = "git_diff_added",
   hl = {
     fg = clrs.green,
@@ -165,7 +161,7 @@ components.active[1][3] = {
   icon = "  ",
 }
 
-components.active[1][4] = {
+components[1][4] = {
   provider = "git_diff_changed",
   hl = {
     fg = clrs.yellow,
@@ -174,7 +170,7 @@ components.active[1][4] = {
   icon = "  ",
 }
 
-components.active[1][5] = {
+components[1][5] = {
   provider = "git_diff_removed",
   hl = {
     fg = clrs.red,
@@ -183,7 +179,7 @@ components.active[1][5] = {
   icon = "  ",
 }
 
-components.active[1][6] = {
+components[1][6] = {
   provider = function()
     return gps.get_location()
   end,
@@ -194,7 +190,7 @@ components.active[1][6] = {
 
 -- Diagnostics ------>
 -- workspace loader
-components.active[2][1] = {
+components[2][1] = {
   provider = "lsp_client_names",
   hl = {
     fg = sett.extras,
@@ -203,7 +199,7 @@ components.active[2][1] = {
   right_sep = invi_sep,
 }
 -- genral diagnostics (errors, warnings. info and hints)
-components.active[2][2] = {
+components[2][2] = {
   provider = "diagnostic_errors",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.ERROR)
@@ -216,7 +212,7 @@ components.active[2][2] = {
   icon = "  ",
 }
 
-components.active[2][3] = {
+components[2][3] = {
   provider = "diagnostic_warnings",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.WARN)
@@ -228,7 +224,7 @@ components.active[2][3] = {
   icon = "  ",
 }
 
-components.active[2][4] = {
+components[2][4] = {
   provider = "diagnostic_info",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.INFO)
@@ -240,7 +236,7 @@ components.active[2][4] = {
   icon = "  ",
 }
 
-components.active[2][5] = {
+components[2][5] = {
   provider = "diagnostic_hints",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.HINT)
@@ -259,7 +255,7 @@ components.active[2][5] = {
 -- ######## Right
 
 -- position
-components.active[2][6] = {
+components[2][6] = {
   provider = function()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
 
@@ -271,7 +267,7 @@ components.active[2][6] = {
   hl = vi_mode_hl,
 }
 -- file progess
-components.active[2][7] = {
+components[2][7] = {
   provider = function()
     local current_line = vim.fn.line(".")
     local total_line = vim.fn.line("$")
@@ -288,6 +284,9 @@ components.active[2][7] = {
 }
 
 require("feline").setup({
-  components = components,
+  components = {
+    active = components,
+    inactive = components,
+  },
   preset = "noicon",
 })
