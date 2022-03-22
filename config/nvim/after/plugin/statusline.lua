@@ -246,7 +246,6 @@ components[2][5] = {
     bg = sett.bkg,
   },
   icon = " ● ",
-  right_sep = invi_sep,
 }
 -- Diagnostics ------>
 
@@ -265,6 +264,7 @@ components[2][6] = {
     return string.format(" %3d:%-2d", row, col)
   end,
   hl = vi_mode_hl,
+  left_sep = invi_sep,
 }
 -- file progess
 components[2][7] = {
