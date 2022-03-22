@@ -74,7 +74,8 @@ local ivy = setmetatable({
   end,
 })
 
-vim.keymap.set("n", " ff", ivy.project_files)
+-- vim.keymap.set("n", " ff", ivy.project_files)
+vim.keymap.set("n", " ff", ivy.find_files)
 vim.keymap.set("n", " fg", function()
   telescope.extensions.live_grep_raw.live_grep_raw(opts)
 end)
