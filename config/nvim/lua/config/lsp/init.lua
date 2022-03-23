@@ -1,6 +1,8 @@
 local lsp_status = require("lsp-status")
 local lspconfig = require("lspconfig")
 
+require("null-ls").setup(require("config.lsp.null"))
+
 local function on_attach(client, bufnr)
   lsp_status.on_attach(client)
   require("fidget").setup({

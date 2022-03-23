@@ -9,19 +9,21 @@
     ui = auto
 
 [merge]
-    tool = nvimMerge
+    tool = nvimMerge3
 
 [mergetool]
     prompt = false
+    keepBackup = false
 
-[mergetool "nvimMerge"]
-    cmd = nvim -c "DiffviewOpen"
+[mergetool "nvimMerge3"]
+    cmd = nvim -d -c \\"wincmd l\\" \\"$LOCAL\\" \\"$MERGED\\" \\"$REMOTE\\"
 
 [diff]
     tool = nvimDiff
 
 [difftool]
-        prompt = false
+    prompt = false
+    keepBackup = false
 
 [difftool "nvimDiff"]
     cmd = nvim -c "Gitsigns diffthis"
