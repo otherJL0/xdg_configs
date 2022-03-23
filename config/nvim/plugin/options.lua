@@ -111,3 +111,5 @@ vim.api.nvim_create_autocmd("WinLeave", {
     end
   end,
 })
+
+vim.opt.grepprg = "rg"
