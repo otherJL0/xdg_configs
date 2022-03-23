@@ -6,9 +6,13 @@
     quotepath = true
     pager = delta
     edito = nvim
+    commitGraph = true
 
 [color]
     ui = auto
+
+[add.interactive]
+    useBuiltin = true
 
 
 [merge]
@@ -26,6 +30,8 @@
     tool = nvimDiff
     algorithm = histogram
     colorMoved = default
+    mnemonicPrefix = true
+    relative = true
 
 [difftool]
     prompt = false
@@ -52,9 +58,32 @@
 
 [pull]
 	rebase = true
+    twohead = ort
 
 [grep]
     lineNumber = true
     column = true
     patternType = perl
     threads = 4
+
+[help]
+    autoCorrect = prompt
+
+[push]
+    default = current
+    negotiate = true
+
+[rebase]
+    stat = true
+
+
+[status]
+    short = true
+    branch = true
+    relativePaths = false
+    showStash = true
+    showUntrackedFiles = all
+    submoduleSummary = true
+
+[column]
+    ui = column
