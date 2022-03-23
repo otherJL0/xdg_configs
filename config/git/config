@@ -4,6 +4,8 @@
 
 [core]
     quotepath = true
+    pager = delta
+    edito = nvim
 
 [color]
     ui = auto
@@ -11,6 +13,7 @@
 
 [merge]
     tool = nvimMerge3
+    conflictStyle = zdiff3
 
 [mergetool]
     prompt = false
@@ -22,6 +25,7 @@
 [diff]
     tool = nvimDiff
     algorithm = histogram
+    colorMoved = default
 
 [difftool]
     prompt = false
@@ -36,12 +40,21 @@
     reflow = delta
     show = delta
 
+[interactive]
+    diffFilter = delta --color-only
+
 [delta]
     line-numbers = true
     side-by-side = true
     navigate = true
+    keep-plus-minus-markers = false
+    commit-style = raw
 
-[interactive]
-    diffFilter = delta --color-only
 [pull]
 	rebase = true
+
+[grep]
+    lineNumber = true
+    column = true
+    patternType = perl
+    threads = 4
