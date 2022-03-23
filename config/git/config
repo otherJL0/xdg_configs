@@ -8,6 +8,7 @@
 [color]
     ui = auto
 
+
 [merge]
     tool = nvimMerge3
 
@@ -20,6 +21,7 @@
 
 [diff]
     tool = nvimDiff
+    algorithm = histogram
 
 [difftool]
     prompt = false

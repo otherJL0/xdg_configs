@@ -2,6 +2,7 @@ local diffview = require("diffview")
 local cb = require("diffview.config").diffview_callback
 local gitsigns = require("gitsigns")
 local neogit = require("neogit")
+vim.opt.diffopt:append("algorithm:histogram")
 
 diffview.setup({
   diff_binaries = false, -- Show diffs for binaries
@@ -221,6 +222,7 @@ gitsigns.setup({
   current_line_blame_formatter_opts = {
     relative_time = false,
   },
+  trouble = true,
   sign_priority = 6,
   update_debounce = 100,
   status_formatter = nil, -- Use default
@@ -234,7 +236,9 @@ gitsigns.setup({
     col = 1,
   },
   diff_opts = {
+    algorithm = "histogram",
     internal = true,
+    vertical = true,
   },
   yadm = {
     enable = false,
