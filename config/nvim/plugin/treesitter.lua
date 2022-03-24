@@ -55,3 +55,6 @@ require("twilight").setup({
     inactive = true,
   },
 })
+
+vim.keymap.set("n", " tsp", require("nvim-treesitter-playground.internal").toggle)
+vim.keymap.set("n", " tsc", require("nvim-treesitter-playground.hl-info").show_hl_captures)
