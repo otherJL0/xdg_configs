@@ -7,6 +7,8 @@
     pager = delta
     edito = nvim
     commitGraph = true
+    sparseCheckout = true
+    sparseCheckoutCone = true
 
 [color]
     ui = auto
