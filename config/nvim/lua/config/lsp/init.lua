@@ -1,8 +1,6 @@
 local lsp_status = require("lsp-status")
 local lspconfig = require("lspconfig")
 
-require("null-ls").setup(require("config.lsp.null"))
-
 local function on_attach(client, bufnr)
   lsp_status.on_attach(client)
   require("fidget").setup({
@@ -68,8 +66,7 @@ local function on_attach(client, bufnr)
   vim.keymap.set("n", " D", vim.lsp.buf.type_definition)
   vim.keymap.set("n", "grr", vim.lsp.buf.rename)
   vim.keymap.set("n", "gr", vim.lsp.buf.references)
-  vim.keymap.set("n", " ca", vim.lsp.buf.code_action)
-  vim.keymap.set("v", " ca", vim.lsp.buf.range_code_action)
+  vim.keymap.set({ "n", "v" }, " ca", vim.lsp.buf.code_action)
   -- vim.keymap.set("n", " e", vim.diagnostic.show_line_diagnostics )
   vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
   vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
@@ -125,6 +122,10 @@ end
 --   "texlab",
 --   "yamlls",
 -- }
+
+local null_ls_configs = require("config.lsp.null")
+null_ls_configs.on_attach = on_attach
+require("null-ls").setup(null_ls_configs)
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)

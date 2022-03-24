@@ -37,7 +37,7 @@ vim.cmd([[
 
 require("goto-preview").setup({})
 local language_servers = {
-  "bashls",
+  -- "bashls",
   -- "clangd",
   "cmake",
   "cssls",
