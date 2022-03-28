@@ -16,17 +16,16 @@
 [add.interactive]
     useBuiltin = true
 
+[mergetool "fugitive"]
+    cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
 
 [merge]
-    tool = nvimMerge3
+    tool = fugitive
     conflictStyle = zdiff3
 
 [mergetool]
     prompt = false
     keepBackup = false
-
-[mergetool "nvimMerge3"]
-    cmd = nvim -d -c \\"wincmd l\\" \\"$LOCAL\\" \\"$MERGED\\" \\"$REMOTE\\"
 
 [diff]
     tool = nvimDiff
