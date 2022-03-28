@@ -130,10 +130,10 @@ neogit.setup({
   },
   sections = {
     untracked = {
-      folded = false,
+      folded = true,
     },
     unstaged = {
-      folded = false,
+      folded = true,
     },
     staged = {
       folded = false,
@@ -215,7 +215,14 @@ gitsigns.setup({
     map("n", "[c", [[&diff ? '[c' : '<cmd>lua require("gitsigns").prev_hunk({preview = true})<CR>']], { expr = true })
 
     -- Actions
-    map({ "n", "v" }, "<leader>hs", gs.stage_hunk)
+    map({ "n", "v" }, "<leader>hs", function()
+      vim.schedule(function()
+        gs.stage_hunk()
+      end)
+      vim.schedule(function()
+        gs.next_hunk({ preview = true })
+      end)
+    end)
     map({ "n", "v" }, "<leader>hr", gs.reset_hunk)
     map("n", "<leader>hS", gs.stage_buffer)
     map("n", "<leader>hu", gs.undo_stage_hunk)
