@@ -91,12 +91,18 @@ vim.cmd([[au BufRead,BufNewFile,BufEnter * lua vim.opt.formatoptions:remove({"c"
 vim.api.nvim_create_autocmd("WinEnter", {
   pattern = "*",
   callback = function()
-    if vim.opt.modifiable then
-      vim.opt.cursorline = true
-      vim.opt.cursorcolumn = true
-      vim.opt.relativenumber = true
-      vim.opt.colorcolumn = "80"
+    local ignored_filtypes = {
+      "NvimTree",
+      "help",
+      "DiffviewFiles",
+    }
+    if vim.tbl_contains(ignored_filtypes, vim.bo.filetype) then
+      return
     end
+    vim.opt.cursorline = true
+    vim.opt.cursorcolumn = true
+    vim.opt.relativenumber = true
+    vim.opt.colorcolumn = "80"
   end,
 })
 

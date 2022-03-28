@@ -165,11 +165,41 @@ neogit.setup({
 
 gitsigns.setup({
   signs = {
-    add = { hl = "GitSignsAdd", text = "+", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-    change = { hl = "GitSignsChange", text = "Δ", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-    delete = { hl = "GitSignsDelete", text = "-", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-    topdelete = { hl = "GitSignsDelete", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-    changedelete = { hl = "GitSignsChange", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+    add = {
+      hl = "GitSignsAdd",
+      text = "",
+      numhl = "GitSignsAddNr",
+      linehl = "GitSignsAddLn",
+      show_count = true,
+    },
+    change = {
+      hl = "GitSignsChange",
+      text = "",
+      numhl = "GitSignsChangeNr",
+      linehl = "GitSignsChangeLn",
+      show_count = true,
+    },
+    delete = {
+      hl = "GitSignsDelete",
+      text = "",
+      numhl = "GitSignsDeleteNr",
+      linehl = "GitSignsDeleteLn",
+      show_count = true,
+    },
+    topdelete = {
+      hl = "GitSignsDelete",
+      text = "",
+      numhl = "GitSignsDeleteNr",
+      linehl = "GitSignsDeleteLn",
+      show_count = true,
+    },
+    changedelete = {
+      hl = "GitSignsChange",
+      text = "",
+      numhl = "GitSignsChangeNr",
+      linehl = "GitSignsChangeLn",
+      show_count = true,
+    },
   },
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
@@ -181,8 +211,8 @@ gitsigns.setup({
     end
 
     -- Navigation
-    map("n", "]c", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
-    map("n", "[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
+    map("n", "]c", [[&diff ? ']c' : '<cmd>lua require("gitsigns").next_hunk({preview = true})<CR>']], { expr = true })
+    map("n", "[c", [[&diff ? '[c' : '<cmd>lua require("gitsigns").prev_hunk({preview = true})<CR>']], { expr = true })
 
     -- Actions
     map({ "n", "v" }, "<leader>hs", gs.stage_hunk)
@@ -194,7 +224,7 @@ gitsigns.setup({
     map("n", "<leader>hb", function()
       gs.blame_line({ full = true })
     end)
-    map("n", "<leader>tb", gs.toggle_current_line_blame)
+    map("n", "<leader>hB", gs.toggle_current_line_blame)
     map("n", "<leader>hd", gs.diffthis)
     map("n", "<leader>hD", function()
       gs.diffthis("~")
