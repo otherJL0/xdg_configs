@@ -1,5 +1,4 @@
 local luasnip = require("luasnip")
-local snippets = luasnip.snippets
 
 local languages = {
   "go",
@@ -10,5 +9,5 @@ local languages = {
 }
 
 for _, language in ipairs(languages) do
-  snippets[language] = require("config.snippets." .. language)
+  luasnip.add_snippets(language, require("config.snippets." .. language))
 end
