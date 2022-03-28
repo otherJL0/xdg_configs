@@ -16,10 +16,10 @@ return {
     swap = {
       enable = true,
       swap_next = {
-        ["<leader>a"] = "@parameter.inner",
+        [" tss"] = "@swappable",
       },
       swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
+        [" tsS"] = "@swappable",
       },
     },
 
@@ -50,8 +50,8 @@ return {
       enable = true,
       border = "none",
       peek_definition_code = {
-        ["df"] = "@function.outer",
-        ["dF"] = "@class.outer",
+        ["g d"] = "@function.outer",
+        ["g D"] = "@class.outer",
       },
     },
   },
