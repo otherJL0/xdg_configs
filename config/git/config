@@ -1,5 +1,5 @@
 [user]
-    name = otherJL0
+	name = Jonathan Lopez
     email = jonathanglopez@gmail.com
 
 [core]
@@ -88,3 +88,8 @@
 
 [column]
     ui = column
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
