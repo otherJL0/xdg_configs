@@ -10,16 +10,17 @@ return {
       ["if"] = "@function.inner",
       ["ac"] = "@class.outer",
       ["ic"] = "@class.inner",
+      ["x"] = "@swappable",
     },
 
     --
     swap = {
       enable = true,
       swap_next = {
-        [" tss"] = "@swappable",
+        ["<leader>n"] = "@swappable",
       },
       swap_previous = {
-        [" tsS"] = "@swappable",
+        ["<leader>N"] = "@swappable",
       },
     },
 
