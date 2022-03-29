@@ -9,6 +9,7 @@ symbol = "  "
 format = '[$symbol($profile)(\($region\))(\[$duration\])]($style)'
 
 [cmake]
+symbol = " △ "
 format = '[$symbol($version)]($style)'
 
 [cmd_duration]
@@ -104,6 +105,7 @@ symbol = "  "
 format = '[$symbol$state( \($name\))]($style)'
 
 [nodejs]
+symbol = "  "
 detect_extensions = []
 version_format = "${major}.${minor}"
 format = '[$symbol($version)]($style)'
