@@ -14,7 +14,7 @@ asdf global nodejs lts
 
 # Python
 asdf plugin add python
-set pyversions 3.7.12 3.8.12 3.9.10 latest
+set pyversions 3.8.13 3.9.12 latest
 for ver in $pyversions
     asdf install python $ver
 end
