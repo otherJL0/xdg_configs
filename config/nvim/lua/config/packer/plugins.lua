@@ -209,15 +209,6 @@ local function my_plugins()
   })
 
   use({
-    "Olical/conjure",
-    config = function()
-      vim.cmd([[ let g:conjure#client#scheme#stdio#command = "petite"]])
-      vim.cmd([[let g:conjure#client#scheme#stdio#prompt_pattern = "> $?"]])
-    end,
-    ft = { "scheme", "guile", "fennel" },
-    requires = { "Olical/aniseed" },
-  })
-  use({
     "ahmedkhalf/project.nvim",
     config = function()
       require("telescope").load_extension("projects")
