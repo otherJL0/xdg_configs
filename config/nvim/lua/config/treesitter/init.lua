@@ -138,4 +138,10 @@ require("nvim-treesitter.configs").setup({
     enable = true,
     filetypes = { "html", "xml" },
   },
+
+  matchup = {
+    enable = true,
+    disable_virtual_text = false,
+    include_match_words = true,
+  },
 })

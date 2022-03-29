@@ -24,6 +24,7 @@ local function my_plugins()
     "kyazdani42/nvim-web-devicons",
   })
   use({ "tjdevries/tree-sitter-lua", opt = true })
+  use("andymass/vim-matchup")
 
   use({
     "ggandor/lightspeed.nvim",
