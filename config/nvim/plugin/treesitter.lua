@@ -49,12 +49,12 @@ require("indent_blankline").setup({
   context_pattern_highlight = ts_patterns,
 })
 
-require("twilight").setup({
-  dimming = {
-    alpha = 0.1,
-    inactive = true,
-  },
-})
+-- require("twilight").setup({
+--   dimming = {
+--     alpha = 0.1,
+--     inactive = true,
+--   },
+-- })
 
 vim.keymap.set("n", " tsp", require("nvim-treesitter-playground.internal").toggle)
 vim.keymap.set("n", " tsc", require("nvim-treesitter-playground.hl-info").show_hl_captures)

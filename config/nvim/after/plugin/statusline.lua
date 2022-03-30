@@ -14,7 +14,7 @@ vim.opt.fillchars = {
   verthoriz = "╋",
 }
 
-local gps = require("nvim-gps")
+-- local gps = require("nvim-gps")
 
 -- Set global status line
 vim.opt.laststatus = 3
@@ -179,14 +179,14 @@ components[1][5] = {
   icon = "  ",
 }
 
-components[1][6] = {
-  provider = function()
-    return gps.get_location()
-  end,
-  enabled = function()
-    return gps.is_available()
-  end,
-}
+-- components[1][6] = {
+--   provider = function()
+--     return gps.get_location()
+--   end,
+--   enabled = function()
+--     return gps.is_available()
+--   end,
+-- }
 
 -- Diagnostics ------>
 -- workspace loader

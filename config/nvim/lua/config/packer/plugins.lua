@@ -15,7 +15,6 @@ local function my_plugins()
   use({
     "wbthomason/packer.nvim",
     "nvim-lua/plenary.nvim",
-    "tami5/sqlite.lua",
     "lewis6991/impatient.nvim",
     "neovim/nvim-lspconfig",
     "nvim-telescope/telescope.nvim",
@@ -24,6 +23,7 @@ local function my_plugins()
     "kyazdani42/nvim-web-devicons",
   })
   use({ "tjdevries/tree-sitter-lua", opt = true })
+  use({ "tami5/sqlite.lua", opt = true })
   use("andymass/vim-matchup")
 
   use({
@@ -65,12 +65,12 @@ local function my_plugins()
 
   -- Colorschemes
   use({
-    "navarasu/onedark.nvim",
-    "EdenEast/nightfox.nvim",
+    -- "navarasu/onedark.nvim",
+    -- "EdenEast/nightfox.nvim",
     "catppuccin/nvim",
-    "tanvirtin/monokai.nvim",
-    "projekt0n/github-nvim-theme",
-    opt = true,
+    -- "tanvirtin/monokai.nvim",
+    -- "projekt0n/github-nvim-theme",
+    -- opt = true,
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
   })
 
@@ -81,9 +81,9 @@ local function my_plugins()
     "nvim-treesitter/playground",
     "lukas-reineke/indent-blankline.nvim",
     "romgrk/nvim-treesitter-context",
-    "folke/twilight.nvim",
+    -- "folke/twilight.nvim",
     "windwp/nvim-autopairs",
-    "SmiteshP/nvim-gps",
+    -- "SmiteshP/nvim-gps",
     requires = "nvim-treesitter/nvim-treesitter",
     run = "TSUpdate",
   })
@@ -124,11 +124,11 @@ local function my_plugins()
   })
   -- Status lines
   use({
-    "tjdevries/express_line.nvim",
-    "windwp/windline.nvim",
+    -- "tjdevries/express_line.nvim",
+    -- "windwp/windline.nvim",
     "feline-nvim/feline.nvim",
-    "nvim-lualine/lualine.nvim",
-    opt = true,
+    -- "nvim-lualine/lualine.nvim",
+    -- opt = true,
   })
   -- Misc
   use({
@@ -137,7 +137,7 @@ local function my_plugins()
     "numToStr/Comment.nvim",
     "JoosepAlviste/nvim-ts-context-commentstring",
     "chentau/marks.nvim",
-    "vim-denops/denops.vim",
+    -- "vim-denops/denops.vim",
     "folke/lua-dev.nvim",
     "folke/which-key.nvim",
     "folke/trouble.nvim",
@@ -148,11 +148,11 @@ local function my_plugins()
   -- UI
   use({
     "rcarriga/nvim-notify",
-    "stevearc/dressing.nvim",
+    -- "stevearc/dressing.nvim",
     "stevearc/aerial.nvim",
-    "MunifTanjim/nui.nvim",
+    -- "MunifTanjim/nui.nvim",
     "p00f/nvim-ts-rainbow",
-    "code-biscuits/nvim-biscuits",
+    -- "code-biscuits/nvim-biscuits",
   })
 
   -- Filetype specific plugins
@@ -371,6 +371,6 @@ return require("packer").startup({
     },
   },
   profile = {
-    enable = false,
+    enable = true,
   },
 })
