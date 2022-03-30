@@ -33,7 +33,7 @@ return {
     }),
 
     -- Code Actions
-    code_actions.gitsigns,
+    -- code_actions.gitsigns,
     code_actions.shellcheck,
   },
   default_timeout = 20000,
