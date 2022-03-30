@@ -106,7 +106,9 @@ local function my_plugins()
     "hrsh7th/cmp-nvim-lsp-document-symbol",
     "dmitmel/cmp-cmdline-history",
     "f3fora/cmp-spell",
+    "L3MON4D3/LuaSnip",
     requires = { "hrsh7th/nvim-cmp", "hrsh7th/cmp-cmdline" },
+    event = "",
   })
 
   -- Debug
@@ -132,7 +134,6 @@ local function my_plugins()
   })
   -- Misc
   use({
-    "L3MON4D3/LuaSnip",
     "monaqa/dial.nvim",
     "numToStr/Comment.nvim",
     "JoosepAlviste/nvim-ts-context-commentstring",
@@ -148,9 +149,9 @@ local function my_plugins()
   -- UI
   use({
     "rcarriga/nvim-notify",
-    -- "stevearc/dressing.nvim",
+    "stevearc/dressing.nvim",
     "stevearc/aerial.nvim",
-    -- "MunifTanjim/nui.nvim",
+    "MunifTanjim/nui.nvim",
     "p00f/nvim-ts-rainbow",
     -- "code-biscuits/nvim-biscuits",
   })
@@ -229,11 +230,27 @@ local function my_plugins()
   })
 
   use({ "jose-elias-alvarez/nvim-lsp-ts-utils" })
-  use({ "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" })
-  use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
+  -- use({ "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" })
+  use({
+    "rcarriga/vim-ultest",
+    config = function()
+      vim.cmd([[let test#strategy = "neovim"]])
+      vim.cmd([[let test#python#pytest#options = "--color=yes"]])
+      vim.api.nvim_create_autocmd("BufWritePost", {
+        pattern = "*",
+        callback = function()
+          vim.cmd([[UltestNearest]])
+        end,
+      })
+    end,
+    requires = { "vim-test/vim-test", opt = true },
+    run = ":UpdateRemotePlugins",
+    opt = true,
+  })
   use({ "b0o/SchemaStore.nvim" })
   use({
     "norcalli/nvim-colorizer.lua",
+    opt = true,
   })
 
   use({
@@ -349,6 +366,14 @@ local function my_plugins()
   use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
   use({
     "kyazdani42/nvim-tree.lua",
+    opt = true,
+    keys = { " fj", "<leader>fj" },
+    config = function()
+      require("nvim-tree").setup(require("config.file_explorer"))
+      vim.keymap.set("n", " fj", function()
+        require("nvim-tree").toggle()
+      end)
+    end,
     requires = {
       "kyazdani42/nvim-web-devicons", -- optional, for file icon
     },

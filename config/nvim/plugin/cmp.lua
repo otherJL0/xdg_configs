@@ -6,6 +6,19 @@ end
 local luasnip = require("luasnip")
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+local languages = {
+  "go",
+  "javascript",
+  "json",
+  "lua",
+  "python",
+}
+
+for _, language in ipairs(languages) do
+  luasnip.add_snippets(language, require("config.snippets." .. language))
+end
+
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 cmp.setup({

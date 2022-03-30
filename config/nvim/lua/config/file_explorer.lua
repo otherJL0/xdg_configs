@@ -1,4 +1,4 @@
-require("nvim-tree").setup({
+return {
   auto_close = false,
   auto_reload_on_write = true,
   disable_netrw = true,
@@ -91,7 +91,4 @@ require("nvim-tree").setup({
       git = false,
     },
   },
-}) -- END_DEFAULT_OPTS
-vim.keymap.set("n", " fj", function()
-  require("nvim-tree").toggle()
-end)
+}
