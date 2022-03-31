@@ -108,7 +108,6 @@ local function my_plugins()
     "f3fora/cmp-spell",
     "L3MON4D3/LuaSnip",
     requires = { "hrsh7th/nvim-cmp", "hrsh7th/cmp-cmdline" },
-    event = "",
   })
 
   -- Debug
@@ -246,6 +245,7 @@ local function my_plugins()
     requires = { "vim-test/vim-test", opt = true },
     run = ":UpdateRemotePlugins",
     opt = true,
+    event = { "BufWritePre *" },
   })
   use({ "b0o/SchemaStore.nvim" })
   use({
