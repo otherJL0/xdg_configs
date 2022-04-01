@@ -120,6 +120,37 @@ local function my_plugins()
   })
 
   use({
+    "mfussenegger/nvim-dap-python",
+    config = function()
+      local function pypath()
+        local cwd = vim.fn.getcwd()
+        local venv_directories = { "venv", ".venv", "env" }
+        for _, venv in ipairs(venv_directories) do
+          local pypath_candidate = string.format("%s/%s/bin/python", cwd, venv)
+          if vim.fn.executable(pypath_candidate) and vim.fn.exepath("python") == pypath_candidate then
+            return pypath_candidate
+          end
+        end
+        return nil
+      end
+
+      if pypath() == nil then
+        return
+      end
+      local dap_py = require("dap-python")
+      -- vim.notify("Setting up nvim-dap at " .. pypath())
+      -- vim.notify("Current python executable is " .. vim.fn.exepath("python"))
+      dap_py.setup(pypath())
+      dap_py.test_runner = "pytest"
+
+      vim.keymap.set("n", " tm", dap_py.test_method)
+      vim.keymap.set("n", " tf", dap_py.test_method)
+      vim.keymap.set("n", " tc", dap_py.test_class)
+    end,
+    ft = { "py", "python", "python3", "pytest" },
+  })
+
+  use({
     "Dkendal/nvim-minor-mode",
     "gpanders/nvim-parinfer",
   })
@@ -244,8 +275,7 @@ local function my_plugins()
     end,
     requires = { "vim-test/vim-test", opt = true },
     run = ":UpdateRemotePlugins",
-    opt = true,
-    event = { "BufWritePre *" },
+    ft = { "py", "python", "python3", "pytest" },
   })
   use({ "b0o/SchemaStore.nvim" })
   use({
