@@ -5,3 +5,4 @@ config/zsh/.zsh_sessions/
 fish_variables
 casing
 history
+log
