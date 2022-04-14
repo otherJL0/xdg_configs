@@ -93,6 +93,19 @@ cmp.setup({
       },
     }),
   },
+  window = {
+    -- double, rounded, single, shadow
+    completion = {
+      border = "single",
+    },
+    documentation = {
+      border = "single",
+    },
+  },
+  view = {
+    -- entries = "native",
+    entries = { name = "custom", selection_order = "near_cursor" },
+  },
   experimental = {
     native_menu = false,
     ghost_text = true,
