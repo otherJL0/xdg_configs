@@ -128,3 +128,7 @@ vim.api.nvim_create_autocmd("WinLeave", {
 })
 
 vim.opt.grepprg = "rg"
+
+
+vim.keymap.set("n", [[  "]], ":split<CR>")
+vim.keymap.set("n", [[  %]], ":vsplit<CR>")
