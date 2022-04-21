@@ -21,7 +21,6 @@ if status is-interactive
     # set -gx direnv_fish_mode eval_after_arrow
     # set -gx direnv_fish_mode disable_arrow
     asdf exec direnv hook fish | source
-    abbr -a direnv asdf exec direnv
 
     fzf_configure_bindings --git_log=\cg --git_status=\eg --directory=\cf --history --variables --processes=\ej
 
