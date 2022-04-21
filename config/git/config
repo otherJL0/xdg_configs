@@ -94,3 +94,5 @@
 	required = true
 [alias]
 	patch = add --patch
+	unstage = reset HEAD --
+	nuke = clean -fdx
