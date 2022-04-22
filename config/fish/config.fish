@@ -29,7 +29,9 @@ if status is-interactive
     zoxide init fish | source
     mcfly init fish | source
 
-
+    if test ( uname ) = Darwin
+        fnm env --use-on-cd | source
+    end
 end
 
 set -gx MANPAGER /usr/local/bin/nvim +Man!
