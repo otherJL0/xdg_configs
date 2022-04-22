@@ -16,7 +16,7 @@ return {
       extra_args = { "--target-version", "py310" },
     }),
     formatting.stylua,
-    formatting.shfmt,
+    -- formatting.shfmt,
     formatting.fish_indent,
 
     -- Diagnostics
