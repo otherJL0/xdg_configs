@@ -56,6 +56,7 @@ local language_servers = {
   "texlab",
   "tsserver",
   "yamlls",
+  "zls",
   -- "jsonls",
   -- "typeprof",
 }
