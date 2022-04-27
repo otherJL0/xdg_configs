@@ -37,3 +37,6 @@ require("config.packer")
 require("themes.catppuccin")
 
 vim.g.python3_host_prog = vim.fn.stdpath("cache") .. "/.venv/bin/python3"
+
+require("tools/zig")
+require("tools/npm")
