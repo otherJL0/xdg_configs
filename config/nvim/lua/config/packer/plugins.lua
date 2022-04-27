@@ -408,6 +408,7 @@ local function my_plugins()
       "kyazdani42/nvim-web-devicons", -- optional, for file icon
     },
   })
+  use({ "ziglang/zig.vim" })
 end
 
 return require("packer").startup({
