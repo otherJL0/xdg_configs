@@ -24,7 +24,8 @@ local function my_plugins()
   })
   use({ "tjdevries/tree-sitter-lua", opt = true })
   use({ "tami5/sqlite.lua", opt = true })
-  use("andymass/vim-matchup")
+  use({ "andymass/vim-matchup" })
+  use({ "nanotee/luv-vimdocs" })
 
   use({
     "ggandor/lightspeed.nvim",
