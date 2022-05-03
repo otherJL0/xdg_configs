@@ -9,6 +9,9 @@
     commitGraph = true
     sparseCheckout = true
     sparseCheckoutCone = true
+    symlinks = false
+    filemode = false
+    autocrlf = false
 
 [color]
     ui = auto
@@ -96,3 +99,8 @@
 	patch = add --patch
 	unstage = reset HEAD --
 	nuke = clean -fdx
+    showtrackedignored = ls-files -i --exclude-standard
+    me = !git log --author=\"$(git config user.name)\"
+    f = fetch --all --prune
+    ru = rebase origin/master
+    c = commit -mree = log --oneline --decorate --all --graph
