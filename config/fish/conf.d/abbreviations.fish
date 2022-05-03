@@ -29,7 +29,6 @@ abbr -a unstage git reset HEAD --
 abbr -a upstream git push --set-upstream origin (git symbolic-ref --short HEAD)
 
 
-abbr -a brI
 abbr -a bru brew update
 abbr -a brU brew upgrade
 abbr -a pI pip install
