@@ -72,19 +72,19 @@ local function on_attach(client, bufnr)
   vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
   vim.keymap.set("n", " q", vim.diagnostic.setloclist)
 
-  -- if client.resolved_capabilities.code_lens then
-  --   vim.notify(vim.inspect(client.resolved_capabilities))
+  -- if client.server_capabilities.code_lens then
+  --   vim.notify(vim.inspect(client.server_capabilities))
   -- end
 
-  if client.resolved_capabilities.document_highlight then
+  if client.supports_method("textDocument/documentHighlight") then
     vim.api.nvim_command([[autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()]])
     vim.api.nvim_command([[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]])
     vim.api.nvim_command([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
   end
 
-  client_cmd = vim.split(client.config.cmd[1], "/")
-  server_name = client_cmd[#client_cmd]
-  if client.resolved_capabilities.document_formatting and server_name ~= "lua-language-server" then
+  local client_cmd = vim.split(client.config.cmd[1], "/")
+  local server_name = client_cmd[#client_cmd]
+  if client.supports_method("textDocument/formatting") and server_name ~= "lua-language-server" then
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
     vim.keymap.set("n", " F", vim.lsp.buf.formatting)
     vim.api.nvim_command([[augroup Format]])
@@ -92,8 +92,8 @@ local function on_attach(client, bufnr)
     vim.api.nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]])
     vim.api.nvim_command([[augroup END]])
   else
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
   end
 end
 
@@ -123,9 +123,9 @@ end
 --   "yamlls",
 -- }
 
-local null_ls_configs = require("config.lsp.null")
-null_ls_configs.on_attach = on_attach
-require("null-ls").setup(null_ls_configs)
+-- local null_ls_configs = require("config.lsp.null")
+-- null_ls_configs.on_attach = on_attach
+require("null-ls").setup(require("config.lsp.null"))
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
