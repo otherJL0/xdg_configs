@@ -94,6 +94,7 @@ end
 -- Initialize the components table
 local components = {
   {}, -- left
+  {},
   {}, -- right
 }
 
@@ -188,9 +189,53 @@ components[1][5] = {
 --   end,
 -- }
 
+components[2][2] = {
+  provider = {
+    name = "file_type",
+
+    opts = {
+      -- filetype_icon = true,
+      case = "lowercase",
+    },
+  },
+  hl = {
+    fg = sett.extras,
+    bg = sett.bkg,
+  },
+  left_sep = {
+    str = "[",
+    hl = {
+      fg = sett.extras,
+      bg = sett.bkg,
+    },
+  },
+
+  right_sep = {
+    str = "]",
+    hl = {
+      fg = sett.extras,
+      bg = sett.bkg,
+    },
+  },
+}
+
+components[2][1] = {
+  provider = {
+    name = "file_info",
+    opts = {
+      colored_icon = true,
+      type = "relative-short",
+    },
+  },
+  hl = {
+    fg = sett.extras,
+    bg = sett.bkg,
+  },
+  right_sep = invi_sep,
+}
 -- Diagnostics ------>
 -- workspace loader
-components[2][1] = {
+components[3][1] = {
   provider = "lsp_client_names",
   hl = {
     fg = sett.extras,
@@ -199,7 +244,7 @@ components[2][1] = {
   right_sep = invi_sep,
 }
 -- genral diagnostics (errors, warnings. info and hints)
-components[2][2] = {
+components[3][2] = {
   provider = "diagnostic_errors",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.ERROR)
@@ -212,7 +257,7 @@ components[2][2] = {
   icon = "  ",
 }
 
-components[2][3] = {
+components[3][3] = {
   provider = "diagnostic_warnings",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.WARN)
@@ -224,7 +269,7 @@ components[2][3] = {
   icon = "  ",
 }
 
-components[2][4] = {
+components[3][4] = {
   provider = "diagnostic_info",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.INFO)
@@ -236,7 +281,7 @@ components[2][4] = {
   icon = "  ",
 }
 
-components[2][5] = {
+components[3][5] = {
   provider = "diagnostic_hints",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.HINT)
@@ -254,7 +299,7 @@ components[2][5] = {
 -- ######## Right
 
 -- position
-components[2][6] = {
+components[3][6] = {
   provider = function()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
 
@@ -267,7 +312,7 @@ components[2][6] = {
   left_sep = invi_sep,
 }
 -- file progess
-components[2][7] = {
+components[3][7] = {
   provider = function()
     local current_line = vim.fn.line(".")
     local total_line = vim.fn.line("$")
