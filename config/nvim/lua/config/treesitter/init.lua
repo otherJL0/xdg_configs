@@ -75,6 +75,14 @@ parser_configs.toml = {
   },
 }
 
+parser_configs.requirements = {
+  install_info = {
+    url = "https://github.com/otherJL0/tree-sitter-requirements",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+}
+
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "bash",
