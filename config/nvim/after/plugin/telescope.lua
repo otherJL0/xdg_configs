@@ -46,10 +46,9 @@ telescope.setup({
   },
 })
 
-telescope.load_extension("ui-select")
-telescope.load_extension("file_browser")
-telescope.load_extension("fzf")
-telescope.load_extension("live_grep_raw")
+for _, extension in ipairs({ "ui-select", "file_browser", "fzf", "live_grep_raw", "gh" }) do
+  telescope.load_extension(extension)
+end
 
 -- Return a new instance of the opt table instead of re-using
 local opts = function()
