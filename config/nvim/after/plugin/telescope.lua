@@ -38,20 +38,20 @@ telescope.setup({
     },
     project = {
       base_dirs = {
-        { path = "~/gh", max_depth = 3 },
-        { path = "~/exercism", max_depth = 3 },
+        { path = "~/vcs/", max_depth = 5 },
+        -- { path = "~/exercism", max_depth = 3 },
       },
       hidden_files = false, -- default: false
     },
   },
 })
 
-for _, extension in ipairs({ "ui-select", "file_browser", "fzf", "live_grep_raw", "gh" }) do
+for _, extension in ipairs({ "ui-select", "file_browser", "fzf", "live_grep_raw", "gh", "project" }) do
   telescope.load_extension(extension)
 end
 
 -- Return a new instance of the opt table instead of re-using
-local opts = function()
+local function get_ivy_opts()
   return themes.get_ivy({
     layout_config = {
       preview_cutoff = 1, -- Preview should always show (unless previewer = false)
@@ -65,22 +65,27 @@ end
 
 local ivy = setmetatable({
   project_files = function()
-    local ok = pcall(require("telescope.builtin").git_files, opts())
+    local ok = pcall(require("telescope.builtin").git_files, get_ivy_opts())
     if not ok then
-      require("telescope.builtin").find_files(opts())
+      require("telescope.builtin").find_files(get_ivy_opts())
     end
+  end,
+  project = function()
+    local proj_opts = get_ivy_opts()
+    proj_opts.display_type = "full"
+    telescope.extensions.project.project(proj_opts)
   end,
 }, {
   __index = function(_, function_call)
     local extensions = vim.tbl_keys(telescope.extensions)
     if vim.tbl_contains(extensions, function_call) then
       return function()
-        local ivy_opts = opts()
+        local ivy_opts = get_ivy_opts()
         telescope.extensions[function_call][function_call](ivy_opts)
       end
     end
     return function()
-      require("telescope.builtin")[function_call](opts())
+      require("telescope.builtin")[function_call](get_ivy_opts())
     end
   end,
 })
@@ -91,12 +96,7 @@ vim.keymap.set("n", " ff", ivy.git_files)
 vim.keymap.set("n", " fg", ivy.live_grep_raw)
 vim.keymap.set("n", " fG", ivy.grep_string)
 vim.keymap.set("n", " fh", ivy.help_tags)
--- vim.keymap.set("n", " fj", ivy.file_browser)
+vim.keymap.set("n", " fj", ivy.file_browser)
 vim.keymap.set("n", " fm", ivy.man_pages)
 vim.keymap.set("n", "gI", ivy.lsp_implementations)
--- vim.keymap.set("n", " fp", ivy.project )
--- vim.keymap.set("n", " fp", function()
---   local config = themes.get_ivy({})
---   config.display_type = "full"
---   telescope.extensions.project.project(config)
--- end)
+vim.keymap.set("n", " fp", ivy.project)
