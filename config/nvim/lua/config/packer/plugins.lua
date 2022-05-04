@@ -60,6 +60,7 @@ local function my_plugins()
     "nvim-telescope/telescope-file-browser.nvim",
     "nvim-telescope/telescope-project.nvim",
     "nvim-telescope/telescope-live-grep-raw.nvim",
+    opt = true,
   })
 
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
@@ -396,20 +397,20 @@ local function my_plugins()
   })
 
   use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
-  use({
-    "kyazdani42/nvim-tree.lua",
-    opt = true,
-    keys = { " fj", "<leader>fj" },
-    config = function()
-      require("nvim-tree").setup(require("config.file_explorer"))
-      vim.keymap.set("n", " fj", function()
-        require("nvim-tree").toggle()
-      end)
-    end,
-    requires = {
-      "kyazdani42/nvim-web-devicons", -- optional, for file icon
-    },
-  })
+  -- use({
+  --   "kyazdani42/nvim-tree.lua",
+  --   opt = true,
+  --   keys = { " fj", "<leader>fj" },
+  --   config = function()
+  --     require("nvim-tree").setup(require("config.file_explorer"))
+  --     vim.keymap.set("n", " fj", function()
+  --       require("nvim-tree").toggle()
+  --     end)
+  --   end,
+  --   requires = {
+  --     "kyazdani42/nvim-web-devicons", -- optional, for file icon
+  --   },
+  -- })
   use({ "ziglang/zig.vim", ft = "zig" })
 end
 
