@@ -31,23 +31,19 @@ cmp.setup({
     end,
   },
   mapping = {
-
-    ["<C-k>"] = cmp.mapping(function(fallback)
-      if luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif cmp.visible() then
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
         cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
       else
         fallback()
       end
-    end, {
-      "i",
-      "s",
-    }),
+    end, { "i", "s" }),
 
-    ["<C-p>"] = cmp.mapping(function(fallback)
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -55,10 +51,8 @@ cmp.setup({
       else
         fallback()
       end
-    end, {
-      "i",
-      "s",
-    }),
+    end, { "i", "s" }),
+
     ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -116,8 +110,8 @@ cmp.setup({
     },
   },
   view = {
-    -- entries = "native",
-    entries = { name = "custom", selection_order = "near_cursor" },
+    entries = "custom",
+    -- entries = { name = "custom", selection_order = "near_cursor" },
   },
   experimental = {
     native_menu = false,
@@ -159,6 +153,10 @@ for _, search_type in ipairs({ "/", "?" }) do
       { name = "nvim_lsp_document_symbol" },
       { name = "buffer" },
     }),
+
+    view = {
+      entries = { name = "wildmenu", separator = "|" },
+    },
   })
 end
 
@@ -167,6 +165,9 @@ for _, cmd_type in ipairs({ ":", "@" }) do
     sources = {
       { name = "cmdline_history" },
       { name = "cmdline" },
+    },
+    view = {
+      entries = { name = "wildmenu", separator = "|" },
     },
   })
 end
