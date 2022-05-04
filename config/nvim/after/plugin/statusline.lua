@@ -190,53 +190,13 @@ components[1][5] = {
 --   end,
 -- }
 
-components[2][2] = {
-  provider = {
-    name = "file_type",
-
-    opts = {
-      -- filetype_icon = true,
-      case = "lowercase",
-    },
-  },
-  hl = {
-    bg = sett.curr_file,
-    fg = sett.bkg,
-  },
-  left_sep = {
-    str = assets.vertical_bar_chubby,
-    hl = {
-      fg = sett.curr_file,
-      bg = sett.bkg,
-    },
-  },
-
-  right_sep = {
-    str = assets.vertical_bar_chubby .. " ",
-    hl = {
-      fg = sett.curr_file,
-      bg = sett.bkg,
-    },
-  },
-}
-
 components[2][1] = {
-  provider = {
-    name = "file_info",
-    opts = {
-      colored_icon = true,
-      type = "relative-short",
-    },
-  },
   hl = {
-    fg = sett.curr_file,
     bg = sett.bkg,
   },
-  right_sep = invi_sep,
 }
-
 if vim.env.VIRTUAL_ENV ~= nil then
-  components[2][3] = {
+  components[2][1] = {
     provider = function()
       local venv = vim.split(vim.env.VIRTUAL_ENV, "/", { trimempty = true })
       return venv[#venv]
@@ -256,20 +216,73 @@ if vim.env.VIRTUAL_ENV ~= nil then
     },
 
     right_sep = {
-      str = assets.right_semicircle,
+      str = assets.slant_right,
       hl = {
         fg = sett.curr_dir,
         bg = sett.bkg,
       },
     },
   }
+end
 
-  components[2][4] = {
+components[2][2] = {
+  provider = {
+    name = "file_info",
+    opts = {
+      colored_icon = true,
+      type = "relative-short",
+    },
+  },
+  hl = {
+    bg = sett.curr_file,
+    fg = sett.bkg,
+  },
+  right_sep = {
+    str = assets.slant_right_2,
     hl = {
+      fg = sett.curr_file,
       bg = sett.bkg,
     },
-  }
-end
+  },
+  left_sep = {
+    str = assets.slant_left_2,
+    hl = {
+      fg = sett.curr_file,
+      bg = sett.bkg,
+    },
+  },
+}
+
+components[2][3] = {
+  provider = {
+    name = "file_type",
+
+    opts = {
+      -- filetype_icon = true,
+      case = "lowercase",
+    },
+  },
+  hl = {
+    bg = sett.curr_file,
+    fg = sett.bkg,
+  },
+  left_sep = {
+    str = assets.slant_left,
+    hl = {
+      fg = sett.curr_file,
+      bg = sett.bkg,
+    },
+  },
+
+  right_sep = {
+    str = assets.right_semicircle,
+    hl = {
+      fg = sett.curr_file,
+      bg = sett.bkg,
+    },
+  },
+}
+
 -- Diagnostics ------>
 -- workspace loader
 components[3][1] = {
