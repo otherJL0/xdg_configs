@@ -14,33 +14,6 @@ local languages = {
   "lua",
   "python",
 }
-local kind_icons = {
-  Text = "",
-  Method = "",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "ﴯ",
-  Interface = "",
-  Module = "",
-  Property = "ﰠ",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = "�,
-}
 
 for _, language in ipairs(languages) do
   luasnip.add_snippets(language, require("config.snippets." .. language))
@@ -97,28 +70,41 @@ cmp.setup({
     }),
   },
   sources = cmp.config.sources({
+    { name = "nvim_lsp_signature_help" },
     { name = "luasnip", group_index = 2 },
     { name = "neorg", group_index = 1 },
     { name = "nvim_lua", keyword_pattern = "vim.", group_index = 1 },
     { name = "nvim_lsp", trigger_character = ".", group_index = 2 },
     { name = "path", trigger_character = "/", group_index = 9 },
-    { name = "buffer", group_index = 10 },
+    {
+      name = "buffer",
+      group_index = 10,
+      option = {
+        get_bufnrs = function()
+          local bufs = {}
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            bufs[vim.api.nvim_win_get_buf(win)] = true
+          end
+          return vim.tbl_keys(bufs)
+        end,
+      },
+    },
   }),
 
   formatting = {
-    format = function(entry, vim_item)
-      -- Kind icons
-      vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-      -- Source
-      vim_item.menu = ({
+    format = require("lspkind").cmp_format({
+      mode = "symbol",
+      maxwidth = 50,
+
+      menu = {
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         luasnip = "[LuaSnip]",
         nvim_lua = "[Lua]",
-        latex_symbols = "[LaTeX]",
-      })[entry.source.name]
-      return vim_item
-    end,
+        neorg = "[Neorg]",
+        path = "[Path]",
+      },
+    }),
   },
   window = {
     -- double, rounded, single, shadow
@@ -161,23 +147,26 @@ require("nvim-treesitter.configs").setup({
 require("nvim-autopairs").add_rules(require("nvim-autopairs.rules.endwise-lua"))
 require("nvim-autopairs").add_rules(require("nvim-autopairs.rules.endwise-ruby"))
 
-cmp.setup.cmdline(":", {
-  sources = {
-    { name = "cmdline" },
-  },
-})
+-- cmp.setup.cmdline(":", {
+--   sources = {
+--     { name = "cmdline" },
+--   },
+-- })
 
-cmp.setup.cmdline("/", {
-  sources = {
-    { name = "nvim_lsp_document_symbol" },
-    { name = "buffer" },
-  },
-})
+for _, search_type in ipairs({ "/", "?" }) do
+  cmp.setup.cmdline(search_type, {
+    sources = cmp.config.sources({
+      { name = "nvim_lsp_document_symbol" },
+      { name = "buffer" },
+    }),
+  })
+end
 
--- for _, cmd_type in ipairs({ ":", "/", "?", "@", "=" }) do
---   cmp.setup.cmdline(cmd_type, {
---     sources = {
---       { name = "cmdline_history" },
---     },
---   })
--- end
+for _, cmd_type in ipairs({ ":", "@" }) do
+  cmp.setup.cmdline(cmd_type, {
+    sources = {
+      { name = "cmdline_history" },
+      { name = "cmdline" },
+    },
+  })
+end

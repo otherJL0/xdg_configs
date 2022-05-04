@@ -36,11 +36,11 @@ local function my_plugins()
   -- LSP Extras
   use({
     "nvim-lua/lsp-status.nvim",
-  --   "ray-x/lsp_signature.nvim",
-  --   "rmagatti/goto-preview",
-  --   "onsails/lspkind-nvim",
-  --   requires = "neovim/lspconfig",
-  --   opt = true,
+    --   "ray-x/lsp_signature.nvim",
+    --   "rmagatti/goto-preview",
+    "onsails/lspkind-nvim",
+    --   requires = "neovim/lspconfig",
+    --   opt = true,
   })
 
   use({ "j-hui/fidget.nvim" })
