@@ -1,3 +1,4 @@
+local Path = require("plenary.path")
 vim.api.nvim_exec(
   [[
 hi WinSeparator  guifg=#96CDFB
@@ -199,21 +200,21 @@ components[2][2] = {
     },
   },
   hl = {
-    fg = sett.extras,
-    bg = sett.bkg,
+    bg = sett.curr_file,
+    fg = sett.bkg,
   },
   left_sep = {
-    str = "[",
+    str = assets.vertical_bar_chubby,
     hl = {
-      fg = sett.extras,
+      fg = sett.curr_file,
       bg = sett.bkg,
     },
   },
 
   right_sep = {
-    str = "]",
+    str = assets.vertical_bar_chubby .. " ",
     hl = {
-      fg = sett.extras,
+      fg = sett.curr_file,
       bg = sett.bkg,
     },
   },
@@ -228,11 +229,47 @@ components[2][1] = {
     },
   },
   hl = {
-    fg = sett.extras,
+    fg = sett.curr_file,
     bg = sett.bkg,
   },
   right_sep = invi_sep,
 }
+
+if vim.env.VIRTUAL_ENV ~= nil then
+  components[2][3] = {
+    provider = function()
+      local venv = vim.split(vim.env.VIRTUAL_ENV, "/", { trimempty = true })
+      return venv[#venv]
+    end,
+
+    hl = {
+      bg = sett.curr_dir,
+      fg = sett.bkg,
+    },
+
+    left_sep = {
+      str = assets.left_semicircle,
+      hl = {
+        fg = sett.curr_dir,
+        bg = sett.bkg,
+      },
+    },
+
+    right_sep = {
+      str = assets.right_semicircle,
+      hl = {
+        fg = sett.curr_dir,
+        bg = sett.bkg,
+      },
+    },
+  }
+
+  components[2][4] = {
+    hl = {
+      bg = sett.bkg,
+    },
+  }
+end
 -- Diagnostics ------>
 -- workspace loader
 components[3][1] = {
