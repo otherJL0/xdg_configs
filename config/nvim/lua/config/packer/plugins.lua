@@ -36,11 +36,11 @@ local function my_plugins()
   -- LSP Extras
   use({
     "nvim-lua/lsp-status.nvim",
-    "ray-x/lsp_signature.nvim",
-    "rmagatti/goto-preview",
-    "onsails/lspkind-nvim",
-    requires = "neovim/lspconfig",
-    opt = true,
+  --   "ray-x/lsp_signature.nvim",
+  --   "rmagatti/goto-preview",
+  --   "onsails/lspkind-nvim",
+  --   requires = "neovim/lspconfig",
+  --   opt = true,
   })
 
   use({ "j-hui/fidget.nvim" })
@@ -99,15 +99,16 @@ local function my_plugins()
 
   -- Cmp and plugins
   use({
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lua",
-    "saadparwaiz1/cmp_luasnip",
-    "hrsh7th/cmp-nvim-lsp-document-symbol",
+    "L3MON4D3/LuaSnip",
     "dmitmel/cmp-cmdline-history",
     "f3fora/cmp-spell",
-    "L3MON4D3/LuaSnip",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lsp-document-symbol",
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-path",
+    "saadparwaiz1/cmp_luasnip",
     requires = { "hrsh7th/nvim-cmp", "hrsh7th/cmp-cmdline" },
   })
 
@@ -151,10 +152,10 @@ local function my_plugins()
     ft = { "py", "python", "python3", "pytest" },
   })
 
-  use({
-    "Dkendal/nvim-minor-mode",
-    "gpanders/nvim-parinfer",
-  })
+  -- use({
+  --   "Dkendal/nvim-minor-mode",
+  --   "gpanders/nvim-parinfer",
+  -- })
   -- Status lines
   use({
     -- "tjdevries/express_line.nvim",
@@ -171,7 +172,7 @@ local function my_plugins()
     "chentau/marks.nvim",
     -- "vim-denops/denops.vim",
     "folke/lua-dev.nvim",
-    "folke/which-key.nvim",
+    -- "folke/which-key.nvim",
     "folke/trouble.nvim",
 
     requires = "kyazdani42/nvim-web-devicons",
@@ -181,7 +182,7 @@ local function my_plugins()
   use({
     "rcarriga/nvim-notify",
     "stevearc/dressing.nvim",
-    "stevearc/aerial.nvim",
+    -- "stevearc/aerial.nvim",
     "MunifTanjim/nui.nvim",
     "p00f/nvim-ts-rainbow",
     -- "code-biscuits/nvim-biscuits",
@@ -227,18 +228,18 @@ local function my_plugins()
   use({
     "windwp/nvim-ts-autotag",
   })
-  use({
-    "mfussenegger/nvim-jdtls",
-    ft = { "maven", "mvn", "gradle", "java" },
-  })
+  -- use({
+  --   "mfussenegger/nvim-jdtls",
+  --   ft = { "maven", "mvn", "gradle", "java" },
+  -- })
   -- use({
   --   "gennaro-tedesco/nvim-jqx",
   --   ft = { "" },
   -- })
-  use({
-    "theHamsta/nvim-treesitter-commonlisp",
-    "vlime/vlime",
-  })
+  -- use({
+  --   "theHamsta/nvim-treesitter-commonlisp",
+  --   "vlime/vlime",
+  -- })
 
   use({
     "ahmedkhalf/project.nvim",
@@ -260,7 +261,7 @@ local function my_plugins()
     ft = { "c", "cpp", "c++", "h", "hpp", "cc" },
   })
 
-  use({ "jose-elias-alvarez/nvim-lsp-ts-utils" })
+  use({ "jose-elias-alvarez/nvim-lsp-ts-utils", ft = { "typescript", "tsx", "ts" } })
   -- use({ "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" })
   use({
     "rcarriga/vim-ultest",
@@ -284,13 +285,13 @@ local function my_plugins()
     opt = true,
   })
 
-  use({
-    "stevearc/stickybuf.nvim",
-    config = function()
-      require("stickybuf").setup({})
-      vim.cmd([[autocmd BufEnter * if &winfixwidth || &winfixheight | silent! PinBuffer | endif]])
-    end,
-  })
+  -- use({
+  --   "stevearc/stickybuf.nvim",
+  --   config = function()
+  --     require("stickybuf").setup({})
+  --     vim.cmd([[autocmd BufEnter * if &winfixwidth || &winfixheight | silent! PinBuffer | endif]])
+  --   end,
+  -- })
 
   use({
     "simrat39/rust-tools.nvim",
@@ -409,7 +410,7 @@ local function my_plugins()
       "kyazdani42/nvim-web-devicons", -- optional, for file icon
     },
   })
-  use({ "ziglang/zig.vim" })
+  use({ "ziglang/zig.vim", ft = "zig" })
 end
 
 return require("packer").startup({

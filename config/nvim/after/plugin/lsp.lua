@@ -35,7 +35,6 @@ vim.cmd([[
   sign define DiagnosticSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=LspDiagnosticsLineNrHint
 ]])
 
-require("goto-preview").setup({})
 local language_servers = {
   "bashls",
   -- "clangd",

@@ -39,22 +39,7 @@ local function on_attach(client, bufnr)
       logging = false, -- whether to enable logging, for debugging
     },
   })
-  require("lsp_signature").on_attach({
-    bind = true,
-    handler_opts = {
-      border = "double", -- double, rounded, single, shadow, none
-    },
-    extra_trigger_chars = { "(", "," },
-    toggle_key = "<C-x>",
-  }) -- Note: add in lsp client on-attach
-
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-  vim.keymap.set("n", "gpd", require("goto-preview").goto_preview_definition)
-  vim.keymap.set("n", "gpi", require("goto-preview").goto_preview_implementation)
-  vim.keymap.set("n", "gP", require("goto-preview").close_all_win)
-  -- Only set if you have telescope installed
-  vim.keymap.set("n", "gpr", require("goto-preview").goto_preview_references)
 
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition)

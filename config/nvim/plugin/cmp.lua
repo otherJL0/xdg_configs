@@ -14,6 +14,33 @@ local languages = {
   "lua",
   "python",
 }
+local kind_icons = {
+  Text = "",
+  Method = "",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "ﴯ",
+  Interface = "",
+  Module = "",
+  Property = "ﰠ",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = "�,
+}
 
 for _, language in ipairs(languages) do
   luasnip.add_snippets(language, require("config.snippets." .. language))
@@ -79,19 +106,19 @@ cmp.setup({
   }),
 
   formatting = {
-    format = require("lspkind").cmp_format({
-      mode = "symbol",
-      maxwidth = 50,
-
-      menu = {
+    format = function(entry, vim_item)
+      -- Kind icons
+      vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+      -- Source
+      vim_item.menu = ({
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         luasnip = "[LuaSnip]",
         nvim_lua = "[Lua]",
-        neorg = "[Neorg]",
-        path = "[Path]",
-      },
-    }),
+        latex_symbols = "[LaTeX]",
+      })[entry.source.name]
+      return vim_item
+    end,
   },
   window = {
     -- double, rounded, single, shadow
