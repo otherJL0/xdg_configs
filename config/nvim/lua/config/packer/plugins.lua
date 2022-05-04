@@ -31,7 +31,10 @@ local function my_plugins()
     "ggandor/lightspeed.nvim",
   })
 
-  use({ "tpope/vim-rsi", "tpope/vim-fugitive" })
+  use({
+    -- "tpope/vim-rsi",
+    "tpope/vim-fugitive",
+  })
 
   -- LSP Extras
   use({

@@ -49,6 +49,7 @@ opt.showtabline = 2 -- Always show tabline
 opt.mouse = "n" -- Only allow mouse in normal mode
 opt.scrolloff = 10 -- At least 10 lines should show past current line
 opt.showmode = false -- Do not show mode in cmd line
+opt.redrawtime = 90000
 opt.inccommand = "nosplit" -- Highlight search/replace queries
 opt.cmdheight = 1 -- Cmd height
 opt.showmatch = true -- Show matching bracket character when hovering
@@ -129,6 +130,15 @@ vim.api.nvim_create_autocmd("WinLeave", {
 
 vim.opt.grepprg = "rg"
 
-
 vim.keymap.set("n", [[  "]], ":split<CR>")
 vim.keymap.set("n", [[  %]], ":vsplit<CR>")
+
+vim.keymap.set("c", "<C-A>", "<Home>")
+vim.keymap.set("c", "<C-B>", "<Left>")
+vim.keymap.set("c", "<C-D>", "<Del>")
+vim.keymap.set("c", "<C-E>", "<End>")
+vim.keymap.set("c", "<C-F>", "<Right>")
+vim.keymap.set("c", "<C-N>", "<Down>")
+vim.keymap.set("c", "<C-P>", "<Up>")
+-- vim.keymap.set("c", "<A-B>", "<S-Left>")
+-- vim.keymap.set("c", "<A-F>", "<S-Right>")
