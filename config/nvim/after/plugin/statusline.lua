@@ -1,4 +1,3 @@
-local Path = require("plenary.path")
 vim.api.nvim_exec(
   [[
 hi WinSeparator  guifg=#96CDFB
@@ -199,6 +198,7 @@ if vim.env.VIRTUAL_ENV ~= nil then
   components[2][1] = {
     provider = function()
       local venv = vim.split(vim.env.VIRTUAL_ENV, "/", { trimempty = true })
+      vim.notify(vim.inspect(vim.env.VIRTUAL_ENV .. "/bin/python --version"))
       return venv[#venv]
     end,
 
