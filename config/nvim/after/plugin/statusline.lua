@@ -215,7 +215,7 @@ if vim.env.VIRTUAL_ENV ~= nil then
     },
 
     right_sep = {
-      str = assets.slant_right,
+      str = assets.slant_right_2,
       hl = {
         fg = sett.curr_dir,
         bg = sett.bkg,
@@ -233,20 +233,20 @@ components[2][2] = {
     },
   },
   hl = {
-    bg = sett.curr_file,
+    bg = clrs.lavender,
     fg = sett.bkg,
   },
   right_sep = {
-    str = assets.slant_right_2,
+    str = assets.slant_right,
     hl = {
-      fg = sett.curr_file,
+      fg = clrs.lavender,
       bg = sett.bkg,
     },
   },
   left_sep = {
-    str = assets.slant_left_2,
+    str = assets.slant_left,
     hl = {
-      fg = sett.curr_file,
+      fg = clrs.lavender,
       bg = sett.bkg,
     },
   },
@@ -262,13 +262,13 @@ components[2][3] = {
     },
   },
   hl = {
-    bg = sett.curr_file,
+    bg = clrs.lavender,
     fg = sett.bkg,
   },
   left_sep = {
-    str = assets.slant_left,
+    str = assets.slant_left_2,
     hl = {
-      fg = sett.curr_file,
+      fg = clrs.lavender,
       bg = sett.bkg,
     },
   },
@@ -276,9 +276,14 @@ components[2][3] = {
   right_sep = {
     str = assets.right_semicircle,
     hl = {
-      fg = sett.curr_file,
+      fg = clrs.lavender,
       bg = sett.bkg,
     },
+  },
+}
+components[2][4] = {
+  hl = {
+    bg = sett.bkg,
   },
 }
 
