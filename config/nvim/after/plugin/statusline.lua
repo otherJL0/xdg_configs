@@ -1,3 +1,16 @@
+local lsp = require("feline.providers.lsp")
+local lsp_severity = vim.diagnostic.severity
+local b = vim.b
+
+local function get_python_version(venv)
+  for _, version in ipairs({ "3.11", "3.10", "3.9", "3.8", "3.7", "3.6" }) do
+    if vim.fn.getftype(string.format("%s/bin/python%s", venv, version)) ~= "" then
+      return version
+    end
+  end
+  return "unknown"
+end
+
 vim.api.nvim_exec(
   [[
 hi WinSeparator  guifg=#96CDFB
@@ -14,13 +27,7 @@ vim.opt.fillchars = {
   verthoriz = "╋",
 }
 
--- local gps = require("nvim-gps")
-
--- Set global status line
 vim.opt.laststatus = 3
-local lsp = require("feline.providers.lsp")
-local lsp_severity = vim.diagnostic.severity
-local b = vim.b
 
 local assets = {
   left_semicircle = "",
@@ -180,15 +187,6 @@ components[1][5] = {
   icon = "  ",
 }
 
--- components[1][6] = {
---   provider = function()
---     return gps.get_location()
---   end,
---   enabled = function()
---     return gps.is_available()
---   end,
--- }
-
 components[2][1] = {
   hl = {
     bg = sett.bkg,
@@ -198,7 +196,7 @@ if vim.env.VIRTUAL_ENV ~= nil then
   components[2][1] = {
     provider = function()
       local venv = vim.split(vim.env.VIRTUAL_ENV, "/", { trimempty = true })
-      return venv[#venv]
+      return string.format("%s(%s)", venv[#venv], get_python_version(vim.env.VIRTUAL_ENV))
     end,
 
     hl = {
