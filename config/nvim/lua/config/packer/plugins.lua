@@ -214,10 +214,13 @@ local function my_plugins()
           ["core.norg.dirman"] = {
             config = {
               workspaces = {
+                personal = "~/Dropbox/neorg",
                 my_workspace = "~/neorg",
+                alexandria = vim.fn.stdpath("data") .. "/site/pack/packer/opt/library-of-norgxandria",
               },
             },
           },
+          ["core.integrations.telescope"] = {}, -- Enable the telescope module
         },
       })
     end,
@@ -227,11 +230,13 @@ local function my_plugins()
       "jbyuki/nabla.nvim",
       "lewis6991/spellsitter.nvim",
     },
-    after = { "nvim-treesitter", "telescope.nvim", "nvim-cmp" }, -- Ensures that neorg loads after nvim-treesitter
+    after = { "nvim-treesitter", "telescope.nvim", "nvim-cmp", "neorg-telescope" }, -- Ensures that neorg loads after nvim-treesitter
   })
   use({
     "windwp/nvim-ts-autotag",
   })
+
+  use({ "nvim-neorg/neorg-telescope" })
   -- use({
   --   "mfussenegger/nvim-jdtls",
   --   ft = { "maven", "mvn", "gradle", "java" },
@@ -448,6 +453,7 @@ local function my_plugins()
       "MunifTanjim/nui.nvim",
     },
   })
+  use({ "nvim-neorg/library-of-norgxandria", opt = true })
 end
 
 return require("packer").startup({
