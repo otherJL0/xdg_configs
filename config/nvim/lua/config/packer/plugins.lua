@@ -192,38 +192,10 @@ local function my_plugins()
     -- "code-biscuits/nvim-biscuits",
   })
 
+  use({ "nvim-neorg/neorg-telescope" })
   -- Filetype specific plugins
   use({
     "nvim-neorg/neorg",
-    config = function()
-      require("neorg").setup({
-        load = {
-          ["core.defaults"] = {},
-          ["core.norg.concealer"] = {},
-          ["core.keybinds"] = {
-            config = {
-              default_keybinds = true,
-              neorg_leader = "<Leader>o",
-            },
-          },
-          ["core.norg.completion"] = {
-            config = {
-              engine = "nvim-cmp",
-            },
-          },
-          ["core.norg.dirman"] = {
-            config = {
-              workspaces = {
-                personal = "~/Dropbox/neorg",
-                my_workspace = "~/neorg",
-                alexandria = vim.fn.stdpath("data") .. "/site/pack/packer/opt/library-of-norgxandria",
-              },
-            },
-          },
-          ["core.integrations.telescope"] = {}, -- Enable the telescope module
-        },
-      })
-    end,
     requires = {
       "nvim-lua/plenary.nvim",
       "nvim-neorg/neorg-telescope",
@@ -236,7 +208,6 @@ local function my_plugins()
     "windwp/nvim-ts-autotag",
   })
 
-  use({ "nvim-neorg/neorg-telescope" })
   -- use({
   --   "mfussenegger/nvim-jdtls",
   --   ft = { "maven", "mvn", "gradle", "java" },
