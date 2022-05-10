@@ -415,6 +415,39 @@ local function my_plugins()
   --   },
   -- })
   use({ "ziglang/zig.vim", ft = "zig" })
+  use({
+    "bennypowers/nvim-regexplainer",
+    config = function()
+      require("regexplainer").setup({
+        -- narative, ascii, graphical
+        mode = "narrative",
+        auto = true,
+        filetypes = {
+          "python",
+          "js",
+          "py",
+          "bash",
+          "sh",
+          "ts",
+          "tsx",
+          "jsx",
+        },
+        debug = true,
+        -- split, popup, pasteboard
+        display = "popup",
+        popup = {
+          border = {
+            -- padding = { 1,  },
+            style = "single",
+          },
+        },
+      })
+    end,
+    requires = {
+      "nvim-treesitter/nvim-treesitter",
+      "MunifTanjim/nui.nvim",
+    },
+  })
 end
 
 return require("packer").startup({

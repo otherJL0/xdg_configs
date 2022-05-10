@@ -44,7 +44,6 @@ opt.splitbelow = true -- New splits open below
 opt.splitright = true --New vsplits open right
 opt.ignorecase = true -- Ignore case when searching
 opt.smartcase = true -- Except when explicitly adding uppercase
-opt.signcolumn = "yes:3" -- Always show a sign column
 opt.showtabline = 2 -- Always show tabline
 opt.mouse = "n" -- Only allow mouse in normal mode
 opt.scrolloff = 10 -- At least 10 lines should show past current line
@@ -100,6 +99,7 @@ vim.api.nvim_create_autocmd("WinEnter", {
       "Neogit",
       "Diffview",
       "NvimTree",
+      "tsplayground",
     }
     for _, prefix in ipairs(ignored_prefix) do
       if string.find(vim.bo.filetype, prefix) then
@@ -113,6 +113,7 @@ vim.api.nvim_create_autocmd("WinEnter", {
     vim.opt.cursorcolumn = true
     vim.opt.relativenumber = true
     vim.opt.colorcolumn = "100"
+    vim.opt.signcolumn = "yes:3" -- Always show a sign column
   end,
 })
 
