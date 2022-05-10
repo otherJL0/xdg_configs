@@ -26,7 +26,6 @@ abbr -a branch git symbolic-ref --short HEAD
 abbr -a difftool git difftool
 abbr -a mergetool git mergetool
 abbr -a unstage git reset HEAD --
-abbr -a upstream git push --set-upstream origin (git symbolic-ref --short HEAD)
 
 
 abbr -a bru brew update
