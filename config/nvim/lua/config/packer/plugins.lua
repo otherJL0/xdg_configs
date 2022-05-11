@@ -7,10 +7,8 @@ vim.cmd([[
 ]])
 
 local use = require("packer").use
--- local use_rocks = require("packer").use_rocks
 
 local function my_plugins()
-  -- use_rocks({ "tl", "cyan", { "teal-language-server", server = "https://luarocks.org/dev" } })
   -- Essential
   use({
     "wbthomason/packer.nvim",
@@ -28,22 +26,24 @@ local function my_plugins()
   use({ "nanotee/luv-vimdocs" })
 
   use({
+    "lewis6991/spellsitter.nvim",
+    config = function()
+      vim.opt.spell = true
+      require("spellsitter").setup()
+    end,
+  })
+  use({
     "ggandor/lightspeed.nvim",
   })
 
   use({
-    -- "tpope/vim-rsi",
     "tpope/vim-fugitive",
   })
 
   -- LSP Extras
   use({
     "nvim-lua/lsp-status.nvim",
-    --   "ray-x/lsp_signature.nvim",
-    --   "rmagatti/goto-preview",
     "onsails/lspkind-nvim",
-    --   requires = "neovim/lspconfig",
-    --   opt = true,
   })
 
   use({ "j-hui/fidget.nvim" })
@@ -70,12 +70,7 @@ local function my_plugins()
 
   -- Colorschemes
   use({
-    -- "navarasu/onedark.nvim",
-    -- "EdenEast/nightfox.nvim",
     "catppuccin/nvim",
-    -- "tanvirtin/monokai.nvim",
-    -- "projekt0n/github-nvim-theme",
-    -- opt = true,
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
   })
 
@@ -86,9 +81,7 @@ local function my_plugins()
     "nvim-treesitter/playground",
     "lukas-reineke/indent-blankline.nvim",
     "romgrk/nvim-treesitter-context",
-    -- "folke/twilight.nvim",
     "windwp/nvim-autopairs",
-    -- "SmiteshP/nvim-gps",
     requires = "nvim-treesitter/nvim-treesitter",
     run = "TSUpdate",
   })
@@ -144,8 +137,6 @@ local function my_plugins()
         return
       end
       local dap_py = require("dap-python")
-      -- vim.notify("Setting up nvim-dap at " .. pypath())
-      -- vim.notify("Current python executable is " .. vim.fn.exepath("python"))
       dap_py.setup(pypath())
       dap_py.test_runner = "pytest"
 
@@ -156,17 +147,9 @@ local function my_plugins()
     ft = { "py", "python", "python3", "pytest" },
   })
 
-  -- use({
-  --   "Dkendal/nvim-minor-mode",
-  --   "gpanders/nvim-parinfer",
-  -- })
   -- Status lines
   use({
-    -- "tjdevries/express_line.nvim",
-    -- "windwp/windline.nvim",
     "feline-nvim/feline.nvim",
-    -- "nvim-lualine/lualine.nvim",
-    -- opt = true,
   })
   -- Misc
   use({
@@ -186,10 +169,8 @@ local function my_plugins()
   use({
     "rcarriga/nvim-notify",
     "stevearc/dressing.nvim",
-    -- "stevearc/aerial.nvim",
     "MunifTanjim/nui.nvim",
     "p00f/nvim-ts-rainbow",
-    -- "code-biscuits/nvim-biscuits",
   })
 
   use({ "nvim-neorg/neorg-telescope" })
@@ -208,18 +189,10 @@ local function my_plugins()
     "windwp/nvim-ts-autotag",
   })
 
-  -- use({
-  --   "mfussenegger/nvim-jdtls",
-  --   ft = { "maven", "mvn", "gradle", "java" },
-  -- })
-  -- use({
-  --   "gennaro-tedesco/nvim-jqx",
-  --   ft = { "" },
-  -- })
-  -- use({
-  --   "theHamsta/nvim-treesitter-commonlisp",
-  --   "vlime/vlime",
-  -- })
+  use({
+    "gennaro-tedesco/nvim-jqx",
+    ft = { "" },
+  })
 
   use({
     "ahmedkhalf/project.nvim",
@@ -242,7 +215,6 @@ local function my_plugins()
   })
 
   use({ "jose-elias-alvarez/nvim-lsp-ts-utils", ft = { "typescript", "tsx", "ts" } })
-  -- use({ "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" })
   use({
     "rcarriga/vim-ultest",
     config = function()
@@ -264,14 +236,6 @@ local function my_plugins()
     "norcalli/nvim-colorizer.lua",
     opt = true,
   })
-
-  -- use({
-  --   "stevearc/stickybuf.nvim",
-  --   config = function()
-  --     require("stickybuf").setup({})
-  --     vim.cmd([[autocmd BufEnter * if &winfixwidth || &winfixheight | silent! PinBuffer | endif]])
-  --   end,
-  -- })
 
   use({
     "simrat39/rust-tools.nvim",
@@ -376,26 +340,12 @@ local function my_plugins()
   })
 
   use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
-  -- use({
-  --   "kyazdani42/nvim-tree.lua",
-  --   opt = true,
-  --   keys = { " fj", "<leader>fj" },
-  --   config = function()
-  --     require("nvim-tree").setup(require("config.file_explorer"))
-  --     vim.keymap.set("n", " fj", function()
-  --       require("nvim-tree").toggle()
-  --     end)
-  --   end,
-  --   requires = {
-  --     "kyazdani42/nvim-web-devicons", -- optional, for file icon
-  --   },
-  -- })
   use({ "ziglang/zig.vim", ft = "zig" })
   use({
     "bennypowers/nvim-regexplainer",
     config = function()
       require("regexplainer").setup({
-        -- narative, ascii, graphical
+        -- narrative, ascii, graphical
         mode = "narrative",
         auto = true,
         filetypes = {
