@@ -49,3 +49,6 @@ abbr -a rgpy rg --type py
 function hrg --wraps rg
     kitty +kitten hyperlinked_grep $argv
 end
+
+abbr -a kit kitty +kitten
+abbr -a icat kitty +kitten icat
