@@ -45,3 +45,7 @@ abbr -a fdpy fd --extension py
 
 
 abbr -a rgpy rg --type py
+
+function hrg --wraps rg
+    kitty +kitten hyperlinked_grep $argv
+end
