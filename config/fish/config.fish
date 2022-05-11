@@ -30,7 +30,9 @@ if status is-interactive
     mcfly init fish | source
 
     if test ( uname ) = Darwin
-        fnm env --use-on-cd | source
+        if contains voxsupFrontend2 (string split '/' $PWD)
+            fnm env --use-on-cd | source
+        end
     end
 end
 
