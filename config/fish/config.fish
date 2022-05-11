@@ -44,6 +44,12 @@ function fish_user_key_bindings
     # resetting all bindings.
     # The argument specifies the initial mode (insert, "default" or visual).
     fish_vi_key_bindings --no-erase insert
+
+    set -gx fish_cursor_default block
+    set -gx fish_cursor_insert line
+    set -gx fish_cursor_replace_one underscore
+    set -gx fish_cursor_visual block
+
 end
 
 # opam configuration
