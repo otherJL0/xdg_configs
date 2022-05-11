@@ -2,7 +2,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
-  cmd = { "vscode-json-language-server", "--stdio" },
+  cmd = { vim.fn.stdpath("cache") .. "/node_modules/.bin/vscode-json-language-server", "--stdio" },
   filetypes = { "json" },
   init_options = {
     provideFormatter = true,

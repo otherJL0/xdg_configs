@@ -56,7 +56,7 @@ local language_servers = {
   "tsserver",
   "yamlls",
   "zls",
-  -- "jsonls",
+  "jsonls",
   -- "typeprof",
 }
 
