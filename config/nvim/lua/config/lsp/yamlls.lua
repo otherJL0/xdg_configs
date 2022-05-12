@@ -4,10 +4,14 @@ return {
   settings = {
     yaml = {
       completion = true,
+      hover = true,
       validate = true,
       format = {
         enable = true,
         bracketSpacing = true,
+      },
+      schemaStore = {
+        enable = true,
       },
     },
   },
