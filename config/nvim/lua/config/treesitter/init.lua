@@ -11,7 +11,7 @@ require("nvim-treesitter.install").prefer_git = true
 
 parser_configs.sqlite = {
   install_info = {
-    url = "https://github.com/returntocorp/tree-sitter-sqlite",
+    url = "https://github.com/dhcmrlchtdj/tree-sitter-sqlite",
     files = { "src/parser.c" },
     branch = "main",
   },
