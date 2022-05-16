@@ -32,7 +32,8 @@
     keepBackup = false
 
 [diff]
-    tool = nvimDiff
+    external = difft
+    tool = difftastic
     algorithm = histogram
     colorMoved = default
     mnemonicPrefix = true
@@ -42,17 +43,13 @@
     prompt = false
     keepBackup = false
 
-[difftool "nvimDiff"]
-    cmd = nvim -c "Gitsigns diffthis"
+[difftool "difftastic"]
+    cmd = difft "$LOCAL" "$REMOTE"
+
 
 [pager]
-    diff = delta
-    log = delta
-    reflow = delta
-    show = delta
+    difftool = true
 
-[interactive]
-    diffFilter = delta --color-only
 
 [delta]
     line-numbers = true
@@ -105,3 +102,4 @@
     f = fetch --all --prune
     ru = rebase origin/master
     c = commit -mree = log --oneline --decorate --all --graph
+    difft = difftool
