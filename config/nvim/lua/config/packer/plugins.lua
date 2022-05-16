@@ -156,7 +156,7 @@ local function my_plugins()
     "monaqa/dial.nvim",
     "numToStr/Comment.nvim",
     "JoosepAlviste/nvim-ts-context-commentstring",
-    "chentau/marks.nvim",
+    "chentoast/marks.nvim",
     -- "vim-denops/denops.vim",
     "folke/lua-dev.nvim",
     -- "folke/which-key.nvim",
