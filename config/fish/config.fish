@@ -34,6 +34,8 @@ if status is-interactive
             fnm env --use-on-cd | source
         end
     end
+
+    set -gx PATH $PATH $HOME/.krew/bin
 end
 
 set -gx MANPAGER /usr/local/bin/nvim +Man!
