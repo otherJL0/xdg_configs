@@ -39,6 +39,7 @@ telescope.setup({
     project = {
       base_dirs = {
         { path = "~/vcs/", max_depth = 5 },
+        { path = "~/git/", max_depth = 5 },
         -- { path = "~/exercism", max_depth = 3 },
       },
       hidden_files = false, -- default: false
@@ -141,9 +142,6 @@ end, {
     end, options_list)
   end,
 })
-
-
-
 
 local neorg = require("neorg")
 local neorg_callbacks = require("neorg.callbacks")
