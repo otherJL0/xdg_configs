@@ -82,6 +82,7 @@ local function my_plugins()
     "lukas-reineke/indent-blankline.nvim",
     "romgrk/nvim-treesitter-context",
     "windwp/nvim-autopairs",
+    "SmiteshP/nvim-gps",
     requires = "nvim-treesitter/nvim-treesitter",
     run = "TSUpdate",
   })
