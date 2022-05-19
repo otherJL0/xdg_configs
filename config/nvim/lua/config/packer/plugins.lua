@@ -339,7 +339,6 @@ local function my_plugins()
     end,
   })
 
-  use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
   use({ "ziglang/zig.vim", ft = "zig" })
   use({
     "bennypowers/nvim-regexplainer",
