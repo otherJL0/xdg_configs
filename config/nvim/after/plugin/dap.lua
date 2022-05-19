@@ -2,6 +2,7 @@ local dap = require("dap")
 local ui = require("dapui")
 
 dap.set_log_level("TRACE")
+require("dap-ruby").setup()
 
 dap.adapters.lldb = {
   type = "executable",

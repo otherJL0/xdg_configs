@@ -117,6 +117,7 @@ local function my_plugins()
     "theHamsta/nvim-dap-virtual-text",
     "nvim-telescope/telescope-dap.nvim",
     "jbyuki/one-small-step-for-vimkind",
+    "suketa/nvim-dap-ruby",
   })
 
   use({
