@@ -101,5 +101,6 @@
     me = !git log --author=\"$(git config user.name)\"
     f = fetch --all --prune
     ru = rebase origin/master
-    c = commit -mree = log --oneline --decorate --all --graph
+    c = commit -m
+    tree = log --oneline --decorate --all --graph
     difft = difftool
