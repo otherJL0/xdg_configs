@@ -37,7 +37,6 @@ vim.cmd([[
 
 local language_servers = {
   "bashls",
-  -- "clangd",
   "cmake",
   "cssls",
   "denols",
@@ -46,22 +45,22 @@ local language_servers = {
   "gopls",
   "hls",
   "html",
+  "jsonls",
   "ocamllsp",
   "pyright",
   "racket_langserver",
-  "solargraph",
   "sumneko_lua",
   "taplo",
   "texlab",
   "tsserver",
+  "typeprof",
   "yamlls",
   "zls",
-  "jsonls",
-  -- "typeprof",
 }
 
 require("config.lsp").launch(language_servers)
 require("config.lsp").launch_teal()
+require("config.lsp").launch_stree()
 
 -- register any number of sources simultaneously
 vim.keymap.set("n", " k", function()

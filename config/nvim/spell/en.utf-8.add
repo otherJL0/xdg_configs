@@ -66,3 +66,9 @@ zig
 opam
 nodejs
 lts
+printk
+PVS
+log_path_init
+XDG_STATE_HOME
+expand_env
+nvimlog

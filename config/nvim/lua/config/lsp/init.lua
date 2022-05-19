@@ -70,11 +70,11 @@ local function on_attach(client, bufnr)
   local client_cmd = vim.split(client.config.cmd[1], "/")
   local server_name = client_cmd[#client_cmd]
   if client.supports_method("textDocument/formatting") and server_name ~= "lua-language-server" then
-    vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
-    vim.keymap.set("n", " F", vim.lsp.buf.formatting)
+    vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({async = true})' ]])
+    -- vim.keymap.set("n", " F", vim.lsp.buf.format)
     vim.api.nvim_command([[augroup Format]])
     vim.api.nvim_command([[autocmd! * <buffer>]])
-    vim.api.nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]])
+    vim.api.nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.format({async = true})]])
     vim.api.nvim_command([[augroup END]])
   else
     client.server_capabilities.document_formatting = false
@@ -157,6 +157,20 @@ return {
       },
     }
     lspconfig.teal.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
+    })
+  end,
+
+  launch_stree = function()
+    require("lspconfig.configs").stree = {
+      default_config = {
+        cmd = { "stree", "lsp" },
+        filetypes = { "ruby", "eruby" },
+        root_dir = require("lspconfig.util").root_pattern(".git", "Gemfile", "Rakefile"),
+      },
+    }
+    lspconfig.stree.setup({
       on_attach = on_attach,
       capabilities = capabilities,
     })
