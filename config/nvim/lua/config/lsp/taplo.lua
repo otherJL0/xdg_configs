@@ -1,5 +1,5 @@
 return {
-  cmd = { "taplo-lsp", "run" },
+  cmd = { "taplo", "lsp", "stdio" },
   filetypes = { "toml" },
   single_file_support = true,
 }
