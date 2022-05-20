@@ -72,3 +72,6 @@ log_path_init
 XDG_STATE_HOME
 expand_env
 nvimlog
+dataclass
+configparser
+pyt
