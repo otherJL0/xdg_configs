@@ -101,7 +101,6 @@ end
 -- Initialize the components table
 local components = {
   {}, -- left
-  {},
   {}, -- right
 }
 
@@ -187,13 +186,137 @@ components[1][5] = {
   icon = "  ",
 }
 
+-- Diagnostics ------>
+-- workspace loader
 components[2][1] = {
+  provider = "lsp_client_names",
+  hl = {
+    fg = sett.extras,
+    bg = sett.bkg,
+  },
+  right_sep = invi_sep,
+}
+-- genral diagnostics (errors, warnings. info and hints)
+components[2][2] = {
+  provider = "diagnostic_errors",
+  enabled = function()
+    return lsp.diagnostics_exist(lsp_severity.ERROR)
+  end,
+
+  hl = {
+    fg = clrs.red,
+    bg = sett.bkg,
+  },
+  icon = "  ",
+}
+
+components[2][3] = {
+  provider = "diagnostic_warnings",
+  enabled = function()
+    return lsp.diagnostics_exist(lsp_severity.WARN)
+  end,
+  hl = {
+    fg = clrs.peach,
+    bg = sett.bkg,
+  },
+  icon = "  ",
+}
+
+components[2][4] = {
+  provider = "diagnostic_info",
+  enabled = function()
+    return lsp.diagnostics_exist(lsp_severity.INFO)
+  end,
+  hl = {
+    fg = clrs.yellow,
+    bg = sett.bkg,
+  },
+  icon = "  ",
+}
+
+components[2][5] = {
+  provider = "diagnostic_hints",
+  enabled = function()
+    return lsp.diagnostics_exist(lsp_severity.HINT)
+  end,
+  hl = {
+    fg = clrs.teal,
+    bg = sett.bkg,
+  },
+  icon = " ● ",
+}
+-- Diagnostics ------>
+
+-- ######## Center
+
+-- ######## Right
+
+-- position
+components[2][6] = {
+  provider = function()
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+
+    -- Turn col from byte-index to column number and make it start from 1
+    col = vim.str_utfindex(vim.api.nvim_get_current_line(), col) + 1
+
+    return string.format(" %3d:%-2d", row, col)
+  end,
+  hl = vi_mode_hl,
+  left_sep = invi_sep,
+}
+-- file progress
+components[2][7] = {
+  provider = function()
+    local current_line = vim.fn.line(".")
+    local total_line = vim.fn.line("$")
+
+    if current_line == 1 then
+      return " Top "
+    elseif current_line == vim.fn.line("$") then
+      return " Bot "
+    end
+    local result, _ = math.modf((current_line / total_line) * 100)
+    return " " .. result .. "%% "
+  end,
+  hl = vi_mode_hl,
+}
+
+require("feline").setup({
+  components = {
+    active = components,
+    inactive = components,
+  },
+  preset = "noicon",
+})
+
+local winbar_components = {
+  {},
+  {},
+}
+
+winbar_components[1][1] = {
+  provider = require("nvim-gps").get_location,
+  enabled = require("nvim-gps").is_available,
+  hl = {
+    fg = clrs.yellow,
+    bg = sett.bkg,
+  },
+  right_sep = assets.right_semicircle,
+}
+
+winbar_components[1][2] = {
+  hl = {
+    bg = clrs.black2,
+  },
+}
+
+winbar_components[2][1] = {
   hl = {
     bg = sett.bkg,
   },
 }
 if vim.env.VIRTUAL_ENV ~= nil then
-  components[2][1] = {
+  winbar_components[2][1] = {
     provider = function()
       local venv = vim.split(vim.env.VIRTUAL_ENV, "/", { trimempty = true })
       return string.format("%s(%s)", venv[#venv], get_python_version(vim.env.VIRTUAL_ENV))
@@ -222,7 +345,7 @@ if vim.env.VIRTUAL_ENV ~= nil then
   }
 end
 
-components[2][2] = {
+winbar_components[2][2] = {
   provider = {
     name = "file_info",
     opts = {
@@ -250,7 +373,7 @@ components[2][2] = {
   },
 }
 
-components[2][3] = {
+winbar_components[2][3] = {
   provider = {
     name = "file_type",
 
@@ -279,111 +402,15 @@ components[2][3] = {
     },
   },
 }
-components[2][4] = {
+winbar_components[2][4] = {
   hl = {
     bg = sett.bkg,
   },
 }
 
--- Diagnostics ------>
--- workspace loader
-components[3][1] = {
-  provider = "lsp_client_names",
-  hl = {
-    fg = sett.extras,
-    bg = sett.bkg,
-  },
-  right_sep = invi_sep,
-}
--- genral diagnostics (errors, warnings. info and hints)
-components[3][2] = {
-  provider = "diagnostic_errors",
-  enabled = function()
-    return lsp.diagnostics_exist(lsp_severity.ERROR)
-  end,
-
-  hl = {
-    fg = clrs.red,
-    bg = sett.bkg,
-  },
-  icon = "  ",
-}
-
-components[3][3] = {
-  provider = "diagnostic_warnings",
-  enabled = function()
-    return lsp.diagnostics_exist(lsp_severity.WARN)
-  end,
-  hl = {
-    fg = clrs.peach,
-    bg = sett.bkg,
-  },
-  icon = "  ",
-}
-
-components[3][4] = {
-  provider = "diagnostic_info",
-  enabled = function()
-    return lsp.diagnostics_exist(lsp_severity.INFO)
-  end,
-  hl = {
-    fg = clrs.yellow,
-    bg = sett.bkg,
-  },
-  icon = "  ",
-}
-
-components[3][5] = {
-  provider = "diagnostic_hints",
-  enabled = function()
-    return lsp.diagnostics_exist(lsp_severity.HINT)
-  end,
-  hl = {
-    fg = clrs.teal,
-    bg = sett.bkg,
-  },
-  icon = " ● ",
-}
--- Diagnostics ------>
-
--- ######## Center
-
--- ######## Right
-
--- position
-components[3][6] = {
-  provider = function()
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-
-    -- Turn col from byteindex to column number and make it start from 1
-    col = vim.str_utfindex(vim.api.nvim_get_current_line(), col) + 1
-
-    return string.format(" %3d:%-2d", row, col)
-  end,
-  hl = vi_mode_hl,
-  left_sep = invi_sep,
-}
--- file progess
-components[3][7] = {
-  provider = function()
-    local current_line = vim.fn.line(".")
-    local total_line = vim.fn.line("$")
-
-    if current_line == 1 then
-      return " Top "
-    elseif current_line == vim.fn.line("$") then
-      return " Bot "
-    end
-    local result, _ = math.modf((current_line / total_line) * 100)
-    return " " .. result .. "%% "
-  end,
-  hl = vi_mode_hl,
-}
-
-require("feline").setup({
+require("feline").winbar.setup({
   components = {
-    active = components,
-    inactive = components,
+    active = winbar_components,
   },
   preset = "noicon",
 })
