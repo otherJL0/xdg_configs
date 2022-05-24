@@ -70,6 +70,7 @@ cmp.setup({
     { name = "nvim_lua", keyword_pattern = "vim.", group_index = 1 },
     { name = "nvim_lsp", trigger_character = ".", group_index = 2 },
     { name = "path", trigger_character = "/", group_index = 9 },
+    { name = "crates" },
     {
       name = "buffer",
       group_index = 10,
