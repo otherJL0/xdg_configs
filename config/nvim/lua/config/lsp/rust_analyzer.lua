@@ -7,43 +7,24 @@ return {
     ["rust-analyzer"] = {
       assist = {
         exprFillDefault = "todo",
-        importGranularity = "crate",
-        importEnforceGranularity = false,
-        importPrefix = "plain",
-        importGroup = true,
-        allowMergingIntoGlobImports = false,
       },
-      cache = {
-        warmup = true,
-      },
-      callInfo = {
-        full = true,
+      cachePriming = {
+        enable = true,
+        numthreads = 0,
       },
       cargo = {
         autoreload = true,
-        allFeatures = false,
-        -- unsetTest = { "core" },
-        -- features = {},
-        runBuildScripts = true,
-        useRustcWrapperForBuildScripts = true,
-        -- noDefaultFeatures = false,
-        -- target = vim.NIL,
-        noSysroot = false,
+        buildScripts = {
+          enable = true,
+          useRustcWrapper = true,
+        },
       },
       checkOnSave = {
         enable = true,
-        -- allFeatures = vim.NIL,
         allTargets = true,
         command = "check",
-        -- noDefaultFeatures = vim.NIL,
-        -- target = vim.NIL,
-        -- extraArgs = {},
-        -- features = vim.NIL,
-        -- overrideCommand = vim.NIL,
       },
       completion = {
-        addCallArgumentSnippets = true,
-        addCallParenthesis = true,
         postfix = {
           enable = true,
         },
@@ -54,95 +35,161 @@ return {
           enable = true,
         },
       },
-      debug = {
-        engine = "auto",
-        openDebugPane = true,
-      },
       diagnostics = {
         enable = true,
         enableExperimental = true,
-        -- disabled = {},
-        -- remapPrefix = vim.empty_dict(),
-        -- warningsAsHint = {},
-        -- warningsAsInfo = {},
       },
       experimental = {
         procAttrMacros = true,
       },
       files = {
         watcher = "client",
-        -- excludeDirs = {},
       },
       highlightRelated = {
-        references = true,
-        exitPoints = true,
-        breakPoints = true,
-        yieldPoints = true,
-        strings = true,
+        breakPoints = {
+          enable = true,
+        },
+        exitPoints = {
+          enable = true,
+        },
+        references = {
+          enable = true,
+        },
+        yieldPoints = {
+          enable = true,
+        },
       },
       hover = {
-        documentation = true,
-        linksInHover = true,
+        documentation = {
+          enable = true,
+        },
+        links = {
+          enable = true,
+        },
+        actions = {
+          enable = true,
+          gotoTypeDef = {
+            enable = true,
+          },
+          implementations = {
+            enable = true,
+          },
+          references = {
+            enable = true,
+          },
+          run = {
+            enable = true,
+          },
+          debug = {
+            enable = true,
+          },
+        },
       },
-      hoverActions = {
-        debug = true,
-        enable = true,
-        gotoTypeDef = true,
-        implementations = true,
-        references = true,
-        run = true,
+      imports = {
+        granularity = {
+          enforce = false,
+          group = "crate",
+        },
+        group = {
+          enable = true,
+        },
+        merge = {
+          glob = true,
+        },
+        prefix = "plain",
       },
       inlayHints = {
         enable = true,
-        chainingHints = true,
+        bindingModeHints = {
+          enable = true,
+        },
+        chainingHints = {
+          enable = true,
+        },
+        closingBraceHints = {
+          enable = true,
+          minLines = 25,
+        },
+        closureReturnTypeHints = {
+          enable = true,
+        },
+        lifetimeElisionHints = {
+          enable = true,
+          useParameterNames = true,
+        },
         maxLength = 25,
-        parameterHints = true,
-        typeHints = true,
-        hideNamedConstructorHints = false,
+        parameterHints = {
+          enable = true,
+        },
+        reborrowHints = true,
+        renderColons = true,
+        typeHints = {
+          enable = true,
+          hideClosureInitialization = true,
+          hideNamedConstructor = true,
+        },
       },
       joinLines = {
+        joinAssignments = true,
         joinElseIf = true,
         removeTrailingComma = true,
         unwrapTrivialBlock = true,
-        joinAssignments = true,
       },
       lens = {
-        debug = true,
         enable = true,
-        implementations = true,
-        run = true,
-        methodReferences = true,
-        references = true,
-        enumVariantReferences = true,
+        debug = {
+          enable = true,
+        },
         forceCustomCommands = true,
+        implementations = {
+          enable = true,
+        },
+        references = {
+          adt = {
+            enable = true,
+          },
+          enumVariant = {
+            enable = true,
+          },
+          method = {
+            enable = true,
+          },
+          trait = {
+            enable = true,
+          },
+        },
+        run = {
+          enable = true,
+        },
       },
-      -- linkedProjects = {},
       lruCapacity = 1024,
       notifications = {
         cargoTomlNotFound = true,
       },
       procMacro = {
         enable = true,
-        -- server = vim.NIL,
       },
-      -- runnables = {
-      -- overrideCargo = vim.NIL,
-      -- cargoExtraArgs = {},
-      -- },
-      -- rustcSource = vim.NIL,
       rustfmt = {
-        -- extraArgs = {},
-        -- overrideCommand = vim.NIL,
-        enableRangeFormatting = true,
+        rangeFormatting = {
+          enable = true,
+        },
       },
-      updates = {
-        channel = "nightly",
+      semanticHighlighting = {
+        strings = {
+          enable = true,
+        },
+      },
+      signatureInfo = {
+        detail = "full",
+        documentation = {
+          enable = true,
+        },
       },
       workspace = {
         symbol = {
           search = {
-            scope = "workspace",
             kind = "only_types",
+            scope = "workspace",
           },
         },
       },
