@@ -18,6 +18,8 @@ return {
           enable = true,
           useRustcWrapper = true,
         },
+        features = "all",
+        -- features = { "exercises" },
       },
       checkOnSave = {
         enable = true,
@@ -46,23 +48,13 @@ return {
         watcher = "client",
       },
       highlightRelated = {
-        breakPoints = {
-          enable = true,
-        },
-        exitPoints = {
-          enable = true,
-        },
-        references = {
-          enable = true,
-        },
-        yieldPoints = {
-          enable = true,
-        },
+        breakPoints = true,
+        exitPoints = true,
+        references = true,
+        yieldPoints = true,
       },
       hover = {
-        documentation = {
-          enable = true,
-        },
+        documentation = true,
         links = {
           enable = true,
         },
@@ -103,31 +95,18 @@ return {
         bindingModeHints = {
           enable = true,
         },
-        chainingHints = {
-          enable = true,
-        },
+        chainingHints = true,
         closingBraceHints = {
           enable = true,
           minLines = 25,
         },
-        closureReturnTypeHints = {
-          enable = true,
-        },
-        lifetimeElisionHints = {
-          enable = true,
-          useParameterNames = true,
-        },
+        closureReturnTypeHints = true,
+        lifetimeElisionHints = true,
         maxLength = 25,
-        parameterHints = {
-          enable = true,
-        },
+        parameterHints = true,
         reborrowHints = true,
         renderColons = true,
-        typeHints = {
-          enable = true,
-          hideClosureInitialization = true,
-          hideNamedConstructor = true,
-        },
+        typeHints = true,
       },
       joinLines = {
         joinAssignments = true,
@@ -137,31 +116,13 @@ return {
       },
       lens = {
         enable = true,
-        debug = {
-          enable = true,
-        },
+        debug = true,
         forceCustomCommands = true,
-        implementations = {
-          enable = true,
-        },
-        references = {
-          adt = {
-            enable = true,
-          },
-          enumVariant = {
-            enable = true,
-          },
-          method = {
-            enable = true,
-          },
-          trait = {
-            enable = true,
-          },
-        },
-        run = {
-          enable = true,
-        },
+        implementations = true,
+        references = true,
+        run = true,
       },
+      linkedProjects = {},
       lruCapacity = 1024,
       notifications = {
         cargoTomlNotFound = true,
