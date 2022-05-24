@@ -75,3 +75,7 @@ nvimlog
 dataclass
 configparser
 pyt
+github
+SchemaStore
+diffview
+blankline
