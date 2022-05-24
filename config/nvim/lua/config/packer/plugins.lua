@@ -269,6 +269,7 @@ local function my_plugins()
     config = function()
       require("crates").setup({
         smart_insert = true, -- try to be smart about inserting versions
+        insert_closing_quote = true,
         avoid_prerelease = true, -- don't select a prerelease if the requirement does not have a suffix
         autoload = true, -- automatically run update when opening a Cargo.toml
         autoupdate = true, -- automatically update when editing text
@@ -293,53 +294,91 @@ local function my_plugins()
           error = "CratesNvimError",
         },
         popup = {
-          autofocus = false, -- focus the versions popup when opening it
-          copy_register = '"', -- the register into which the version will be copied
-          style = "minimal", -- same as nvim_open_win config.style
-          border = "shadow", -- same as nvim_open_win config.border
-          version_date = true, -- display when a version was released
+          autofocus = false,
+          copy_register = '"',
+          style = "minimal",
+          border = "none",
+          show_version_date = false,
+          show_dependency_version = true,
           max_height = 30,
           min_width = 20,
+          padding = 1,
           text = {
-            title = "  %s ",
-            -- versions
-            version = "   %s ",
-            prerelease = "  %s ",
-            yanked = "  %s ",
-            -- features
-            feature = "   %s ",
-            enabled = "  %s ",
-            transitive = "  %s ",
-            date = " %s ",
+            title = " %s",
+            pill_left = "",
+            pill_right = "",
+            description = "%s",
+            created_label = " created        ",
+            created = "%s",
+            updated_label = " updated        ",
+            updated = "%s",
+            downloads_label = " downloads      ",
+            downloads = "%s",
+            homepage_label = " homepage       ",
+            homepage = "%s",
+            repository_label = " repository     ",
+            repository = "%s",
+            documentation_label = " documentation  ",
+            documentation = "%s",
+            crates_io_label = " crates.io      ",
+            crates_io = "%s",
+            categories_label = " categories     ",
+            keywords_label = " keywords       ",
+            version = "  %s",
+            prerelease = " %s",
+            yanked = " %s",
+            version_date = "  %s",
+            feature = "  %s",
+            enabled = " %s",
+            transitive = " %s",
+            dependency = "  %s",
+            optional = " %s",
+            dependency_version = "  %s",
+            loading = " ",
           },
           highlight = {
             title = "CratesNvimPopupTitle",
-            -- versions
+            pill_text = "CratesNvimPopupPillText",
+            pill_border = "CratesNvimPopupPillBorder",
+            description = "CratesNvimPopupDescription",
+            created_label = "CratesNvimPopupLabel",
+            created = "CratesNvimPopupValue",
+            updated_label = "CratesNvimPopupLabel",
+            updated = "CratesNvimPopupValue",
+            downloads_label = "CratesNvimPopupLabel",
+            downloads = "CratesNvimPopupValue",
+            homepage_label = "CratesNvimPopupLabel",
+            homepage = "CratesNvimPopupUrl",
+            repository_label = "CratesNvimPopupLabel",
+            repository = "CratesNvimPopupUrl",
+            documentation_label = "CratesNvimPopupLabel",
+            documentation = "CratesNvimPopupUrl",
+            crates_io_label = "CratesNvimPopupLabel",
+            crates_io = "CratesNvimPopupUrl",
+            categories_label = "CratesNvimPopupLabel",
+            keywords_label = "CratesNvimPopupLabel",
             version = "CratesNvimPopupVersion",
             prerelease = "CratesNvimPopupPreRelease",
             yanked = "CratesNvimPopupYanked",
-            -- features
+            version_date = "CratesNvimPopupVersionDate",
             feature = "CratesNvimPopupFeature",
             enabled = "CratesNvimPopupEnabled",
             transitive = "CratesNvimPopupTransitive",
+            dependency = "CratesNvimPopupDependency",
+            optional = "CratesNvimPopupOptional",
+            dependency_version = "CratesNvimPopupDependencyVersion",
+            loading = "CratesNvimPopupLoading",
           },
           keys = {
             hide = { "q", "<esc>" },
-            -- versions
+            open_url = { "<cr>" },
             select = { "<cr>" },
-            select_dumb = { "s" },
-            copy_version = { "yy" },
-            -- features
+            select_alt = { "s" },
             toggle_feature = { "<cr>" },
-            goto_feature = { "gd", "K" },
-            jump_forward_feature = { "<c-i>" },
-            jump_back_feature = { "<c-o>" },
-          },
-        },
-        cmp = {
-          text = {
-            prerelease = "  pre-release ",
-            yanked = "  yanked ",
+            copy_value = { "yy" },
+            goto_item = { "gd", "K", "<C-LeftMouse>" },
+            jump_forward = { "<c-i>" },
+            jump_back = { "<c-o>", "<C-RightMouse>" },
           },
         },
       })
