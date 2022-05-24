@@ -1,14 +1,12 @@
 local function determine_venv_path()
   local cwd = vim.fn.getcwd()
-  if vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
-    return "venv"
-  elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-    return ".venv"
-  elseif vim.fn.executable(cwd .. "/env/bin/python") == 1 then
-    return "env"
-  else
-    return vim.env.HOME .. "/.asdf/shims/python3"
+  for _, venv in ipairs({ "venv", ".venv", "env" }) do
+    candidate_path = string.format("%s/%s/bin/python", cwd, venv)
+    if vim.fn.executable(candidate_path) == 1 then
+      return venv
+    end
   end
+  return vim.env.HOME .. "/.asdf/shims/python3"
 end
 
 return {
