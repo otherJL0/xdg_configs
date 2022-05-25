@@ -3,6 +3,7 @@ scan_timeout = 5000
 right_format = """$package$docker_context$cmake$conda$deno$golang$helm$java$kotlin$lua$nodejs$python$rust$ruby$scala"""
 continuation_prompt = "▶▶"
 add_newline = true
+
 [aws]
 style = "bold blue"
 symbol = "  "
@@ -192,3 +193,9 @@ disabled = false
 threshold = 50
 style = "bold dimmed green"
 format = '$symbol[$ram( | $swap)]($style)'
+
+[hostname]
+ssh_only = false
+format = '[$hostname:](bold red)'
+trim_at = ".companyname.com"
+disabled = false
