@@ -79,3 +79,9 @@ github
 SchemaStore
 diffview
 blankline
+json
+yml
+api
+bugfix
+stderr
+stdout
