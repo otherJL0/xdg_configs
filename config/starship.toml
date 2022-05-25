@@ -202,7 +202,7 @@ trim_at = ".companyname.com"
 disabled = false
 
 [custom.toolbox]
-command = """hostname"""
+# command = """hostname"""
 when = """ test -e /run/.containerenv """
 symbol = "⬢"
-format = '[$symbol $output:](bold blue)'
+format = '[$symbol ](bold blue)'
