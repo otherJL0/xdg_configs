@@ -1,5 +1,6 @@
 return {
   cmd = { "rust-analyzer" },
+  standalone = true,
   on_attach = require("config.lsp").on_attach,
   filetypes = { "rust" },
   root_dir = require("lspconfig.util").root_pattern("Cargo.toml", "rust-project.json"),
@@ -24,7 +25,7 @@ return {
       checkOnSave = {
         enable = true,
         allTargets = true,
-        command = "check",
+        command = "clippy",
       },
       completion = {
         postfix = {
