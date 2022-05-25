@@ -38,7 +38,7 @@ if status is-interactive
     set -gx PATH $PATH $HOME/.krew/bin
 end
 
-set -gx MANPAGER /usr/local/bin/nvim +Man!
+set -gx MANPAGER nvim +Man!
 function fish_user_key_bindings
     # Execute this once per mode that emacs bindings should be used in
     fish_default_key_bindings -M insert
