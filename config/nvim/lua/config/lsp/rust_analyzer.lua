@@ -18,7 +18,7 @@ return {
           enable = true,
           useRustcWrapper = true,
         },
-        features = "all",
+        -- features = "all",
         -- features = { "exercises" },
       },
       checkOnSave = {
