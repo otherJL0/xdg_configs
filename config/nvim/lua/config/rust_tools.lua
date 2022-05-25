@@ -38,7 +38,7 @@ local opts = {
       -- autoSetHints both are true.
       only_current_line_autocmd = "CursorHold",
 
-      -- wheter to show parameter hints with the inlay hints or not
+      -- whether to show parameter hints with the inlay hints or not
       show_parameter_hints = true,
 
       -- whether to show variable name before type hints with the inlay hints or not
@@ -105,7 +105,7 @@ local opts = {
   -- all the opts to send to nvim-lspconfig
   -- these override the defaults set by rust-tools.nvim
   -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
-  server = require("config.lsp.rust_analyzer"), -- rust-analyer options
+  server = require("config.lsp.rust_analyzer"), -- rust-analyzer options
 
   -- debugging stuff
   dap = {
