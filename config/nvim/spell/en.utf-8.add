@@ -89,11 +89,12 @@ podman
 ulimits
 udev
 OSTree
-SDKs
+sdks
 OCI
-X11
+x11
 systemd
 ansible
-DNF
-CoreOS
-Silverblue
+dnf
+coreos
+silverblue
+kubernetes
