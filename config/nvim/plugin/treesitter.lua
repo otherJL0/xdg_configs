@@ -41,20 +41,28 @@ require("treesitter-context").setup({
 
 require("indent_blankline").setup({
   show_trailing_blankline_indent = true,
-  buftype_exclude = { "nofile", "terminal", "help" },
+  filetype_exclude = {
+    "lspinfo",
+    "packer",
+    "checkhealth",
+    "help",
+    "man",
+    "",
+    "Outline",
+    "tsplayground",
+  },
+  buftype_exclude = { "nofile", "terminal", "help", "tsplayground", "Outline" },
   show_end_of_line = true,
+  use_treesitter = true,
   space_char_blankline = " ",
   show_current_context = true,
-  context_patterns = vim.tbl_keys(ts_patterns),
+  -- show_current_context_start = true,
+  show_current_context_start_on_current_line = true,
+  show_first_indent_level = true,
+  use_treesiter_scope = true,
+  -- context_patterns = vim.tbl_keys(ts_patterns),
   context_pattern_highlight = ts_patterns,
 })
-
--- require("twilight").setup({
---   dimming = {
---     alpha = 0.1,
---     inactive = true,
---   },
--- })
 
 vim.keymap.set("n", " tsp", require("nvim-treesitter-playground.internal").toggle)
 vim.keymap.set("n", " tsc", require("nvim-treesitter-playground.hl-info").show_hl_captures)
