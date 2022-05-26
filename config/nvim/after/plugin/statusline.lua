@@ -127,10 +127,6 @@ local function any_git_changes()
   return false
 end
 
--- #################### STATUSLINE ->
-
--- ######## Left
-
 -- Current vi mode ------>
 local vi_mode_hl = function()
   return {
@@ -298,11 +294,8 @@ components[3][5] = {
     bg = sett.bkg,
   },
   icon = " ● ",
+  right_sep = invi_sep,
 }
--- Diagnostics ------>
-
--- ######## Center
-
 -- ######## Right
 components[3][6] = {
   provider = {
@@ -412,12 +405,6 @@ winbar_components[1][3] = {
     bg = clrs.base,
   },
 }
-
--- winbar_components[3][4] = {
---   hl = {
---     bg = sett.bkg,
---   },
--- }
 
 require("feline").winbar.setup({
   components = {
