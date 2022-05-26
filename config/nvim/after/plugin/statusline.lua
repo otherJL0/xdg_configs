@@ -140,6 +140,14 @@ local vi_mode_hl = function()
   }
 end
 
+local vi_mode_hl_inv = function()
+  return {
+    bg = sett.bkg,
+    fg = mode_colors[vim.fn.mode()][2],
+    style = "bold",
+  }
+end
+
 components[1][1] = {
   provider = function()
     -- return " " .. mode_colors[vim.fn.mode()][1] .. " "
@@ -155,7 +163,7 @@ components[1][2] = {
     bg = clrs.surface0,
     fg = clrs.text,
   },
-  icon = "  ",
+  icon = "  ",
   -- left_sep = {
   --   str = assets.vertical_bar_chubby,
   -- },
@@ -390,7 +398,7 @@ winbar_components[1][1] = {
       type = "relative",
     },
   },
-  hl = vi_mode_hl,
+  hl = vi_mode_hl_inv,
 
   left_sep = {
     str = assets.slant_left,
