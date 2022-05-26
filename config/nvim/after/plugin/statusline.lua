@@ -53,13 +53,13 @@ local assets = {
   slim_dot = "•",
 }
 
-local clrs = require("catppuccin.core.color_palette")
+local clrs = require("catppuccin.api.colors").get_colors()
 
 -- settings
 local sett = {
-  bkg = clrs.black3,
+  bkg = clrs.base,
   diffs = clrs.mauve,
-  extras = clrs.gray1,
+  extras = clrs.text,
   curr_file = clrs.maroon,
   curr_dir = clrs.flamingo,
 }
@@ -101,6 +101,7 @@ end
 -- Initialize the components table
 local components = {
   {}, -- left
+  {},
   {}, -- right
 }
 
@@ -141,7 +142,8 @@ end
 
 components[1][1] = {
   provider = function()
-    return " " .. mode_colors[vim.fn.mode()][1] .. " "
+    -- return " " .. mode_colors[vim.fn.mode()][1] .. " "
+    return " "
   end,
   hl = vi_mode_hl,
 }
@@ -150,12 +152,16 @@ components[1][2] = {
   provider = "git_branch",
   enabled = is_enabled(shortline, winid, 70),
   hl = {
-    fg = clrs.white,
-    bg = sett.bkg,
+    bg = clrs.surface0,
+    fg = clrs.text,
   },
   icon = "  ",
-  left_sep = invi_sep,
-  right_sep = invi_sep,
+  -- left_sep = {
+  --   str = assets.vertical_bar_chubby,
+  -- },
+  right_sep = {
+    str = assets.vertical_bar_chubby,
+  },
 }
 
 -- Diffs ------>
@@ -186,9 +192,49 @@ components[1][5] = {
   icon = "  ",
 }
 
+components[2][1] = {
+  hl = {
+    bg = sett.bkg,
+  },
+}
+components[2][2] = {
+  provider = function()
+    local venv = vim.split(vim.env.VIRTUAL_ENV, "/", { trimempty = true })
+    return string.format("%s(%s)", venv[#venv], get_python_version(vim.env.VIRTUAL_ENV))
+  end,
+
+  enabled = vim.env.VIRTUAL_ENV ~= nil,
+
+  hl = {
+    bg = sett.curr_dir,
+    fg = sett.bkg,
+  },
+
+  left_sep = {
+    str = assets.left_semicircle,
+    hl = {
+      fg = sett.curr_dir,
+      bg = sett.bkg,
+    },
+  },
+
+  right_sep = {
+    str = assets.right_semicircle,
+    hl = {
+      fg = sett.curr_dir,
+      bg = sett.bkg,
+    },
+  },
+}
+
+components[2][3] = {
+  hl = {
+    bg = sett.bkg,
+  },
+}
 -- Diagnostics ------>
 -- workspace loader
-components[2][1] = {
+components[3][1] = {
   provider = "lsp_client_names",
   hl = {
     fg = sett.extras,
@@ -197,7 +243,7 @@ components[2][1] = {
   right_sep = invi_sep,
 }
 -- genral diagnostics (errors, warnings. info and hints)
-components[2][2] = {
+components[3][2] = {
   provider = "diagnostic_errors",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.ERROR)
@@ -210,7 +256,7 @@ components[2][2] = {
   icon = "  ",
 }
 
-components[2][3] = {
+components[3][3] = {
   provider = "diagnostic_warnings",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.WARN)
@@ -222,7 +268,7 @@ components[2][3] = {
   icon = "  ",
 }
 
-components[2][4] = {
+components[3][4] = {
   provider = "diagnostic_info",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.INFO)
@@ -234,7 +280,7 @@ components[2][4] = {
   icon = "  ",
 }
 
-components[2][5] = {
+components[3][5] = {
   provider = "diagnostic_hints",
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.HINT)
@@ -250,9 +296,37 @@ components[2][5] = {
 -- ######## Center
 
 -- ######## Right
+components[3][6] = {
+  provider = {
+    name = "file_type",
+
+    opts = {
+      -- filetype_icon = true,
+      case = "lowercase",
+    },
+  },
+  hl = {
+    bg = clrs.surface0,
+    fg = clrs.text,
+  },
+  left_sep = {
+    str = assets.vertical_bar_chubby,
+    hl = {
+      bg = clrs.surface0,
+      fg = clrs.surface0,
+    },
+  },
+  right_sep = {
+    str = assets.vertical_bar_chubby,
+    hl = {
+      bg = clrs.surface0,
+      fg = clrs.surface0,
+    },
+  },
+}
 
 -- position
-components[2][6] = {
+components[3][7] = {
   provider = function()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
 
@@ -262,10 +336,9 @@ components[2][6] = {
     return string.format(" %3d:%-2d", row, col)
   end,
   hl = vi_mode_hl,
-  left_sep = invi_sep,
 }
 -- file progress
-components[2][7] = {
+components[3][8] = {
   provider = function()
     local current_line = vim.fn.line(".")
     local total_line = vim.fn.line("$")
@@ -291,122 +364,52 @@ require("feline").setup({
 
 local winbar_components = {
   {},
-  {},
-}
-
-winbar_components[1][1] = {
-  provider = require("nvim-gps").get_location,
-  enabled = require("nvim-gps").is_available,
-  hl = {
-    fg = clrs.yellow,
-    bg = sett.bkg,
-  },
-  right_sep = assets.right_semicircle,
 }
 
 winbar_components[1][2] = {
+  provider = require("nvim-gps").get_location,
+  enabled = require("nvim-gps").is_available,
   hl = {
-    bg = clrs.black2,
-  },
-}
-
-winbar_components[2][1] = {
-  hl = {
-    bg = sett.bkg,
-  },
-}
-if vim.env.VIRTUAL_ENV ~= nil then
-  winbar_components[2][1] = {
-    provider = function()
-      local venv = vim.split(vim.env.VIRTUAL_ENV, "/", { trimempty = true })
-      return string.format("%s(%s)", venv[#venv], get_python_version(vim.env.VIRTUAL_ENV))
-    end,
-
-    hl = {
-      bg = sett.curr_dir,
-      fg = sett.bkg,
-    },
-
-    left_sep = {
-      str = assets.left_semicircle,
-      hl = {
-        fg = sett.curr_dir,
-        bg = sett.bkg,
-      },
-    },
-
-    right_sep = {
-      str = assets.slant_right_2,
-      hl = {
-        fg = sett.curr_dir,
-        bg = sett.bkg,
-      },
-    },
-  }
-end
-
-winbar_components[2][2] = {
-  provider = {
-    name = "file_info",
-    opts = {
-      colored_icon = true,
-      type = "relative-short",
-    },
-  },
-  hl = {
-    bg = clrs.lavender,
-    fg = sett.bkg,
-  },
-  right_sep = {
-    str = assets.slant_right,
-    hl = {
-      fg = clrs.lavender,
-      bg = sett.bkg,
-    },
-  },
-  left_sep = {
-    str = assets.slant_left,
-    hl = {
-      fg = clrs.lavender,
-      bg = sett.bkg,
-    },
-  },
-}
-
-winbar_components[2][3] = {
-  provider = {
-    name = "file_type",
-
-    opts = {
-      -- filetype_icon = true,
-      case = "lowercase",
-    },
-  },
-  hl = {
-    bg = clrs.lavender,
-    fg = sett.bkg,
+    bg = clrs.surface0,
+    fg = clrs.text,
   },
   left_sep = {
     str = assets.slant_left_2,
-    hl = {
-      fg = clrs.lavender,
-      bg = sett.bkg,
-    },
   },
 
   right_sep = {
     str = assets.right_semicircle,
-    hl = {
-      fg = clrs.lavender,
-      bg = sett.bkg,
+  },
+}
+
+winbar_components[1][1] = {
+  provider = {
+    name = "file_info",
+    opts = {
+      colored_icon = true,
+      type = "relative",
     },
   },
-}
-winbar_components[2][4] = {
-  hl = {
-    bg = sett.bkg,
+  hl = vi_mode_hl,
+
+  left_sep = {
+    str = assets.slant_left,
+  },
+  right_sep = {
+    str = assets.slant_right,
   },
 }
+winbar_components[1][3] = {
+  hl = {
+    bg = clrs.base,
+  },
+}
+
+-- winbar_components[3][4] = {
+--   hl = {
+--     bg = sett.bkg,
+--   },
+-- }
 
 require("feline").winbar.setup({
   components = {

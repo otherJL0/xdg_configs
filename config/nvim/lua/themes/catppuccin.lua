@@ -1,16 +1,26 @@
 local catppuccin = require("catppuccin")
 vim.opt.termguicolors = true
 
+-- latte, frappe, macchiato, mocha
+vim.g.catppuccin_flavour = "mocha"
+
 -- configure it
 catppuccin.setup({
   transparency = false,
   term_colors = true,
   styles = {
     comments = "italic",
-    functions = "italic",
-    keywords = "italic",
-    strings = "bold",
+    conditionals = "italic",
+    loops = "bold",
+    functions = "NONE",
+    keywords = "bold",
+    strings = "italic",
     variables = "NONE",
+    numbers = "NONE",
+    booleans = "bold",
+    properties = "NONE",
+    types = "underline",
+    operators = "bold",
   },
   integrations = {
     treesitter = true,
@@ -36,7 +46,6 @@ catppuccin.setup({
     telescope = true,
     nvimtree = {
       enabled = false,
-      show_root = false,
     },
     which_key = true,
     indent_blankline = {
@@ -54,6 +63,8 @@ catppuccin.setup({
     ts_rainbow = true,
     hop = false,
     notify = true,
+    telekasten = false,
+    symbols_outline = true,
     cmp = true,
   },
 })
