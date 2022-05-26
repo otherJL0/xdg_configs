@@ -115,6 +115,7 @@ local function my_plugins()
     "saadparwaiz1/cmp_luasnip",
     requires = { "hrsh7th/nvim-cmp", "hrsh7th/cmp-cmdline" },
   })
+  use({ "simrat39/symbols-outline.nvim" })
 
   -- Debug
   use({
