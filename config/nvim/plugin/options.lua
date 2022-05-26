@@ -100,6 +100,10 @@ vim.api.nvim_create_autocmd("WinEnter", {
       "Diffview",
       "NvimTree",
       "tsplayground",
+      "Telescope",
+      "dap",
+      "packer",
+      "Outline",
     }
     for _, prefix in ipairs(ignored_prefix) do
       if string.find(vim.bo.filetype, prefix) then
