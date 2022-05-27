@@ -98,3 +98,4 @@ dnf
 coreos
 silverblue
 kubernetes
+sqlite3
