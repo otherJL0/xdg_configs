@@ -104,6 +104,7 @@ vim.api.nvim_create_autocmd("WinEnter", {
       "dap",
       "packer",
       "Outline",
+      "Trouble",
     }
     for _, prefix in ipairs(ignored_prefix) do
       if string.find(vim.bo.filetype, prefix) then
