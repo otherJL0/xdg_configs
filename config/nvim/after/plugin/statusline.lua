@@ -363,11 +363,11 @@ require("feline").setup({
   preset = "noicon",
 })
 
-local winbar_components = {
+local winbar_active = {
   {},
 }
 
-winbar_components[1][2] = {
+winbar_active[1][2] = {
   provider = require("nvim-gps").get_location,
   enabled = require("nvim-gps").is_available,
   hl = {
@@ -383,7 +383,7 @@ winbar_components[1][2] = {
   },
 }
 
-winbar_components[1][1] = {
+winbar_active[1][1] = {
   provider = {
     name = "file_info",
     opts = {
@@ -400,15 +400,35 @@ winbar_components[1][1] = {
     str = assets.slant_right,
   },
 }
-winbar_components[1][3] = {
+winbar_active[1][3] = {
   hl = {
     bg = clrs.base,
   },
 }
 
+local winbar_inactive = {
+  {},
+}
+
+winbar_inactive[1][1] = {
+
+  provider = {
+    name = "file_info",
+    opts = {
+      colored_icon = true,
+      type = "relative",
+    },
+  },
+
+  hl = {
+    fg = clrs.overlay0,
+    bg = clrs.base,
+  },
+}
 require("feline").winbar.setup({
   components = {
-    active = winbar_components,
+    active = winbar_active,
+    inactive = winbar_inactive,
   },
   preset = "noicon",
 })
