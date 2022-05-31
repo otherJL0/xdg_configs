@@ -52,3 +52,4 @@ end
 
 abbr -a kit kitty +kitten
 abbr -a icat kitty +kitten icat
+abbr -a k kubectl
