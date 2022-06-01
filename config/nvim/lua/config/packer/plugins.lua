@@ -176,10 +176,20 @@ local function my_plugins()
 
   -- UI
   use({
-    "rcarriga/nvim-notify",
     "stevearc/dressing.nvim",
     "MunifTanjim/nui.nvim",
     "p00f/nvim-ts-rainbow",
+  })
+
+  use({
+    "rcarriga/nvim-notify",
+    config = function()
+      require("notify").setup({
+        on_open = function(win)
+          vim.api.nvim_win_set_config(win, { focusable = false })
+        end,
+      })
+    end,
   })
 
   use({ "nvim-neorg/neorg-telescope" })
