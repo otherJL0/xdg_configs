@@ -184,6 +184,7 @@ local function my_plugins()
   use({
     "rcarriga/nvim-notify",
     config = function()
+      vim.opt.termguicolors = true
       require("notify").setup({
         on_open = function(win)
           vim.api.nvim_win_set_config(win, { focusable = false })
