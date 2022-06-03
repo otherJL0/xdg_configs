@@ -156,6 +156,11 @@ local function my_plugins()
     ft = { "py", "python", "python3", "pytest" },
   })
 
+  use({
+    "ldelossa/gh.nvim",
+    requires = { { "ldelossa/litee.nvim" } },
+  })
+
   -- Status lines
   use({
     "feline-nvim/feline.nvim",
