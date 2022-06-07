@@ -1,6 +1,5 @@
 local lsp = require("feline.providers.lsp")
 local lsp_severity = vim.diagnostic.severity
-local b = vim.b
 
 local function get_python_version(venv)
   for _, version in ipairs({ "3.11", "3.10", "3.9", "3.8", "3.7", "3.6" }) do
@@ -115,17 +114,6 @@ local invi_sep = {
 }
 
 -- helpers
-local function any_git_changes()
-  local gst = b.gitsigns_status_dict -- git stats
-  if gst then
-    for _, status in ipairs({ "added", "removed", "chained" }) do
-      if gst[status] and gst[status] then
-        return true
-      end
-    end
-  end
-  return false
-end
 
 -- Current vi mode ------>
 local vi_mode_hl = function()
@@ -154,7 +142,7 @@ components[1][1] = {
 
 components[1][2] = {
   provider = "git_branch",
-  enabled = is_enabled(shortline, winid, 70),
+  enabled = is_enabled(shortline, nil, 70),
   hl = {
     bg = clrs.surface0,
     fg = clrs.text,
