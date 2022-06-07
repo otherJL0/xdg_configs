@@ -62,7 +62,7 @@ local function my_plugins()
     "nvim-telescope/telescope-ui-select.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
     "nvim-telescope/telescope-project.nvim",
-    "nvim-telescope/telescope-live-grep-raw.nvim",
+    "nvim-telescope/telescope-live-grep-args.nvim",
     opt = true,
   })
 
