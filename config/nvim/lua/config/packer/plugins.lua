@@ -240,21 +240,14 @@ local function my_plugins()
   })
 
   use({ "jose-elias-alvarez/nvim-lsp-ts-utils", ft = { "typescript", "tsx", "ts" } })
+
   use({
-    "rcarriga/vim-ultest",
-    config = function()
-      vim.cmd([[let test#strategy = "neovim"]])
-      vim.cmd([[let test#python#pytest#options = "--color=yes"]])
-      vim.api.nvim_create_autocmd("BufWritePost", {
-        pattern = "*",
-        callback = function()
-          vim.cmd([[UltestNearest]])
-        end,
-      })
-    end,
-    requires = { "vim-test/vim-test", opt = true },
-    run = ":UpdateRemotePlugins",
-    ft = { "py", "python", "python3", "pytest" },
+    "rcarriga/neotest",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+    },
   })
   use({ "b0o/SchemaStore.nvim" })
   use({
