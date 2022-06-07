@@ -14,7 +14,7 @@ if status is-interactive
     end
 
     # Colorscheme
-    source ~/.config/fish/colorschemes/catppuccin.fish
+    source ~/.config/fish/colorschemes/mocha.fish
 
     # Direnv settings
     set -gx direnv_fish_mode eval_on_arrow
