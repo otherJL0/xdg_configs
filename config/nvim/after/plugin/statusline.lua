@@ -353,6 +353,7 @@ require("feline").setup({
 
 local winbar_active = {
   {},
+  {},
 }
 
 winbar_active[1][2] = {
@@ -392,6 +393,25 @@ winbar_active[1][3] = {
   hl = {
     bg = clrs.base,
   },
+}
+
+local function conceallevel()
+  if vim.wo.conceallevel == 0 then
+    return { fg = clrs.base }
+  elseif vim.wo.conceallevel == 1 then
+    return { bg = clrs.surface0 }
+  elseif vim.wo.conceallevel == 2 then
+    return { fg = clrs.mantle, bg = clrs.overlay0 }
+  elseif vim.wo.conceallevel == 3 then
+    return { fg = clrs.crust, bg = clrs.subtext0 }
+  end
+end
+
+winbar_active[2][1] = {
+  provider = function()
+    return string.format("CONCEAL LEVEL: %s", vim.wo.conceallevel)
+  end,
+  hl = conceallevel,
 }
 
 local winbar_inactive = {
