@@ -113,6 +113,7 @@ local function my_plugins()
     "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-path",
     "saadparwaiz1/cmp_luasnip",
+    "danymat/neogen",
     requires = { "hrsh7th/nvim-cmp", "hrsh7th/cmp-cmdline" },
   })
   use({ "simrat39/symbols-outline.nvim" })
