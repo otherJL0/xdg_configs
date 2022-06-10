@@ -36,25 +36,7 @@ vim.cmd([[
 ]])
 
 local language_servers = {
-  "bashls",
-  "cmake",
-  "cssls",
-  "denols",
-  "dockerls",
-  "elmls",
-  "hls",
-  "html",
-  "jsonls",
-  "ocamllsp",
-  "pyright",
-  "racket_langserver",
   "sumneko_lua",
-  "taplo",
-  "texlab",
-  "tsserver",
-  "typeprof",
-  "yamlls",
-  "zls",
 }
 
 require("config.lsp").launch(language_servers)
