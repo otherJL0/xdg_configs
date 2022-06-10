@@ -90,26 +90,6 @@ local function load_config(language_server)
   return {}
 end
 
--- local language_servers = {
---   "bashls",
---   "clangd",
---   "clangd",
---   "cmake",
---   "denols",
---   "dockerls",
---   "gopls",
---   "html",
---   "jsonls",
---   "ocamllsp",
---   "pyright",
---   "rust_analyzer",
---   "sumneko_lua",
---   "texlab",
---   "yamlls",
--- }
-
--- local null_ls_configs = require("config.lsp.null")
--- null_ls_configs.on_attach = on_attach
 require("null-ls").setup(require("config.lsp.null"))
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

@@ -42,7 +42,6 @@ local language_servers = {
   "denols",
   "dockerls",
   "elmls",
-  "gopls",
   "hls",
   "html",
   "jsonls",
