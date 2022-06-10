@@ -33,6 +33,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client.server_capabilities.typeDefinitionProvider then
       vim.keymap.set("n", " D", vim.lsp.buf.type_definition, { buffer = args.buf })
     end
+    if client.server_capabilities.renameProvider then
+      vim.keymap.set("n", "grr", vim.lsp.buf.rename, { buffer = args.buf })
+    end
+    if client.server_capabilities.codeActionProvider then
+      vim.keymap.set("n", " ca", vim.lsp.buf.code_action, { buffer = args.buf })
+    end
+    if client.server_capabilities.referencesProvider then
+      vim.keymap.set("n", "", vim.lsp.buf.references, { buffer = args.buf })
+    end
+    -- -- ['textDocument/prepareRename'] = { 'renameProvider', 'prepareProvider' },
     -- -- TODO
     -- if client.server_capabilities.documentSymbolProvider then
     --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
@@ -40,13 +50,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- -- TODO
     -- if client.server_capabilities.callHierarchyProvider then
     --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
-    -- end
-    -- if client.server_capabilities.renameProvider then
-    --   vim.keymap.set("n", "grr", vim.lsp.buf.rename, { buffer = args.buf })
-    -- end
-    -- -- ['textDocument/prepareRename'] = { 'renameProvider', 'prepareProvider' },
-    -- if client.server_capabilities.codeActionProvider then
-    --   vim.keymap.set("n", " ca", vim.lsp.buf.code_action, { buffer = args.buf })
     -- end
     -- -- TODO
     -- if client.server_capabilities.codeLensProvider then
@@ -60,9 +63,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- if client.server_capabilities.workspaceSymbolProvider then
     --   -- TODO
     --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
-    -- end
-    -- if client.server_capabilities.referencesProvider then
-    --   vim.keymap.set("n", "", vim.lsp.buf.references, { buffer = args.buf })
     -- end
     -- if client.server_capabilities.documentRangeFormattingProvider then
     --   -- TODO
