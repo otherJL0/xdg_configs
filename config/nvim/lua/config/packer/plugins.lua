@@ -80,7 +80,7 @@ local function my_plugins()
     "nvim-treesitter/nvim-treesitter-refactor",
     "nvim-treesitter/playground",
     "lukas-reineke/indent-blankline.nvim",
-    "romgrk/nvim-treesitter-context",
+    "nvim-treesitter/nvim-treesitter-context",
     "windwp/nvim-autopairs",
     requires = "nvim-treesitter/nvim-treesitter",
     run = "TSUpdate",
