@@ -7,9 +7,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- vim.notify(vim.inspect(client.config))
 
     -- Placeholder until ready to switch completely
-    if true then
-      return nil
-    end
+    -- if true then
+    --   return nil
+    -- end
 
     if client.server_capabilities.hoverProvider then
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
@@ -34,14 +34,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set("n", " D", vim.lsp.buf.type_definition, { buffer = args.buf })
     end
     if client.server_capabilities.renameProvider then
+      vim.notify("Can rename!")
       vim.keymap.set("n", "grr", vim.lsp.buf.rename, { buffer = args.buf })
     end
     if client.server_capabilities.codeActionProvider then
       vim.keymap.set("n", " ca", vim.lsp.buf.code_action, { buffer = args.buf })
     end
-    if client.server_capabilities.referencesProvider then
-      vim.keymap.set("n", "", vim.lsp.buf.references, { buffer = args.buf })
-    end
+    -- if client.server_capabilities.referencesProvider then
+    --   vim.keymap.set("n", "", vim.lsp.buf.references, { buffer = args.buf })
+    -- end
     -- -- ['textDocument/prepareRename'] = { 'renameProvider', 'prepareProvider' },
     -- -- TODO
     -- if client.server_capabilities.documentSymbolProvider then
