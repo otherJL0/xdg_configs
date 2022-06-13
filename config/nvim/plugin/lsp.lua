@@ -40,6 +40,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client.server_capabilities.codeActionProvider then
       vim.keymap.set("n", " ca", vim.lsp.buf.code_action, { buffer = args.buf })
     end
+
+    if client.server_capabilities.documentFormattingProvider then
+      vim.api.nvim_create_autocmd("BufWritePost", {
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = args.buf, async = true })
+        end,
+      })
+    end
     -- if client.server_capabilities.referencesProvider then
     --   vim.keymap.set("n", "", vim.lsp.buf.references, { buffer = args.buf })
     -- end
@@ -69,7 +78,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --   -- TODO
     --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
     -- end
-    -- if client.server_capabilities.documentFormattingProvider then
     --   -- TODO
     --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
     -- end
