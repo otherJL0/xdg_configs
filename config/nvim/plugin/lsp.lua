@@ -6,11 +6,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.notify(vim.inspect(client.name))
     -- vim.notify(vim.inspect(client.config))
 
-    -- Placeholder until ready to switch completely
-    -- if true then
-    --   return nil
-    -- end
-
     if client.server_capabilities.hoverProvider then
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
     end
@@ -34,7 +29,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set("n", " D", vim.lsp.buf.type_definition, { buffer = args.buf })
     end
     if client.server_capabilities.renameProvider then
-      vim.notify("Can rename!")
       vim.keymap.set("n", "grr", vim.lsp.buf.rename, { buffer = args.buf })
     end
     if client.server_capabilities.codeActionProvider then
@@ -49,6 +43,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end,
       })
     end
+
+    if client.server_capabilities.documentHighlightProvider then
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        buffer = args.buf,
+        callback = vim.lsp.buf.document_highlight,
+      })
+      vim.api.nvim_create_autocmd("CursorMoved", {
+        buffer = args.buf,
+        callback = vim.lsp.buf.clear_references,
+      })
+    end
+
+    -- if client.server_capabilities.completionProvider then
+    --   TODO
+    -- end
+    --   -- TODO
+    --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
+    -- end
     -- if client.server_capabilities.referencesProvider then
     --   vim.keymap.set("n", "", vim.lsp.buf.references, { buffer = args.buf })
     -- end
@@ -78,14 +90,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --   -- TODO
     --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
     -- end
-    --   -- TODO
-    --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
-    -- end
-    -- if client.server_capabilities.completionProvider then
-    --   -- TODO
-    --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
-    -- end
-    -- if client.server_capabilities.documentHighlightProvider then
     --   -- TODO
     --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
     -- end
