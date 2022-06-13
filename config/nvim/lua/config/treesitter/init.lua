@@ -83,6 +83,14 @@ parser_configs.requirements = {
   },
 }
 
+parser_configs.jinja2 = {
+  install_info = {
+    url = "https://github.com/theHamsta/tree-sitter-jinja2",
+    files = { "src/parser.c" },
+    branch = "master",
+  },
+}
+
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "bash",
@@ -116,6 +124,7 @@ require("nvim-treesitter.configs").setup({
     "html",
     "http",
     "java",
+    "jinja2",
     "javascript",
     "jsdoc",
     "json",
