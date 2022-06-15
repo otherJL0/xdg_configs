@@ -1,7 +1,7 @@
 command_timeout = 5000
 scan_timeout = 5000
 format = """$custom$all"""
-right_format = """$package$docker_context$cmake$conda$deno$golang$helm$java$kotlin$lua$nodejs$python$rust$ruby$scala"""
+# right_format = """$package$docker_context$cmake$conda$deno$golang$helm$java$kotlin$lua$nodejs$python$rust$ruby$scala"""
 continuation_prompt = "▶▶"
 add_newline = true
 
