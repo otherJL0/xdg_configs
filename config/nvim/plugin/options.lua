@@ -8,52 +8,51 @@ vim.opt.softtabstop = 4
 vim.keymap.set("n", "ya%", "mzggy99999y'z")
 vim.keymap.set("n", "da%", "ggd99999d")
 
-local opt = vim.opt
-
 -- Wild menu
-opt.wildignore = opt.wildignore + { "__pycache__", "*.o", "*~", "*.pyc", "*pycache*" }
-opt.pumblend = 17
-opt.wildmode = { "longest", "full" }
-opt.wildoptions = "pum"
+vim.opt.wildignore = vim.opt.wildignore + { "__pycache__", "*.o", "*~", "*.pyc", "*pycache*" }
+vim.opt.pumblend = 17
+vim.opt.wildmode = { "longest", "full" }
+vim.opt.wildoptions = "pum"
 
 -- Colorful
-opt.termguicolors = true
+vim.opt.termguicolors = true
 
 -- Line numbers
-opt.number = true
-opt.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Tabs
-opt.autoindent = true
-opt.cindent = true
-opt.indentexpr = ""
-opt.wrap = true
+vim.opt.autoindent = true
+vim.opt.cindent = true
+vim.opt.indentexpr = ""
+vim.opt.wrap = true
 
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.softtabstop = 4
-opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
 
 -- Highlight current line and line number
-opt.cursorlineopt = "both"
-opt.cursorline = true
+vim.opt.cursorlineopt = "both"
+vim.opt.cursorline = true
 
-opt.wrap = false
-opt.swapfile = false -- No swap files
-opt.splitbelow = true -- New splits open below
-opt.splitright = true --New vsplits open right
-opt.ignorecase = true -- Ignore case when searching
-opt.smartcase = true -- Except when explicitly adding uppercase
+vim.opt.wrap = false
+vim.opt.swapfile = false -- No swap files
+vim.opt.splitbelow = true -- New splits open below
+vim.opt.splitright = true --New vsplits open right
+vim.opt.ignorecase = true -- Ignore case when searching
+vim.opt.smartcase = true -- Except when explicitly adding uppercase
 -- opt.showtabline = 2 -- Always show tabline
-opt.mouse = "n" -- Only allow mouse in normal mode
-opt.scrolloff = 10 -- At least 10 lines should show past current line
-opt.showmode = false -- Do not show mode in cmd line
-opt.redrawtime = 90000
-opt.inccommand = "nosplit" -- Highlight search/replace queries
-opt.cmdheight = 1 -- Cmd height
-opt.showmatch = true -- Show matching bracket character when hovering
-opt.hidden = true -- Keep buffers around
+vim.opt.mouse = "n" -- Only allow mouse in normal mode
+vim.opt.scrolloff = 10 -- At least 10 lines should show past current line
+vim.opt.showmode = false -- Do not show mode in cmd line
+vim.opt.redrawtime = 90000
+vim.opt.inccommand = "nosplit" -- Highlight search/replace queries
+vim.opt.cmdheight = 1 -- Cmd height
+vim.opt.showmatch = true -- Show matching bracket character when hovering
+vim.opt.hidden = true -- Keep buffers around
 
+vim.opt.cmdheight = 0
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
@@ -62,9 +61,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-opt.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 
-opt.formatoptions = opt.formatoptions
+vim.opt.formatoptions = vim.opt.formatoptions
   - "a" -- Auto formatting is BAD.
   - "t" -- Don't auto format my code. I got linters for that.
   + "c" -- In general, I like it when comments respect textwidth
@@ -76,10 +75,10 @@ opt.formatoptions = opt.formatoptions
   - "2" -- I'm not in gradeschool anymore
 
 -- set joinspaces
-opt.joinspaces = false -- Two spaces and grade school, we're done
+vim.opt.joinspaces = false -- Two spaces and grade school, we're done
 
 -- set fillchars=eob:~
-opt.fillchars = { eob = "~" }
+vim.opt.fillchars = { eob = "~" }
 
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
