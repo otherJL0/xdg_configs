@@ -412,7 +412,6 @@ local function my_plugins()
     end,
   })
 
-  use({ "ziglang/zig.vim", ft = "zig" })
   use({
     "bennypowers/nvim-regexplainer",
     config = function()

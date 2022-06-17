@@ -47,3 +47,34 @@ require("config.lsp").launch_stree()
 vim.keymap.set("n", " k", function()
   vim.diagnostic.open_float(0, { focusable = false, scope = "line", border = "single" })
 end)
+
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  pattern = { "*.zig" },
+  callback = function()
+    vim.lsp.start({
+      name = "zls",
+      cmd = { vim.fn.stdpath("cache") .. "/zls/zig-out/bin/zls" },
+      root_dir = vim.fs.dirname(vim.fs.find({ "build.zig" }, { upward = true })[1]),
+    })
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  pattern = { "*.py" },
+  callback = function()
+    vim.lsp.start({
+      name = "pyright",
+      cmd = { vim.fn.stdpath("cache") .. "/node_modules/.bin/" .. "pyright-langserver", "--stdio" },
+      root_dir = vim.fs.dirname(vim.fs.find({
+        "env",
+        ".venv/",
+        "pyproject.toml",
+        "pyright.json",
+        "setup.cfg",
+        "setup.py",
+        "requirements.txt",
+        "Pipfile",
+      }, { upward = true })[1]),
+    })
+  end,
+})
