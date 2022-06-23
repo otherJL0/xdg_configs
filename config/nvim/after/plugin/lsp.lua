@@ -59,6 +59,10 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   end,
 })
 
+local function determine_venv_path()
+  return vim.fs.find({ ".venv", "venv", ".env", "env" }, { upward = true })[1]
+end
+
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   pattern = { "*.py" },
   callback = function()
@@ -69,12 +73,34 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
         "env",
         ".venv/",
         "pyproject.toml",
-        "pyright.json",
         "setup.cfg",
         "setup.py",
         "requirements.txt",
-        "Pipfile",
       }, { upward = true })[1]),
+      settings = {
+        python = {
+          venvPath = determine_venv_path(),
+          pythonPath = determine_venv_path() .. "/bin/python",
+          analysis = {
+            autoImportCompletions = true,
+            autoSearchPaths = true,
+            diagnosticMode = "workspace",
+            typeCheckingMode = "strict",
+            useLibraryCodeForTypes = true,
+            diagnosticSeverityOverrides = {
+              reportCallInDefaultInitializer = "warning",
+              reportImplicitStringConcatenation = "warning",
+              reportMissingTypeStubs = "none",
+              reportPropertyTypeMismatch = "warning",
+              reportUninitializedInstanceVariable = "warning",
+              reportUnknownMemberType = "warning",
+              reportUnknownVariableType = "warning",
+              reportUnnecessaryTypeIgnoreComment = "warning",
+              reportUnusedCallResult = false,
+            },
+          },
+        },
+      },
     })
   end,
 })
