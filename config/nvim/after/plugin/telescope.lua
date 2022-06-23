@@ -73,7 +73,11 @@ neorg.setup({
   load = {
     ["core.integrations.telescope"] = {}, -- Enable the telescope module
     ["core.defaults"] = {},
-    ["core.norg.concealer"] = {},
+    ["core.norg.concealer"] = {
+      config = {
+        folds = false,
+      },
+    },
     ["core.keybinds"] = {
       config = {
         default_keybinds = true,
@@ -85,6 +89,10 @@ neorg.setup({
         engine = "nvim-cmp",
       },
     },
+    ["core.norg.journal"] = {},
+    ["core.norg.esupports.indent"] = {},
+    ["core.norg.qol.toc"] = {},
+    ["core.norg.qol.todo_items"] = {},
     ["core.norg.dirman"] = {
       config = {
         workspaces = {
