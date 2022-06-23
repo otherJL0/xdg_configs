@@ -138,3 +138,6 @@ dirname
 basename
 patterns
 run
+pseudoterminals
+Realtime
+proc
