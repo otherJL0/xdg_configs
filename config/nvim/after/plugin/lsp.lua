@@ -48,17 +48,6 @@ vim.keymap.set("n", " k", function()
   vim.diagnostic.open_float(0, { focusable = false, scope = "line", border = "single" })
 end)
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  pattern = { "*.zig" },
-  callback = function()
-    vim.lsp.start({
-      name = "zls",
-      cmd = { vim.fn.stdpath("cache") .. "/zls/zig-out/bin/zls" },
-      root_dir = vim.fs.dirname(vim.fs.find({ "build.zig" }, { upward = true })[1]),
-    })
-  end,
-})
-
 local function determine_venv_path()
   return vim.fs.find({ ".venv", "venv", ".env", "env" }, { upward = true })[1]
 end
