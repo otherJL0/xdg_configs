@@ -6,7 +6,7 @@
 [core]
     quotepath = true
     pager = delta
-    edito = nvim
+    editor = nvim
     commitGraph = true
     sparseCheckout = true
     sparseCheckoutCone = true
@@ -69,7 +69,7 @@
     threads = 4
 
 [help]
-    autoCorrect = prompt
+	autocorrect = prompt
 
 [push]
     default = current
