@@ -29,11 +29,11 @@ if status is-interactive
     zoxide init fish | source
     mcfly init fish | source
 
-    if test ( uname ) = Darwin
-        if contains voxsupFrontend2 (string split '/' $PWD)
-            fnm env --use-on-cd | source
-        end
-    end
+    # if test ( uname ) = Darwin
+    #     if contains voxsupFrontend2 (string split '/' $PWD)
+    #         fnm env --use-on-cd | source
+    #     end
+    # end
 
     set -gx PATH $PATH $HOME/.krew/bin
 end

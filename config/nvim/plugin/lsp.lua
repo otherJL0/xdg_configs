@@ -28,6 +28,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client.server_capabilities.typeDefinitionProvider then
       vim.keymap.set("n", " D", vim.lsp.buf.type_definition, { buffer = args.buf })
     end
+
     if client.server_capabilities.renameProvider then
       vim.keymap.set("n", "grr", vim.lsp.buf.rename, { buffer = args.buf })
     end
