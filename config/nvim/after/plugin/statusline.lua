@@ -13,7 +13,7 @@ end
 vim.api.nvim_exec(
   [[
 hi WinSeparator  guifg=#96CDFB
-]],
+]] ,
   false
 )
 vim.opt.fillchars = {
@@ -409,9 +409,11 @@ end
 
 winbar_active[2][1] = {
   provider = function()
-    return string.format("CONCEAL LEVEL: %s", vim.wo.conceallevel)
+    local workspace_folders = vim.lsp.buf.list_workspace_folders()
+    if workspace_folders then
+      return string.format("%s", workspace_folders[1])
+    end
   end,
-  hl = conceallevel,
 }
 
 local winbar_inactive = {

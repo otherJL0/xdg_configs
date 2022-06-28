@@ -14,6 +14,7 @@ vim.lsp.start({
       hover = true,
       completion = true,
       schemas = {
+        ["https://raw.githubusercontent.com/bitnami/charts/master/bitnami/mariadb/values.schema.json"] = "/charts/mariadb/values/*.yaml",
         -- ["https://json.schemastore.org/helmfile.json"] = "/*.yaml",
         -- ["https://json.schemastore.org/helmfile.json"] = "/charts/helmfile.yaml",
         -- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
@@ -30,5 +31,16 @@ vim.lsp.start({
   on_init = function(client)
     client.server_capabilities.documentFormattingProvider = true
   end,
-  root_dir = vim.fs.dirname(vim.fs.find({ ".git/", "README.md" }, { upward = true })[1]),
+  on_attach = function(_, _)
+    vim.notify("Attaching")
+    vim.api.nvim_create_user_command("GetJsonSchema", function()
+      vim.lsp.buf_request(0, "yaml/get/jsonSchema", vim.fn.expand("%:p"), function(err, result, ctx, config)
+        vim.notify(vim.inspect(err))
+        vim.notify(vim.inspect(result))
+        vim.notify(vim.inspect(ctx))
+        vim.notify(vim.inspect(config))
+      end)
+    end, {})
+  end,
+  root_dir = vim.fs.dirname(vim.fs.find({ ".git", "README.md" }, { upward = true })[1]),
 })
