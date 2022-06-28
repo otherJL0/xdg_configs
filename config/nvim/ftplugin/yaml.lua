@@ -35,6 +35,14 @@ vim.lsp.start({
   end,
   root_dir = vim.fs.dirname(vim.fs.find({ ".git", "README.md" }, { upward = true })[1]),
   handlers = {
-    ["yaml/get/jsonSchema"] = function(err, result, ctx, config) end,
+    ["yaml/get/jsonSchema"] = function(err, result, ctx, config)
+      if vim.tbl_isempty(result) then
+        vim.notify("Schema is not recognized")
+      end
+
+      for _, schema in ipairs(result) do
+        vim.notify(schema.description, "info", { title = schema.name })
+      end
+    end,
   },
 })
