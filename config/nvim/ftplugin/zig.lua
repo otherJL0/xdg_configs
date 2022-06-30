@@ -6,7 +6,6 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   pattern = { "*.zig" },
   callback = function()
     local zig_root_dir = vim.fs.dirname(vim.fs.find({ "build.zig" }, { upward = true })[1])
-    vim.notify(zig_root_dir)
     vim.lsp.start({
       name = "zls",
       cmd = { vim.fn.stdpath("cache") .. "/zls/zig-out/bin/zls" },
