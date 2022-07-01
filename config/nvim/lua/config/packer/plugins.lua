@@ -321,6 +321,12 @@ local function my_plugins()
     },
   })
   use({ "nvim-neorg/library-of-norgxandria", opt = true })
+  use({
+    "anuvyklack/hydra.nvim",
+    config = function()
+      require("config.hydra")
+    end,
+  })
 end
 
 return require("packer").startup({
