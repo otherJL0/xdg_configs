@@ -32,8 +32,8 @@
     keepBackup = false
 
 [diff]
-    external = difft
-    tool = difftastic
+    ; external = diffsitter
+    tool = diffsitter
     algorithm = histogram
     colorMoved = default
     mnemonicPrefix = true
@@ -42,6 +42,9 @@
 [difftool]
     prompt = false
     keepBackup = false
+
+[difftool "diffsitter"]
+    cmd = diffsitter "$LOCAL" "$REMOTE"
 
 [difftool "difftastic"]
     cmd = difft "$LOCAL" "$REMOTE"
