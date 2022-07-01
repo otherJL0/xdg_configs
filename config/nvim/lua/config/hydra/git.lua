@@ -9,6 +9,7 @@ local hint = [[
 ]]
 
 return {
+  name = "Git",
   hint = hint,
   config = {
     color = "pink",

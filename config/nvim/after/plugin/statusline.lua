@@ -1,5 +1,6 @@
 local lsp = require("feline.providers.lsp")
 local lsp_severity = vim.diagnostic.severity
+local hydra = require("hydra.statusline")
 
 local function get_python_version(venv)
   for _, version in ipairs({ "3.11", "3.10", "3.9", "3.8", "3.7", "3.6" }) do
@@ -134,6 +135,9 @@ end
 
 components[1][1] = {
   provider = function()
+    if hydra.is_active() then
+      return hydra.get_name() or " "
+    end
     -- return " " .. mode_colors[vim.fn.mode()][1] .. " "
     return " "
   end,
@@ -395,18 +399,6 @@ winbar_active[1][3] = {
   },
 }
 
-local function conceallevel()
-  if vim.wo.conceallevel == 0 then
-    return { fg = clrs.base }
-  elseif vim.wo.conceallevel == 1 then
-    return { bg = clrs.surface0 }
-  elseif vim.wo.conceallevel == 2 then
-    return { fg = clrs.mantle, bg = clrs.overlay0 }
-  elseif vim.wo.conceallevel == 3 then
-    return { fg = clrs.crust, bg = clrs.subtext0 }
-  end
-end
-
 winbar_active[2][1] = {
   provider = function()
     local workspace_folders = vim.lsp.buf.list_workspace_folders()
@@ -440,5 +432,5 @@ require("feline").winbar.setup({
     active = winbar_active,
     inactive = winbar_inactive,
   },
-  preset = "noicon",
+  eset = "noicon",
 })

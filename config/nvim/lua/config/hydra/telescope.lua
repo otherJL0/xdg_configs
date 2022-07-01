@@ -42,5 +42,6 @@ return {
     { "c", cmd("Telescope commands"), { desc = "Execute command" } },
     { "<Enter>", cmd("Telescope"), { exit = true, desc = "List all pickers" } },
     { "<Esc>", nil, { exit = true, nowait = true } },
+    { "q", nil, { exit = true, nowait = true } },
   },
 }
