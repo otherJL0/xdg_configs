@@ -48,7 +48,6 @@ vim.opt.scrolloff = 10 -- At least 10 lines should show past current line
 vim.opt.showmode = false -- Do not show mode in cmd line
 vim.opt.redrawtime = 90000
 vim.opt.inccommand = "nosplit" -- Highlight search/replace queries
-vim.opt.cmdheight = 1 -- Cmd height
 vim.opt.showmatch = true -- Show matching bracket character when hovering
 vim.opt.hidden = true -- Keep buffers around
 
@@ -64,15 +63,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.formatoptions = vim.opt.formatoptions
-  - "a" -- Auto formatting is BAD.
-  - "t" -- Don't auto format my code. I got linters for that.
-  + "c" -- In general, I like it when comments respect textwidth
-  + "q" -- Allow formatting comments w/ gq
-  - "o" -- O and o, don't continue comments
-  + "r" -- But do continue when pressing enter.
-  + "n" -- Indent past the formatlistpat, not underneath it.
-  + "j" -- Auto-remove comments if possible.
-  - "2" -- I'm not in gradeschool anymore
+    - "a" -- Auto formatting is BAD.
+    - "t" -- Don't auto format my code. I got linters for that.
+    + "c" -- In general, I like it when comments respect textwidth
+    + "q" -- Allow formatting comments w/ gq
+    - "o" -- O and o, don't continue comments
+    + "r" -- But do continue when pressing enter.
+    + "n" -- Indent past the formatlistpat, not underneath it.
+    + "j" -- Auto-remove comments if possible.
+    - "2" -- I'm not in gradeschool anymore
 
 -- set joinspaces
 vim.opt.joinspaces = false -- Two spaces and grade school, we're done
@@ -147,3 +146,16 @@ vim.keymap.set("c", "<C-N>", "<Down>")
 vim.keymap.set("c", "<C-P>", "<Up>")
 -- vim.keymap.set("c", "<A-B>", "<S-Left>")
 -- vim.keymap.set("c", "<A-F>", "<S-Right>")
+
+vim.api.nvim_create_autocmd("RecordingEnter", {
+  pattern = "*",
+  callback = function()
+    vim.opt.cmdheight = 1
+  end,
+})
+vim.api.nvim_create_autocmd("RecordingLeave", {
+  pattern = "*",
+  callback = function()
+    vim.opt.cmdheight = 0
+  end,
+})
