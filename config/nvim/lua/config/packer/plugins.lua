@@ -265,25 +265,26 @@ local function my_plugins()
     opt = true,
   })
 
-  use({
-    "simrat39/rust-tools.nvim",
-    ft = { "rust", "cargo" },
-    config = function()
-      require("config.rust_tools")
-    end,
-  })
+  -- use({
+  --   "simrat39/rust-tools.nvim",
+  --   ft = { "rust", "cargo" },
+  --   config = function()
+  --     require("config.rust_tools")
+  --   end,
+  -- })
 
-  use({
-    "akinsho/flutter-tools.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("flutter-tools").setup({ require("config.lsp.flutter") }) -- use defaults
-    end,
-    ft = { "dart" },
-  })
+  -- use({
+  --   "akinsho/flutter-tools.nvim",
+  --   requires = "nvim-lua/plenary.nvim",
+  --   config = function()
+  --     require("flutter-tools").setup({ require("config.lsp.flutter") }) -- use defaults
+  --   end,
+  --   ft = { "dart" },
+  -- })
 
   use({
     "Saecki/crates.nvim",
+    opt = true,
     requires = { { "nvim-lua/plenary.nvim" } },
   })
 
