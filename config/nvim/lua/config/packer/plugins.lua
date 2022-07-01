@@ -323,6 +323,9 @@ local function my_plugins()
   use({ "nvim-neorg/library-of-norgxandria", opt = true })
   use({
     "anuvyklack/hydra.nvim",
+    requires = {
+      "anuvyklack/keymap-layer.nvim",
+    },
     config = function()
       require("config.hydra")
     end,
