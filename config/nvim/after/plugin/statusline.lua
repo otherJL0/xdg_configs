@@ -14,7 +14,7 @@ end
 vim.api.nvim_exec(
   [[
 hi WinSeparator  guifg=#96CDFB
-]] ,
+]],
   false
 )
 vim.opt.fillchars = {
@@ -118,19 +118,27 @@ local invi_sep = {
 
 -- Current vi mode ------>
 local vi_mode_hl = function()
-  return {
+  local colors = {
     fg = sett.bkg,
     bg = mode_colors[vim.fn.mode()][2],
     style = "bold",
   }
+  if hydra.is_active() then
+    colors.bg = hydra.get_color() or ""
+  end
+  return colors
 end
 
 local vi_mode_hl_inv = function()
-  return {
+  local colors = {
     bg = sett.bkg,
     fg = mode_colors[vim.fn.mode()][2],
     style = "bold",
   }
+  if hydra.is_active() then
+    colors.bg = hydra.get_color() or ""
+  end
+  return colors
 end
 
 components[1][1] = {

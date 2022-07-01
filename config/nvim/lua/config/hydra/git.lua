@@ -5,7 +5,7 @@ local hint = [[
  _K_: prev hunk   _u_: undo stage hunk   _p_: preview hunk   _B_: blame show full 
  ^ ^              _S_: stage buffer      ^ ^                 _/_: show base file
  ^
- ^ ^              _<Enter>_: Neogit              _q_: exit
+ ^ ^              _<Enter>_: Neogit             _<Esc>_: exit _q_: exit
 ]]
 
 return {
@@ -72,6 +72,7 @@ return {
     },
     { "/", gitsigns.show, { exit = true } }, -- show the base of the file
     { "<Enter>", "<cmd>Neogit<CR>", { exit = true } },
+    { "<Esc>", nil, { exit = true, nowait = true } },
     { "q", nil, { exit = true, nowait = true } },
   },
 }
