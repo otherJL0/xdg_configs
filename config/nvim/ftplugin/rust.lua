@@ -1,15 +1,163 @@
--- vim.g.rustc_path = $HOME."/bin/rustc"
--- vim.g.rustc_makeprg_no_percent = 1
--- vim.g.rust_conceal = 1
--- vim.g.rust_conceal_mod_path = 1
--- vim.g.rust_conceal_pub = 1
--- vim.g.rust_recommended_style = 0
--- vim.g.rust_fold = 1
--- vim.g.rust_bang_comment_leader = 1
--- vim.g.ftplugin_rust_source_path = $HOME.'/dev/rust'
--- vim.g.rustfmt_command = 'rustfmt'
--- vim.g.rustfmt_autosave = 0
--- vim.g.rustfmt_fail_silently = 0
--- vim.g.rustfmt_options = ''
--- vim.g.rust_playpen_url = 'https://play.rust-lang.org/'
--- vim.g.rust_shortener_url = 'https://is.gd/'
+vim.lsp.start({
+  name = "rust-analyzer",
+  cmd = { "rust-analyzer" },
+  root_dir = vim.fs.dirname(vim.fs.find({ "Cargo.toml", "build.rs" }, { upward = true })[1]),
+})
+--   standalone = true,
+--   on_attach = require("config.lsp").on_attach,
+--   filetypes = { "rust" },
+--   root_dir = require("lspconfig.util").root_pattern("Cargo.toml", "rust-project.json"),
+--   settings = {
+--     ["rust-analyzer"] = {
+--       assist = {
+--         exprFillDefault = "todo",
+--       },
+--       cachePriming = {
+--         enable = true,
+--         numthreads = 0,
+--       },
+--       cargo = {
+--         autoreload = true,
+--         buildScripts = {
+--           enable = true,
+--           useRustcWrapper = true,
+--         },
+--         -- features = "all",
+--         -- features = { "exercises" },
+--       },
+--       checkOnSave = {
+--         enable = true,
+--         allTargets = true,
+--         command = "clippy",
+--       },
+--       completion = {
+--         postfix = {
+--           enable = true,
+--         },
+--         autoimport = {
+--           enable = true,
+--         },
+--         autoself = {
+--           enable = true,
+--         },
+--       },
+--       diagnostics = {
+--         enable = true,
+--         enableExperimental = true,
+--       },
+--       experimental = {
+--         procAttrMacros = true,
+--       },
+--       files = {
+--         watcher = "client",
+--       },
+--       highlightRelated = {
+--         breakPoints = true,
+--         exitPoints = true,
+--         references = true,
+--         yieldPoints = true,
+--       },
+--       hover = {
+--         documentation = true,
+--         links = {
+--           enable = true,
+--         },
+--         actions = {
+--           enable = true,
+--           gotoTypeDef = {
+--             enable = true,
+--           },
+--           implementations = {
+--             enable = true,
+--           },
+--           references = {
+--             enable = true,
+--           },
+--           run = {
+--             enable = true,
+--           },
+--           debug = {
+--             enable = true,
+--           },
+--         },
+--       },
+--       imports = {
+--         granularity = {
+--           enforce = false,
+--           group = "crate",
+--         },
+--         group = {
+--           enable = true,
+--         },
+--         merge = {
+--           glob = true,
+--         },
+--         prefix = "plain",
+--       },
+--       inlayHints = {
+--         enable = true,
+--         bindingModeHints = {
+--           enable = true,
+--         },
+--         chainingHints = true,
+--         closingBraceHints = {
+--           enable = true,
+--           minLines = 25,
+--         },
+--         closureReturnTypeHints = true,
+--         lifetimeElisionHints = true,
+--         maxLength = 25,
+--         parameterHints = true,
+--         reborrowHints = true,
+--         renderColons = true,
+--         typeHints = true,
+--       },
+--       joinLines = {
+--         joinAssignments = true,
+--         joinElseIf = true,
+--         removeTrailingComma = true,
+--         unwrapTrivialBlock = true,
+--       },
+--       lens = {
+--         enable = true,
+--         debug = true,
+--         forceCustomCommands = true,
+--         implementations = true,
+--         references = true,
+--         run = true,
+--       },
+--       linkedProjects = {},
+--       lruCapacity = 1024,
+--       notifications = {
+--         cargoTomlNotFound = true,
+--       },
+--       procMacro = {
+--         enable = true,
+--       },
+--       rustfmt = {
+--         rangeFormatting = {
+--           enable = true,
+--         },
+--       },
+--       semanticHighlighting = {
+--         strings = {
+--           enable = true,
+--         },
+--       },
+--       signatureInfo = {
+--         detail = "full",
+--         documentation = {
+--           enable = true,
+--         },
+--       },
+--       workspace = {
+--         symbol = {
+--           search = {
+--             kind = "only_types",
+--             scope = "workspace",
+--           },
+--         },
+--       },
+--     },
+--   },
+-- }
