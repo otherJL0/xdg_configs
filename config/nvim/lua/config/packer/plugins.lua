@@ -284,7 +284,7 @@ local function my_plugins()
 
   use({
     "Saecki/crates.nvim",
-    opt = true,
+    ft = { "toml" },
     requires = { { "nvim-lua/plenary.nvim" } },
   })
 
