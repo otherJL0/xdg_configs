@@ -1,22 +1,13 @@
 -- configure the litee.nvim library
 require("litee.lib").setup({})
 -- configure litee-calltree.nvim
-require("litee.calltree").setup({})
+require("litee.calltree").setup({
+  on_open = "panel",
+})
 -- configure litee-symboltree.nvim
-require("litee.symboltree").setup({})
-
-vim.lsp.handlers["textDocument/documentSymbol"] = vim.lsp.with(
-  require("litee.symboltree.handlers").ds_lsp_handler(),
-  {}
-)
-vim.lsp.handlers["callHierarchy/incomingCalls"] = vim.lsp.with(
-  require("litee.calltree.handlers").ch_lsp_handler("from"),
-  {}
-)
-vim.lsp.handlers["callHierarchy/outgoingCalls"] = vim.lsp.with(
-  require("litee.calltree.handlers").ch_lsp_handler("to"),
-  {}
-)
+require("litee.symboltree").setup({
+  on_open = "panel",
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
@@ -76,9 +67,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end
 
-    -- TODO
     if client.server_capabilities.documentSymbolProvider then
       require("nvim-navic").attach(client, args.buf)
+      vim.lsp.handlers["textDocument/documentSymbol"] = vim.lsp.with(
+        require("litee.symboltree.handlers").ds_lsp_handler(),
+        {}
+      )
+    end
+
+    if client.server_capabilities.callHierarchyProvider then
+      vim.notify("Call hierarcy is available")
+      vim.lsp.handlers["callHierarchy/incomingCalls"] = vim.lsp.with(
+        require("litee.calltree.handlers").ch_lsp_handler("from"),
+        {}
+      )
+      vim.lsp.handlers["callHierarchy/outgoingCalls"] = vim.lsp.with(
+        require("litee.calltree.handlers").ch_lsp_handler("to"),
+        {}
+      )
     end
 
     -- if client.server_capabilities.completionProvider then
@@ -92,9 +98,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- end
     -- -- ['textDocument/prepareRename'] = { 'renameProvider', 'prepareProvider' },
     -- -- TODO
-    -- if client.server_capabilities.callHierarchyProvider then
-    --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
-    -- end
     -- -- TODO
     -- if client.server_capabilities.codeLensProvider then
     --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
