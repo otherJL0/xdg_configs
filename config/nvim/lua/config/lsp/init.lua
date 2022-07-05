@@ -1,8 +1,6 @@
-local lsp_status = require("lsp-status")
 local lspconfig = require("lspconfig")
 
 local function on_attach(client, bufnr)
-  lsp_status.on_attach(client)
   require("fidget").setup({
     text = {
       spinner = "dots", -- animation shown when tasks are ongoing
@@ -109,9 +107,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     "additionalTextEdits",
   },
 }
-capabilities = vim.tbl_extend("keep", capabilities, lsp_status.capabilities)
 
-lsp_status.register_progress()
 return {
   on_attach = on_attach,
   launch = function(servers)

@@ -62,11 +62,8 @@ local border = {
 local on_attach = function(client, bufnr)
   require("jdtls.setup").add_commands()
   require("jdtls").setup_dap()
-  require("lsp-status").register_progress()
 
   vim.lsp.set_log_level(0)
-  require("lsp-status").on_attach(client)
-  -- require("lsp-status").register_progress()
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   -- Fancy borders

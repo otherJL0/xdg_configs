@@ -44,7 +44,6 @@ return {
   },
   lsp = {
     on_attach = require("config.lsp").on_attach,
-    -- capabilities = my_custom_capabilities -- e.g. lsp_status capabilities
   },
   settings = {
     showTodos = true,

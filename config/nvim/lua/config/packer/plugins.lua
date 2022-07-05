@@ -40,7 +40,6 @@ local function my_plugins()
 
   -- LSP Extras
   use({
-    "nvim-lua/lsp-status.nvim",
     "onsails/lspkind-nvim",
   })
 
