@@ -95,9 +95,9 @@ local function my_plugins()
   })
 
   use({
-    "SmiteshP/nvim-gps",
+    "SmiteshP/nvim-navic",
     config = function()
-      require("nvim-gps").setup()
+      require("nvim-navic").setup()
     end,
   })
 

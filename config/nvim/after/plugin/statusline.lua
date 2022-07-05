@@ -369,8 +369,8 @@ local winbar_active = {
 }
 
 winbar_active[1][2] = {
-  provider = require("nvim-gps").get_location,
-  enabled = require("nvim-gps").is_available,
+  provider = require("nvim-navic").get_location,
+  enabled = require("nvim-navic").is_available,
   hl = {
     bg = clrs.surface0,
     fg = clrs.text,

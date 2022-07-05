@@ -56,6 +56,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end
 
+    -- TODO
+    if client.server_capabilities.documentSymbolProvider then
+      require("nvim-navic").attach(client, args.buf)
+    end
+
     -- if client.server_capabilities.completionProvider then
     --   TODO
     -- end
@@ -66,10 +71,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --   vim.keymap.set("n", "", vim.lsp.buf.references, { buffer = args.buf })
     -- end
     -- -- ['textDocument/prepareRename'] = { 'renameProvider', 'prepareProvider' },
-    -- -- TODO
-    -- if client.server_capabilities.documentSymbolProvider then
-    --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
-    -- end
     -- -- TODO
     -- if client.server_capabilities.callHierarchyProvider then
     --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
