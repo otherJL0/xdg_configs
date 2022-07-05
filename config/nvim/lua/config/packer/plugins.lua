@@ -166,8 +166,10 @@ local function my_plugins()
   })
 
   use({
+    "ldelossa/litee.nvim",
+    "ldelossa/litee-calltree.nvim",
+    "ldelossa/litee-symboltree.nvim",
     "ldelossa/gh.nvim",
-    requires = { { "ldelossa/litee.nvim" } },
   })
 
   -- Status lines

@@ -1,3 +1,23 @@
+-- configure the litee.nvim library
+require("litee.lib").setup({})
+-- configure litee-calltree.nvim
+require("litee.calltree").setup({})
+-- configure litee-symboltree.nvim
+require("litee.symboltree").setup({})
+
+vim.lsp.handlers["textDocument/documentSymbol"] = vim.lsp.with(
+  require("litee.symboltree.handlers").ds_lsp_handler(),
+  {}
+)
+vim.lsp.handlers["callHierarchy/incomingCalls"] = vim.lsp.with(
+  require("litee.calltree.handlers").ch_lsp_handler("from"),
+  {}
+)
+vim.lsp.handlers["callHierarchy/outgoingCalls"] = vim.lsp.with(
+  require("litee.calltree.handlers").ch_lsp_handler("to"),
+  {}
+)
+
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
