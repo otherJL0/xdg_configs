@@ -1,8 +1,8 @@
-local finders = require("telescope.finders")
-local sorters = require("telescope.sorters")
-local actions = require("telescope.actions")
-local pickers = require("telescope.pickers")
-require("jdtls.ui").pick_one_async = function(items, prompt, label_fn, cb)
+local finders = require('telescope.finders')
+local sorters = require('telescope.sorters')
+local actions = require('telescope.actions')
+local pickers = require('telescope.pickers')
+require('jdtls.ui').pick_one_async = function(items, prompt, label_fn, cb)
   local opts = {}
   pickers.new(opts, {
     prompt_title = prompt,
@@ -30,4 +30,4 @@ require("jdtls.ui").pick_one_async = function(items, prompt, label_fn, cb)
   }):find()
 end
 
-require("jdtls").start_or_attach(require("config.lsp.jdtls"))
+require('jdtls').start_or_attach(require('config.lsp.jdtls'))

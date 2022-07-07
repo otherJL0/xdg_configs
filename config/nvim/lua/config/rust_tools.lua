@@ -9,7 +9,7 @@ local opts = {
 
     -- how to execute terminal commands
     -- options right now: termopen / quickfix
-    executor = require("rust-tools/executors").quickfix,
+    executor = require('rust-tools/executors').quickfix,
 
     runnables = {
       -- whether to use telescope for selection menu or not
@@ -36,7 +36,7 @@ local opts = {
       -- not that this may cause  higher CPU usage.
       -- This option is only respected when only_current_line and
       -- autoSetHints both are true.
-      only_current_line_autocmd = "CursorHold",
+      only_current_line_autocmd = 'CursorHold',
 
       -- whether to show parameter hints with the inlay hints or not
       show_parameter_hints = true,
@@ -45,10 +45,10 @@ local opts = {
       show_variable_name = true,
 
       -- prefix for parameter hints
-      parameter_hints_prefix = " <- ",
+      parameter_hints_prefix = ' <- ',
 
       -- prefix for all the other hints (type, chaining)
-      other_hints_prefix = " => ",
+      other_hints_prefix = ' => ',
 
       -- whether to align to the length of the longest line in the file
       max_len_align = false,
@@ -63,21 +63,21 @@ local opts = {
       right_align_padding = 7,
 
       -- The color of the hints
-      highlight = "TSComment",
+      highlight = 'TSComment',
     },
 
     hover_actions = {
       -- the border that is used for the hover window
       -- see vim.api.nvim_open_win()
       border = {
-        { "╭", "FloatBorder" },
-        { "─", "FloatBorder" },
-        { "╮", "FloatBorder" },
-        { "│", "FloatBorder" },
-        { "╯", "FloatBorder" },
-        { "─", "FloatBorder" },
-        { "╰", "FloatBorder" },
-        { "│", "FloatBorder" },
+        { '╭', 'FloatBorder' },
+        { '─', 'FloatBorder' },
+        { '╮', 'FloatBorder' },
+        { '│', 'FloatBorder' },
+        { '╯', 'FloatBorder' },
+        { '─', 'FloatBorder' },
+        { '╰', 'FloatBorder' },
+        { '│', 'FloatBorder' },
       },
 
       -- whether the hover action window gets automatically focused
@@ -90,7 +90,7 @@ local opts = {
       -- Backend used for displaying the graph
       -- see: https://graphviz.org/docs/outputs/
       -- default: x11
-      backend = "x11",
+      backend = 'x11',
       -- where to store the output, nil for no output stored (relative
       -- path from pwd)
       -- default: nil
@@ -105,16 +105,16 @@ local opts = {
   -- all the opts to send to nvim-lspconfig
   -- these override the defaults set by rust-tools.nvim
   -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
-  server = require("config.lsp.rust_analyzer"), -- rust-analyzer options
+  server = require('config.lsp.rust_analyzer'), -- rust-analyzer options
 
   -- debugging stuff
   dap = {
     adapter = {
-      type = "executable",
-      command = "lldb-vscode",
-      name = "rt_lldb",
+      type = 'executable',
+      command = 'lldb-vscode',
+      name = 'rt_lldb',
     },
   },
 }
 
-require("rust-tools").setup(opts)
+require('rust-tools').setup(opts)

@@ -1,14 +1,14 @@
 return {
-  cmd = { "deno", "lsp" },
+  cmd = { 'deno', 'lsp' },
   filetypes = {
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    "jsx",
-    "typescript",
-    "typescriptreact",
-    "typescript.tsx",
-    "tsx",
+    'javascript',
+    'javascriptreact',
+    'javascript.jsx',
+    'jsx',
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx',
+    'tsx',
   },
 
   -- handlers = {
@@ -38,5 +38,5 @@ return {
       },
     },
   },
-  root_dir = require("lspconfig.util").root_pattern("denops/", "mod.ts", "app.tsx"),
+  root_dir = require('lspconfig.util').root_pattern('denops/', 'mod.ts', 'app.tsx'),
 }

@@ -1,10 +1,17 @@
-local ts_utils = require("nvim-lsp-ts-utils")
+local ts_utils = require('nvim-lsp-ts-utils')
 return {
-  cmd = { "typescript-language-server", "--stdio" },
-  filetypes = { "javascript", "javascript.jsx", "javascriptreact", "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { 'typescript-language-server', '--stdio' },
+  filetypes = {
+    'javascript',
+    'javascript.jsx',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
+    'typescript.tsx',
+  },
   init_options = ts_utils.init_options,
   on_attach = function(client, buffer)
-    require("config.lsp").on_attach(client, buffer)
+    require('config.lsp').on_attach(client, buffer)
     ts_utils.setup({
 
       debug = true,
@@ -31,7 +38,7 @@ return {
 
       -- inlay hints
       auto_inlay_hints = true,
-      inlay_hints_highlight = "Comment",
+      inlay_hints_highlight = 'Comment',
       inlay_hints_priority = 200, -- priority of the hint extmarks
       inlay_hints_throttle = 150, -- throttle the inlay hint request
       inlay_hints_format = { -- format options for individual hint kind
@@ -57,8 +64,8 @@ return {
     ts_utils.setup_client(client)
 
     -- no default maps, so you may want to define some here
-    vim.keymap.set("n", "gs", ":TSLspOrganize<CR>")
-    vim.keymap.set("n", "gr", ":TSLspRenameFile<CR>")
-    vim.keymap.set("n", "gi", ":TSLspImportAll<CR>")
+    vim.keymap.set('n', 'gs', ':TSLspOrganize<CR>')
+    vim.keymap.set('n', 'gr', ':TSLspRenameFile<CR>')
+    vim.keymap.set('n', 'gi', ':TSLspImportAll<CR>')
   end,
 }

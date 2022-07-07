@@ -1,4 +1,4 @@
 vim.lsp.start({
-  name = "cssls",
-  cmd = { "vscode-css-language-server", "--stdio" },
+  name = 'cssls',
+  cmd = { 'vscode-css-language-server', '--stdio' },
 })

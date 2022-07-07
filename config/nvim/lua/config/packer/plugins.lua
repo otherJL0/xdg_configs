@@ -1,150 +1,152 @@
 -- Automatically install when editing
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = { "plugins.lua" },
-  command = "source <afile> | PackerCompile",
+vim.api.nvim_create_autocmd('BufWritePost', {
+  pattern = { 'plugins.lua' },
+  command = 'source <afile> | PackerCompile',
 })
 
-local use = require("packer").use
+local use = require('packer').use
 
 local function my_plugins()
   -- Essential
   use({
-    "wbthomason/packer.nvim",
-    "nvim-lua/plenary.nvim",
-    "lewis6991/impatient.nvim",
-    "neovim/nvim-lspconfig",
-    "nvim-telescope/telescope.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    "hrsh7th/nvim-cmp",
-    "kyazdani42/nvim-web-devicons",
+    'wbthomason/packer.nvim',
+    'nvim-lua/plenary.nvim',
+    'lewis6991/impatient.nvim',
+    'neovim/nvim-lspconfig',
+    'nvim-telescope/telescope.nvim',
+    'nvim-treesitter/nvim-treesitter',
+    'hrsh7th/nvim-cmp',
+    'kyazdani42/nvim-web-devicons',
   })
-  use({ "tjdevries/tree-sitter-lua", opt = true })
-  use({ "tami5/sqlite.lua", opt = true })
-  use({ "andymass/vim-matchup" })
-  use({ "nanotee/luv-vimdocs" })
+  use({ 'tjdevries/tree-sitter-lua', opt = true })
+  use({ 'tami5/sqlite.lua', opt = true })
+  use({ 'andymass/vim-matchup' })
+  use({ 'nanotee/luv-vimdocs' })
 
   use({
-    "lewis6991/spellsitter.nvim",
+    'lewis6991/spellsitter.nvim',
     config = function()
       vim.opt.spell = true
-      require("spellsitter").setup()
+      require('spellsitter').setup()
     end,
   })
   use({
-    "ggandor/lightspeed.nvim",
+    'ggandor/lightspeed.nvim',
   })
 
   use({
-    "tpope/vim-fugitive",
+    'tpope/vim-fugitive',
   })
 
   -- LSP Extras
   use({
-    "onsails/lspkind-nvim",
+    'onsails/lspkind-nvim',
   })
 
-  use({ "j-hui/fidget.nvim" })
+  use({ 'j-hui/fidget.nvim' })
 
   use({
-    "jose-elias-alvarez/null-ls.nvim",
+    'jose-elias-alvarez/null-ls.nvim',
   })
 
   use({
-    "kevinhwang91/nvim-hlslens",
+    'kevinhwang91/nvim-hlslens',
     config = function()
-      require("hlslens").setup({
+      require('hlslens').setup({
         calm_down = true,
         nearest_only = true,
-        nearest_float_when = "always",
+        nearest_float_when = 'always',
       })
     end,
   })
 
   -- Telescope Extras
   use({
-    "nvim-telescope/telescope-frecency.nvim",
-    "nvim-telescope/telescope-smart-history.nvim",
-    "nvim-telescope/telescope-packer.nvim",
-    "nvim-telescope/telescope-cheat.nvim",
-    "nvim-telescope/telescope-github.nvim",
-    "nvim-telescope/telescope-ui-select.nvim",
-    "nvim-telescope/telescope-file-browser.nvim",
-    "nvim-telescope/telescope-project.nvim",
-    "nvim-telescope/telescope-live-grep-args.nvim",
+    'nvim-telescope/telescope-frecency.nvim',
+    'nvim-telescope/telescope-smart-history.nvim',
+    'nvim-telescope/telescope-packer.nvim',
+    'nvim-telescope/telescope-cheat.nvim',
+    'nvim-telescope/telescope-github.nvim',
+    'nvim-telescope/telescope-ui-select.nvim',
+    'nvim-telescope/telescope-file-browser.nvim',
+    'nvim-telescope/telescope-project.nvim',
+    'nvim-telescope/telescope-live-grep-args.nvim',
     opt = true,
   })
 
-  use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+  use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
 
   -- Colorschemes
   use({
-    "catppuccin/nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    'catppuccin/nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   })
 
   -- Treesitter Extras
   use({
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    "nvim-treesitter/nvim-treesitter-refactor",
-    "nvim-treesitter/playground",
-    "lukas-reineke/indent-blankline.nvim",
-    "nvim-treesitter/nvim-treesitter-context",
-    "windwp/nvim-autopairs",
-    requires = "nvim-treesitter/nvim-treesitter",
-    run = "TSUpdate",
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    'nvim-treesitter/nvim-treesitter-refactor',
+    'nvim-treesitter/playground',
+    'lukas-reineke/indent-blankline.nvim',
+    'nvim-treesitter/nvim-treesitter-context',
+    'windwp/nvim-autopairs',
+    requires = 'nvim-treesitter/nvim-treesitter',
+    run = 'TSUpdate',
   })
 
   use({
-    "SmiteshP/nvim-navic",
+    'SmiteshP/nvim-navic',
     config = function()
-      require("nvim-navic").setup()
+      require('nvim-navic').setup()
     end,
   })
 
   -- Git plugins
   use({
-    "lewis6991/gitsigns.nvim",
-    "TimUntersberger/neogit",
-    "sindrets/diffview.nvim",
-    requres = "nvim-lua/plenary",
+    'lewis6991/gitsigns.nvim',
+    'TimUntersberger/neogit',
+    'sindrets/diffview.nvim',
+    requres = 'nvim-lua/plenary',
   })
 
   -- Cmp and plugins
   use({
-    "L3MON4D3/LuaSnip",
-    "dmitmel/cmp-cmdline-history",
-    "f3fora/cmp-spell",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-nvim-lsp-document-symbol",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
-    "hrsh7th/cmp-nvim-lua",
-    "hrsh7th/cmp-path",
-    "saadparwaiz1/cmp_luasnip",
-    "danymat/neogen",
-    requires = { "hrsh7th/nvim-cmp", "hrsh7th/cmp-cmdline" },
+    'L3MON4D3/LuaSnip',
+    'dmitmel/cmp-cmdline-history',
+    'f3fora/cmp-spell',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-nvim-lsp-document-symbol',
+    'hrsh7th/cmp-nvim-lsp-signature-help',
+    'hrsh7th/cmp-nvim-lua',
+    'hrsh7th/cmp-path',
+    'saadparwaiz1/cmp_luasnip',
+    'danymat/neogen',
+    requires = { 'hrsh7th/nvim-cmp', 'hrsh7th/cmp-cmdline' },
   })
-  use({ "simrat39/symbols-outline.nvim" })
+  use({ 'simrat39/symbols-outline.nvim' })
 
   -- Debug
   use({
-    "mfussenegger/nvim-dap",
-    "rcarriga/nvim-dap-ui",
-    "theHamsta/nvim-dap-virtual-text",
-    "nvim-telescope/telescope-dap.nvim",
-    "jbyuki/one-small-step-for-vimkind",
-    "suketa/nvim-dap-ruby",
+    'mfussenegger/nvim-dap',
+    'rcarriga/nvim-dap-ui',
+    'theHamsta/nvim-dap-virtual-text',
+    'nvim-telescope/telescope-dap.nvim',
+    'jbyuki/one-small-step-for-vimkind',
+    'suketa/nvim-dap-ruby',
   })
 
   use({
-    "mfussenegger/nvim-dap-python",
+    'mfussenegger/nvim-dap-python',
     config = function()
       local function pypath()
         local cwd = vim.fn.getcwd()
-        local venv_directories = { "venv", ".venv", "env" }
+        local venv_directories = { 'venv', '.venv', 'env' }
         for _, venv in ipairs(venv_directories) do
-          local pypath_candidate = string.format("%s/%s/bin/python", cwd, venv)
-          if vim.fn.executable(pypath_candidate) and vim.fn.exepath("python") == pypath_candidate then
+          local pypath_candidate = string.format('%s/%s/bin/python', cwd, venv)
+          if
+            vim.fn.executable(pypath_candidate) and vim.fn.exepath('python') == pypath_candidate
+          then
             return pypath_candidate
           end
         end
@@ -154,54 +156,54 @@ local function my_plugins()
       if pypath() == nil then
         return
       end
-      local dap_py = require("dap-python")
+      local dap_py = require('dap-python')
       dap_py.setup(pypath())
-      dap_py.test_runner = "pytest"
+      dap_py.test_runner = 'pytest'
 
-      vim.keymap.set("n", " tm", dap_py.test_method)
-      vim.keymap.set("n", " tf", dap_py.test_method)
-      vim.keymap.set("n", " tc", dap_py.test_class)
+      vim.keymap.set('n', ' tm', dap_py.test_method)
+      vim.keymap.set('n', ' tf', dap_py.test_method)
+      vim.keymap.set('n', ' tc', dap_py.test_class)
     end,
-    ft = { "py", "python", "python3", "pytest" },
+    ft = { 'py', 'python', 'python3', 'pytest' },
   })
 
   use({
-    "ldelossa/litee.nvim",
-    "ldelossa/litee-calltree.nvim",
-    "ldelossa/litee-symboltree.nvim",
-    "ldelossa/gh.nvim",
+    'ldelossa/litee.nvim',
+    'ldelossa/litee-calltree.nvim',
+    'ldelossa/litee-symboltree.nvim',
+    'ldelossa/gh.nvim',
   })
 
   -- Status lines
   use({
-    "feline-nvim/feline.nvim",
+    'feline-nvim/feline.nvim',
   })
   -- Misc
   use({
-    "monaqa/dial.nvim",
-    "numToStr/Comment.nvim",
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    "chentoast/marks.nvim",
+    'monaqa/dial.nvim',
+    'numToStr/Comment.nvim',
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    'chentoast/marks.nvim',
     -- "vim-denops/denops.vim",
-    "folke/lua-dev.nvim",
+    'folke/lua-dev.nvim',
     -- "folke/which-key.nvim",
-    "folke/trouble.nvim",
+    'folke/trouble.nvim',
 
-    requires = "kyazdani42/nvim-web-devicons",
+    requires = 'kyazdani42/nvim-web-devicons',
   })
 
   -- UI
   use({
-    "stevearc/dressing.nvim",
-    "MunifTanjim/nui.nvim",
-    "p00f/nvim-ts-rainbow",
+    'stevearc/dressing.nvim',
+    'MunifTanjim/nui.nvim',
+    'p00f/nvim-ts-rainbow',
   })
 
   use({
-    "rcarriga/nvim-notify",
+    'rcarriga/nvim-notify',
     config = function()
       vim.opt.termguicolors = true
-      require("notify").setup({
+      require('notify').setup({
         on_open = function(win)
           vim.api.nvim_win_set_config(win, { focusable = false })
         end,
@@ -209,32 +211,32 @@ local function my_plugins()
     end,
   })
 
-  use({ "nvim-neorg/neorg-telescope" })
+  use({ 'nvim-neorg/neorg-telescope' })
   -- Filetype specific plugins
   use({
-    "nvim-neorg/neorg",
+    'nvim-neorg/neorg',
     requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-neorg/neorg-telescope",
-      "jbyuki/nabla.nvim",
-      "lewis6991/spellsitter.nvim",
+      'nvim-lua/plenary.nvim',
+      'nvim-neorg/neorg-telescope',
+      'jbyuki/nabla.nvim',
+      'lewis6991/spellsitter.nvim',
     },
-    after = { "nvim-treesitter", "telescope.nvim", "nvim-cmp", "neorg-telescope" }, -- Ensures that neorg loads after nvim-treesitter
+    after = { 'nvim-treesitter', 'telescope.nvim', 'nvim-cmp', 'neorg-telescope' }, -- Ensures that neorg loads after nvim-treesitter
   })
   use({
-    "windwp/nvim-ts-autotag",
-  })
-
-  use({
-    "gennaro-tedesco/nvim-jqx",
-    ft = { "" },
+    'windwp/nvim-ts-autotag',
   })
 
   use({
-    "ahmedkhalf/project.nvim",
+    'gennaro-tedesco/nvim-jqx',
+    ft = { '' },
+  })
+
+  use({
+    'ahmedkhalf/project.nvim',
     config = function()
-      require("telescope").load_extension("projects")
-      require("project_nvim").setup({
+      require('telescope').load_extension('projects')
+      require('project_nvim').setup({
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
@@ -243,26 +245,26 @@ local function my_plugins()
   })
 
   use({
-    "p00f/clangd_extensions.nvim",
+    'p00f/clangd_extensions.nvim',
     config = function()
-      require("config.lsp.clangd_extensions")
+      require('config.lsp.clangd_extensions')
     end,
-    ft = { "c", "cpp", "c++", "h", "hpp", "cc" },
+    ft = { 'c', 'cpp', 'c++', 'h', 'hpp', 'cc' },
   })
 
-  use({ "jose-elias-alvarez/nvim-lsp-ts-utils", ft = { "typescript", "tsx", "ts" } })
+  use({ 'jose-elias-alvarez/nvim-lsp-ts-utils', ft = { 'typescript', 'tsx', 'ts' } })
 
   use({
-    "rcarriga/neotest",
+    'rcarriga/neotest',
     requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'antoinemadec/FixCursorHold.nvim',
     },
   })
-  use({ "b0o/SchemaStore.nvim" })
+  use({ 'b0o/SchemaStore.nvim' })
   use({
-    "norcalli/nvim-colorizer.lua",
+    'norcalli/nvim-colorizer.lua',
     opt = true,
   })
 
@@ -284,68 +286,68 @@ local function my_plugins()
   -- })
 
   use({
-    "Saecki/crates.nvim",
-    ft = { "toml" },
-    requires = { { "nvim-lua/plenary.nvim" } },
+    'Saecki/crates.nvim',
+    ft = { 'toml' },
+    requires = { { 'nvim-lua/plenary.nvim' } },
   })
 
   use({
-    "bennypowers/nvim-regexplainer",
+    'bennypowers/nvim-regexplainer',
     config = function()
-      require("regexplainer").setup({
+      require('regexplainer').setup({
         -- narrative, ascii, graphical
-        mode = "narrative",
+        mode = 'narrative',
         auto = true,
         filetypes = {
-          "python",
-          "js",
-          "py",
-          "bash",
-          "sh",
-          "ts",
-          "tsx",
-          "jsx",
+          'python',
+          'js',
+          'py',
+          'bash',
+          'sh',
+          'ts',
+          'tsx',
+          'jsx',
         },
         debug = true,
         -- split, popup, pasteboard
-        display = "popup",
+        display = 'popup',
         popup = {
           border = {
             -- padding = { 1,  },
-            style = "single",
+            style = 'single',
           },
         },
       })
     end,
     requires = {
-      "nvim-treesitter/nvim-treesitter",
-      "MunifTanjim/nui.nvim",
+      'nvim-treesitter/nvim-treesitter',
+      'MunifTanjim/nui.nvim',
     },
   })
-  use({ "nvim-neorg/library-of-norgxandria", opt = true })
+  use({ 'nvim-neorg/library-of-norgxandria', opt = true })
   use({
-    "anuvyklack/hydra.nvim",
+    'anuvyklack/hydra.nvim',
     requires = {
-      "anuvyklack/keymap-layer.nvim",
+      'anuvyklack/keymap-layer.nvim',
     },
     config = function()
-      require("config.hydra")
+      require('config.hydra')
     end,
   })
 end
 
-return require("packer").startup({
+return require('packer').startup({
   my_plugins,
   config = {
     ensure_dependencies = true,
-    compile_path = vim.fn.stdpath("config") .. "/lua/config/packer/compiled.lua",
+    compile_path = vim.fn.stdpath('config') .. '/lua/config/packer/compiled.lua',
     max_jobs = 16,
     git = {
       clone_timeout = 10,
     },
     display = {
       open_fn = function()
-        return require("packer.util").float({ border = "single" })
+        return require('packer.util').float({ border = 'single' })
       end,
     },
   },

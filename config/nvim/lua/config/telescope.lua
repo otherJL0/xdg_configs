@@ -1,18 +1,18 @@
-local telescope = require("telescope")
-local themes = require("telescope.themes")
-local actions = require("telescope.actions")
+local telescope = require('telescope')
+local themes = require('telescope.themes')
+local actions = require('telescope.actions')
 
 telescope.setup({
   defaults = {
     mappings = {
       n = {
-        ["<C-c>"] = actions.close,
+        ['<C-c>'] = actions.close,
       },
     },
   },
   pickers = {
     find_files = {
-      theme = "ivy",
+      theme = 'ivy',
     },
   },
   extensions = {
@@ -20,26 +20,26 @@ telescope.setup({
       fuzzy = true, -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
       override_file_sorter = true, -- override the file sorter
-      case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+      case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
     },
-    ["ui-select"] = {
+    ['ui-select'] = {
       themes.get_cursor({}),
     },
     file_browser = {
-      theme = "ivy",
+      theme = 'ivy',
       mappings = {
-        ["i"] = {
+        ['i'] = {
           -- your custom insert mode mappings
         },
-        ["n"] = {
+        ['n'] = {
           -- your custom normal mode mappings
         },
       },
     },
     project = {
       base_dirs = {
-        { path = "~/vcs/", max_depth = 5 },
-        { path = "~/git/", max_depth = 5 },
+        { path = '~/vcs/', max_depth = 5 },
+        { path = '~/git/', max_depth = 5 },
         -- { path = "~/exercism", max_depth = 3 },
       },
       hidden_files = false, -- default: false
@@ -47,7 +47,14 @@ telescope.setup({
   },
 })
 
-for _, extension in ipairs({ "ui-select", "file_browser", "fzf", "live_grep_args", "gh", "project" }) do
+for _, extension in ipairs({
+  'ui-select',
+  'file_browser',
+  'fzf',
+  'live_grep_args',
+  'gh',
+  'project',
+}) do
   telescope.load_extension(extension)
 end
 
@@ -66,14 +73,14 @@ end
 
 return setmetatable({
   project_files = function()
-    local ok = pcall(require("telescope.builtin").git_files, get_ivy_opts())
+    local ok = pcall(require('telescope.builtin').git_files, get_ivy_opts())
     if not ok then
-      require("telescope.builtin").find_files(get_ivy_opts())
+      require('telescope.builtin').find_files(get_ivy_opts())
     end
   end,
   project = function()
     local proj_opts = get_ivy_opts()
-    proj_opts.display_type = "full"
+    proj_opts.display_type = 'full'
     telescope.extensions.project.project(proj_opts)
   end,
 }, {
@@ -86,7 +93,7 @@ return setmetatable({
       end
     end
     return function()
-      require("telescope.builtin")[function_call](get_ivy_opts())
+      require('telescope.builtin')[function_call](get_ivy_opts())
     end
   end,
 })

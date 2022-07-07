@@ -1,4 +1,4 @@
-local Hydra = require("hydra")
+local Hydra = require('hydra')
 
-Hydra(require("config.hydra.git"))
-Hydra(require("config.hydra.telescope"))
+Hydra(require('config.hydra.git'))
+Hydra(require('config.hydra.telescope'))

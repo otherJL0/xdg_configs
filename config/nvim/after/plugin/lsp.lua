@@ -1,25 +1,31 @@
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = false,
-  signs = true,
-  underline = true,
-  update_in_insert = true,
-})
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    virtual_text = false,
+    signs = true,
+    underline = true,
+    update_in_insert = true,
+  }
+)
 
 vim.lsp.set_log_level(0)
 local border = {
-  { "┌", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "┐", "FloatBorder" },
-  { "│", "FloatBorder" },
-  { "┘", "FloatBorder" },
-  { "─", "FloatBorder" },
-  { "└", "FloatBorder" },
-  { "│", "FloatBorder" },
+  { '┌', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '┐', 'FloatBorder' },
+  { '│', 'FloatBorder' },
+  { '┘', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '└', 'FloatBorder' },
+  { '│', 'FloatBorder' },
 }
 
 -- Fancy borders
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+  vim.lsp.handlers.hover,
+  { border = border }
+)
 
 vim.o.updatetime = 200
 
@@ -36,55 +42,58 @@ vim.cmd([[
 ]])
 
 local language_servers = {
-  "sumneko_lua",
+  'sumneko_lua',
 }
 
-require("config.lsp").launch(language_servers)
-require("config.lsp").launch_teal()
-require("config.lsp").launch_stree()
+require('config.lsp').launch(language_servers)
+require('config.lsp').launch_teal()
+require('config.lsp').launch_stree()
 
 -- register any number of sources simultaneously
-vim.keymap.set("n", " k", function()
-  vim.diagnostic.open_float(0, { focusable = false, scope = "line", border = "single" })
+vim.keymap.set('n', ' k', function()
+  vim.diagnostic.open_float(0, { focusable = false, scope = 'line', border = 'single' })
 end)
 
 local function determine_venv_path()
-  return vim.fs.find({ ".venv", "venv", ".env", "env" }, { upward = true })[1]
+  return vim.fs.find({ '.venv', 'venv', '.env', 'env' }, { upward = true })[1]
 end
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  pattern = { "*.py" },
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+  pattern = { '*.py' },
   callback = function()
     vim.lsp.start({
-      name = "pyright",
-      cmd = { vim.fn.stdpath("cache") .. "/node_modules/.bin/" .. "pyright-langserver", "--stdio" },
+      name = 'pyright',
+      cmd = {
+        vim.fn.stdpath('cache') .. '/node_modules/.bin/' .. 'pyright-langserver',
+        '--stdio',
+      },
       root_dir = vim.fs.dirname(vim.fs.find({
-        "env",
-        ".venv/",
-        "pyproject.toml",
-        "setup.cfg",
-        "setup.py",
-        "requirements.txt",
+        'env',
+        '.venv/',
+        'pyproject.toml',
+        'setup.cfg',
+        'setup.py',
+        'requirements.txt',
       }, { upward = true })[1]),
       settings = {
         python = {
           venvPath = determine_venv_path(),
-          pythonPath = determine_venv_path() .. "/bin/python",
+          pythonPath = determine_venv_path() .. '/bin/python',
           analysis = {
             autoImportCompletions = true,
             autoSearchPaths = true,
-            diagnosticMode = "workspace",
-            typeCheckingMode = "strict",
+            diagnosticMode = 'workspace',
+            typeCheckingMode = 'strict',
             useLibraryCodeForTypes = true,
             diagnosticSeverityOverrides = {
-              reportCallInDefaultInitializer = "warning",
-              reportImplicitStringConcatenation = "warning",
-              reportMissingTypeStubs = "none",
-              reportPropertyTypeMismatch = "warning",
-              reportUninitializedInstanceVariable = "warning",
-              reportUnknownMemberType = "warning",
-              reportUnknownVariableType = "warning",
-              reportUnnecessaryTypeIgnoreComment = "warning",
+              reportCallInDefaultInitializer = 'warning',
+              reportImplicitStringConcatenation = 'warning',
+              reportMissingTypeStubs = 'none',
+              reportPropertyTypeMismatch = 'warning',
+              reportUninitializedInstanceVariable = 'warning',
+              reportUnknownMemberType = 'warning',
+              reportUnknownVariableType = 'warning',
+              reportUnnecessaryTypeIgnoreComment = 'warning',
               reportUnusedCallResult = false,
             },
           },

@@ -1,25 +1,25 @@
-local luasnip = require("luasnip")
+local luasnip = require('luasnip')
 local snippet = luasnip.snippet
 local t = luasnip.text_node
 local i = luasnip.insert_node
 
 return {
-  snippet({ trig = "fun", descr = "function" }, {
-    t({ "func " }),
+  snippet({ trig = 'fun', descr = 'function' }, {
+    t({ 'func ' }),
     i(1),
-    t({ "(" }),
+    t({ '(' }),
     i(2),
-    t({ ")" }),
+    t({ ')' }),
     i(3),
-    t({ "{", "    " }),
+    t({ '{', '    ' }),
     i(0),
-    t({ "}" }),
+    t({ '}' }),
   }),
-  snippet({ trig = "tstruct", descr = "struct definition" }, {
-    t({ "type " }),
+  snippet({ trig = 'tstruct', descr = 'struct definition' }, {
+    t({ 'type ' }),
     i(1),
-    t({ " struct {", "    " }),
+    t({ ' struct {', '    ' }),
     i(0),
-    t({ "}" }),
+    t({ '}' }),
   }),
 }

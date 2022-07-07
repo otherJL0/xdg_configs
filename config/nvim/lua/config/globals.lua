@@ -5,7 +5,7 @@ P = function(v)
 end
 
 RELOAD = function(...)
-  return require("plenary.reload").reload_module(...)
+  return require('plenary.reload').reload_module(...)
 end
 
 R = function(name)
@@ -21,7 +21,7 @@ function PN(element)
   vim.notify(vim.inspect(element))
 end
 
-vim.api.nvim_add_user_command("Inspect", function(element)
+vim.api.nvim_add_user_command('Inspect', function(element)
   vim.notify(vim.inspect(element))
 end, { nargs = 1 })
 
@@ -39,15 +39,15 @@ local function diagnostic_toggle()
     vim.diagnostic.hide()
   end
 end
-vim.api.nvim_add_user_command("DiagnosticShow", "lua vim.diagnostic.show()", {})
-vim.api.nvim_add_user_command("DiagnosticHide", "lua vim.diagnostic.hide()", {})
-vim.api.nvim_add_user_command("DiagnosticToggle", diagnostic_toggle, {})
-vim.keymap.set("n", " <C-l>", diagnostic_toggle)
+vim.api.nvim_add_user_command('DiagnosticShow', 'lua vim.diagnostic.show()', {})
+vim.api.nvim_add_user_command('DiagnosticHide', 'lua vim.diagnostic.hide()', {})
+vim.api.nvim_add_user_command('DiagnosticToggle', diagnostic_toggle, {})
+vim.keymap.set('n', ' <C-l>', diagnostic_toggle)
 
-vim.api.nvim_add_user_command("AutoFormatEnable", function()
-  vim.cmd("autocmd! BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+vim.api.nvim_add_user_command('AutoFormatEnable', function()
+  vim.cmd('autocmd! BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
 end, {})
-vim.api.nvim_add_user_command("AutoFormatDisable", function()
-  vim.cmd("autocmd! BufWrite")
+vim.api.nvim_add_user_command('AutoFormatDisable', function()
+  vim.cmd('autocmd! BufWrite')
 end, {})
 -- vim.api.nvim_add_user_command("FormatDisable")

@@ -1,61 +1,61 @@
-local augend = require("dial.augend")
+local augend = require('dial.augend')
 
-require("dial.config").augends:register_group({
+require('dial.config').augends:register_group({
   default = {
     augend.integer.alias.decimal,
-    augend.date.alias["%m/%d"],
+    augend.date.alias['%m/%d'],
 
     augend.constant.new({
       word = true,
       cyclic = true,
-      elements = { "true", "false" },
+      elements = { 'true', 'false' },
     }),
 
     augend.constant.new({
       word = true,
       cyclic = true,
-      elements = { "True", "False" },
+      elements = { 'True', 'False' },
     }),
 
     augend.constant.new({
       word = true,
       cyclic = true,
-      elements = { "TRUE", "FALSE" },
+      elements = { 'TRUE', 'FALSE' },
     }),
 
     augend.constant.new({
       word = true,
       cyclic = true,
-      elements = { "on", "off" },
+      elements = { 'on', 'off' },
     }),
 
     augend.constant.new({
       word = true,
       cyclic = true,
-      elements = { "On", "Off" },
+      elements = { 'On', 'Off' },
     }),
 
     augend.constant.new({
       word = true,
       cyclic = true,
-      elements = { "ON", "OFF" },
+      elements = { 'ON', 'OFF' },
     }),
     augend.constant.new({
       word = true,
       cyclic = true,
-      elements = { "yes", "no" },
-    }),
-
-    augend.constant.new({
-      word = true,
-      cyclic = true,
-      elements = { "Yes", "No" },
+      elements = { 'yes', 'no' },
     }),
 
     augend.constant.new({
       word = true,
       cyclic = true,
-      elements = { "YES", "NO" },
+      elements = { 'Yes', 'No' },
+    }),
+
+    augend.constant.new({
+      word = true,
+      cyclic = true,
+      elements = { 'YES', 'NO' },
     }),
   },
 })

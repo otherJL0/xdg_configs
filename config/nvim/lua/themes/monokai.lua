@@ -1,4 +1,4 @@
-require("monokai")
-vim.cmd("colorscheme monokai_pro")
+require('monokai')
+vim.cmd('colorscheme monokai_pro')
 
-vim.g.lualine_theme = "molokai"
+vim.g.lualine_theme = 'molokai'

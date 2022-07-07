@@ -1,7 +1,7 @@
 return {
-  cmd = { "gopls", "--remote=auto" },
-  filetypes = { "go", "gomod" },
-  root_dir = require("lspconfig.util").root_pattern("go.mod", ".git"),
+  cmd = { 'gopls', '--remote=auto' },
+  filetypes = { 'go', 'gomod' },
+  root_dir = require('lspconfig.util').root_pattern('go.mod', '.git'),
   capabilities = {
     textDocument = { completion = { completionItem = { snippetSupport = true } } },
   },
@@ -19,7 +19,7 @@ return {
       },
       semanticTokens = true,
       usePlaceholders = true,
-      matcher = "CaseSensitive",
+      matcher = 'CaseSensitive',
       analyses = {
         fieldalignment = true,
         nilness = true,
@@ -31,12 +31,12 @@ return {
 
       staticcheck = true,
       annotations = { bounds = true, escape = true, inline = true },
-      hoverKind = "Structured",
-      linkTarget = "pkg.go.dev",
+      hoverKind = 'Structured',
+      linkTarget = 'pkg.go.dev',
       linksInHover = true,
-      importShortcut = "Both",
-      symbolMatcher = "CaseSensitive",
-      symbolStyle = "Dynamic",
+      importShortcut = 'Both',
+      symbolMatcher = 'CaseSensitive',
+      symbolStyle = 'Dynamic',
     },
   },
 }

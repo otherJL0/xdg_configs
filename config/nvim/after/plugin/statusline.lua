@@ -1,14 +1,14 @@
-local lsp = require("feline.providers.lsp")
+local lsp = require('feline.providers.lsp')
 local lsp_severity = vim.diagnostic.severity
-local hydra = require("hydra.statusline")
+local hydra = require('hydra.statusline')
 
 local function get_python_version(venv)
-  for _, version in ipairs({ "3.11", "3.10", "3.9", "3.8", "3.7", "3.6" }) do
-    if vim.fn.getftype(string.format("%s/bin/python%s", venv, version)) ~= "" then
+  for _, version in ipairs({ '3.11', '3.10', '3.9', '3.8', '3.7', '3.6' }) do
+    if vim.fn.getftype(string.format('%s/bin/python%s', venv, version)) ~= '' then
       return version
     end
   end
-  return "unknown"
+  return 'unknown'
 end
 
 vim.api.nvim_exec(
@@ -18,42 +18,42 @@ hi WinSeparator  guifg=#96CDFB
   false
 )
 vim.opt.fillchars = {
-  horiz = "━",
-  horizup = "┻",
-  horizdown = "┳",
-  vert = "┃",
-  vertleft = "┫",
-  vertright = "┣",
-  verthoriz = "╋",
+  horiz = '━',
+  horizup = '┻',
+  horizdown = '┳',
+  vert = '┃',
+  vertleft = '┫',
+  vertright = '┣',
+  verthoriz = '╋',
 }
 
 vim.opt.laststatus = 3
 
 local assets = {
-  left_semicircle = "",
-  right_semicircle = "",
-  right_semicircle_cut = "",
-  left_semicircle_cut = "",
-  vertical_bar_chubby = "█",
-  vertical_bar_medium = "┃",
-  vertical_bar_thin = "│",
-  left_arrow_thin = "",
-  right_arrow_thin = "",
-  left_arrow_filled = "",
-  right_arrow_filled = "",
-  slant_left = "",
-  slant_left_thin = "",
-  slant_right = "",
-  slant_right_thin = "",
-  slant_left_2 = "",
-  slant_left_2_thin = "",
-  slant_right_2 = "",
-  slant_right_2_thin = "",
-  chubby_dot = "●",
-  slim_dot = "•",
+  left_semicircle = '',
+  right_semicircle = '',
+  right_semicircle_cut = '',
+  left_semicircle_cut = '',
+  vertical_bar_chubby = '█',
+  vertical_bar_medium = '┃',
+  vertical_bar_thin = '│',
+  left_arrow_thin = '',
+  right_arrow_thin = '',
+  left_arrow_filled = '',
+  right_arrow_filled = '',
+  slant_left = '',
+  slant_left_thin = '',
+  slant_right = '',
+  slant_right_thin = '',
+  slant_left_2 = '',
+  slant_left_2_thin = '',
+  slant_right_2 = '',
+  slant_right_2_thin = '',
+  chubby_dot = '●',
+  slim_dot = '•',
 }
 
-local clrs = require("catppuccin.api.colors").get_colors()
+local clrs = require('catppuccin.api.colors').get_colors()
 
 -- settings
 local sett = {
@@ -65,26 +65,26 @@ local sett = {
 }
 
 local mode_colors = {
-  ["n"] = { "NORMAL", clrs.lavender },
-  ["no"] = { "N-PENDING", clrs.lavender },
-  ["i"] = { "INSERT", clrs.green },
-  ["ic"] = { "INSERT", clrs.green },
-  ["t"] = { "TERMINAL", clrs.green },
-  ["v"] = { "VISUAL", clrs.flamingo },
-  ["V"] = { "V-LINE", clrs.flamingo },
-  [""] = { "V-BLOCK", clrs.flamingo },
-  ["R"] = { "REPLACE", clrs.maroon },
-  ["Rv"] = { "V-REPLACE", clrs.maroon },
-  ["s"] = { "SELECT", clrs.maroon },
-  ["S"] = { "S-LINE", clrs.maroon },
-  [""] = { "S-BLOCK", clrs.maroon },
-  ["c"] = { "COMMAND", clrs.peach },
-  ["cv"] = { "COMMAND", clrs.peach },
-  ["ce"] = { "COMMAND", clrs.peach },
-  ["r"] = { "PROMPT", clrs.teal },
-  ["rm"] = { "MORE", clrs.teal },
-  ["r?"] = { "CONFIRM", clrs.mauve },
-  ["!"] = { "SHELL", clrs.green },
+  ['n'] = { 'NORMAL', clrs.lavender },
+  ['no'] = { 'N-PENDING', clrs.lavender },
+  ['i'] = { 'INSERT', clrs.green },
+  ['ic'] = { 'INSERT', clrs.green },
+  ['t'] = { 'TERMINAL', clrs.green },
+  ['v'] = { 'VISUAL', clrs.flamingo },
+  ['V'] = { 'V-LINE', clrs.flamingo },
+  [''] = { 'V-BLOCK', clrs.flamingo },
+  ['R'] = { 'REPLACE', clrs.maroon },
+  ['Rv'] = { 'V-REPLACE', clrs.maroon },
+  ['s'] = { 'SELECT', clrs.maroon },
+  ['S'] = { 'S-LINE', clrs.maroon },
+  [''] = { 'S-BLOCK', clrs.maroon },
+  ['c'] = { 'COMMAND', clrs.peach },
+  ['cv'] = { 'COMMAND', clrs.peach },
+  ['ce'] = { 'COMMAND', clrs.peach },
+  ['r'] = { 'PROMPT', clrs.teal },
+  ['rm'] = { 'MORE', clrs.teal },
+  ['r?'] = { 'CONFIRM', clrs.mauve },
+  ['!'] = { 'SHELL', clrs.green },
 }
 
 local shortline = false
@@ -107,7 +107,7 @@ local components = {
 
 -- global components
 local invi_sep = {
-  str = " ",
+  str = ' ',
   hl = {
     fg = sett.bkg,
     bg = sett.bkg,
@@ -121,10 +121,10 @@ local vi_mode_hl = function()
   local colors = {
     fg = sett.bkg,
     bg = mode_colors[vim.fn.mode()][2],
-    style = "bold",
+    style = 'bold',
   }
   if hydra.is_active() then
-    colors.bg = hydra.get_color() or ""
+    colors.bg = hydra.get_color() or ''
   end
   return colors
 end
@@ -133,10 +133,10 @@ local vi_mode_hl_inv = function()
   local colors = {
     bg = sett.bkg,
     fg = mode_colors[vim.fn.mode()][2],
-    style = "bold",
+    style = 'bold',
   }
   if hydra.is_active() then
-    colors.bg = hydra.get_color() or ""
+    colors.bg = hydra.get_color() or ''
   end
   return colors
 end
@@ -144,22 +144,22 @@ end
 components[1][1] = {
   provider = function()
     if hydra.is_active() then
-      return hydra.get_name() or " "
+      return hydra.get_name() or ' '
     end
     -- return " " .. mode_colors[vim.fn.mode()][1] .. " "
-    return " "
+    return ' '
   end,
   hl = vi_mode_hl,
 }
 
 components[1][2] = {
-  provider = "git_branch",
+  provider = 'git_branch',
   enabled = is_enabled(shortline, nil, 70),
   hl = {
     bg = clrs.surface0,
     fg = clrs.text,
   },
-  icon = "  ",
+  icon = '  ',
   -- left_sep = {
   --   str = assets.vertical_bar_chubby,
   -- },
@@ -170,30 +170,30 @@ components[1][2] = {
 
 -- Diffs ------>
 components[1][3] = {
-  provider = "git_diff_added",
+  provider = 'git_diff_added',
   hl = {
     fg = clrs.green,
     bg = sett.bkg,
   },
-  icon = "  ",
+  icon = '  ',
 }
 
 components[1][4] = {
-  provider = "git_diff_changed",
+  provider = 'git_diff_changed',
   hl = {
     fg = clrs.yellow,
     bg = sett.bkg,
   },
-  icon = "  ",
+  icon = '  ',
 }
 
 components[1][5] = {
-  provider = "git_diff_removed",
+  provider = 'git_diff_removed',
   hl = {
     fg = clrs.red,
     bg = sett.bkg,
   },
-  icon = "  ",
+  icon = '  ',
 }
 
 components[2][1] = {
@@ -203,8 +203,8 @@ components[2][1] = {
 }
 components[2][2] = {
   provider = function()
-    local venv = vim.split(vim.env.VIRTUAL_ENV, "/", { trimempty = true })
-    return string.format("%s(%s)", venv[#venv], get_python_version(vim.env.VIRTUAL_ENV))
+    local venv = vim.split(vim.env.VIRTUAL_ENV, '/', { trimempty = true })
+    return string.format('%s(%s)', venv[#venv], get_python_version(vim.env.VIRTUAL_ENV))
   end,
 
   enabled = vim.env.VIRTUAL_ENV ~= nil,
@@ -239,7 +239,7 @@ components[2][3] = {
 -- Diagnostics ------>
 -- workspace loader
 components[3][1] = {
-  provider = "lsp_client_names",
+  provider = 'lsp_client_names',
   hl = {
     fg = sett.extras,
     bg = sett.bkg,
@@ -248,7 +248,7 @@ components[3][1] = {
 }
 -- genral diagnostics (errors, warnings. info and hints)
 components[3][2] = {
-  provider = "diagnostic_errors",
+  provider = 'diagnostic_errors',
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.ERROR)
   end,
@@ -257,11 +257,11 @@ components[3][2] = {
     fg = clrs.red,
     bg = sett.bkg,
   },
-  icon = "  ",
+  icon = '  ',
 }
 
 components[3][3] = {
-  provider = "diagnostic_warnings",
+  provider = 'diagnostic_warnings',
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.WARN)
   end,
@@ -269,11 +269,11 @@ components[3][3] = {
     fg = clrs.peach,
     bg = sett.bkg,
   },
-  icon = "  ",
+  icon = '  ',
 }
 
 components[3][4] = {
-  provider = "diagnostic_info",
+  provider = 'diagnostic_info',
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.INFO)
   end,
@@ -281,11 +281,11 @@ components[3][4] = {
     fg = clrs.yellow,
     bg = sett.bkg,
   },
-  icon = "  ",
+  icon = '  ',
 }
 
 components[3][5] = {
-  provider = "diagnostic_hints",
+  provider = 'diagnostic_hints',
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.HINT)
   end,
@@ -293,17 +293,17 @@ components[3][5] = {
     fg = clrs.teal,
     bg = sett.bkg,
   },
-  icon = " ● ",
+  icon = ' ● ',
   right_sep = invi_sep,
 }
 -- ######## Right
 components[3][6] = {
   provider = {
-    name = "file_type",
+    name = 'file_type',
 
     opts = {
       -- filetype_icon = true,
-      case = "lowercase",
+      case = 'lowercase',
     },
   },
   hl = {
@@ -334,33 +334,33 @@ components[3][7] = {
     -- Turn col from byte-index to column number and make it start from 1
     col = vim.str_utfindex(vim.api.nvim_get_current_line(), col) + 1
 
-    return string.format(" %3d:%-2d", row, col)
+    return string.format(' %3d:%-2d', row, col)
   end,
   hl = vi_mode_hl,
 }
 -- file progress
 components[3][8] = {
   provider = function()
-    local current_line = vim.fn.line(".")
-    local total_line = vim.fn.line("$")
+    local current_line = vim.fn.line('.')
+    local total_line = vim.fn.line('$')
 
     if current_line == 1 then
-      return " Top "
-    elseif current_line == vim.fn.line("$") then
-      return " Bot "
+      return ' Top '
+    elseif current_line == vim.fn.line('$') then
+      return ' Bot '
     end
     local result, _ = math.modf((current_line / total_line) * 100)
-    return " " .. result .. "%% "
+    return ' ' .. result .. '%% '
   end,
   hl = vi_mode_hl,
 }
 
-require("feline").setup({
+require('feline').setup({
   components = {
     active = components,
     inactive = components,
   },
-  preset = "noicon",
+  preset = 'noicon',
 })
 
 local winbar_active = {
@@ -369,8 +369,8 @@ local winbar_active = {
 }
 
 winbar_active[1][2] = {
-  provider = require("nvim-navic").get_location,
-  enabled = require("nvim-navic").is_available,
+  provider = require('nvim-navic').get_location,
+  enabled = require('nvim-navic').is_available,
   hl = {
     bg = clrs.surface0,
     fg = clrs.text,
@@ -386,10 +386,10 @@ winbar_active[1][2] = {
 
 winbar_active[1][1] = {
   provider = {
-    name = "file_info",
+    name = 'file_info',
     opts = {
       colored_icon = true,
-      type = "relative",
+      type = 'relative',
     },
   },
   hl = vi_mode_hl_inv,
@@ -411,7 +411,7 @@ winbar_active[2][1] = {
   provider = function()
     local workspace_folders = vim.lsp.buf.list_workspace_folders()
     if workspace_folders then
-      return string.format("%s", workspace_folders[1])
+      return string.format('%s', workspace_folders[1])
     end
   end,
 }
@@ -423,10 +423,10 @@ local winbar_inactive = {
 winbar_inactive[1][1] = {
 
   provider = {
-    name = "file_info",
+    name = 'file_info',
     opts = {
       colored_icon = true,
-      type = "relative",
+      type = 'relative',
     },
   },
 
@@ -435,10 +435,10 @@ winbar_inactive[1][1] = {
     bg = clrs.base,
   },
 }
-require("feline").winbar.setup({
+require('feline').winbar.setup({
   components = {
     active = winbar_active,
     inactive = winbar_inactive,
   },
-  eset = "noicon",
+  eset = 'noicon',
 })

@@ -1,4 +1,4 @@
-require("Comment").setup({
+require('Comment').setup({
 
   ---Add a space b/w comment and the line
   ---@type boolean
@@ -8,7 +8,7 @@ require("Comment").setup({
   ---Could be a regex string or a function that returns a regex string.
   ---Example: Use '^$' to ignore empty lines
   ---@type string|function
-  ignore = "^$",
+  ignore = '^$',
 
   ---Whether to create basic (operator-pending) and extra mappings for NORMAL/VISUAL mode
   ---@type table
@@ -25,34 +25,34 @@ require("Comment").setup({
   ---@type table
   toggler = {
     ---line-comment toggle
-    line = "gcc",
+    line = 'gcc',
     ---block-comment toggle
-    block = "gbc",
+    block = 'gbc',
   },
 
   ---LHS of line and block comment operator-mode mapping in NORMAL/VISUAL mode
   ---@type table
   opleader = {
     ---line-comment opfunc mapping
-    line = "gc",
+    line = 'gc',
     ---block-comment opfunc mapping
-    block = "gb",
+    block = 'gb',
   },
 
   ---Pre-hook, called before commenting the line
   ---@type function|nil
   pre_hook = function(ctx)
-    local U = require("Comment.utils")
+    local U = require('Comment.utils')
 
     local location = nil
     if ctx.ctype == U.ctype.block then
-      location = require("ts_context_commentstring.utils").get_cursor_location()
+      location = require('ts_context_commentstring.utils').get_cursor_location()
     elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
-      location = require("ts_context_commentstring.utils").get_visual_start_location()
+      location = require('ts_context_commentstring.utils').get_visual_start_location()
     end
 
-    return require("ts_context_commentstring.internal").calculate_commentstring({
-      key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
+    return require('ts_context_commentstring.internal').calculate_commentstring({
+      key = ctx.ctype == U.ctype.line and '__default' or '__multiline',
       location = location,
     })
   end,

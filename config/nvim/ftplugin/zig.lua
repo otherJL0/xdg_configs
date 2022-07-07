@@ -1,21 +1,21 @@
-local Job = require("plenary.job")
+local Job = require('plenary.job')
 
-vim.bo.makeprg = "zig build"
+vim.bo.makeprg = 'zig build'
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  pattern = { "*.zig" },
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+  pattern = { '*.zig' },
   callback = function()
-    local zig_root_dir = vim.fs.dirname(vim.fs.find({ "build.zig" }, { upward = true })[1])
+    local zig_root_dir = vim.fs.dirname(vim.fs.find({ 'build.zig' }, { upward = true })[1])
     vim.lsp.start({
-      name = "zls",
-      cmd = { vim.fn.stdpath("cache") .. "/zls/zig-out/bin/zls" },
+      name = 'zls',
+      cmd = { vim.fn.stdpath('cache') .. '/zls/zig-out/bin/zls' },
       root_dir = zig_root_dir,
     })
-    vim.api.nvim_buf_create_user_command(0, "Zig", function(args)
+    vim.api.nvim_buf_create_user_command(0, 'Zig', function(args)
       local message = {}
       Job
         :new({
-          command = "zig",
+          command = 'zig',
           args = { args.args, vim.api.nvim_buf_get_name(0) },
           cwd = zig_root_dir,
           on_stderr = function(_, return_val)
@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
             -- vim.notify(vim.inspect(return_val), 4)
           end,
           on_stdout = function(j, return_val)
-            vim.notify("stdout")
+            vim.notify('stdout')
             vim.notify(vim.inspect(j))
             vim.notify(vim.inspect(return_val))
           end,

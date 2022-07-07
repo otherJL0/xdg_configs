@@ -9,16 +9,16 @@ return {
   ignore_buffer_on_setup = false,
   open_on_setup = false,
   open_on_tab = false,
-  sort_by = "name",
+  sort_by = 'name',
   update_cwd = true,
   view = {
     width = 30,
     height = 30,
-    side = "left",
+    side = 'left',
     preserve_window_proportions = false,
     number = false,
     relativenumber = false,
-    signcolumn = "yes",
+    signcolumn = 'yes',
     mappings = {
       custom_only = false,
       list = {
@@ -44,10 +44,10 @@ return {
     enable = true,
     show_on_dirs = true,
     icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
+      hint = '',
+      info = '',
+      warning = '',
+      error = '',
     },
   },
   filters = {
@@ -70,16 +70,16 @@ return {
       resize_window = false,
       window_picker = {
         enable = true,
-        chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+        chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
         exclude = {
-          filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
-          buftype = { "nofile", "terminal", "help" },
+          filetype = { 'notify', 'packer', 'qf', 'diff', 'fugitive', 'fugitiveblame' },
+          buftype = { 'nofile', 'terminal', 'help' },
         },
       },
     },
   },
   trash = {
-    cmd = "trash",
+    cmd = 'trash',
     require_confirm = true,
   },
   log = {

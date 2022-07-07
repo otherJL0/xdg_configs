@@ -1,5 +1,5 @@
 return {
-  filetypes = { "ruby" },
+  filetypes = { 'ruby' },
   init_options = {
     formatting = true,
   },
@@ -8,7 +8,7 @@ return {
       autoformat = true,
       formatting = true,
       diagnostics = true,
-      transport = "stdio",
+      transport = 'stdio',
       useBundler = true,
     },
   },

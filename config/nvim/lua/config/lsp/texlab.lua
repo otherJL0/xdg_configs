@@ -1,17 +1,17 @@
 return {
-  cmd = { "texlab" },
-  filetypes = { "tex", "bib" },
+  cmd = { 'texlab' },
+  filetypes = { 'tex', 'bib' },
   settings = {
     texlab = {
-      auxDirectory = ".",
-      bibtexFormatter = "texlab",
+      auxDirectory = '.',
+      bibtexFormatter = 'texlab',
       build = {
-        executable = "tectonic",
+        executable = 'tectonic',
         args = {
-          "%f",
-          "--synctex",
-          "--keep-logs",
-          "--keep-intermediates",
+          '%f',
+          '--synctex',
+          '--keep-logs',
+          '--keep-intermediates',
         },
         forwardSearchAfter = true,
         onSave = true,
@@ -23,10 +23,10 @@ return {
       diagnosticsDelay = 300,
       formatterLineLength = 80,
       forwardSearch = {
-        executable = "okular",
-        args = { "--unique", "file:%p#src:%l%f" },
+        executable = 'okular',
+        args = { '--unique', 'file:%p#src:%l%f' },
       },
-      latexFormatter = "latexindent",
+      latexFormatter = 'latexindent',
       latexindent = {
         modifyLineBreaks = true,
       },

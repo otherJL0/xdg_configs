@@ -1,2 +1,2 @@
-vim.g.maplocalleader = ","
-vim.bo.commentstring = ";;%s"
+vim.g.maplocalleader = ','
+vim.bo.commentstring = ';;%s'
