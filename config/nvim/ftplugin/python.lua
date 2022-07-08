@@ -1,6 +1,6 @@
-vim.opt.makeprg = 'py %'
+vim.bo.makeprg = 'py %'
 
-vim.opt.efm = '%C %.%#,%A  File "%f"\\, line %l%.%#,%Z%[%^ ]%\\@=%m'
+vim.bo.efm = '%C %.%#,%A  File "%f"\\, line %l%.%#,%Z%[%^ ]%\\@=%m'
 
-vim.opt.autoindent = true
-vim.opt.smartindent = true
+vim.bo.autoindent = true
+vim.bo.smartindent = true
