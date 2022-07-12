@@ -19,7 +19,7 @@ catppuccin.setup({
     numbers = 'NONE',
     booleans = 'bold',
     properties = 'NONE',
-    types = 'bold,italic',
+    types = 'bold',
     operators = 'bold',
   },
   integrations = {
