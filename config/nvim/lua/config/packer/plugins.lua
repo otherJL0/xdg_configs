@@ -79,8 +79,11 @@ local function my_plugins()
   -- Colorschemes
   use({
     'catppuccin/nvim',
+    as = 'catppuccin',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   })
+
+  use({ 'romgrk/barbar.nvim' })
 
   -- Treesitter Extras
   use({
@@ -186,7 +189,7 @@ local function my_plugins()
     'chentoast/marks.nvim',
     -- "vim-denops/denops.vim",
     'folke/lua-dev.nvim',
-    -- "folke/which-key.nvim",
+    'folke/which-key.nvim',
     'folke/trouble.nvim',
 
     requires = 'kyazdani42/nvim-web-devicons',

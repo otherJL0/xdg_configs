@@ -365,55 +365,28 @@ require('feline').setup({
 
 local winbar_active = {
   {},
-  {},
 }
 
-winbar_active[1][2] = {
+winbar_active[1][1] = {
   provider = require('nvim-navic').get_location,
   enabled = require('nvim-navic').is_available,
   hl = {
     bg = clrs.surface0,
     fg = clrs.text,
   },
-  left_sep = {
-    str = assets.slant_left_2,
-  },
+  -- left_sep = {
+  --   str = assets.slant_left_2,
+  -- },
 
   right_sep = {
     str = assets.right_semicircle,
   },
 }
 
-winbar_active[1][1] = {
-  provider = {
-    name = 'file_info',
-    opts = {
-      colored_icon = true,
-      type = 'relative',
-    },
-  },
-  hl = vi_mode_hl_inv,
-
-  left_sep = {
-    str = assets.slant_left,
-  },
-  right_sep = {
-    str = assets.slant_right,
-  },
-}
-winbar_active[1][3] = {
+winbar_active[1][2] = {
   hl = {
     bg = clrs.base,
   },
-}
-
-winbar_active[2][1] = {
-  provider = function()
-    local workspace_folders = vim.lsp.buf.list_workspace_folders()
-    if workspace_folders then
-      return string.format('%s', workspace_folders[1])
-    end
-  end,
 }
 
 local winbar_inactive = {
