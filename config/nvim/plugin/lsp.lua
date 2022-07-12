@@ -76,7 +76,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     if client.server_capabilities.callHierarchyProvider then
-      vim.notify('Call hierarcy is available')
       vim.lsp.handlers['callHierarchy/incomingCalls'] = vim.lsp.with(
         require('litee.calltree.handlers').ch_lsp_handler('from'),
         {}
