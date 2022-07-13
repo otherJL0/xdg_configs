@@ -114,22 +114,22 @@ vim.api.nvim_create_autocmd('WinEnter', {
     if vim.tbl_contains(ignored_filetypes, vim.bo.filetype) then
       return
     end
-    vim.opt.cursorline = true
-    vim.opt.cursorcolumn = true
-    vim.opt.relativenumber = true
-    vim.opt.colorcolumn = '100'
-    vim.opt.signcolumn = 'yes:3' -- Always show a sign column
+    vim.wo.cursorline = true
+    vim.wo.cursorcolumn = true
+    vim.wo.relativenumber = true
+    vim.wo.colorcolumn = '100'
+    vim.wo.signcolumn = 'yes:3' -- Always show a sign column
   end,
 })
 
 vim.api.nvim_create_autocmd('WinLeave', {
   pattern = '*',
   callback = function()
-    if vim.opt.modifiable then
-      vim.opt.cursorline = false
-      vim.opt.cursorcolumn = false
-      vim.opt.relativenumber = false
-      vim.opt.colorcolumn = ''
+    if vim.bo.modifiable then
+      vim.wo.cursorline = false
+      vim.wo.cursorcolumn = false
+      vim.wo.relativenumber = false
+      vim.wo.colorcolumn = ''
       vim.wo.signcolumn = 'no'
     end
   end,
