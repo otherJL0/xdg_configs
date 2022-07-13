@@ -130,6 +130,7 @@ vim.api.nvim_create_autocmd('WinLeave', {
       vim.opt.cursorcolumn = false
       vim.opt.relativenumber = false
       vim.opt.colorcolumn = ''
+      vim.wo.signcolumn = 'no'
     end
   end,
 })

@@ -368,22 +368,38 @@ local winbar_active = {
 }
 
 winbar_active[1][1] = {
+
+  provider = {
+    name = 'file_info',
+    opts = {
+      colored_icon = true,
+      type = 'relative',
+    },
+  },
+
+  hl = {
+    fg = clrs.text,
+    bg = clrs.base,
+  },
+}
+
+winbar_active[1][2] = {
   provider = require('nvim-navic').get_location,
   enabled = require('nvim-navic').is_available,
   hl = {
     bg = clrs.surface0,
     fg = clrs.text,
   },
-  -- left_sep = {
-  --   str = assets.slant_left_2,
-  -- },
+  left_sep = {
+    str = assets.slant_left_2,
+  },
 
   right_sep = {
     str = assets.right_semicircle,
   },
 }
 
-winbar_active[1][2] = {
+winbar_active[1][3] = {
   hl = {
     bg = clrs.base,
   },

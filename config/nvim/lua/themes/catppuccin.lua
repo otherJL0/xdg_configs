@@ -6,8 +6,13 @@ vim.g.catppuccin_flavour = 'mocha'
 
 -- configure it
 catppuccin.setup({
-  transparency = false,
   term_colors = true,
+  transparent_background = false,
+  dim_inactive = {
+    enable = true,
+    shade = 'dark',
+    percentage = 0.01,
+  },
   styles = {
     comments = 'italic',
     conditionals = 'italic',
