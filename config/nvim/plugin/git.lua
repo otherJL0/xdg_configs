@@ -180,42 +180,42 @@ gitsigns.setup({
   signs = {
     add = {
       hl = 'GitSignsAdd',
-      text = '',
+      text = '│',
       numhl = 'GitSignsAddNr',
       linehl = 'GitSignsAddLn',
-      show_count = true,
+      show_count = false,
     },
     change = {
       hl = 'GitSignsChange',
-      text = '',
+      text = '│',
       numhl = 'GitSignsChangeNr',
       linehl = 'GitSignsChangeLn',
-      show_count = true,
+      show_count = false,
     },
     delete = {
       hl = 'GitSignsDelete',
-      text = '',
+      text = '│',
       numhl = 'GitSignsDeleteNr',
       linehl = 'GitSignsDeleteLn',
-      show_count = true,
+      show_count = false,
     },
     topdelete = {
       hl = 'GitSignsDelete',
-      text = '',
+      text = '‾',
       numhl = 'GitSignsDeleteNr',
       linehl = 'GitSignsDeleteLn',
       show_count = true,
     },
     changedelete = {
       hl = 'GitSignsChange',
-      text = '',
+      text = '~',
       numhl = 'GitSignsChangeNr',
       linehl = 'GitSignsChangeLn',
-      show_count = true,
+      show_count = false,
     },
   },
   on_attach = function(bufnr)
-    local gs = package.loaded.gitsigns
+     gs = package.loaded.gitsigns
 
     local function map(mode, l, r, opts)
       opts = opts or {}

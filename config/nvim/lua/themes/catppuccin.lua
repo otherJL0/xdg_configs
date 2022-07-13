@@ -9,9 +9,7 @@ catppuccin.setup({
   term_colors = true,
   transparent_background = false,
   dim_inactive = {
-    enable = true,
-    shade = 'dark',
-    percentage = 0.01,
+    enable = false,
   },
   styles = {
     comments = 'italic',
