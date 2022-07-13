@@ -83,6 +83,7 @@ vim.opt.list = true
 vim.opt.listchars:append('space:⋅')
 vim.opt.listchars:append('eol:↴')
 vim.opt.colorcolumn = '100'
+vim.opt.signcolumn = 'yes:3' -- Always show a sign column
 
 vim.cmd([[au BufRead,BufNewFile,BufEnter * lua vim.opt.formatoptions:remove({"c", "r", "o"})]])
 
