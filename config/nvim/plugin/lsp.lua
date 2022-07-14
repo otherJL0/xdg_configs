@@ -119,3 +119,34 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end
   end,
 })
+
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = true,
+  }
+)
+
+vim.lsp.set_log_level(0)
+local border = {
+  { '┌', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '┐', 'FloatBorder' },
+  { '│', 'FloatBorder' },
+  { '┘', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '└', 'FloatBorder' },
+  { '│', 'FloatBorder' },
+}
+
+-- Fancy borders
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+  vim.lsp.handlers.hover,
+  { border = border }
+)
+
+vim.o.updatetime = 200
