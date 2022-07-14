@@ -4,5 +4,9 @@ null_ls.setup({
   sources = {
     diagnostics.hadolint,
   },
-  default_timeout = 20000,
+  on_init = function(client, _)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+    client.server_capabilities.hoverProvider = false
+  end,
 })

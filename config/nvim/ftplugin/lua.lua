@@ -45,5 +45,4 @@ null_ls.setup({
   sources = {
     formatting.stylua,
   },
-  default_timeout = 2000,
 })
