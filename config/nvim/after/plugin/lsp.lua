@@ -1,5 +1,5 @@
 local language_servers = {}
-require('config.lsp').launch(language_servers)
+-- require('config.lsp').launch(language_servers)
 -- require('config.lsp').launch_teal()
 -- require('config.lsp').launch_stree()
 

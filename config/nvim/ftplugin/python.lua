@@ -59,3 +59,34 @@ vim.lsp.start({
   root_dir = root_dir,
   init_options = pyright_settings,
 })
+
+local null_ls = require('null-ls')
+local formatting = null_ls.builtins.formatting
+
+local tool_configs = {
+  isort = {
+    command = vim.fn.stdpath('cache') .. '/.venv/bin/isort',
+  },
+  black = {
+    command = vim.fn.stdpath('cache') .. '/.venv/bin/black',
+  },
+}
+
+-- local pyproject_toml = vim.fs.find(
+--   { 'pyproject.toml' },
+--   { path = current_file, upward = true, type = 'file' }
+-- )[1]
+-- if pyproject_toml ~= nil then
+--   tool_configs.isort.extra_args = { '--settings-file', pyproject_toml }
+--   tool_configs.black.extra_args = { '--config', pyproject_toml }
+-- end
+
+null_ls.setup({
+
+  sources = {
+    -- Fromatting
+    formatting.isort.with(tool_configs.isort),
+    formatting.black.with(tool_configs.black),
+  },
+  default_timeout = 20000,
+})
