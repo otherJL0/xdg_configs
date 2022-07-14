@@ -38,3 +38,12 @@ sumneko_configs.settings.Lua.format = {
 
 sumneko_configs['init_options'] = sumneko_configs.settings
 vim.lsp.start(sumneko_configs)
+
+local null_ls = require('null-ls')
+local formatting = null_ls.builtins.formatting
+null_ls.setup({
+  sources = {
+    formatting.stylua,
+  },
+  default_timeout = 2000,
+})

@@ -41,13 +41,13 @@ return {
   sources = {
 
     -- Fromatting
-    formatting.isort.with({
-      command = vim.fn.stdpath('cache') .. '/.venv/bin/isort',
-    }),
-    formatting.black.with({
-      command = vim.fn.stdpath('cache') .. '/.venv/bin/black',
-      extra_args = { '--target-version', 'py310' },
-    }),
+    -- formatting.isort.with({
+    --   command = vim.fn.stdpath('cache') .. '/.venv/bin/isort',
+    -- }),
+    -- formatting.black.with({
+    --   command = vim.fn.stdpath('cache') .. '/.venv/bin/black',
+    --   extra_args = { '--target-version', 'py310' },
+    -- }),
     formatting.stylua,
     -- formatting.shfmt,
     formatting.fish_indent,
