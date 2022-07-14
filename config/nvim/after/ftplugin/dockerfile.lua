@@ -1,3 +1,0 @@
--- vim.lsp.start({
---   name = "dockerls",
--- })
