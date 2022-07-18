@@ -207,7 +207,9 @@ components[2][2] = {
     return string.format('%s(%s)', venv[#venv], get_python_version(vim.env.VIRTUAL_ENV))
   end,
 
-  enabled = vim.env.VIRTUAL_ENV ~= nil,
+  enabled = function()
+    return vim.env.VIRTUAL_ENV ~= nil
+  end,
 
   hl = {
     bg = sett.curr_dir,
