@@ -81,6 +81,7 @@ local function my_plugins()
     'catppuccin/nvim',
     as = 'catppuccin',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    run = 'CatppuccinCompile',
   })
 
   use({ 'romgrk/barbar.nvim' })
