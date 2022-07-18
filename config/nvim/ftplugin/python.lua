@@ -5,13 +5,12 @@ vim.bo.efm = '%C %.%#,%A  File "%f"\\, line %l%.%#,%Z%[%^ ]%\\@=%m'
 vim.bo.autoindent = true
 vim.bo.smartindent = true
 
+-- local pyright_augroup = vim.api.nvim_create_augroup('Pyright', {})
 local current_file = vim.api.nvim_buf_get_name(0)
-local venv = vim.fs.dirname(
-  vim.fs.find(
-    { 'env', '.venv', 'venv', '.env' },
-    { path = current_file, upward = true, type = 'directory' }
-  )[1]
-)
+local venv = vim.fs.find(
+  { 'env', '.venv', 'venv', '.env' },
+  { path = current_file, upward = true, type = 'directory' }
+)[1]
 
 local root_dir = vim.fs.dirname(
   vim.fs.find(
@@ -44,11 +43,9 @@ local pyright_settings = {
 }
 
 if venv then
-  pyright_settings['venvPath'] = venv
+  pyright_settings.python.pythonPath = venv .. '/bin/python'
+  vim.env.VIRTUAL_ENV = venv
 end
--- local function determine_venv_path()
---   return vim.fs.find({ '.venv', 'venv', '.env', 'env' }, { upward = true })[1]
--- end
 
 vim.lsp.start({
   name = 'pyright',
@@ -57,7 +54,7 @@ vim.lsp.start({
     '--stdio',
   },
   root_dir = root_dir,
-  init_options = pyright_settings,
+  settings = pyright_settings,
 })
 
 local null_ls = require('null-ls')
@@ -72,19 +69,8 @@ local tool_configs = {
   },
 }
 
--- local pyproject_toml = vim.fs.find(
---   { 'pyproject.toml' },
---   { path = current_file, upward = true, type = 'file' }
--- )[1]
--- if pyproject_toml ~= nil then
---   tool_configs.isort.extra_args = { '--settings-file', pyproject_toml }
---   tool_configs.black.extra_args = { '--config', pyproject_toml }
--- end
-
 null_ls.setup({
-
   sources = {
-    -- Fromatting
     formatting.isort.with(tool_configs.isort),
     formatting.black.with(tool_configs.black),
   },
