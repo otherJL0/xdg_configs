@@ -11,7 +11,7 @@ require('litee.symboltree').setup({
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
-    vim.lsp.set_log_level(0)
+    vim.lsp.set_log_level('OFF')
     require('fidget').setup({
       text = {
         spinner = 'dots', -- animation shown when tasks are ongoing
