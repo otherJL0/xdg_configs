@@ -76,3 +76,14 @@ null_ls.setup({
   },
   default_timeout = 20000,
 })
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '*test*',
+  callback = function()
+    require('neotest').setup({
+      adapters = {
+        require('neotest-python')({}),
+      },
+    })
+  end,
+})
