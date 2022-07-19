@@ -62,6 +62,24 @@ if node_root_dir then
     init_options = tsserver.init_options,
     settings = tsserver.settings,
   })
+
+  vim.api.nvim_create_autocmd('BufEnter', {
+    pattern = '*test*',
+    callback = function()
+      local jest_config = vim.fs.find(
+        { 'jest.config.cjs' },
+        { path = node_root_dir, upward = true, type = 'file' }
+      )[1]
+      require('neotest').setup({
+        adapters = {
+          require('neotest-jest')({
+            jestCommand = 'npm test --',
+            jestConfigFile = jest_config,
+          }),
+        },
+      })
+    end,
+  })
 end
 
 if deno_root_dir then

@@ -259,11 +259,16 @@ local function my_plugins()
   use({ 'jose-elias-alvarez/nvim-lsp-ts-utils', ft = { 'typescript', 'tsx', 'ts' } })
 
   use({
-    'rcarriga/neotest',
+    'nvim-neotest/neotest',
+    'nvim-neotest/neotest-plenary',
+    'nvim-neotest/neotest-go',
+    'nvim-neotest/neotest-python',
+    'haydenmeade/neotest-jest',
     requires = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
       'antoinemadec/FixCursorHold.nvim',
+      'haydenmeade/neotest-jest',
     },
   })
   use({ 'b0o/SchemaStore.nvim' })
