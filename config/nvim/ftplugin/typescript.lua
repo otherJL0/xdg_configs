@@ -52,7 +52,6 @@ if node_root_dir then
       tsserver.settings.typescript.format.tabSize = options.tabWidth
     end
   end
-  vim.notify(vim.inspect(prettierrc))
   vim.lsp.start({
     name = 'tsserver',
     cmd = {
