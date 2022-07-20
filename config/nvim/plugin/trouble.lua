@@ -88,3 +88,11 @@ vim.api.nvim_set_keymap(
   '<cmd>Trouble lsp_references<cr>',
   { silent = true, noremap = true }
 )
+
+vim.keymap.set('n', '<C-n>', function()
+  require('trouble').next({ skip_groups = true, jump = true })
+end)
+
+vim.keymap.set('n', '<C-p>', function()
+  require('trouble').previous({ skip_groups = true, jump = true })
+end)
