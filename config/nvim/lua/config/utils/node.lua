@@ -71,6 +71,6 @@ function M.setup(root_dir)
       })
     end,
   })
-d
+end
 
 return M
