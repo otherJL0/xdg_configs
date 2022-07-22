@@ -56,11 +56,11 @@ require('indent_blankline').setup({
   use_treesitter = true,
   space_char_blankline = ' ',
   show_current_context = true,
-  -- show_current_context_start = true,
+  show_current_context_start = true,
   show_current_context_start_on_current_line = true,
   show_first_indent_level = true,
   use_treesiter_scope = true,
-  -- context_patterns = vim.tbl_keys(ts_patterns),
+  context_patterns = vim.tbl_keys(ts_patterns),
   context_pattern_highlight = ts_patterns,
 })
 
