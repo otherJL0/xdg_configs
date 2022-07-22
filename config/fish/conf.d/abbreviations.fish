@@ -60,3 +60,5 @@ abbr -a nvimy nvim - -c '"set ft=yaml"'
 
 abbr -a konfig kubectl config
 abbr -a kontext kubectl config use-context
+abbr -a kontexts kubectl config get-contexts
+abbr -a klusters kubectl config get-clusters
