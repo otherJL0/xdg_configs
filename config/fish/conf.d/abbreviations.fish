@@ -58,7 +58,14 @@ abbr -a nvim- nvim - -c '"set ft=json"'
 abbr -a nvimj nvim - -c '"set ft=json"'
 abbr -a nvimy nvim - -c '"set ft=yaml"'
 
+abbr -a sortuniq sort \| uniq -c \| sort -n
+
 abbr -a konfig kubectl config
 abbr -a kontext kubectl config use-context
 abbr -a kontexts kubectl config get-contexts
 abbr -a klusters kubectl config get-clusters
+abbr -a kpods kubectl get pods
+abbr -a skale kubectl scale
+abbr -a skaledown kubectl scale --replicas=0 deploy/
+abbr -a deskribe kubectl describe
+abbr -a sekrets kubectl get secrets
