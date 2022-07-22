@@ -57,3 +57,6 @@ abbr -a k kubectl
 abbr -a nvim- nvim - -c '"set ft=json"'
 abbr -a nvimj nvim - -c '"set ft=json"'
 abbr -a nvimy nvim - -c '"set ft=yaml"'
+
+abbr -a konfig kubectl config
+abbr -a kontext kubectl config use-context
