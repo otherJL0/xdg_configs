@@ -10,6 +10,11 @@ style = "bold blue"
 symbol = "  "
 format = '[$symbol($profile)(\($region\))(\[$duration\])]($style)'
 
+[character]
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[❮](bold purple) "
+vimcmd_visual_symbol = "[❮](bold yellow)"
+
 [cmake]
 symbol = " △ "
 format = '[$symbol($version)]($style)'
@@ -90,7 +95,10 @@ format = '[$symbol($version)]($style)'
 format = '[$symbol($version)]($style)'
 
 [kubernetes]
-format = '[$symbol$context( \($namespace\))]($style)'
+disabled = false
+symbol = '☸ '
+style = 'bold blue'
+format = '[$symbol$context(\($cluster/$namespace\))]($style)'
 
 [line_break]
 disabled = false
@@ -180,17 +188,18 @@ format = '[$symbol($version)]($style)'
 
 [directory]
 read_only = " "
-truncation_length = 1
+truncate_to_repo = true
+truncation_length = 3
 
 [shlvl]
 disabled = false
 style = "bold yellow"
-threshold = 3
+threshold = 2
 format = "[SHLVL:$shlvl]($style) "
 
 [memory_usage]
 symbol = "  "
-disabled = false
+disabled = true
 threshold = 50
 style = "bold dimmed green"
 format = '$symbol[$ram( | $swap)]($style)'

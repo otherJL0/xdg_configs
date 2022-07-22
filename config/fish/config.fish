@@ -49,10 +49,10 @@ function fish_user_key_bindings
     # The argument specifies the initial mode (insert, "default" or visual).
     fish_vi_key_bindings --no-erase insert
 
-    set -gx fish_cursor_default block
-    set -gx fish_cursor_insert line
-    set -gx fish_cursor_replace_one underscore
-    set -gx fish_cursor_visual block
+    set -Ux fish_cursor_default block
+    set -Ux fish_cursor_insert line
+    set -Ux fish_cursor_replace_one underscore
+    set -Ux fish_cursor_visual block
 
 end
 
