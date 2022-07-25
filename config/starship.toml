@@ -1,6 +1,6 @@
 command_timeout = 5000
 scan_timeout = 5000
-format = """$custom$git_branch$git_metrics$git_status$all$character$directory"""
+format = """$character$custom$directory$all$character$git_branch$git_metrics$git_status"""
 # right_format = """$package$docker_context$cmake$conda$deno$golang$helm$java$kotlin$lua$nodejs$python$rust$ruby$scala"""
 continuation_prompt = "▶▶"
 add_newline = true
@@ -64,15 +64,27 @@ format = '[$symbol$account(@$domain)(\($region\))]($style)'
 
 [git_branch]
 always_show_remote = false
+style = "fg:#CDD6F4 bg:#313244"
 symbol = " "
-format = '[$symbol$branch(:$remote_name/$remote_branch)]($style)'
+format = '[ $symbol$branch(:$remote_name/$remote_branch) ]($style)'
 
 [git_metrics]
 disabled = false
-format = '( [+$added]($added_style) )([-$deleted]($deleted_style) )'
+only_nonzero_diffs = true
+format = '( [  $added]($added_style) )([  $deleted]($deleted_style) )'
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
+conflicted = "[ $count](bold red)"
+ahead = "[⇡ $count](bold cyan)"
+behind = "[⇣ $count](bold cyan)"
+untracked = "[ $count](bold purple)"
+stashed = "[ $count](bold cyan)"
+modified = "[ $count](bold yellow)"
+staged = "[ $count](bold green)"
+renamed = "[ $count](bold blue)"
+deleted = "[✘ $count](bold red)"
+format = "( $conflicted )( $stashed )( $deleted )( $renamed )( $modified )( $staged )( $untracked )"
+# format = '$all_status$ahead_behind'
 
 [golang]
 symbol = "  "
