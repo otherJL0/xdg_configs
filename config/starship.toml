@@ -1,6 +1,6 @@
 command_timeout = 5000
 scan_timeout = 5000
-format = """$custom$all$directory$git_branch$git_metrics$git_status$character"""
+format = """$custom$git_branch$git_metrics$git_status$all$character$directory"""
 # right_format = """$package$docker_context$cmake$conda$deno$golang$helm$java$kotlin$lua$nodejs$python$rust$ruby$scala"""
 continuation_prompt = "▶▶"
 add_newline = true
@@ -11,13 +11,13 @@ symbol = "  "
 format = '[$symbol($profile)(\($region\))(\[$duration\])]($style)'
 
 [character]
-format = " $symbol "
-success_symbol = "[❮I❯](bold green)"
-error_symbol = "[❮1❯](bold red)"
-vicmd_symbol = "[❮C❯](bold purple)"
-vimcmd_replace_symbol = "[❮R❯](bold yellow)"
-vimcmd_replace_one_symbol = "[❮r❯](bold yellow)"
-vimcmd_visual_symbol = "[❮V❯](bold yellow)"
+format = "$symbol"
+success_symbol = "[ ](fg:black bg:green)"
+error_symbol = "[ ](fg:black bg:red)"
+vimcmd_symbol = "[ ](fg:black bg:blue)"
+vimcmd_visual_symbol = "[ ](fg:black bg:yellow)"
+vimcmd_replace_symbol = "[R](fg:black bg:purple)"
+vimcmd_replace_one_symbol = "[r](fg:black bg:purple)"
 
 [cmake]
 symbol = " △ "
@@ -194,6 +194,8 @@ format = '[$symbol($version)]($style)'
 read_only = " "
 truncate_to_repo = true
 truncation_length = 4
+style = "fg:#CDD6F4 bg:#313244"
+format = "[ $path ]($style)[$read_only ]($read_only_style)"
 
 [shlvl]
 disabled = false
