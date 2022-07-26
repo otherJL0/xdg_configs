@@ -26,7 +26,7 @@ catppuccin.setup({
     variables = {},
     numbers = {},
     booleans = { 'bold' },
-    properties =  {},
+    properties = {},
     types = { 'bold' },
     operators = { 'bold' },
   },

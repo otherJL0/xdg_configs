@@ -47,14 +47,16 @@ telescope.setup({
   },
 })
 
-for _, extension in ipairs({
-  'ui-select',
-  'file_browser',
-  'fzf',
-  'live_grep_args',
-  'gh',
-  'project',
-}) do
+for _, extension in
+  ipairs({
+    'ui-select',
+    'file_browser',
+    'fzf',
+    'live_grep_args',
+    'gh',
+    'project',
+  })
+do
   telescope.load_extension(extension)
 end
 
