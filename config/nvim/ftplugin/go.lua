@@ -3,6 +3,8 @@ vim.bo.softtabstop = 4
 vim.bo.shiftwidth = 4
 vim.bo.expandtab = false
 
+vim.bo.makeprg = 'go run %'
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.documentationFormat = {
   'markdown',
