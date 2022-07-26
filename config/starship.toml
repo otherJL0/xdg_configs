@@ -207,7 +207,7 @@ read_only = " "
 truncate_to_repo = true
 truncation_length = 4
 style = "fg:#CDD6F4 bg:#313244"
-format = "[ $path ]($style)[$read_only ]($read_only_style)"
+format = "[ $path ]($style)[$read_only ]($read_only_style) "
 
 [shlvl]
 disabled = false
