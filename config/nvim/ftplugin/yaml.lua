@@ -26,7 +26,9 @@ vim.lsp.start({
   --   vim.notify(vim.inspect(config))
   -- end,
   on_init = function(client, initialization_result)
-    client.server_capabilities.documentFormattingProvider = true
+    -- vim.notify(vim.inspect(vim.opt.filetype))
+    vim.notify(vim.inspect(vim.bo.filetype))
+    client.server_capabilities.documentFormattingProvider = vim.bo.filetype == 'yaml'
   end,
   on_attach = function(_, _)
     vim.api.nvim_create_user_command('GetJsonSchema', function()
