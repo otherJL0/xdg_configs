@@ -99,6 +99,15 @@ parser_configs.jsonnet = {
   },
 }
 
+parser_configs.gotmpl = {
+  install_info = {
+    url = 'https://github.com/ngalaiko/tree-sitter-go-template',
+    files = { 'src/parser.c' },
+  },
+  filetype = 'gotmpl',
+  used_by = { 'gohtmltmpl', 'gotexttmpl', 'gotmpl', 'yaml' },
+}
+
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
     'bash',
@@ -123,6 +132,7 @@ require('nvim-treesitter.configs').setup({
     'gleam',
     'go',
     'gomod',
+    'gotmpl',
     'gowork',
     'graphql',
     'haskell',
