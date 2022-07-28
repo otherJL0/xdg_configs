@@ -92,6 +92,7 @@ vim.api.nvim_create_autocmd('WinEnter', {
   callback = function()
     local ignored_filetypes = {
       'help',
+      'qf',
     }
 
     local ignored_prefix = {
@@ -104,6 +105,7 @@ vim.api.nvim_create_autocmd('WinEnter', {
       'packer',
       'Outline',
       'Trouble',
+      'qf',
       'symboltree',
       'calltree',
     }

@@ -50,7 +50,7 @@ end
 vim.lsp.start({
   name = 'pyright',
   cmd = {
-    vim.fn.stdpath('cache') .. '/node_modules/.bin/' .. 'pyright-langserver',
+    'pyright-langserver',
     '--stdio',
   },
   root_dir = root_dir,

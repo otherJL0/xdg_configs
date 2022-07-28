@@ -18,6 +18,13 @@ local function my_plugins()
     'hrsh7th/nvim-cmp',
     'kyazdani42/nvim-web-devicons',
   })
+
+  use({
+    'williamboman/mason.nvim',
+    config = function()
+      require('mason').setup({})
+    end,
+  })
   use({ 'tjdevries/tree-sitter-lua', opt = true })
   use({ 'tami5/sqlite.lua', opt = true })
   use({ 'andymass/vim-matchup' })
