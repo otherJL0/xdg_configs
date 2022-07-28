@@ -1,4 +1,6 @@
-local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
+local parsers = require('nvim-treesitter.parsers')
+local parser_configs = parsers.get_parser_configs()
+parsers.filetype_to_parsername.k8s = 'yaml'
 require('nvim-treesitter.install').prefer_git = true
 
 -- parser_configs.lua = {

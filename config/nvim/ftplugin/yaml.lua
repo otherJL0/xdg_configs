@@ -1,7 +1,10 @@
 vim.lsp.start({
   name = 'yamlls',
   cmd = { vim.fn.stdpath('cache') .. '/node_modules/.bin/yaml-language-server', '--stdio' },
-  init_options = {
+  settings = {
+    schemas = {
+      kubernetes = { '*' },
+    },
     yaml = {
       format = {
         enable = true,
@@ -22,13 +25,14 @@ vim.lsp.start({
     },
   },
   -- before_init = function(initilize_params, config)
-  --   vim.notify(vim.inspect(initilize_params))
-  --   vim.notify(vim.inspect(config))
+  --   -- vim.notify(vim.inspect(initilize_params))
+  --   -- vim.notify(vim.inspect(config))
+  --   -- vim.notify(vim.inspect(vim.bo.filetype))
   -- end,
   on_init = function(client, initialization_result)
     -- vim.notify(vim.inspect(vim.opt.filetype))
-    vim.notify(vim.inspect(vim.bo.filetype))
-    client.server_capabilities.documentFormattingProvider = vim.bo.filetype == 'yaml'
+    -- vim.notify(vim.inspect(initialization_result))
+    client.server_capabilities.documentFormattingProvider = vim.bo.filetype ~= 'gotmpl'
   end,
   on_attach = function(_, _)
     vim.api.nvim_create_user_command('GetJsonSchema', function()
