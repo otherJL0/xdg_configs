@@ -1,6 +1,6 @@
 command_timeout = 5000
 scan_timeout = 5000
-format = """$custom$directory$all$character$git_branch$git_metrics$git_status"""
+format = """$container$directory$all$character$git_branch$git_metrics$git_status"""
 # right_format = """$package$docker_context$cmake$conda$deno$golang$helm$java$kotlin$lua$nodejs$python$rust$ruby$scala"""
 continuation_prompt = "▶▶"
 add_newline = true
@@ -18,6 +18,7 @@ vimcmd_symbol = "[ ](fg:black bg:blue)"
 vimcmd_visual_symbol = "[ ](fg:black bg:yellow)"
 vimcmd_replace_symbol = "[R](fg:black bg:purple)"
 vimcmd_replace_one_symbol = "[r](fg:black bg:purple)"
+
 
 [cmake]
 symbol = " △ "
@@ -227,9 +228,3 @@ ssh_only = true
 format = '[$hostname:](bold red)'
 trim_at = ".companyname.com"
 disabled = false
-
-[custom.toolbox]
-# command = """hostname"""
-when = """ test -e /run/.containerenv """
-symbol = "⬢"
-format = '[$symbol ](bold blue)'
