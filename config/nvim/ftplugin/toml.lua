@@ -1,3 +1,12 @@
+-- Pattern for pyproject.toml
+-- (table (dotted_key) @table
+--     (pair
+--         (bare_key) @bare_key
+--     ) @pair
+--     (#match? @table "tool\.(black|isort)")
+--     (#match? @bare_key "line[_-]length")
+-- )
+
 vim.api.nvim_create_autocmd('BufWinEnter', {
   pattern = 'Cargo.toml',
   callback = function()
