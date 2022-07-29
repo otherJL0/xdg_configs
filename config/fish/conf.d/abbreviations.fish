@@ -69,3 +69,8 @@ abbr -a skale kubectl scale
 abbr -a skaledown kubectl scale --replicas=0 deploy/
 abbr -a deskribe kubectl describe
 abbr -a sekrets kubectl get secrets
+
+abbr -a ist istioctl
+abbr -a isti istioctl
+abbr -a isto istioctl
+abbr -a istio istioctl
