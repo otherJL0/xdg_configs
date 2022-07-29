@@ -1,10 +1,7 @@
 vim.lsp.start({
   name = 'yamlls',
   cmd = { 'yaml-language-server', '--stdio' },
-  settings = {
-    schemas = {
-      kubernetes = { '*' },
-    },
+  init_configs = {
     yaml = {
       format = {
         enable = true,
@@ -19,6 +16,9 @@ vim.lsp.start({
       schemaStore = {
         enable = true,
       },
+      -- schemas = {
+      --   kubernetes = { '*' },
+      -- },
       editor = {
         formatOnType = true,
       },
