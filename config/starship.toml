@@ -70,21 +70,21 @@ symbol = " "
 format = '[ $symbol$branch(:$remote_name/$remote_branch) ]($style) '
 
 [git_metrics]
-disabled = false
+disabled = true
 only_nonzero_diffs = true
 format = '( [  $added]($added_style) )([  $deleted]($deleted_style) )'
 
 [git_status]
 conflicted = "[ $count](bold red)"
-ahead = "[⇡ $count](bold cyan)"
-behind = "[⇣ $count](bold cyan)"
-untracked = "[ $count](bold purple)"
-stashed = "[ $count](bold cyan)"
-modified = "[ $count](bold yellow)"
-staged = "[ $count](bold green)"
+ahead = "[⇡ $count](bold green)"
+behind = "[⇣ $count](bold green)"
+untracked = "[ $count](bold red)"
+stashed = "[ $count](bold green)"
+modified = "[M $count](bold red)"
+staged = "[A $count](bold green)"
 renamed = "[ $count](bold blue)"
 deleted = "[✘ $count](bold red)"
-format = "( $conflicted )( $stashed )( $deleted )( $renamed )( $modified )( $staged )( $untracked )"
+format = "( $conflicted )( $stashed )( $deleted )( $renamed )( $modified )( $staged )( $untracked )( $ahead_behind )"
 # format = '$all_status$ahead_behind'
 
 [golang]
