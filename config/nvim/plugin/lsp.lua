@@ -8,9 +8,49 @@ require('litee.calltree').setup({
 require('litee.symboltree').setup({
   on_open = 'panel',
 })
+local saga = require('lspsaga')
+local action = require('lspsaga.codeaction')
+saga.init_lsp_saga({
+  symbol_in_winbar = {
+    in_custom = true,
+  },
+})
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
+    vim.keymap.set(
+      'n',
+      '<leader>cd',
+      require('lspsaga.diagnostic').show_line_diagnostics,
+      { silent = true, noremap = true }
+    )
+    vim.keymap.set(
+      'n',
+      '<leader>cd',
+      '<cmd>Lspsaga show_line_diagnostics<CR>',
+      { silent = true, noremap = true }
+    )
+
+    -- jump diagnostic
+    vim.keymap.set(
+      'n',
+      '[e',
+      require('lspsaga.diagnostic').goto_prev,
+      { silent = true, noremap = true }
+    )
+    vim.keymap.set(
+      'n',
+      ']e',
+      require('lspsaga.diagnostic').goto_next,
+      { silent = true, noremap = true }
+    )
+    -- or jump to error
+    vim.keymap.set('n', '[E', function()
+      require('lspsaga.diagnostic').goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end, { silent = true, noremap = true })
+    vim.keymap.set('n', ']E', function()
+      require('lspsaga.diagnostic').goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end, { silent = true, noremap = true })
     vim.lsp.set_log_level('OFF')
     require('fidget').setup({
       text = {
@@ -73,33 +113,44 @@ vim.api.nvim_create_autocmd('LspAttach', {
       { '│', 'FloatBorder' },
     }
 
-    vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics,
-      {
+    vim.lsp.handlers['textDocument/publishDiagnostics'] =
+      vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         virtual_text = false,
         signs = false,
         underline = false,
         update_in_insert = false,
-      }
-    )
+      })
     if client.server_capabilities.hoverProvider then
       -- Fancy borders
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-        vim.lsp.handlers.hover,
-        { border = border }
-      )
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
+      vim.lsp.handlers['textDocument/hover'] =
+        vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+      vim.keymap.set('n', 'K', require('lspsaga.hover').render_hover_doc, { silent = true })
+      vim.keymap.set('n', '<C-n>', function()
+        action.smart_scroll_with_saga(1)
+      end, { silent = true })
+      -- scroll up hover doc
+      vim.keymap.set('n', '<C-p>', function()
+        action.smart_scroll_with_saga(-1)
+      end, { silent = true })
     end
     if client.server_capabilities.signatureHelpProvider then
-      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-        vim.lsp.handlers.hover,
-        { border = border }
+      vim.lsp.handlers['textDocument/signatureHelp'] =
+        vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+      vim.keymap.set(
+        'n',
+        'gs',
+        require('lspsaga.signaturehelp').signature_help,
+        { silent = true, noremap = true }
       )
-      vim.keymap.set('n', ' K', vim.lsp.buf.signature_help, { buffer = args.buf })
     end
 
     if client.server_capabilities.definitionProvider then
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = args.buf })
+      vim.keymap.set(
+        'n',
+        'gd',
+        require('lspsaga.definition').preview_definition,
+        { silent = true, noremap = true }
+      )
     end
 
     if client.server_capabilities.implementationProvider then
@@ -114,17 +165,26 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     if client.server_capabilities.renameProvider then
-      vim.keymap.set('n', 'grr', vim.lsp.buf.rename, { buffer = args.buf })
+      vim.keymap.set(
+        'n',
+        'grr',
+        require('lspsaga.rename').lsp_rename,
+        { silent = true, noremap = true }
+      )
     end
     if client.server_capabilities.codeActionProvider then
-      vim.keymap.set('n', ' ca', vim.lsp.buf.code_action, { buffer = args.buf })
+      vim.keymap.set('n', '<leader>ca', action.code_action, { silent = true, noremap = true })
+      vim.keymap.set('v', '<leader>ca', function()
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-U>', true, false, true))
+        action.range_code_action()
+      end, { silent = true, noremap = true })
     end
 
     if client.server_capabilities.documentFormattingProvider then
       vim.api.nvim_create_autocmd('BufWritePost', {
         buffer = args.buf,
         callback = function()
-          vim.lsp.buf.format({ bufnr = args.buf, async = true })
+          vim.lsp.buf.format({ bufnr = args.buf, async = false })
         end,
       })
     end
@@ -157,21 +217,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     if client.server_capabilities.documentSymbolProvider then
       require('nvim-navic').attach(client, args.buf)
-      vim.lsp.handlers['textDocument/documentSymbol'] = vim.lsp.with(
-        require('litee.symboltree.handlers').ds_lsp_handler(),
-        {}
-      )
+      vim.lsp.handlers['textDocument/documentSymbol'] =
+        vim.lsp.with(require('litee.symboltree.handlers').ds_lsp_handler(), {})
     end
 
     if client.server_capabilities.callHierarchyProvider then
-      vim.lsp.handlers['callHierarchy/incomingCalls'] = vim.lsp.with(
-        require('litee.calltree.handlers').ch_lsp_handler('from'),
-        {}
-      )
-      vim.lsp.handlers['callHierarchy/outgoingCalls'] = vim.lsp.with(
-        require('litee.calltree.handlers').ch_lsp_handler('to'),
-        {}
-      )
+      vim.lsp.handlers['callHierarchy/incomingCalls'] =
+        vim.lsp.with(require('litee.calltree.handlers').ch_lsp_handler('from'), {})
+      vim.lsp.handlers['callHierarchy/outgoingCalls'] =
+        vim.lsp.with(require('litee.calltree.handlers').ch_lsp_handler('to'), {})
     end
 
     -- if client.server_capabilities.completionProvider then

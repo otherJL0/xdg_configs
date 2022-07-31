@@ -105,6 +105,7 @@ vim.api.nvim_create_autocmd('WinEnter', {
       'packer',
       'Outline',
       'Trouble',
+      'saga',
       'qf',
       'symboltree',
       'calltree',
