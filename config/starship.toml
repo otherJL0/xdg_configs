@@ -1,12 +1,12 @@
 command_timeout = 5000
 scan_timeout = 5000
 format = """$container$directory$all$character$git_branch$git_metrics$git_status"""
-# right_format = """$package$docker_context$cmake$conda$deno$golang$helm$java$kotlin$lua$nodejs$python$rust$ruby$scala"""
+right_format = """$aws $kubernetes"""
 continuation_prompt = "▶▶"
 add_newline = true
 
 [aws]
-style = "bold blue"
+style = "bold yellow"
 symbol = "  "
 format = '[$symbol($profile)(\($region\))(\[$duration\])]($style)'
 
