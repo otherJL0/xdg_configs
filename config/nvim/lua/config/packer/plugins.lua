@@ -38,7 +38,7 @@ local function my_plugins()
     end,
   })
   use({
-    'ggandor/lightspeed.nvim',
+    'ggandor/leap.nvim',
   })
 
   use({

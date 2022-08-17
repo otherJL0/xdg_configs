@@ -67,13 +67,15 @@ catppuccin.setup({
     barbar = true,
     bufferline = false,
     markdown = true,
-    lightspeed = true,
+    lightspeed = false,
+    leap = true,
     ts_rainbow = true,
     hop = false,
     notify = true,
     telekasten = false,
     symbols_outline = true,
     cmp = true,
+    navic = true,
   },
 })
 -- Lua
