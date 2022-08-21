@@ -110,6 +110,15 @@ parser_configs.gotmpl = {
   used_by = { 'gohtmltmpl', 'gotexttmpl', 'gotmpl', 'yaml' },
 }
 
+parser_configs.cue = {
+  install_info = {
+    url = 'https://github.com/eonpatapon/tree-sitter-cue',
+    files = { 'src/parser.c', 'src/scanner.c' },
+    branch = 'main',
+  },
+  filetype = 'cue',
+}
+
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
     'bash',
@@ -120,6 +129,7 @@ require('nvim-treesitter.configs').setup({
     'cpp',
     'css',
     'cuda',
+    'cue',
     'd',
     'dart',
     'devicetree',
