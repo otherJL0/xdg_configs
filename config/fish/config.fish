@@ -28,6 +28,7 @@ if status is-interactive
     starship init fish | source
     zoxide init fish | source
     mcfly init fish | source
+    cue completion fish | source
 
     # if test ( uname ) = Darwin
     #     if contains voxsupFrontend2 (string split '/' $PWD)
