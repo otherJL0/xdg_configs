@@ -8,49 +8,43 @@ require('litee.calltree').setup({
 require('litee.symboltree').setup({
   on_open = 'panel',
 })
+local keymap = vim.keymap.set
 local saga = require('lspsaga')
-local action = require('lspsaga.codeaction')
+local action = require('lspsaga.action')
 saga.init_lsp_saga({
   symbol_in_winbar = {
+    enable = true,
     in_custom = true,
   },
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
-    vim.keymap.set(
+    keymap(
       'n',
       '<leader>cd',
       require('lspsaga.diagnostic').show_line_diagnostics,
       { silent = true, noremap = true }
     )
-    vim.keymap.set(
+    keymap(
       'n',
       '<leader>cd',
       '<cmd>Lspsaga show_line_diagnostics<CR>',
       { silent = true, noremap = true }
     )
 
-    -- jump diagnostic
-    vim.keymap.set(
-      'n',
-      '[e',
-      require('lspsaga.diagnostic').goto_prev,
-      { silent = true, noremap = true }
-    )
-    vim.keymap.set(
-      'n',
-      ']e',
-      require('lspsaga.diagnostic').goto_next,
-      { silent = true, noremap = true }
-    )
-    -- or jump to error
-    vim.keymap.set('n', '[E', function()
+    -- Diagnsotic jump
+    keymap('n', '[e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { silent = true })
+    keymap('n', ']e', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { silent = true })
+
+    -- Only jump to error
+    keymap('n', '[E', function()
       require('lspsaga.diagnostic').goto_prev({ severity = vim.diagnostic.severity.ERROR })
-    end, { silent = true, noremap = true })
-    vim.keymap.set('n', ']E', function()
+    end, { silent = true })
+    keymap('n', ']E', function()
       require('lspsaga.diagnostic').goto_next({ severity = vim.diagnostic.severity.ERROR })
-    end, { silent = true, noremap = true })
+    end, { silent = true })
+
     vim.lsp.set_log_level('OFF')
     require('fidget').setup({
       text = {
@@ -102,16 +96,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    local border = {
-      { '┌', 'FloatBorder' },
-      { '─', 'FloatBorder' },
-      { '┐', 'FloatBorder' },
-      { '│', 'FloatBorder' },
-      { '┘', 'FloatBorder' },
-      { '─', 'FloatBorder' },
-      { '└', 'FloatBorder' },
-      { '│', 'FloatBorder' },
-    }
+    --[[ local border = { ]]
+    --[[   { '┌', 'FloatBorder' }, ]]
+    --[[   { '─', 'FloatBorder' }, ]]
+    --[[   { '┐', 'FloatBorder' }, ]]
+    --[[   { '│', 'FloatBorder' }, ]]
+    --[[   { '┘', 'FloatBorder' }, ]]
+    --[[   { '─', 'FloatBorder' }, ]]
+    --[[   { '└', 'FloatBorder' }, ]]
+    --[[   { '│', 'FloatBorder' }, ]]
+    --[[ } ]]
+
+    -- Lsp finder find the symbol definition implmement reference
+    -- when you use action in finder like open vsplit then your can
+    -- use <C-t> to jump back
+    keymap('n', 'gh', '<cmd>Lspsaga lsp_finder<CR>', { silent = true })
+
+    -- Outline
+    keymap('n', '<leader>o', '<cmd>LSoutlineToggle<CR>', { silent = true })
 
     vim.lsp.handlers['textDocument/publishDiagnostics'] =
       vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -122,62 +124,44 @@ vim.api.nvim_create_autocmd('LspAttach', {
       })
     if client.server_capabilities.hoverProvider then
       -- Fancy borders
-      vim.lsp.handlers['textDocument/hover'] =
-        vim.lsp.with(vim.lsp.handlers.hover, { border = border })
-      vim.keymap.set('n', 'K', require('lspsaga.hover').render_hover_doc, { silent = true })
-      vim.keymap.set('n', '<C-n>', function()
+      --[[ vim.lsp.handlers['textDocument/hover'] = ]]
+      --[[ vim.lsp.with(vim.lsp.handlers.hover, { border = border }) ]]
+      keymap('n', 'K', '<cmd>Lspsaga hover_doc<CR>', { silent = true })
+      keymap('n', '<C-n>', function()
         action.smart_scroll_with_saga(1)
       end, { silent = true })
       -- scroll up hover doc
-      vim.keymap.set('n', '<C-p>', function()
+      keymap('n', '<C-p>', function()
         action.smart_scroll_with_saga(-1)
       end, { silent = true })
     end
     if client.server_capabilities.signatureHelpProvider then
-      vim.lsp.handlers['textDocument/signatureHelp'] =
-        vim.lsp.with(vim.lsp.handlers.hover, { border = border })
-      vim.keymap.set(
-        'n',
-        'gs',
-        require('lspsaga.signaturehelp').signature_help,
-        { silent = true, noremap = true }
-      )
+      --[[ vim.lsp.handlers['textDocument/signatureHelp'] = ]]
+      --[[   vim.lsp.with(vim.lsp.handlers.hover, { border = border }) ]]
+      keymap('n', 'gs', '<Cmd>Lspsaga signature_help<CR>', { silent = true, noremap = true })
     end
 
     if client.server_capabilities.definitionProvider then
-      vim.keymap.set(
-        'n',
-        'gd',
-        require('lspsaga.definition').preview_definition,
-        { silent = true, noremap = true }
-      )
+      keymap('n', 'gd', '<cmd>Lspsaga preview_definition<CR>', { silent = true, noremap = true })
     end
 
     if client.server_capabilities.implementationProvider then
-      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = args.buf })
+      keymap('n', 'gi', vim.lsp.buf.implementation, { buffer = args.buf })
     end
 
     if client.server_capabilities.declarationProvider then
-      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = args.buf })
+      keymap('n', 'gD', vim.lsp.buf.declaration, { buffer = args.buf })
     end
     if client.server_capabilities.typeDefinitionProvider then
-      vim.keymap.set('n', ' D', vim.lsp.buf.type_definition, { buffer = args.buf })
+      keymap('n', ' D', vim.lsp.buf.type_definition, { buffer = args.buf })
     end
 
     if client.server_capabilities.renameProvider then
-      vim.keymap.set(
-        'n',
-        'grr',
-        require('lspsaga.rename').lsp_rename,
-        { silent = true, noremap = true }
-      )
+      keymap('n', 'grr', '<cmd>Lspsaga rename<CR>', { silent = true, noremap = true })
     end
     if client.server_capabilities.codeActionProvider then
-      vim.keymap.set('n', '<leader>ca', action.code_action, { silent = true, noremap = true })
-      vim.keymap.set('v', '<leader>ca', function()
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-U>', true, false, true))
-        action.range_code_action()
-      end, { silent = true, noremap = true })
+      keymap('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>', { silent = true })
+      keymap('v', '<leader>ca', '<cmd><C-U>Lspsaga range_code_action<CR>', { silent = true })
     end
 
     if client.server_capabilities.documentFormattingProvider then
@@ -232,32 +216,32 @@ vim.api.nvim_create_autocmd('LspAttach', {
     --   TODO
     -- end
     --   -- TODO
-    --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
+    --   keymap("n", "", vim.lsp.buf, { buffer = args.buf })
     -- end
     -- if client.server_capabilities.referencesProvider then
-    --   vim.keymap.set("n", "", vim.lsp.buf.references, { buffer = args.buf })
+    --   keymap("n", "", vim.lsp.buf.references, { buffer = args.buf })
     -- end
     -- -- ['textDocument/prepareRename'] = { 'renameProvider', 'prepareProvider' },
     -- -- TODO
     -- -- TODO
     -- if client.server_capabilities.codeLensProvider then
-    --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
+    --   keymap("n", "", vim.lsp.buf, { buffer = args.buf })
     -- end
     -- -- ['codeLens/resolve'] = { 'codeLensProvider', 'resolveProvider' },
     -- -- TODO
     -- if client.server_capabilities.executeCommandProvider then
-    --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
+    --   keymap("n", "", vim.lsp.buf, { buffer = args.buf })
     -- end
     -- if client.server_capabilities.workspaceSymbolProvider then
     --   -- TODO
-    --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
+    --   keymap("n", "", vim.lsp.buf, { buffer = args.buf })
     -- end
     -- if client.server_capabilities.documentRangeFormattingProvider then
     --   -- TODO
-    --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
+    --   keymap("n", "", vim.lsp.buf, { buffer = args.buf })
     -- end
     --   -- TODO
-    --   vim.keymap.set("n", "", vim.lsp.buf, { buffer = args.buf })
+    --   keymap("n", "", vim.lsp.buf, { buffer = args.buf })
     -- end
   end,
 })
