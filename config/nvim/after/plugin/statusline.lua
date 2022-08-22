@@ -53,11 +53,11 @@ local assets = {
   slim_dot = '•',
 }
 
-local clrs = require('catppuccin.palettes.init').get_palette()
+local clrs = require('catppuccin.palettes').get_palette()
 
 -- settings
 local sett = {
-  bkg = clrs.base,
+  bkg = clrs.mantle,
   diffs = clrs.mauve,
   extras = clrs.text,
   curr_file = clrs.maroon,
