@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
     local zig_root_dir = vim.fs.dirname(vim.fs.find({ 'build.zig' }, { upward = true })[1])
     vim.lsp.start({
       name = 'zls',
-      cmd = { vim.fn.stdpath('cache') .. '/zls/zig-out/bin/zls' },
+      cmd = { 'zls' },
       root_dir = zig_root_dir,
     })
     vim.api.nvim_buf_create_user_command(0, 'Zig', function(args)
