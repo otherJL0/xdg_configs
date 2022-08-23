@@ -279,10 +279,7 @@ local function my_plugins()
     },
   })
   use({ 'b0o/SchemaStore.nvim' })
-  use({
-    'norcalli/nvim-colorizer.lua',
-    opt = true,
-  })
+  use({ 'NVChad/nvim-colorizer.lua' })
 
   -- use({
   --   "simrat39/rust-tools.nvim",
