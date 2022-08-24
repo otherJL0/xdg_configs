@@ -2,8 +2,7 @@ vim.bo.tabstop = 2
 vim.bo.shiftwidth = 2
 vim.bo.softtabstop = 2
 
--- vim.cmd([[
---   augroup JqxPopulate
---     autocmd BufWritePre *.json :JqxList
---   augroup END
--- ]])
+vim.lsp.start({
+  name = 'jsonls',
+  cmd = { 'vscode-json-language-server', '--stdio' },
+})
