@@ -2,12 +2,15 @@ local M = {}
 
 function M.detect_project_type()
   local current_file = vim.api.nvim_buf_get_name(0)
-  local deno_root_dir = vim.fs.dirname(
-    vim.fs.find(
-      { 'init.ts', 'deno.jsonc', 'dev.ts', 'deno.json', 'import_map.json' },
-      { path = current_file, upward = true, type = 'file' }
-    )[1]
-  )
+  local deno_root_dir = vim.fs.dirname(vim.fs.find({
+    'main.ts',
+    'main_test.ts',
+    'init.ts',
+    'deno.jsonc',
+    'dev.ts',
+    'deno.json',
+    'import_map.json',
+  }, { path = current_file, upward = true, type = 'file' })[1])
   local node_root_dir = vim.fs.dirname(
     vim.fs.find({ 'tsconfig.json' }, { path = current_file, upward = true, type = 'file' })[1]
   )
