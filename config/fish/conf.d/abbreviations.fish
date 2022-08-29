@@ -74,3 +74,7 @@ abbr -a ist istioctl
 abbr -a isti istioctl
 abbr -a isto istioctl
 abbr -a istio istioctl
+
+abbr -a pipr pip install -r requirements.txt
+abbr -a pippip pip install --upgrade pip
+abbr -a mkenv python3.8 -m venv env
