@@ -10,7 +10,7 @@ require('litee.symboltree').setup({
 })
 local keymap = vim.keymap.set
 local saga = require('lspsaga')
-local action = require('lspsaga.action')
+--[[ local action = require('lspsaga.action') ]]
 saga.init_lsp_saga({
   symbol_in_winbar = {
     enable = true,
@@ -127,13 +127,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
       --[[ vim.lsp.handlers['textDocument/hover'] = ]]
       --[[ vim.lsp.with(vim.lsp.handlers.hover, { border = border }) ]]
       keymap('n', 'K', '<cmd>Lspsaga hover_doc<CR>', { silent = true })
-      keymap('n', '<C-n>', function()
-        action.smart_scroll_with_saga(1)
-      end, { silent = true })
-      -- scroll up hover doc
-      keymap('n', '<C-p>', function()
-        action.smart_scroll_with_saga(-1)
-      end, { silent = true })
     end
     if client.server_capabilities.signatureHelpProvider then
       --[[ vim.lsp.handlers['textDocument/signatureHelp'] = ]]
