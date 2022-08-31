@@ -222,10 +222,10 @@ local function my_plugins()
     end,
   })
 
-  use({ 'nvim-neorg/neorg-telescope' })
   -- Filetype specific plugins
   use({
     'nvim-neorg/neorg',
+'nvim-neorg/neorg-telescope',
     requires = {
       'nvim-lua/plenary.nvim',
       'nvim-neorg/neorg-telescope',
