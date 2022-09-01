@@ -234,10 +234,29 @@ components[2][2] = {
 }
 
 components[2][3] = {
+  provider = function()
+  local schema = require("yaml-companion").get_buf_schema(0)
+  if schema then
+    return schema.result[1].name
+  end
+  return ""
+  end,
+  enabled = function ()
+    return vim.bo.filetype == "yaml"
+  end,
+  hl = {
+    bg = sett.curr_dir,
+    fg = sett.bkg,
+  },
+}
+
+components[2][4] = {
   hl = {
     bg = sett.bkg,
   },
 }
+
+components[2][4] = {}
 -- Diagnostics ------>
 -- workspace loader
 components[3][1] = {

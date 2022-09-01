@@ -225,7 +225,7 @@ local function my_plugins()
   -- Filetype specific plugins
   use({
     'nvim-neorg/neorg',
-'nvim-neorg/neorg-telescope',
+    'nvim-neorg/neorg-telescope',
     requires = {
       'nvim-lua/plenary.nvim',
       'nvim-neorg/neorg-telescope',
@@ -302,6 +302,25 @@ local function my_plugins()
     'Saecki/crates.nvim',
     ft = { 'toml' },
     requires = { { 'nvim-lua/plenary.nvim' } },
+  })
+
+  use({
+    'someone-stole-my-name/yaml-companion.nvim',
+    config = function()
+      require('telescope').load_extension('yaml_schema')
+      local cfg = require('yaml-companion').setup({
+        schemas = {
+          result = {
+            {
+              name = 'Kubernetes 1.22.4',
+              uri = 'https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.4-standalone-strict/all.json',
+            },
+          },
+        },
+      })
+      require('lspconfig')['yamlls'].setup(cfg)
+    end,
+    ft = { 'yaml' },
   })
 
   use({
