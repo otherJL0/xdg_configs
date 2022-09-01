@@ -308,12 +308,16 @@ local function my_plugins()
     'someone-stole-my-name/yaml-companion.nvim',
     config = function()
       require('telescope').load_extension('yaml_schema')
+      local kubernetes_version = '1.22.9'
       local cfg = require('yaml-companion').setup({
         schemas = {
           result = {
             {
-              name = 'Kubernetes 1.22.4',
-              uri = 'https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.4-standalone-strict/all.json',
+              name = string.format('Kubernetes %s', kubernetes_version),
+              uri = string.format(
+                'https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v%s-standalone-strict/all.json',
+                kubernetes_version
+              ),
             },
           },
         },
