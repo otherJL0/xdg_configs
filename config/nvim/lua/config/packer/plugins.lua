@@ -67,6 +67,8 @@ local function my_plugins()
     end,
   })
 
+  use({"levouh/tint.nvim"})
+
   -- Telescope Extras
   use({
     'nvim-telescope/telescope-frecency.nvim',
