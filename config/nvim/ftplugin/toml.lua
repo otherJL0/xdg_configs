@@ -133,4 +133,5 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 vim.lsp.start({
   name = 'taplo',
   cmd = { 'taplo', 'lsp', 'stdio' },
+  root_dir = vim.fs.dirname(vim.fs.find({ 'Cargo.toml', 'pyproject.toml' }, { upward = true })[1]),
 })
