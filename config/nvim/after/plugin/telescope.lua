@@ -1,4 +1,7 @@
 vim.keymap.set('n', ' ff', function()
+  require('config.telescope').find_files()
+end)
+vim.keymap.set('n', ' fF', function()
   require('config.telescope').git_files()
 end)
 vim.keymap.set('n', ' fg', function()
