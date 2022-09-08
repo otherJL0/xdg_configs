@@ -15,8 +15,7 @@ vim.lsp.start({
     experimentalFeatures = {
       validateOnSave = true,
       prefillRequiredFields = true,
-    }
+    },
   },
-  root_dir = vim.fs.dirname(vim.fs.find({'.terraform/', '.terraform.lock.hcl'})[1]),
-
+  root_dir = vim.fs.dirname(vim.fs.find({ '.terraform/', '.terraform.lock.hcl' })[1]),
 })
