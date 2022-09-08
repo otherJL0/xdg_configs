@@ -14,6 +14,7 @@ local languages = {
   'json',
   'lua',
   'python',
+  'terraform',
 }
 
 for _, language in ipairs(languages) do
