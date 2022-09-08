@@ -17,4 +17,6 @@ vim.lsp.start({
       prefillRequiredFields = true,
     }
   },
+  root_dir = vim.fs.dirname(vim.fs.find({'.terraform/', '.terraform.lock.hcl'})[1]),
+
 })
