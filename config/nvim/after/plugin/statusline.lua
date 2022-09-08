@@ -1,6 +1,13 @@
 local lsp = require('feline.providers.lsp')
 local lsp_severity = vim.diagnostic.severity
 local hydra = require('hydra.statusline')
+local clrs = require('catppuccin.palettes').get_palette()
+local ucolors = require('catppuccin.utils.colors')
+local latte = require('catppuccin.palettes').get_palette('latte')
+local navic = require('nvim-navic')
+navic.setup({
+  highlight = true,
+})
 
 local function get_python_version(venv)
   for _, version in ipairs({ '3.11', '3.10', '3.9', '3.8', '3.7', '3.6' }) do
@@ -11,12 +18,6 @@ local function get_python_version(venv)
   return 'unknown'
 end
 
-vim.api.nvim_exec(
-  [[
-hi WinSeparator  guifg=#96CDFB
-]],
-  false
-)
 vim.opt.fillchars = {
   horiz = '━',
   horizup = '┻',
@@ -53,15 +54,15 @@ local assets = {
   slim_dot = '•',
 }
 
-local clrs = require('catppuccin.palettes').get_palette()
-
 -- settings
 local sett = {
-  bkg = clrs.mantle,
+  text = ucolors.vary_color({ latte = latte.base }, clrs.surface0),
+  bkg = ucolors.vary_color({ latte = latte.crust }, clrs.surface0),
   diffs = clrs.mauve,
-  extras = clrs.text,
+  extras = clrs.overlay1,
   curr_file = clrs.maroon,
   curr_dir = clrs.flamingo,
+  show_modified = false,
 }
 
 local mode_colors = {
@@ -155,10 +156,11 @@ components[1][1] = {
 components[1][2] = {
   provider = 'git_branch',
   enabled = is_enabled(shortline, nil, 70),
-  hl = {
-    bg = clrs.surface0,
-    fg = clrs.text,
-  },
+  hl = vi_mode_hl,
+  --  hl = {
+  --    fg = sett.extras,
+  --    bg = sett.bkg,
+  --  },
   icon = '  ',
   -- left_sep = {
   --   str = assets.vertical_bar_chubby,
@@ -235,28 +237,40 @@ components[2][2] = {
 
 components[2][3] = {
   provider = function()
-  local schema = require("yaml-companion").get_buf_schema(0)
-  if schema then
-    return schema.result[1].name
-  end
-  return ""
+    local schema = require('yaml-companion').get_buf_schema(0)
+    if schema then
+      return schema.result[1].name
+    end
+    return ''
   end,
-  enabled = function ()
-    return vim.bo.filetype == "yaml"
+  enabled = function()
+    local schema = require('yaml-companion').get_buf_schema(0)
+    if schema then
+      return true
+    end
+    return vim.bo.filetype == 'yaml'
   end,
   hl = {
     bg = sett.curr_dir,
     fg = sett.bkg,
   },
-}
+  left_sep = {
+    str = assets.left_semicircle,
+    hl = {
+      fg = sett.curr_dir,
+      bg = sett.bkg,
+    },
+  },
 
-components[2][4] = {
-  hl = {
-    bg = sett.bkg,
+  right_sep = {
+    str = assets.right_semicircle,
+    hl = {
+      fg = sett.curr_dir,
+      bg = sett.bkg,
+    },
   },
 }
 
-components[2][4] = {}
 -- Diagnostics ------>
 -- workspace loader
 components[3][1] = {
@@ -329,7 +343,7 @@ components[3][6] = {
   },
   hl = {
     bg = clrs.surface0,
-    fg = clrs.text,
+    fg = sett.text,
   },
   left_sep = {
     str = assets.vertical_bar_chubby,
@@ -381,7 +395,7 @@ require('feline').setup({
     active = components,
     inactive = components,
   },
-  preset = 'noicon',
+  -- preset = 'noicon',
 })
 
 local winbar_active = {
@@ -399,30 +413,30 @@ winbar_active[1][1] = {
   },
 
   hl = {
-    fg = clrs.text,
-    bg = clrs.base,
+    fg = clrs.flamingo,
+    bg = sett.bkg,
   },
 }
 
 winbar_active[1][2] = {
-  provider = require('nvim-navic').get_location,
-  enabled = require('nvim-navic').is_available,
+  provider = navic.get_location,
+  enabled = navic.is_available,
   hl = {
-    bg = clrs.surface0,
-    fg = clrs.text,
+    bg = sett.bkg,
+    fg = sett.text,
   },
   left_sep = {
-    str = assets.slant_left_2,
+    str = assets.slant_right,
   },
 
   right_sep = {
-    str = assets.right_semicircle,
+    str = assets.slant_left_2,
   },
 }
 
 winbar_active[1][3] = {
   hl = {
-    bg = clrs.base,
+    bg = sett.bkg,
   },
 }
 
@@ -442,7 +456,7 @@ winbar_inactive[1][1] = {
 
   hl = {
     fg = clrs.overlay0,
-    bg = clrs.base,
+    bg = sett.bkg,
   },
 }
 require('feline').winbar.setup({

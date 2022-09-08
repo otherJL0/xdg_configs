@@ -67,7 +67,7 @@ local function my_plugins()
     end,
   })
 
-  use({"levouh/tint.nvim"})
+  use({ 'levouh/tint.nvim' })
 
   -- Telescope Extras
   use({
@@ -107,12 +107,7 @@ local function my_plugins()
     run = 'TSUpdate',
   })
 
-  use({
-    'SmiteshP/nvim-navic',
-    config = function()
-      require('nvim-navic').setup()
-    end,
-  })
+  use({ 'SmiteshP/nvim-navic', })
 
   -- Git plugins
   use({
