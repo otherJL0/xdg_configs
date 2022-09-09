@@ -244,11 +244,13 @@ components[2][3] = {
     return ''
   end,
   enabled = function()
-    local schema = require('yaml-companion').get_buf_schema(0)
-    if schema then
-      return true
+    if vim.bo.filetype == 'yaml' then
+      local schema = require('yaml-companion').get_buf_schema(0)
+      if schema then
+        return true
+      end
     end
-    return vim.bo.filetype == 'yaml'
+    return false
   end,
   hl = {
     bg = sett.curr_dir,
