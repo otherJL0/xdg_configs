@@ -52,6 +52,8 @@ local assets = {
   slant_right_2_thin = '',
   chubby_dot = '●',
   slim_dot = '•',
+  dir = '  ',
+  file = '  ',
 }
 
 -- settings
@@ -387,7 +389,7 @@ components[3][7] = {
   },
   hl = {
     bg = clrs.surface0,
-    fg = sett.text,
+    fg = clrs.flamingo,
   },
   left_sep = {
     str = assets.vertical_bar_chubby,
@@ -447,6 +449,25 @@ local winbar_active = {
 }
 
 winbar_active[1][1] = {
+  provider = function()
+    local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+    return assets.dir .. dir_name .. ' '
+  end,
+  enabled = is_enabled(shortline, winid, 80),
+  hl = {
+    fg = sett.text,
+    bg = sett.curr_dir,
+  },
+  left_sep = {
+    str = assets.left_separator,
+    hl = {
+      fg = sett.curr_dir,
+      bg = sett.curr_file,
+    },
+  },
+}
+
+winbar_active[1][2] = {
 
   provider = {
     name = 'file_info',
@@ -462,7 +483,7 @@ winbar_active[1][1] = {
   },
 }
 
-winbar_active[1][2] = {
+winbar_active[1][3] = {
   provider = navic.get_location,
   enabled = navic.is_available,
   hl = {

@@ -93,6 +93,7 @@ vim.api.nvim_create_autocmd('WinEnter', {
     local ignored_filetypes = {
       'help',
       'qf',
+      'mason',
     }
 
     local ignored_prefix = {
