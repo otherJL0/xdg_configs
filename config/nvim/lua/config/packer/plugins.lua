@@ -50,8 +50,6 @@ local function my_plugins()
     'onsails/lspkind-nvim',
   })
 
-  use({ 'j-hui/fidget.nvim' })
-
   use({
     'jose-elias-alvarez/null-ls.nvim',
   })
