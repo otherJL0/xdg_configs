@@ -3,6 +3,7 @@ local cb = require('diffview.config').diffview_callback
 local gitsigns = require('gitsigns')
 local neogit = require('neogit')
 vim.opt.diffopt:append('algorithm:histogram')
+require('git-conflict').setup()
 
 diffview.setup({
   diff_binaries = false, -- Show diffs for binaries

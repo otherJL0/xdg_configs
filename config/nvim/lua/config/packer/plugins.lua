@@ -105,13 +105,14 @@ local function my_plugins()
     run = 'TSUpdate',
   })
 
-  use({ 'SmiteshP/nvim-navic', })
+  use({ 'SmiteshP/nvim-navic' })
 
   -- Git plugins
   use({
     'lewis6991/gitsigns.nvim',
     'TimUntersberger/neogit',
     'sindrets/diffview.nvim',
+    'akinsho/git-conflict.nvim',
     requres = 'nvim-lua/plenary',
   })
 
