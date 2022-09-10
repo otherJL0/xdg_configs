@@ -23,8 +23,11 @@
 [mergetool "fugitive"]
     cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
 
+[mergetool "diffview"]
+    cmd = nvim -f -c \"DiffviewOpen\"
+
 [merge]
-    tool = fugitive
+    tool = diffview
     conflictStyle = zdiff3
 
 [mergetool]

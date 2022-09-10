@@ -17,6 +17,11 @@ diffview.setup({
     fold_closed = '',
     fold_open = '',
   },
+  view = {
+    merge_tool = {
+      layout = 'diff3_mixed',
+    },
+  },
   file_panel = {
     listing_style = 'tree', -- One of 'list' or 'tree'
     tree_options = { -- Only applies when listing_style is 'tree'

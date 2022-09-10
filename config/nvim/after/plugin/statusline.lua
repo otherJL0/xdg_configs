@@ -18,6 +18,54 @@ local function get_python_version(venv)
   return 'unknown'
 end
 
+local function diffview_enabled()
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(bufnr) then
+      local filename = vim.api.nvim_buf_get_name(bufnr)
+      if string.match(filename, 'diffview') ~= nil then
+        return true
+      end
+    end
+  end
+  return false
+end
+
+local function diffview_buffer()
+  local filename = vim.api.nvim_buf_get_name(0)
+  if string.match(filename, ':2:') then
+    return 'HEAD'
+  end
+
+  if string.match(filename, ':3:') then
+    return 'BRANCH'
+  end
+
+  if string.match(filename, 'FilePanel') then
+    return ''
+  end
+
+  return 'STAGING'
+end
+
+local function get_diffview_color()
+  local hl = {
+    fg = clrs.crust,
+    bg = clrs.overlay0,
+  }
+  local filename = vim.api.nvim_buf_get_name(0)
+  local diffview_buffer = diffview_buffer(filename)
+  if diffview_buffer == 'STAGING' then
+    hl.bg = clrs.peach
+  end
+  if diffview_buffer == 'HEAD' then
+    hl.bg = clrs.red
+  end
+  if diffview_buffer == 'BRANCH' then
+    hl.bg = clrs.yellow
+  end
+  return hl
+end
+
 vim.opt.fillchars = {
   horiz = '━',
   horizup = '┻',
@@ -444,31 +492,39 @@ require('feline').setup({
   -- preset = 'noicon',
 })
 
-local winbar_active = {
-  {},
-}
-
-winbar_active[1][1] = {
-  provider = function()
-    local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
-    return assets.dir .. dir_name .. ' '
-  end,
-  enabled = is_enabled(shortline, winid, 80),
-  hl = {
-    fg = sett.text,
-    bg = sett.curr_dir,
+local winbar = {
+  active = {
+    {},
+    {},
+    {},
   },
-  left_sep = {
-    str = assets.left_separator,
-    hl = {
-      fg = sett.curr_dir,
-      bg = sett.curr_file,
-    },
+  inactive = {
+    {},
+    {},
+    {},
   },
 }
 
-winbar_active[1][2] = {
+-- winbar.active[1][1] = {
+--   provider = function()
+--     local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+--     return assets.dir .. dir_name .. ' '
+--   end,
+--   enabled = is_enabled(shortline, winid, 80),
+--   hl = {
+--     fg = sett.text,
+--     bg = sett.curr_dir,
+--   },
+--   left_sep = {
+--     str = assets.left_separator,
+--     hl = {
+--       fg = sett.curr_dir,
+--       bg = sett.curr_file,
+--     },
+--   },
+-- }
 
+winbar.active[1][1] = {
   provider = {
     name = 'file_info',
     opts = {
@@ -476,16 +532,20 @@ winbar_active[1][2] = {
       type = 'relative',
     },
   },
-
+  enabled = function()
+    return not diffview_enabled()
+  end,
   hl = {
     fg = clrs.flamingo,
     bg = sett.bkg,
   },
 }
 
-winbar_active[1][3] = {
+winbar.active[1][2] = {
   provider = navic.get_location,
-  enabled = navic.is_available,
+  enabled = function()
+    return navic.is_available() and not diffview_enabled()
+  end,
   hl = {
     bg = sett.bkg,
     fg = sett.text,
@@ -499,18 +559,34 @@ winbar_active[1][3] = {
   },
 }
 
-winbar_active[1][3] = {
+winbar.active[1][3] = {
+  enable = function()
+    return not diffview_enabled()
+  end,
   hl = {
     bg = sett.bkg,
   },
 }
+winbar.active[1][4] = {
+  provider = {
+    name = 'file_info',
+    opts = {
+      colored_icon = true,
+      type = 'base-only',
+    },
+  },
+  enabled = diffview_enabled,
 
-local winbar_inactive = {
-  {},
+  hl = get_diffview_color,
 }
 
-winbar_inactive[1][1] = {
+winbar.active[2][1] = {
+  provider = diffview_buffer,
+  enabled = diffview_enabled,
+  hl = get_diffview_color,
+}
 
+winbar.inactive[1][1] = {
   provider = {
     name = 'file_info',
     opts = {
@@ -518,16 +594,38 @@ winbar_inactive[1][1] = {
       type = 'relative',
     },
   },
+  enabled = function()
+    return not diffview_enabled()
+  end,
 
   hl = {
     fg = clrs.overlay0,
     bg = sett.bkg,
   },
 }
+
+winbar.inactive[1][2] = {
+  provider = {
+    name = 'file_info',
+    opts = {
+      colored_icon = true,
+      type = 'base-only',
+    },
+  },
+  enabled = diffview_enabled,
+  hl = get_diffview_color,
+}
+
+winbar.inactive[2][1] = {
+  provider = diffview_buffer,
+  enabled = diffview_enabled,
+  hl = get_diffview_color,
+}
+
 require('feline').winbar.setup({
   components = {
-    active = winbar_active,
-    inactive = winbar_inactive,
+    active = winbar.active,
+    inactive = winbar.inactive,
   },
-  eset = 'noicon',
+  -- eset = 'noicon',
 })
