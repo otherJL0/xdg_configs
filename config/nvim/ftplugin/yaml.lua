@@ -41,7 +41,6 @@ local kubernetes = setmetatable({}, {
   end,
 })
 
-
 local null_ls = require('null-ls')
 local formatting = null_ls.builtins.formatting
 null_ls.setup({
@@ -50,6 +49,45 @@ null_ls.setup({
   },
 })
 
+local function gh_actions_jobs()
+  local query = vim.treesitter.parse_query(
+    'yaml',
+    [[
+;; query
+(block_mapping_pair
+ key: (flow_node (plain_scalar (string_scalar) @_jobs))
+ value: (block_node ( block_mapping ( block_mapping_pair
+   key: (flow_node (plain_scalar (string_scalar) @jobs))
+   value: (block_node ( block_mapping ( block_mapping_pair
+     key: (flow_node (plain_scalar (string_scalar) @_steps))
+     value: (block_node (block_sequence (block_sequence_item
+       (block_node (block_mapping ( block_mapping_pair
+         key: (flow_node (plain_scalar (string_scalar) @name))
+         value: (flow_node (plain_scalar (string_scalar) @steps))))))))))))))
+ (#match? @name "name")
+ (#match? @_steps "steps")
+ (#match? @_jobs "jobs"))
+]]
+  )
+  local job_name = ''
+  local step_name = ''
+  local result = setmetatable({}, {})
+  for id, match, metadata in query:iter_matches(root, bufnr) do
+    for j, key in ipairs(match) do
+      local capture_name = query.captures[j]
+      if capture_name == 'jobs' then
+        job_name = vim.treesitter.get_node_text(key, bufnr)
+        local row, _, _, _ = vim.treesitter.get_node_range(key)
+        print(row)
+        result = vim.tbl_extend('keep', result, { [job_name] = {} })
+      elseif capture_name == 'steps' then
+        step_name = vim.treesitter.get_node_text(key, bufnr)
+        table.insert(result[job_name], step_name)
+      end
+    end
+  end
+  return result
+end
 
 -- local yaml_configs = {
 --   format = {
