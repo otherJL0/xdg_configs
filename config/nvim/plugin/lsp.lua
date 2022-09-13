@@ -93,7 +93,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     if client.server_capabilities.definitionProvider then
-      keymap('n', 'gd', '<cmd>Lspsaga preview_definition<CR>', { silent = true, noremap = true })
+      keymap('n', 'gd', '<cmd>Lspsaga peek_definition<CR>', { silent = true, noremap = true })
     end
 
     if client.server_capabilities.implementationProvider then
