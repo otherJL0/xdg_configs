@@ -194,7 +194,7 @@ local function my_plugins()
     -- "vim-denops/denops.vim",
     'folke/lua-dev.nvim',
     'folke/which-key.nvim',
-    'bellini666/trouble.nvim',
+    'folke/trouble.nvim',
 
     requires = 'kyazdani42/nvim-web-devicons',
   })
