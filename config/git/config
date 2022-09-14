@@ -10,7 +10,7 @@
     commitGraph = true
     sparseCheckout = true
     sparseCheckoutCone = true
-    symlinks = false
+    symlinks = true
     filemode = false
     autocrlf = false
 
