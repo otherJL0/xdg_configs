@@ -22,3 +22,11 @@ arguments: (argument_list (string) @sqlite (#offset! @sqlite 0 4 0 -4) (#match? 
  (#lua-match? @regex "^r.*"))
 
 (comment) @comment
+
+(expression_statement (assignment 
+  left: (identifier) @_identifier
+  right: (string) @sql )
+  (#match? @_identifier "query")
+  (#match? @sql "^\"\"\"")
+  (#offset! @sql 1 -8 0 -1))
+
