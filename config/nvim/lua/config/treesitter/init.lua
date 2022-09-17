@@ -119,6 +119,14 @@ parser_configs.cue = {
   filetype = 'cue',
 }
 
+parser_configs.hurl = {
+  install_info = {
+    url = 'https://github.com/otherJL0/tree-sitter-hurl',
+    files = { 'src/parser.c' },
+    branch = 'main',
+  },
+}
+
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
     'bash',
@@ -153,6 +161,7 @@ require('nvim-treesitter.configs').setup({
     'hjson',
     'html',
     'http',
+    'hurl',
     'java',
     'javascript',
     'jinja2',
