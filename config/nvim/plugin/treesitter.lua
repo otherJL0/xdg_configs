@@ -32,12 +32,13 @@ local ts_patterns = {
   ['tuple_expression'] = 'Structure',
   ['jsx_element'] = 'Structure',
 }
+
 require('treesitter-context').setup({
   enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-  throttle = false, -- Throttles plugin updates (may improve performance)
   patterns = {
     default = vim.tbl_keys(ts_patterns),
   },
+  mode = 'topline',
 })
 
 require('indent_blankline').setup({
