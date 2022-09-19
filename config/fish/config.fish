@@ -30,11 +30,6 @@ if status is-interactive
     mcfly init fish | source
     cue completion fish | source
 
-    # if test ( uname ) = Darwin
-    #     if contains voxsupFrontend2 (string split '/' $PWD)
-    #         fnm env --use-on-cd | source
-    #     end
-    # end
 
     set -gx PATH $PATH $HOME/.krew/bin
 end
@@ -61,8 +56,6 @@ end
 source /home/jlopez/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 set -gx PATH $HOME/.cabal/bin /home/jlopez/.ghcup/bin $PATH # ghcup-env
-set -gx VOLTA_HOME "$HOME/.volta"
-set -gx PATH "$VOLTA_HOME/bin" $PATH
 
 
 set -U fish_greeting
