@@ -63,3 +63,28 @@ set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 set -gx PATH $HOME/.cabal/bin /home/jlopez/.ghcup/bin $PATH # ghcup-env
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
+
+
+set -U fish_greeting
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+# XDG Configuration
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_CACHE_HOME $HOME/.cache
+
+# user path
+fish_add_path -P $HOME/.local/bin
+fish_add_path -P $HOME/.cargo/bin
+fish_add_path -P $HOME/.jbang/bin
+fish_add_path -P $HOME/.jbang/currentjdk/bin
+fish_add_path -P $HOME/.ghcup/bin
+fish_add_path -P $HOME/.yarn/bin
+fish_add_path -P $HOME/.deno/bin
+fish_add_path -P $HOME/bin
+fish_add_path -P $HOME/.luarocks/bin
+fish_add_path -P ./node_modules/.bin
+fish_add_path -P ./.venv/bin
+fish_add_path -P $HOME/.cache/coursier/jvm/openjdk@1.11.0-2/bin
+fish_add_path -P $HOME/.cache/nvim/packer_hererocks/2.1.0-beta3/bin
+fish_add_path -P /usr/local/bin/
