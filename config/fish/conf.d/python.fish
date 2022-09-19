@@ -13,3 +13,7 @@ set -gx POETRY_VIRTUALENVS_PATH ".venv"
 set PYTHON_CFLAGS -fPIC
 set PYTHON_CONFIGURE_OPTS --enable-loadable-sqlite-extensions --enable-optimizations --with-lto --with-computed-gotos --enable-profiling
 set PYTHON_MAKE_OPTS -j16
+
+abbr -a pipr pip install -r requirements.txt
+abbr -a pippip pip install --upgrade pip
+abbr -a mkenv python3.8 -m venv env

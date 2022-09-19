@@ -1,33 +1,3 @@
-abbr -a gR git restore .
-abbr -a gA git add -A
-abbr -a ga git add
-abbr -a gb git branch
-abbr -a gbD git branch -D
-abbr -a gch git checkout
-abbr -a gc git commit
-abbr -a gcm git commit -m
-abbr -a gcam git commit -am
-abbr -a gcma git commit -ma
-abbr -a gdiff git diff
-abbr -a gl git log
-abbr -a gmv git mv
-abbr -a patch git add --patch
-abbr -a gph git push
-abbr -a gpl git pull
-abbr -a grm git rm -r --cached
-abbr -a gs git status
-abbr -a gss git status -s
-abbr -a gsub git submodule
-abbr -a gsubup git submodule update
-abbr -a gsupir git submodule update --init --recursive
-abbr -a gsw git switch
-
-abbr -a branch git symbolic-ref --short HEAD
-abbr -a difftool git difftool
-abbr -a mergetool git mergetool
-abbr -a unstage git reset HEAD --
-
-
 abbr -a bru brew update
 abbr -a brU brew upgrade
 abbr -a pI pip install
@@ -52,29 +22,6 @@ end
 
 abbr -a kit kitty +kitten
 abbr -a icat kitty +kitten icat
-abbr -a k kubectl
-
-abbr -a nvim- nvim - -c '"set ft=json"'
-abbr -a nvimj nvim - -c '"set ft=json"'
-abbr -a nvimy nvim - -c '"set ft=yaml"'
 
 abbr -a sortuniq sort \| uniq -c \| sort -n
 
-abbr -a konfig kubectl config
-abbr -a kontext kubectl config use-context
-abbr -a kontexts kubectl config get-contexts
-abbr -a klusters kubectl config get-clusters
-abbr -a kpods kubectl get pods
-abbr -a skale kubectl scale
-abbr -a skaledown kubectl scale --replicas=0 deploy/
-abbr -a deskribe kubectl describe
-abbr -a sekrets kubectl get secrets
-
-abbr -a ist istioctl
-abbr -a isti istioctl
-abbr -a isto istioctl
-abbr -a istio istioctl
-
-abbr -a pipr pip install -r requirements.txt
-abbr -a pippip pip install --upgrade pip
-abbr -a mkenv python3.8 -m venv env
