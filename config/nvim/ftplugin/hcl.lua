@@ -25,7 +25,7 @@ local snippet = luasnip.snippet
 local t = luasnip.text_node
 local i = luasnip.insert_node
 
-luasnip.add_snippets('terraform', {
+luasnip.add_snippets('hcl', {
   snippet({ trig = 'res', descr = [[resource "PROVIDER_TYPE" "NAME" {}]] }, {
     t({ [[resource "]] }),
     i(1),
