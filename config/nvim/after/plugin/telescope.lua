@@ -1,7 +1,12 @@
 -- Nested metatable interface for personal telescope configs
 local telescope = setmetatable({}, {
+  ---@param theme string: default, ivy, dropdown, cursor
+  ---@return table: metatable with theme set
   __index = function(_, theme)
     return setmetatable({ theme = theme }, {
+      ---@param self table: Self
+      ---@param function_call string: Telescope action
+      ---@return function: Callback
       __index = function(self, function_call)
         return require('config.telescope')[self.theme][function_call]
       end,

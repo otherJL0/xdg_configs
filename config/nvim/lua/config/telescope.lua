@@ -32,9 +32,13 @@ end
 
 -- Return a new instance style table instead to avoid telescope issues
 local styles = {
+
+  ---@return default Telescope layout
   default = function()
     return {}
   end,
+
+  ---@return Layout at bottom of screen
   ivy = function()
     return themes.get_ivy({
       layout_config = {
@@ -46,6 +50,8 @@ local styles = {
       },
     })
   end,
+
+  ---@return Centered layout at top of screen
   dropdown = function()
     return themes.get_dropdown({
       layout_config = {
@@ -61,14 +67,22 @@ local styles = {
       },
     })
   end,
+
+  ---@return Layout close to cursor position
   cursor = function()
     return themes.get_cursor()
   end,
 }
 
 return setmetatable({}, {
+  ---@param _ table: self
+  ---@param style string: Any of default, ivy, dropdown, or cursor
+  ---@return table: Metatable with a set style
   __index = function(_, style)
     return setmetatable({ theme = styles[style]() }, {
+      ---@param self table: self
+      ---@param function_call string: Any telescope function call
+      ---@return callback
       __index = function(self, function_call)
         local extensions = vim.tbl_keys(telescope.extensions)
         if vim.tbl_contains(extensions, function_call) then
