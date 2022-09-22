@@ -6,8 +6,20 @@ local neorg_callbacks = require('neorg.callbacks')
 
 neorg.setup({
   load = {
-    ['core.integrations.telescope'] = {}, -- Enable the telescope module
     ['core.defaults'] = {},
+    ['core.integrations.telescope'] = {}, -- Enable the telescope module
+    ['core.integrations.treesitter'] = {
+      config = {
+        configure_parsers = true,
+        install_parsers = true,
+      },
+    },
+    ['core.norg.esupports.metagen'] = {
+      config = {
+        type = 'auto',
+        update_date = true,
+      },
+    },
     ['core.norg.concealer'] = {
       config = {
         folds = false,
@@ -57,3 +69,9 @@ neorg_callbacks.on_event('core.keybinds.events.enable_keybinds', function(_, key
     noremap = true,
   })
 end)
+
+vim.lsp.start({
+  name = "neorg-lsp",
+  cmd = {"neorg-lsp"},
+  root_dir = vim.fs.dirname(vim.fs.find({'index.norg'})[1]),
+})
