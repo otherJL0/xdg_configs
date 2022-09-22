@@ -346,7 +346,7 @@ local function my_plugins()
         popup = {
           border = {
             -- padding = { 1,  },
-            style = 'single',
+            style = 'double',
           },
         },
       })
@@ -363,9 +363,6 @@ local function my_plugins()
     requires = {
       'anuvyklack/keymap-layer.nvim',
     },
-    config = function()
-      require('config.hydra')
-    end,
   })
 end
 
