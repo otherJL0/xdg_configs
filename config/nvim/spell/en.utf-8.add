@@ -161,3 +161,11 @@ rollout
 configs
 args
 fzf
+monstache
+apollo
+aws
+erlang
+rabbitmq
+kafka
+mariadb
+jsonpath
