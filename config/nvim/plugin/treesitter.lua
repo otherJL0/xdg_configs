@@ -32,6 +32,7 @@ local ts_patterns = {
   ['tuple_expression'] = 'Structure',
   ['jsx_element'] = 'Structure',
   ['member'] = 'Structure',
+  ['block_mapping_pair'] = 'Structure',
 }
 
 require('treesitter-context').setup({
