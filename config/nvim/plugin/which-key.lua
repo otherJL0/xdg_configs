@@ -102,7 +102,3 @@ wk.register({
     G = { telescope.ivy.grep_string, 'Grep string under cursor' },
   },
 })
-
-wk.register({
-  ["]c"] = {name = "Next hunk"}
-})
