@@ -31,6 +31,7 @@ catppuccin.setup({
     operators = { 'bold' },
   },
   integrations = {
+    aerial = true,
     treesitter = true,
     native_lsp = {
       enabled = true,

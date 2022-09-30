@@ -94,6 +94,7 @@ vim.api.nvim_create_autocmd('WinEnter', {
       'help',
       'qf',
       'mason',
+      'aerial',
     }
 
     local ignored_prefix = {

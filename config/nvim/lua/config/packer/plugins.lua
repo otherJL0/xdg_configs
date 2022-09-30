@@ -357,6 +357,7 @@ local function my_plugins()
     },
   })
   use({ 'nvim-neorg/library-of-norgxandria', opt = true })
+  use({'stevearc/aerial.nvim'})
   use({ 'glepnir/lspsaga.nvim' })
   use({
     'anuvyklack/hydra.nvim',

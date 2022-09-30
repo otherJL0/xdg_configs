@@ -20,6 +20,8 @@ saga.init_lsp_saga({
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    require('aerial').on_attach(client, args.buf)
     keymap(
       'n',
       '<leader>cd',
@@ -53,7 +55,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
       local hl = 'DiagnosticSign' .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
     --[[ local border = { ]]
     --[[   { '┌', 'FloatBorder' }, ]]
     --[[   { '─', 'FloatBorder' }, ]]
