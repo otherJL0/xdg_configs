@@ -66,7 +66,7 @@ local styles = {
         end,
 
         width = function(_, max_columns, _)
-          return math.min(max_columns, 80)
+          return math.floor(max_columns*0.75)
         end,
       },
     })

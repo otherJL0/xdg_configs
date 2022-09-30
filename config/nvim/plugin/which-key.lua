@@ -102,3 +102,5 @@ wk.register({
     G = { telescope.ivy.grep_string, 'Grep string under cursor' },
   },
 })
+
+vim.keymap.set('n', '<C-S-P>', telescope.dropdown.commands )
