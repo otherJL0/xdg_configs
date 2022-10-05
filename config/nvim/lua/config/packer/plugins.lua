@@ -308,6 +308,17 @@ local function my_plugins()
     requires = { { 'nvim-lua/plenary.nvim' } },
   })
 
+   use {
+      'stevearc/overseer.nvim',
+      config = function() require('overseer').setup() end
+    }
+  use({
+    'stevearc/resession.nvim',
+    config = function()
+      require('resession').setup()
+    end,
+  })
+
   use({
     'someone-stole-my-name/yaml-companion.nvim',
     config = function()

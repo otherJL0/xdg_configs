@@ -32,6 +32,7 @@ catppuccin.setup({
   },
   integrations = {
     aerial = true,
+    overseer = true,
     treesitter = true,
     native_lsp = {
       enabled = true,
@@ -80,7 +81,7 @@ catppuccin.setup({
   },
 })
 -- Lua
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme('catppuccin')
 
 require('tint').setup({
   bg = false,
