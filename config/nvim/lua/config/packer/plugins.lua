@@ -207,6 +207,14 @@ local function my_plugins()
   })
 
   use({
+    'folke/noice.nvim',
+    event = 'VimEnter',
+    config = function()
+      require('config.tui')
+    end,
+  })
+
+  use({
     'rcarriga/nvim-notify',
     config = function()
       vim.opt.termguicolors = true
@@ -357,7 +365,7 @@ local function my_plugins()
     },
   })
   use({ 'nvim-neorg/library-of-norgxandria', opt = true })
-  use({'stevearc/aerial.nvim'})
+  use({ 'stevearc/aerial.nvim' })
   use({ 'glepnir/lspsaga.nvim' })
   use({
     'anuvyklack/hydra.nvim',
