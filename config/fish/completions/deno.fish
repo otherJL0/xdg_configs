@@ -39,6 +39,7 @@ complete -c deno -n "__fish_seen_subcommand_from bench" -l allow-write -d 'Allow
 complete -c deno -n "__fish_seen_subcommand_from bench" -l allow-net -d 'Allow network access' -r
 complete -c deno -n "__fish_seen_subcommand_from bench" -l unsafely-ignore-certificate-errors -d 'DANGER: Disables verification of TLS certificates' -r
 complete -c deno -n "__fish_seen_subcommand_from bench" -l allow-env -d 'Allow environment access' -r
+complete -c deno -n "__fish_seen_subcommand_from bench" -l allow-sys -d 'Allow access to system info' -r
 complete -c deno -n "__fish_seen_subcommand_from bench" -l allow-run -d 'Allow running subprocesses' -r
 complete -c deno -n "__fish_seen_subcommand_from bench" -l allow-ffi -d 'Allow loading dynamic libraries' -r -F
 complete -c deno -n "__fish_seen_subcommand_from bench" -l location -d 'Value of \'globalThis.location\' used by some web APIs' -r -f
@@ -48,6 +49,8 @@ complete -c deno -n "__fish_seen_subcommand_from bench" -l ignore -d 'Ignore fil
 complete -c deno -n "__fish_seen_subcommand_from bench" -l filter -d 'Run benchmarks with this string or pattern in the bench name' -r
 complete -c deno -n "__fish_seen_subcommand_from bench" -s L -l log-level -d 'Set log level' -r -f -a "{debug	,info	}"
 complete -c deno -n "__fish_seen_subcommand_from bench" -l no-remote -d 'Do not resolve remote modules'
+complete -c deno -n "__fish_seen_subcommand_from bench" -l no-npm -d 'Do not resolve npm modules'
+complete -c deno -n "__fish_seen_subcommand_from bench" -l node-modules-dir -d 'Creates a local node_modules folder'
 complete -c deno -n "__fish_seen_subcommand_from bench" -l no-config -d 'Disable automatic loading of the configuration file.'
 complete -c deno -n "__fish_seen_subcommand_from bench" -l lock-write -d 'Write lock file (use with --lock)'
 complete -c deno -n "__fish_seen_subcommand_from bench" -l allow-hrtime -d 'Allow high resolution time measurement'
@@ -56,7 +59,6 @@ complete -c deno -n "__fish_seen_subcommand_from bench" -l prompt -d 'deprecated
 complete -c deno -n "__fish_seen_subcommand_from bench" -l no-prompt -d 'Always throw if required permission wasn\'t passed'
 complete -c deno -n "__fish_seen_subcommand_from bench" -l cached-only -d 'Require that remote dependencies are already cached'
 complete -c deno -n "__fish_seen_subcommand_from bench" -l enable-testing-features-do-not-use -d 'INTERNAL: Enable internal features used during integration testing'
-complete -c deno -n "__fish_seen_subcommand_from bench" -l compat -d 'UNSTABLE: Node compatibility mode.'
 complete -c deno -n "__fish_seen_subcommand_from bench" -l watch -d 'Watch for file changes and restart automatically'
 complete -c deno -n "__fish_seen_subcommand_from bench" -l no-clear-screen -d 'Do not clear terminal screen when under watch mode'
 complete -c deno -n "__fish_seen_subcommand_from bench" -s h -l help -d 'Print help information'
@@ -71,6 +73,8 @@ complete -c deno -n "__fish_seen_subcommand_from bundle" -l lock -d 'Check the s
 complete -c deno -n "__fish_seen_subcommand_from bundle" -l cert -d 'Load certificate authority from PEM encoded file' -r -F
 complete -c deno -n "__fish_seen_subcommand_from bundle" -s L -l log-level -d 'Set log level' -r -f -a "{debug	,info	}"
 complete -c deno -n "__fish_seen_subcommand_from bundle" -l no-remote -d 'Do not resolve remote modules'
+complete -c deno -n "__fish_seen_subcommand_from bundle" -l no-npm -d 'Do not resolve npm modules'
+complete -c deno -n "__fish_seen_subcommand_from bundle" -l node-modules-dir -d 'Creates a local node_modules folder'
 complete -c deno -n "__fish_seen_subcommand_from bundle" -l no-config -d 'Disable automatic loading of the configuration file.'
 complete -c deno -n "__fish_seen_subcommand_from bundle" -l lock-write -d 'Write lock file (use with --lock)'
 complete -c deno -n "__fish_seen_subcommand_from bundle" -l watch -d 'Watch for file changes and restart automatically'
@@ -87,6 +91,8 @@ complete -c deno -n "__fish_seen_subcommand_from cache" -l lock -d 'Check the sp
 complete -c deno -n "__fish_seen_subcommand_from cache" -l cert -d 'Load certificate authority from PEM encoded file' -r -F
 complete -c deno -n "__fish_seen_subcommand_from cache" -s L -l log-level -d 'Set log level' -r -f -a "{debug	,info	}"
 complete -c deno -n "__fish_seen_subcommand_from cache" -l no-remote -d 'Do not resolve remote modules'
+complete -c deno -n "__fish_seen_subcommand_from cache" -l no-npm -d 'Do not resolve npm modules'
+complete -c deno -n "__fish_seen_subcommand_from cache" -l node-modules-dir -d 'Creates a local node_modules folder'
 complete -c deno -n "__fish_seen_subcommand_from cache" -l no-config -d 'Disable automatic loading of the configuration file.'
 complete -c deno -n "__fish_seen_subcommand_from cache" -l lock-write -d 'Write lock file (use with --lock)'
 complete -c deno -n "__fish_seen_subcommand_from cache" -s h -l help -d 'Print help information'
@@ -99,6 +105,8 @@ complete -c deno -n "__fish_seen_subcommand_from check" -l lock -d 'Check the sp
 complete -c deno -n "__fish_seen_subcommand_from check" -l cert -d 'Load certificate authority from PEM encoded file' -r -F
 complete -c deno -n "__fish_seen_subcommand_from check" -s L -l log-level -d 'Set log level' -r -f -a "{debug	,info	}"
 complete -c deno -n "__fish_seen_subcommand_from check" -l no-remote -d 'Do not resolve remote modules'
+complete -c deno -n "__fish_seen_subcommand_from check" -l no-npm -d 'Do not resolve npm modules'
+complete -c deno -n "__fish_seen_subcommand_from check" -l node-modules-dir -d 'Creates a local node_modules folder'
 complete -c deno -n "__fish_seen_subcommand_from check" -l no-config -d 'Disable automatic loading of the configuration file.'
 complete -c deno -n "__fish_seen_subcommand_from check" -l lock-write -d 'Write lock file (use with --lock)'
 complete -c deno -n "__fish_seen_subcommand_from check" -l remote -d 'Type-check all modules, including remote'
@@ -117,6 +125,7 @@ complete -c deno -n "__fish_seen_subcommand_from compile" -l allow-write -d 'All
 complete -c deno -n "__fish_seen_subcommand_from compile" -l allow-net -d 'Allow network access' -r
 complete -c deno -n "__fish_seen_subcommand_from compile" -l unsafely-ignore-certificate-errors -d 'DANGER: Disables verification of TLS certificates' -r
 complete -c deno -n "__fish_seen_subcommand_from compile" -l allow-env -d 'Allow environment access' -r
+complete -c deno -n "__fish_seen_subcommand_from compile" -l allow-sys -d 'Allow access to system info' -r
 complete -c deno -n "__fish_seen_subcommand_from compile" -l allow-run -d 'Allow running subprocesses' -r
 complete -c deno -n "__fish_seen_subcommand_from compile" -l allow-ffi -d 'Allow loading dynamic libraries' -r -F
 complete -c deno -n "__fish_seen_subcommand_from compile" -l location -d 'Value of \'globalThis.location\' used by some web APIs' -r -f
@@ -126,6 +135,8 @@ complete -c deno -n "__fish_seen_subcommand_from compile" -s o -l output -d 'Out
 complete -c deno -n "__fish_seen_subcommand_from compile" -l target -d 'Target OS architecture' -r -f -a "{x86_64-unknown-linux-gnu	,x86_64-pc-windows-msvc	,x86_64-apple-darwin	,aarch64-apple-darwin	}"
 complete -c deno -n "__fish_seen_subcommand_from compile" -s L -l log-level -d 'Set log level' -r -f -a "{debug	,info	}"
 complete -c deno -n "__fish_seen_subcommand_from compile" -l no-remote -d 'Do not resolve remote modules'
+complete -c deno -n "__fish_seen_subcommand_from compile" -l no-npm -d 'Do not resolve npm modules'
+complete -c deno -n "__fish_seen_subcommand_from compile" -l node-modules-dir -d 'Creates a local node_modules folder'
 complete -c deno -n "__fish_seen_subcommand_from compile" -l no-config -d 'Disable automatic loading of the configuration file.'
 complete -c deno -n "__fish_seen_subcommand_from compile" -l lock-write -d 'Write lock file (use with --lock)'
 complete -c deno -n "__fish_seen_subcommand_from compile" -l allow-hrtime -d 'Allow high resolution time measurement'
@@ -134,7 +145,6 @@ complete -c deno -n "__fish_seen_subcommand_from compile" -l prompt -d 'deprecat
 complete -c deno -n "__fish_seen_subcommand_from compile" -l no-prompt -d 'Always throw if required permission wasn\'t passed'
 complete -c deno -n "__fish_seen_subcommand_from compile" -l cached-only -d 'Require that remote dependencies are already cached'
 complete -c deno -n "__fish_seen_subcommand_from compile" -l enable-testing-features-do-not-use -d 'INTERNAL: Enable internal features used during integration testing'
-complete -c deno -n "__fish_seen_subcommand_from compile" -l compat -d 'UNSTABLE: Node compatibility mode.'
 complete -c deno -n "__fish_seen_subcommand_from compile" -s h -l help -d 'Print help information'
 complete -c deno -n "__fish_seen_subcommand_from compile" -l unstable -d 'Enable unstable features and APIs'
 complete -c deno -n "__fish_seen_subcommand_from compile" -s q -l quiet -d 'Suppress diagnostic output'
@@ -174,11 +184,12 @@ complete -c deno -n "__fish_seen_subcommand_from eval" -l seed -d 'Set the rando
 complete -c deno -n "__fish_seen_subcommand_from eval" -l ext -d 'Set standard input (stdin) content type' -r -f -a "{ts	,tsx	,js	,jsx	}"
 complete -c deno -n "__fish_seen_subcommand_from eval" -s L -l log-level -d 'Set log level' -r -f -a "{debug	,info	}"
 complete -c deno -n "__fish_seen_subcommand_from eval" -l no-remote -d 'Do not resolve remote modules'
+complete -c deno -n "__fish_seen_subcommand_from eval" -l no-npm -d 'Do not resolve npm modules'
+complete -c deno -n "__fish_seen_subcommand_from eval" -l node-modules-dir -d 'Creates a local node_modules folder'
 complete -c deno -n "__fish_seen_subcommand_from eval" -l no-config -d 'Disable automatic loading of the configuration file.'
 complete -c deno -n "__fish_seen_subcommand_from eval" -l lock-write -d 'Write lock file (use with --lock)'
 complete -c deno -n "__fish_seen_subcommand_from eval" -l cached-only -d 'Require that remote dependencies are already cached'
 complete -c deno -n "__fish_seen_subcommand_from eval" -l enable-testing-features-do-not-use -d 'INTERNAL: Enable internal features used during integration testing'
-complete -c deno -n "__fish_seen_subcommand_from eval" -l compat -d 'UNSTABLE: Node compatibility mode.'
 complete -c deno -n "__fish_seen_subcommand_from eval" -s T -l ts -d 'Treat eval input as TypeScript'
 complete -c deno -n "__fish_seen_subcommand_from eval" -s p -l print -d 'print result to stdout'
 complete -c deno -n "__fish_seen_subcommand_from eval" -s h -l help -d 'Print help information'
@@ -228,6 +239,7 @@ complete -c deno -n "__fish_seen_subcommand_from install" -l allow-write -d 'All
 complete -c deno -n "__fish_seen_subcommand_from install" -l allow-net -d 'Allow network access' -r
 complete -c deno -n "__fish_seen_subcommand_from install" -l unsafely-ignore-certificate-errors -d 'DANGER: Disables verification of TLS certificates' -r
 complete -c deno -n "__fish_seen_subcommand_from install" -l allow-env -d 'Allow environment access' -r
+complete -c deno -n "__fish_seen_subcommand_from install" -l allow-sys -d 'Allow access to system info' -r
 complete -c deno -n "__fish_seen_subcommand_from install" -l allow-run -d 'Allow running subprocesses' -r
 complete -c deno -n "__fish_seen_subcommand_from install" -l allow-ffi -d 'Allow loading dynamic libraries' -r -F
 complete -c deno -n "__fish_seen_subcommand_from install" -l inspect -d 'Activate inspector on host:port (default: 127.0.0.1:9229)' -r
@@ -239,6 +251,8 @@ complete -c deno -n "__fish_seen_subcommand_from install" -s n -l name -d 'Execu
 complete -c deno -n "__fish_seen_subcommand_from install" -l root -d 'Installation root' -r -f -a "(__fish_complete_directories)"
 complete -c deno -n "__fish_seen_subcommand_from install" -s L -l log-level -d 'Set log level' -r -f -a "{debug	,info	}"
 complete -c deno -n "__fish_seen_subcommand_from install" -l no-remote -d 'Do not resolve remote modules'
+complete -c deno -n "__fish_seen_subcommand_from install" -l no-npm -d 'Do not resolve npm modules'
+complete -c deno -n "__fish_seen_subcommand_from install" -l node-modules-dir -d 'Creates a local node_modules folder'
 complete -c deno -n "__fish_seen_subcommand_from install" -l no-config -d 'Disable automatic loading of the configuration file.'
 complete -c deno -n "__fish_seen_subcommand_from install" -l lock-write -d 'Write lock file (use with --lock)'
 complete -c deno -n "__fish_seen_subcommand_from install" -l allow-hrtime -d 'Allow high resolution time measurement'
@@ -247,7 +261,6 @@ complete -c deno -n "__fish_seen_subcommand_from install" -l prompt -d 'deprecat
 complete -c deno -n "__fish_seen_subcommand_from install" -l no-prompt -d 'Always throw if required permission wasn\'t passed'
 complete -c deno -n "__fish_seen_subcommand_from install" -l cached-only -d 'Require that remote dependencies are already cached'
 complete -c deno -n "__fish_seen_subcommand_from install" -l enable-testing-features-do-not-use -d 'INTERNAL: Enable internal features used during integration testing'
-complete -c deno -n "__fish_seen_subcommand_from install" -l compat -d 'UNSTABLE: Node compatibility mode.'
 complete -c deno -n "__fish_seen_subcommand_from install" -s f -l force -d 'Forcefully overwrite existing installation'
 complete -c deno -n "__fish_seen_subcommand_from install" -s h -l help -d 'Print help information'
 complete -c deno -n "__fish_seen_subcommand_from install" -l unstable -d 'Enable unstable features and APIs'
@@ -270,6 +283,7 @@ complete -c deno -n "__fish_seen_subcommand_from lint" -s L -l log-level -d 'Set
 complete -c deno -n "__fish_seen_subcommand_from lint" -l rules -d 'List available rules'
 complete -c deno -n "__fish_seen_subcommand_from lint" -l no-config -d 'Disable automatic loading of the configuration file.'
 complete -c deno -n "__fish_seen_subcommand_from lint" -l json -d 'Output lint result in JSON format'
+complete -c deno -n "__fish_seen_subcommand_from lint" -l compact -d 'Output lint result in compact format'
 complete -c deno -n "__fish_seen_subcommand_from lint" -l watch -d 'Watch for file changes and restart automatically'
 complete -c deno -n "__fish_seen_subcommand_from lint" -l no-clear-screen -d 'Do not clear terminal screen when under watch mode'
 complete -c deno -n "__fish_seen_subcommand_from lint" -s h -l help -d 'Print help information'
@@ -292,11 +306,12 @@ complete -c deno -n "__fish_seen_subcommand_from repl" -l eval -d 'Evaluates the
 complete -c deno -n "__fish_seen_subcommand_from repl" -l unsafely-ignore-certificate-errors -d 'DANGER: Disables verification of TLS certificates' -r
 complete -c deno -n "__fish_seen_subcommand_from repl" -s L -l log-level -d 'Set log level' -r -f -a "{debug	,info	}"
 complete -c deno -n "__fish_seen_subcommand_from repl" -l no-remote -d 'Do not resolve remote modules'
+complete -c deno -n "__fish_seen_subcommand_from repl" -l no-npm -d 'Do not resolve npm modules'
+complete -c deno -n "__fish_seen_subcommand_from repl" -l node-modules-dir -d 'Creates a local node_modules folder'
 complete -c deno -n "__fish_seen_subcommand_from repl" -l no-config -d 'Disable automatic loading of the configuration file.'
 complete -c deno -n "__fish_seen_subcommand_from repl" -l lock-write -d 'Write lock file (use with --lock)'
 complete -c deno -n "__fish_seen_subcommand_from repl" -l cached-only -d 'Require that remote dependencies are already cached'
 complete -c deno -n "__fish_seen_subcommand_from repl" -l enable-testing-features-do-not-use -d 'INTERNAL: Enable internal features used during integration testing'
-complete -c deno -n "__fish_seen_subcommand_from repl" -l compat -d 'UNSTABLE: Node compatibility mode.'
 complete -c deno -n "__fish_seen_subcommand_from repl" -s h -l help -d 'Print help information'
 complete -c deno -n "__fish_seen_subcommand_from repl" -l unstable -d 'Enable unstable features and APIs'
 complete -c deno -n "__fish_seen_subcommand_from repl" -s q -l quiet -d 'Suppress diagnostic output'
@@ -312,6 +327,7 @@ complete -c deno -n "__fish_seen_subcommand_from run" -l allow-write -d 'Allow f
 complete -c deno -n "__fish_seen_subcommand_from run" -l allow-net -d 'Allow network access' -r
 complete -c deno -n "__fish_seen_subcommand_from run" -l unsafely-ignore-certificate-errors -d 'DANGER: Disables verification of TLS certificates' -r
 complete -c deno -n "__fish_seen_subcommand_from run" -l allow-env -d 'Allow environment access' -r
+complete -c deno -n "__fish_seen_subcommand_from run" -l allow-sys -d 'Allow access to system info' -r
 complete -c deno -n "__fish_seen_subcommand_from run" -l allow-run -d 'Allow running subprocesses' -r
 complete -c deno -n "__fish_seen_subcommand_from run" -l allow-ffi -d 'Allow loading dynamic libraries' -r -F
 complete -c deno -n "__fish_seen_subcommand_from run" -l inspect -d 'Activate inspector on host:port (default: 127.0.0.1:9229)' -r
@@ -322,6 +338,8 @@ complete -c deno -n "__fish_seen_subcommand_from run" -l seed -d 'Set the random
 complete -c deno -n "__fish_seen_subcommand_from run" -l watch -d 'Watch for file changes and restart automatically' -r -F
 complete -c deno -n "__fish_seen_subcommand_from run" -s L -l log-level -d 'Set log level' -r -f -a "{debug	,info	}"
 complete -c deno -n "__fish_seen_subcommand_from run" -l no-remote -d 'Do not resolve remote modules'
+complete -c deno -n "__fish_seen_subcommand_from run" -l no-npm -d 'Do not resolve npm modules'
+complete -c deno -n "__fish_seen_subcommand_from run" -l node-modules-dir -d 'Creates a local node_modules folder'
 complete -c deno -n "__fish_seen_subcommand_from run" -l no-config -d 'Disable automatic loading of the configuration file.'
 complete -c deno -n "__fish_seen_subcommand_from run" -l lock-write -d 'Write lock file (use with --lock)'
 complete -c deno -n "__fish_seen_subcommand_from run" -l allow-hrtime -d 'Allow high resolution time measurement'
@@ -330,7 +348,6 @@ complete -c deno -n "__fish_seen_subcommand_from run" -l prompt -d 'deprecated: 
 complete -c deno -n "__fish_seen_subcommand_from run" -l no-prompt -d 'Always throw if required permission wasn\'t passed'
 complete -c deno -n "__fish_seen_subcommand_from run" -l cached-only -d 'Require that remote dependencies are already cached'
 complete -c deno -n "__fish_seen_subcommand_from run" -l enable-testing-features-do-not-use -d 'INTERNAL: Enable internal features used during integration testing'
-complete -c deno -n "__fish_seen_subcommand_from run" -l compat -d 'UNSTABLE: Node compatibility mode.'
 complete -c deno -n "__fish_seen_subcommand_from run" -l no-clear-screen -d 'Do not clear terminal screen when under watch mode'
 complete -c deno -n "__fish_seen_subcommand_from run" -s h -l help -d 'Print help information'
 complete -c deno -n "__fish_seen_subcommand_from run" -l unstable -d 'Enable unstable features and APIs'
@@ -353,6 +370,7 @@ complete -c deno -n "__fish_seen_subcommand_from test" -l allow-write -d 'Allow 
 complete -c deno -n "__fish_seen_subcommand_from test" -l allow-net -d 'Allow network access' -r
 complete -c deno -n "__fish_seen_subcommand_from test" -l unsafely-ignore-certificate-errors -d 'DANGER: Disables verification of TLS certificates' -r
 complete -c deno -n "__fish_seen_subcommand_from test" -l allow-env -d 'Allow environment access' -r
+complete -c deno -n "__fish_seen_subcommand_from test" -l allow-sys -d 'Allow access to system info' -r
 complete -c deno -n "__fish_seen_subcommand_from test" -l allow-run -d 'Allow running subprocesses' -r
 complete -c deno -n "__fish_seen_subcommand_from test" -l allow-ffi -d 'Allow loading dynamic libraries' -r -F
 complete -c deno -n "__fish_seen_subcommand_from test" -l inspect -d 'Activate inspector on host:port (default: 127.0.0.1:9229)' -r
@@ -368,6 +386,8 @@ complete -c deno -n "__fish_seen_subcommand_from test" -l coverage -d 'UNSTABLE:
 complete -c deno -n "__fish_seen_subcommand_from test" -s j -l jobs -d 'deprecated: Number of parallel workers, defaults to number of available CPUs when no value is provided. Defaults to 1 when the option is not present.' -r
 complete -c deno -n "__fish_seen_subcommand_from test" -s L -l log-level -d 'Set log level' -r -f -a "{debug	,info	}"
 complete -c deno -n "__fish_seen_subcommand_from test" -l no-remote -d 'Do not resolve remote modules'
+complete -c deno -n "__fish_seen_subcommand_from test" -l no-npm -d 'Do not resolve npm modules'
+complete -c deno -n "__fish_seen_subcommand_from test" -l node-modules-dir -d 'Creates a local node_modules folder'
 complete -c deno -n "__fish_seen_subcommand_from test" -l no-config -d 'Disable automatic loading of the configuration file.'
 complete -c deno -n "__fish_seen_subcommand_from test" -l lock-write -d 'Write lock file (use with --lock)'
 complete -c deno -n "__fish_seen_subcommand_from test" -l allow-hrtime -d 'Allow high resolution time measurement'
@@ -376,7 +396,6 @@ complete -c deno -n "__fish_seen_subcommand_from test" -l prompt -d 'deprecated:
 complete -c deno -n "__fish_seen_subcommand_from test" -l no-prompt -d 'Always throw if required permission wasn\'t passed'
 complete -c deno -n "__fish_seen_subcommand_from test" -l cached-only -d 'Require that remote dependencies are already cached'
 complete -c deno -n "__fish_seen_subcommand_from test" -l enable-testing-features-do-not-use -d 'INTERNAL: Enable internal features used during integration testing'
-complete -c deno -n "__fish_seen_subcommand_from test" -l compat -d 'UNSTABLE: Node compatibility mode.'
 complete -c deno -n "__fish_seen_subcommand_from test" -l no-run -d 'Cache test modules, but don\'t run tests'
 complete -c deno -n "__fish_seen_subcommand_from test" -l trace-ops -d 'Enable tracing of async ops. Useful when debugging leaking ops in test, but impacts test execution time.'
 complete -c deno -n "__fish_seen_subcommand_from test" -l doc -d 'UNSTABLE: type-check code blocks'
