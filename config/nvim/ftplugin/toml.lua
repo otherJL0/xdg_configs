@@ -6,7 +6,6 @@
 --     (#match? @table "tool\.(black|isort)")
 --     (#match? @bare_key "line[_-]length")
 -- )
-
 vim.api.nvim_create_autocmd('BufWinEnter', {
   pattern = 'Cargo.toml',
   callback = function()
@@ -134,4 +133,9 @@ vim.lsp.start({
   name = 'taplo',
   cmd = { 'taplo', 'lsp', 'stdio' },
   root_dir = vim.fs.dirname(vim.fs.find({ 'Cargo.toml', 'pyproject.toml' }, { upward = true })[1]),
+  settings = {
+    evenBetterToml = {
+      formatter = { arrayAutoExpand = true, arrayAutoCollapse = false, alignEntries = false },
+    },
+  },
 })
