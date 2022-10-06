@@ -13,6 +13,10 @@ vim.opt.wildignore = vim.opt.wildignore + { '__pycache__', '*.o', '*~', '*.pyc',
 vim.opt.pumblend = 17
 vim.opt.wildmode = { 'longest', 'full' }
 vim.opt.wildoptions = 'pum'
+-- cursor
+-- screen
+-- topline
+vim.opt.splitkeep = "topline"
 
 -- Colorful
 vim.opt.termguicolors = true
