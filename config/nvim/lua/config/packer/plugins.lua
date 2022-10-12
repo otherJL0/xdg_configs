@@ -308,10 +308,12 @@ local function my_plugins()
     requires = { { 'nvim-lua/plenary.nvim' } },
   })
 
-   use {
-      'stevearc/overseer.nvim',
-      config = function() require('overseer').setup() end
-    }
+  use({
+    'stevearc/overseer.nvim',
+    config = function()
+      require('overseer').setup()
+    end,
+  })
   use({
     'stevearc/resession.nvim',
     config = function()
@@ -383,6 +385,49 @@ local function my_plugins()
     requires = {
       'anuvyklack/keymap-layer.nvim',
     },
+  })
+
+  use({
+    'folke/twilight.nvim',
+    config = function()
+      require('twilight').setup({
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+        -- exclude = {"neorg", "norg"}
+      })
+    end,
+  })
+
+  use({
+    'folke/zen-mode.nvim',
+    config = function()
+      require('zen-mode').setup({
+        window = {
+          options = {
+            signcolumn = 'no',
+            number = false,
+            relativenumber = false,
+            cursorline = false,
+            list = false,
+            cursorcolumn = false,
+            foldcolumn = '0',
+          },
+        },
+        plugins = {
+          twilight = {
+            enabled = false,
+          },
+          kitty = {
+            enabled = true,
+            font = '+8',
+          },
+        },
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      })
+    end,
   })
 
   use({

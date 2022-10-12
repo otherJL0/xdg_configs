@@ -8,6 +8,11 @@ neorg.setup({
   load = {
     ['core.defaults'] = {},
     ['core.integrations.telescope'] = {}, -- Enable the telescope module
+    ['core.presenter'] = {
+      config = {
+        zen_mode = 'zen-mode',
+      },
+    },
     ['core.integrations.treesitter'] = {
       config = {
         configure_parsers = true,
@@ -71,7 +76,7 @@ neorg_callbacks.on_event('core.keybinds.events.enable_keybinds', function(_, key
 end)
 
 vim.lsp.start({
-  name = "neorg-lsp",
-  cmd = {"neorg-lsp"},
-  root_dir = vim.fs.dirname(vim.fs.find({'index.norg'})[1]),
+  name = 'neorg-lsp',
+  cmd = { 'neorg-lsp' },
+  root_dir = vim.fs.dirname(vim.fs.find({ 'index.norg' })[1]),
 })
