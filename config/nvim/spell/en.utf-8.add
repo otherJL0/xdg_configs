@@ -170,3 +170,7 @@ kafka
 mariadb
 jsonpath
 redis
+builtins
+purescript
+glibc
+cpp
