@@ -1,10 +1,8 @@
 local M = {}
 
 local function apply_deno_configs(root_dir, configs)
-  local deno_config = vim.fs.find(
-    { 'deno.json' },
-    { path = root_dir, upward = true, type = 'file' }
-  )[1]
+  local deno_config =
+    vim.fs.find({ 'deno.json' }, { path = root_dir, upward = true, type = 'file' })[1]
   local options = {}
   if deno_config then
     local rcfile = io.open(deno_config, 'r')
@@ -88,16 +86,31 @@ local function denols_handler(err, result, ctx)
 end
 
 function M.setup(root_dir)
-  local configs = {
-    enable = true,
-    unstable = true,
-  }
   configs = apply_deno_configs(root_dir, configs)
   vim.lsp.start({
     name = 'denols',
     cmd = { 'deno', 'lsp' },
     root_dir = root_dir,
-    init_options = configs,
+    settings = {
+      deno = {
+        enable = true,
+        unstable = true,
+        enablePaths = true,
+        codeLens = {
+          test = true,
+        },
+        suggest = {
+          completeFunctionCalls = true,
+          names = true,
+          paths = true,
+          autoImports = true,
+          imports = {
+            autoDiscover = true,
+            hosts = true,
+          },
+        },
+      },
+    },
     handlers = {
       ['textDocument/definition'] = denols_handler,
       ['textDocument/references'] = denols_handler,
