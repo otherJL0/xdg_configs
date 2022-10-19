@@ -97,7 +97,13 @@ function M.setup(root_dir)
         unstable = true,
         enablePaths = true,
         codeLens = {
+          implementations = true,
+          references = true,
+          referencesAllFunctions = true,
           test = true,
+        },
+        testing = {
+          enable = true,
         },
         suggest = {
           completeFunctionCalls = true,
