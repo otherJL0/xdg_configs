@@ -326,48 +326,6 @@ components[2][3] = {
 -- Diagnostics ------>
 -- workspace loader
 components[3][1] = {
-  provider = function()
-    local Lsp = vim.lsp.util.get_progress_messages()[1]
-
-    if Lsp then
-      local msg = Lsp.message or ''
-      local percentage = Lsp.percentage or 0
-      local title = Lsp.title or ''
-      local spinners = {
-        '',
-        '',
-        '',
-      }
-      local success_icon = {
-        '',
-        '',
-        '',
-      }
-      local ms = vim.loop.hrtime() / 1000000
-      local frame = math.floor(ms / 120) % #spinners
-
-      if percentage >= 70 then
-        return string.format(
-          ' %%<%s %s %s (%s%%%%) ',
-          success_icon[frame + 1],
-          title,
-          msg,
-          percentage
-        )
-      end
-
-      return string.format(' %%<%s %s %s (%s%%%%) ', spinners[frame + 1], title, msg, percentage)
-    end
-
-    return ''
-  end,
-  enabled = is_enabled(shortline, winid, 80),
-  hl = {
-    fg = clrs.rosewater,
-    bg = sett.bkg,
-  },
-}
-components[3][2] = {
   provider = 'lsp_client_names',
   hl = {
     fg = sett.extras,
@@ -376,7 +334,7 @@ components[3][2] = {
   right_sep = invi_sep,
 }
 -- genral diagnostics (errors, warnings. info and hints)
-components[3][3] = {
+components[3][2] = {
   provider = 'diagnostic_errors',
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.ERROR)
@@ -389,7 +347,7 @@ components[3][3] = {
   icon = '  ',
 }
 
-components[3][4] = {
+components[3][3] = {
   provider = 'diagnostic_warnings',
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.WARN)
@@ -401,7 +359,7 @@ components[3][4] = {
   icon = '  ',
 }
 
-components[3][5] = {
+components[3][4] = {
   provider = 'diagnostic_info',
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.INFO)
@@ -413,7 +371,7 @@ components[3][5] = {
   icon = '  ',
 }
 
-components[3][6] = {
+components[3][5] = {
   provider = 'diagnostic_hints',
   enabled = function()
     return lsp.diagnostics_exist(lsp_severity.HINT)
@@ -426,7 +384,7 @@ components[3][6] = {
   right_sep = invi_sep,
 }
 -- ######## Right
-components[3][7] = {
+components[3][6] = {
   provider = {
     name = 'file_type',
 
@@ -456,7 +414,7 @@ components[3][7] = {
 }
 
 -- position
-components[3][8] = {
+components[3][7] = {
   provider = function()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
 
@@ -468,7 +426,7 @@ components[3][8] = {
   hl = vi_mode_hl,
 }
 -- file progress
-components[3][9] = {
+components[3][8] = {
   provider = function()
     local current_line = vim.fn.line('.')
     local total_line = vim.fn.line('$')
