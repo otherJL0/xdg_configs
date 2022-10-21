@@ -5,6 +5,7 @@ local clrs = require('catppuccin.palettes').get_palette()
 local ucolors = require('catppuccin.utils.colors')
 local latte = require('catppuccin.palettes').get_palette('latte')
 local navic = require('nvim-navic')
+local noice = require('noice')
 navic.setup({
   highlight = true,
 })
@@ -249,6 +250,10 @@ components[1][5] = {
 }
 
 components[2][1] = {
+  provider = function()
+    return string.format("%s", noice.api.statusline.mode.get())
+  end,
+  enabled = noice.api.statusline.mode.has,
   hl = {
     bg = sett.bkg,
   },
