@@ -20,8 +20,8 @@ telescope.setup({
       },
     },
     project = {
-      base_dirs = { vim.fn.stdpath('data') .. '/site/pack/' , max_depth = 1},
-    }
+      base_dirs = { vim.fn.stdpath('data') .. '/site/pack/', max_depth = 1 },
+    },
   },
 })
 
@@ -29,7 +29,7 @@ for _, extension in ipairs({
   'file_browser',
   'fzf',
   'live_grep_args',
-  'project'
+  'project',
 }) do
   telescope.load_extension(extension)
 end
@@ -66,7 +66,7 @@ local styles = {
         end,
 
         width = function(_, max_columns, _)
-          return math.floor(max_columns*0.75)
+          return math.floor(max_columns * 0.75)
         end,
       },
     })

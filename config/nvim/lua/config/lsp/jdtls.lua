@@ -68,10 +68,8 @@ local on_attach = function(client, bufnr)
 
   -- Fancy borders
   vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
-  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-    vim.lsp.handlers.hover,
-    { border = border }
-  )
+  vim.lsp.handlers['textDocument/signatureHelp'] =
+    vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 
   vim.keymap.set('n', 'gpd', require('goto-preview').goto_preview_definition)
   vim.keymap.set('n', 'gpi', require('goto-preview').goto_preview_implementation)

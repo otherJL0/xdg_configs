@@ -16,7 +16,7 @@ vim.opt.wildoptions = 'pum'
 -- cursor
 -- screen
 -- topline
-vim.opt.splitkeep = "topline"
+vim.opt.splitkeep = 'screen'
 
 -- Colorful
 vim.opt.termguicolors = true

@@ -197,7 +197,7 @@ components[1][1] = {
     if hydra.is_active() then
       return hydra.get_name() or ' '
     end
-    return " " .. mode_colors[vim.fn.mode()][1] .. " "
+    return ' ' .. mode_colors[vim.fn.mode()][1] .. ' '
     -- return ' '
   end,
   hl = vi_mode_hl,
@@ -207,10 +207,10 @@ components[1][2] = {
   provider = 'git_branch',
   enabled = is_enabled(shortline, nil, 70),
   -- hl = vi_mode_hl,
-   hl = {
-     fg = sett.extras,
-     bg = sett.bkg,
-   },
+  hl = {
+    fg = sett.extras,
+    bg = sett.bkg,
+  },
   icon = '  ',
   -- left_sep = {
   --   str = assets.vertical_bar_chubby,

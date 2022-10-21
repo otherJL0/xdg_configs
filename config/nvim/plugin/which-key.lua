@@ -103,4 +103,4 @@ wk.register({
   },
 })
 
-vim.keymap.set('n', '<C-S-P>', telescope.dropdown.commands )
+vim.keymap.set('n', '<C-S-P>', telescope.dropdown.commands)
