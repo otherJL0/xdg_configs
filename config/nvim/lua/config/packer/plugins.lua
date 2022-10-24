@@ -192,7 +192,7 @@ local function my_plugins()
     'JoosepAlviste/nvim-ts-context-commentstring',
     'chentoast/marks.nvim',
     -- "vim-denops/denops.vim",
-    'folke/lua-dev.nvim',
+    'folke/neodev.nvim',
     'folke/which-key.nvim',
     'folke/trouble.nvim',
 
