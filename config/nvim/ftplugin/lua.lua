@@ -25,11 +25,19 @@ vim.bo.tabstop = 2
 vim.bo.shiftwidth = 2
 vim.bo.softtabstop = 2
 
+local root_dir = vim.fs.dirname(
+  vim.fs.find(
+    { 'stylua.toml', 'init.lua' },
+    { path = vim.api.nvim_buf_get_name(0), upward = true, stop = 'nvim' }
+  )[1]
+)
+vim.notify(vim.inspect(root_dir))
+
 vim.lsp.start({
   name = 'lua-language-server',
   cmd = { 'lua-language-server' },
   before_init = require('neodev.lsp').before_init,
-  root_dir = vim.fs.find({ 'stylua.toml', 'lua', 'init.lua' }, { upward = true })[1],
+  root_dir = root_dir,
   settings = {
     Lua = {
       format = {
