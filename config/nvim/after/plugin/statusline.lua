@@ -250,10 +250,10 @@ components[1][5] = {
 }
 
 components[2][1] = {
-  provider = function()
-    return string.format("%s", noice.api.statusline.mode.get())
-  end,
-  enabled = noice.api.statusline.mode.has,
+  -- provider = function()
+  --   return string.format("%s", noice.api.statusline.mode.get())
+  -- end,
+  -- enabled = noice.api.statusline.mode.has,
   hl = {
     bg = sett.bkg,
   },
