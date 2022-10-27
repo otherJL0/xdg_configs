@@ -21,7 +21,6 @@ saga.init_lsp_saga({
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    require('aerial').on_attach(client, args.buf)
     keymap(
       'n',
       '<leader>cd',
