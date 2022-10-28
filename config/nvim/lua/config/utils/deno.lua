@@ -89,6 +89,7 @@ function M.setup(root_dir)
         },
         testing = {
           enable = true,
+          args = {},
         },
         suggest = {
           completeFunctionCalls = true,
@@ -97,7 +98,39 @@ function M.setup(root_dir)
           autoImports = true,
           imports = {
             autoDiscover = true,
-            hosts = true,
+            hosts = {
+              ['https://deno.land'] = true,
+            },
+          },
+        },
+        inlayHints = {
+          enumMemberValues = {
+            --- Enable/disable inlay hints for enum values
+            enabled = true,
+          },
+          functionLikeReturnTypes = {
+            --- Enable/disable inlay hints for implicit function return types
+            enabled = true,
+          },
+          parameterNames = {
+            --- Enable/disable inlay hints for parameter names. Values can be "none", "literals", "all"
+            enabled = 'all',
+            ---  Do not display an inlay hint when the argument name matches the parameter
+            suppressWhenArgumentMatchesName = false,
+          },
+          parameterTypes = {
+            --- Enable/disable inlay hints for implicit parameter types
+            enabled = true,
+          },
+          propertyDeclarationTypes = {
+            ---  Enable/disable inlay hints for implicit property declarations
+            enabled = true,
+          },
+          variableTypes = {
+            --- Enable/disable inlay hints for implicit variable types
+            enabled = true,
+            --- Suppress type hints where the variable name matches the implicit type
+            suppressWhenTypeMatchesName = false,
           },
         },
       },
