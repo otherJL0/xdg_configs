@@ -173,5 +173,3 @@ for _, cmd_type in ipairs({ ':', '@' }) do
     },
   })
 end
-
-require('neogen').setup({ snippet_engine = 'luasnip' })

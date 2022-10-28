@@ -128,10 +128,39 @@ local function my_plugins()
     'hrsh7th/cmp-nvim-lua',
     'hrsh7th/cmp-path',
     'saadparwaiz1/cmp_luasnip',
-    'danymat/neogen',
     requires = { 'hrsh7th/nvim-cmp', 'hrsh7th/cmp-cmdline' },
   })
   use({ 'simrat39/symbols-outline.nvim' })
+
+  use({
+    'danymat/neogen',
+    config = function()
+      require('config.neogen')
+    end,
+    ft = {
+      'bash',
+      'c',
+      'c++',
+      'cc',
+      'cpp',
+      'go',
+      'h',
+      'java',
+      'javascript',
+      'javascriptreact',
+      'jsx',
+      'kotlin',
+      'lua',
+      'python',
+      'ruby',
+      'rust',
+      'sh',
+      'tsx',
+      'typescript',
+      'typescriptreact',
+      'vue',
+    },
+  })
 
   -- Debug
   use({
@@ -311,13 +340,13 @@ local function my_plugins()
   use({
     'stevearc/overseer.nvim',
     config = function()
-      require('overseer').setup()
+      require('overseer').setup({})
     end,
   })
   use({
     'stevearc/resession.nvim',
     config = function()
-      require('resession').setup()
+      require('resession').setup({})
     end,
   })
 
