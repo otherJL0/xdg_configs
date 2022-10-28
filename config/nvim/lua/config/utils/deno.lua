@@ -86,7 +86,7 @@ local function denols_handler(err, result, ctx)
 end
 
 function M.setup(root_dir)
-  configs = apply_deno_configs(root_dir, configs)
+  local configs = apply_deno_configs(root_dir, {})
   vim.lsp.start({
     name = 'denols',
     cmd = { 'deno', 'lsp' },
