@@ -1,23 +1,5 @@
 local M = {}
 
-local function apply_deno_configs(root_dir, configs)
-  local deno_config =
-    vim.fs.find({ 'deno.json' }, { path = root_dir, upward = true, type = 'file' })[1]
-  local options = {}
-  if deno_config then
-    local rcfile = io.open(deno_config, 'r')
-    options = vim.json.decode(rcfile:read('*a'))
-    rcfile:close()
-  else
-    return configs
-  end
-
-  if options.importMap then
-    configs.importMap = options.importMap
-  end
-  return configs
-end
-
 local function buf_cache(bufnr)
   local params = {
     referrer = {
@@ -49,7 +31,7 @@ local function virtual_text_document_handler(uri, result)
         return nil
       end
 
-      vim.api.nvim_buf_set_lines(bufnr, 0, -1, nil, lines)
+      vim.api.nvim_buf_set_lines(bufnr, 0, -1, true, lines)
       vim.api.nvim_buf_set_option(bufnr, 'readonly', true)
       vim.api.nvim_buf_set_option(bufnr, 'modified', false)
       vim.api.nvim_buf_set_option(bufnr, 'modifiable', false)
@@ -63,7 +45,7 @@ local function virtual_text_document(uri)
       uri = uri,
     },
   }
-  local result = lsp.buf_request_sync(0, 'deno/virtualTextDocument', params)
+  local result = vim.lsp.buf_request_sync(0, 'deno/virtualTextDocument', params, {})
   virtual_text_document_handler(uri, result)
 end
 
@@ -86,10 +68,13 @@ local function denols_handler(err, result, ctx)
 end
 
 function M.setup(root_dir)
-  local configs = apply_deno_configs(root_dir, {})
   vim.lsp.start({
     name = 'denols',
     cmd = { 'deno', 'lsp' },
+    init_options = {
+      enable = true,
+      unstable = true,
+    },
     root_dir = root_dir,
     settings = {
       deno = {
