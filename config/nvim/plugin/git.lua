@@ -4,6 +4,7 @@ local gitsigns = require('gitsigns')
 local neogit = require('neogit')
 local hydra = require('hydra')
 vim.opt.diffopt:append('algorithm:histogram')
+vim.opt.diffopt:append('linematch:60')
 require('git-conflict').setup()
 
 diffview.setup({
