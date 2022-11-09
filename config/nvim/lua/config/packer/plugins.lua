@@ -46,13 +46,11 @@ local function my_plugins()
   })
 
   -- LSP Extras
-  use({
-    'onsails/lspkind-nvim',
-  })
+  use({ 'onsails/lspkind-nvim' })
 
-  use({
-    'jose-elias-alvarez/null-ls.nvim',
-  })
+  use({ 'jose-elias-alvarez/null-ls.nvim' })
+
+  use({ 'gorbit99/codewindow.nvim' })
 
   use({
     'kevinhwang91/nvim-hlslens',

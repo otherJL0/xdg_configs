@@ -1,3 +1,8 @@
+local codewindow = require('codewindow')
+
+codewindow.setup()
+codewindow.apply_default_keybinds()
+
 require('noice').setup({
   lsp = {
     override = {
