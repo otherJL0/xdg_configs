@@ -181,6 +181,7 @@ local function my_plugins()
         for _, venv in ipairs(venv_directories) do
           local pypath_candidate = string.format('%s/%s/bin/python', cwd, venv)
           if
+            
             vim.fn.executable(pypath_candidate) and vim.fn.exepath('python') == pypath_candidate
           then
             return pypath_candidate
@@ -299,18 +300,15 @@ local function my_plugins()
   use({ 'jose-elias-alvarez/nvim-lsp-ts-utils', ft = { 'typescript', 'tsx', 'ts' } })
 
   use({
-    'nvim-neotest/neotest',
     'nvim-neotest/neotest-plenary',
     'nvim-neotest/neotest-go',
     'nvim-neotest/neotest-python',
+    'rouge8/neotest-rust',
     'haydenmeade/neotest-jest',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
-      'antoinemadec/FixCursorHold.nvim',
-      'haydenmeade/neotest-jest',
-    },
+    'nvim-neotest/neotest',
+    ft = { 'lua', 'python', 'go', 'typescript', 'javascript', 'rust' },
   })
+
   use({ 'b0o/SchemaStore.nvim' })
   use({ 'NVChad/nvim-colorizer.lua' })
 
