@@ -52,14 +52,6 @@ vim.lsp.start({
 vim.api.nvim_create_autocmd('BufEnter', {
   pattern = '*test*',
   callback = function()
-    require('neotest').setup({
-      adapters = {
-        require('neotest-go')({
-          experimental = {
-            test_table = true,
-          },
-        }),
-      },
-    })
+    require('config.neotest.go')
   end,
 })

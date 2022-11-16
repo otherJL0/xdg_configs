@@ -171,6 +171,11 @@ local function my_plugins()
   })
 
   use({
+    'leoluz/nvim-dap-go',
+    ft = 'go',
+  })
+
+  use({
     'mfussenegger/nvim-dap-python',
     config = function()
       local function pypath()
@@ -179,7 +184,6 @@ local function my_plugins()
         for _, venv in ipairs(venv_directories) do
           local pypath_candidate = string.format('%s/%s/bin/python', cwd, venv)
           if
-            
             vim.fn.executable(pypath_candidate) and vim.fn.exepath('python') == pypath_candidate
           then
             return pypath_candidate
