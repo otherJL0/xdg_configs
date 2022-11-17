@@ -119,7 +119,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.api.nvim_create_autocmd('BufWritePost', {
         buffer = args.buf,
         callback = function()
-          vim.lsp.buf.format({ bufnr = args.buf, async = true })
+          vim.lsp.buf.format({ bufnr = args.buf, async = false })
         end,
       })
     end
