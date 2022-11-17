@@ -25,6 +25,7 @@ local function my_plugins()
       require('mason').setup({})
     end,
   })
+  use({ 'toppair/peek.nvim', run = 'deno task --quiet build:fast' })
   use({ 'tjdevries/tree-sitter-lua', opt = true })
   use({ 'tami5/sqlite.lua', opt = true })
   use({ 'andymass/vim-matchup' })
@@ -496,6 +497,16 @@ local function my_plugins()
         require('cmdbuf').split_open(vim.o.cmdwinheight, { type = 'vim/search/backward' })
       end)
     end,
+  })
+
+  use({
+    'anuvyklack/windows.nvim',
+    'nvim-zh/colorful-winsep.nvim',
+    'kwkarlwang/bufresize.nvim',
+    requires = {
+      'anuvyklack/middleclass',
+      'anuvyklack/animation.nvim',
+    },
   })
 end
 

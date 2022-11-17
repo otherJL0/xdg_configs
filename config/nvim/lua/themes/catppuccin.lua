@@ -82,9 +82,10 @@ catppuccin.setup({
 })
 -- Lua
 vim.cmd.colorscheme('catppuccin')
+require('colorful-winsep').setup()
 
-require('tint').setup({
-  bg = false,
-  amt = -30,
-  ignore = { 'WinSeparator', 'Status' },
-})
+-- require('tint').setup({
+--   bg = false,
+--   amt = -30,
+--   ignore = { 'WinSeparator', 'Status' },
+-- })
