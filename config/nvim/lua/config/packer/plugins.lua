@@ -40,6 +40,7 @@ local function my_plugins()
   })
   use({
     'ggandor/leap.nvim',
+    'ggandor/flit.nvim',
   })
 
   use({
