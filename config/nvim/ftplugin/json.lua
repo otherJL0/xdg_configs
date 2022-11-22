@@ -12,4 +12,10 @@ vim.lsp.start({
     provideFormatter = true,
   },
   capabilities = capabilities,
+  settings = {
+    json = {
+            schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
+    }
+  }
 })
