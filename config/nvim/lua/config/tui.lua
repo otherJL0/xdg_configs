@@ -43,13 +43,13 @@ require('noice').setup({
   },
 })
 
-
 vim.o.winwidth = 10
 vim.o.winminwidth = 10
 vim.o.equalalways = false
 -- require('windows').setup()
 vim.keymap.set('n', '<C-w> ', require('bufresize').resize, { noremap = true, silent = true })
-vim.api.nvim_create_autocmd({'VimResized' }, {
+vim.api.nvim_create_autocmd({ 'VimResized' }, {
   pattern = '*',
   callback = require('bufresize').resize,
 })
+

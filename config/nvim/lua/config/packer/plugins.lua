@@ -277,6 +277,15 @@ local function my_plugins()
   })
 
   use({
+    'lukas-reineke/headlines.nvim',
+    after = { 'nvim-treesitter', 'catppuccin' },
+    config = function()
+      require('headlines').setup({})
+    end,
+    ft = { 'markdown', 'norg', 'md', 'neorg' },
+  })
+
+  use({
     'gennaro-tedesco/nvim-jqx',
     ft = { '' },
   })
