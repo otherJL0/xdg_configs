@@ -7,6 +7,8 @@ end
 local luasnip = require('luasnip')
 local cmp = require('cmp')
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local autopairs = require('nvim-autopairs')
+local endwise = require('nvim-autopairs.ts-rule').endwise
 
 local languages = {
   'go',
@@ -120,7 +122,7 @@ cmp.setup({
     ghost_text = true,
   },
 })
-require('nvim-autopairs').setup({
+autopairs.setup({
   check_ts = true,
   enable_check_bracket_line = true,
   fast_wrap = {
@@ -140,8 +142,12 @@ require('nvim-treesitter.configs').setup({
   autopairs = { enable = true },
 })
 
-require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-lua'))
-require('nvim-autopairs').add_rules(require('nvim-autopairs.rules.endwise-ruby'))
+autopairs.add_rules(require('nvim-autopairs.rules.endwise-lua'))
+autopairs.add_rules(require('nvim-autopairs.rules.endwise-ruby'))
+autopairs.add_rules({ endwise('@math$', '@end', 'norg', nil) })
+autopairs.add_rules({ endwise('@table$', '@end', 'norg', nil) })
+autopairs.add_rules({ endwise('@code', '@end', 'norg', nil) })
+autopairs.add_rules({ endwise('@embed', '@end', 'norg', nil) })
 
 -- cmp.setup.cmdline(":", {
 --   sources = {
