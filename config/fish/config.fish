@@ -13,8 +13,8 @@ if status is-interactive
         source $asdf_source
     end
 
-    # Colorscheme
-    source ~/.config/fish/colorschemes/mocha.fish
+    # # Colorscheme
+    # source ~/.config/fish/colorschemes/mocha.fish
 
     # Direnv settings
     set -gx direnv_fish_mode eval_on_arrow
