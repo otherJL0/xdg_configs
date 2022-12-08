@@ -81,3 +81,5 @@ fish_add_path -P ./.venv/bin
 fish_add_path -P $HOME/.cache/coursier/jvm/openjdk@1.11.0-2/bin
 fish_add_path -P $HOME/.cache/nvim/packer_hererocks/2.1.0-beta3/bin
 fish_add_path -P /usr/local/bin/
+
+function add_tea_environment --on-variable PWD; tea -Eds | source; end  #tea
