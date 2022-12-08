@@ -1,2 +1,2 @@
-import("config.tui.noice")
-import("config.tui.hlslens")
+require("config.tui.noice")
+require("config.tui.hlslens")
