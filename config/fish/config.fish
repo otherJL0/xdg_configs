@@ -1,6 +1,7 @@
 if status is-interactive
     if test ( uname ) = Darwin
         fish_add_path -P /opt/homebrew/bin
+        fnm env --use-on-cd | source
     end
     # Linux
     if test -f ~/.asdf/asdf.fish
