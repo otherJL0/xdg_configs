@@ -1,0 +1,72 @@
+require("catppuccin").setup({
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
+    background = { -- :h background
+        light = "latte",
+        dark = "mocha",
+    },
+    transparent_background = false,
+    term_colors = false,
+    dim_inactive = {
+        enabled = false,
+        shade = "dark",
+        percentage = 0.15,
+    },
+    no_italic = false, -- Force no italic
+    no_bold = false, -- Force no bold
+    styles = {
+        comments = { "italic" },
+        conditionals = { "italic" },
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
+    },
+    color_overrides = {},
+    custom_highlights = {},
+    integrations = {
+aerial = false,
+barbar = false,
+beacon = false,
+dashboard = false,
+fern = false,
+gitsigns = true,
+harpoon = false,
+hop = false,
+leap = true,
+lightspeed = false,
+markdown = true,
+mason = true,
+mini = false,
+neotree = false,
+neogit = true,
+neotest = true,
+noice = true,
+cmp = true,
+notify = true,
+semantic_tokens = true,
+nvimtree = false,
+treesitter_context = true,
+treesitter = true,
+ts_rainbow = true,
+overseer = false,
+pounce = false,
+symbols_outline = false,
+telekasten = false,
+telescope = true,
+lsp_trouble = false,
+gitgutter = false,
+illuminate = false,
+vim_sneak = false,
+vimwiki = false,
+which_key = true,
+}
+    })
+
+-- setup must be called before loading
+vim.cmd.colorscheme "catppuccin"
