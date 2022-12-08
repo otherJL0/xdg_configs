@@ -2,6 +2,7 @@
 [user]
 	name = Jonathan Lopez
     email = jonathanglopez@gmail.com
+	signingkey = /home/jlopez/.ssh/id_ed25519.pub
 
 [core]
     quotepath = true
@@ -110,3 +111,5 @@
     c = commit -m
     tree = log --oneline --decorate --all --graph
     difft = difftool
+[gpg]
+	format = ssh
