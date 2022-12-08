@@ -4,7 +4,7 @@ vim.opt.relativenumber = true
 vim.notify = require("notify")
 require('import')
 
-import("config.colorscheme")
-
+-- require('hlslens').setup()
 import("config.tui")
+import("config.colorscheme")
 import("config.treesitter")
