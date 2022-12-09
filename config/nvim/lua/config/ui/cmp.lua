@@ -8,7 +8,7 @@ cmp.setup({
   },
   view = {
     -- can be "custom", "wildmenu" or "native"
-    entries = "custom", 
+    entries = "custom",
   },
 })
 

@@ -8,6 +8,9 @@ paq({
       vim.cmd("TSUpdate")
     end,
   },
+
+  -- {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+
   "numToStr/Comment.nvim",
   "p00f/nvim-ts-rainbow",
   "nvim-treesitter/nvim-treesitter-refactor",
@@ -34,9 +37,13 @@ paq({
   "petertriho/nvim-scrollbar",
   "nvim-zh/colorful-winsep.nvim",
   "MunifTanjim/nui.nvim",
+  "folke/trouble.nvim",
+  "folke/todo-comments.nvim",
 
   -- Search
   "nvim-telescope/telescope.nvim",
+  "nvim-telescope/telescope-file-browser.nvim",
+  "nvim-telescope/telescope-live-grep-args.nvim",
   "ggandor/leap.nvim",
   "ggandor/flit.nvim",
 
@@ -68,6 +75,8 @@ paq({
 
   "kkharji/sqlite.lua",
   "L3MON4D3/LuaSnip",
+  "folke/trouble.nvim",
+  "folke/neodev.nvim",
 
   "saadparwaiz1/cmp_luasnip",
   "hrsh7th/cmp-cmdline",
@@ -77,4 +86,8 @@ paq({
   "hrsh7th/cmp-nvim-lsp-document-symbol",
   "hrsh7th/cmp-nvim-lsp-signature-help",
   "hrsh7th/cmp-path",
+
+  "stevearc/overseer.nvim",
+  "stevearc/resession.nvim",
+  "akinsho/toggleterm.nvim",
 })
