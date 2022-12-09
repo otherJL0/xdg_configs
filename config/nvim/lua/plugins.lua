@@ -16,6 +16,7 @@ paq({
   "danymat/neogen",
   "andymass/vim-matchup",
   "nvim-treesitter/nvim-treesitter-context",
+  "JoosepAlviste/nvim-ts-context-commentstring",
 
   -- Overrides
   "rcarriga/nvim-notify",

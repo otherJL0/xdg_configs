@@ -103,22 +103,60 @@ require("nvim-treesitter.configs").setup({
   auto_install = true,
 
   ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+  ---- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+  -- parser_install_dir = "/some/path/to/store/parsers",
 
   highlight = {
-    -- `false` will disable the whole extension
     enable = true,
-
-    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
   indent = {
     enable = true,
   },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+  refactor = {
+    highlight_definitions = {
+      enable = true,
+      -- Set to false if you have an `updatetime` of ~100.
+      clear_on_cursor_move = true,
+    },
+    highlight_current_scope = { enable = true },
+    smart_rename = {
+      enable = true,
+      keymaps = {
+        smart_rename = "grr",
+      },
+    },
+    navigation = {
+      enable = true,
+      keymaps = {
+        goto_definition = "gnd",
+        list_definitions = "gnD",
+        list_definitions_toc = "gO",
+        goto_next_usage = "<a-*>",
+        goto_previous_usage = "<a-#>",
+      },
+    },
+  },
+
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
+
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+  },
 })
 
+require("config.treesitter.comment")
+require("config.treesitter.context")
