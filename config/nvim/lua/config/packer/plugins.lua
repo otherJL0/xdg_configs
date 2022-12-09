@@ -32,13 +32,6 @@ local function my_plugins()
   use({ 'nanotee/luv-vimdocs' })
 
   use({
-    'lewis6991/spellsitter.nvim',
-    config = function()
-      vim.opt.spell = true
-      require('spellsitter').setup()
-    end,
-  })
-  use({
     'ggandor/leap.nvim',
     'ggandor/flit.nvim',
   })
@@ -240,13 +233,8 @@ local function my_plugins()
     'p00f/nvim-ts-rainbow',
   })
 
-  use({
-    'folke/noice.nvim',
-    event = 'VimEnter',
-    config = function()
-      require('config.tui')
-    end,
-  })
+  use({ 'folke/noice.nvim' })
+
 
   use({
     'rcarriga/nvim-notify',
@@ -268,7 +256,6 @@ local function my_plugins()
       'nvim-lua/plenary.nvim',
       'nvim-neorg/neorg-telescope',
       'jbyuki/nabla.nvim',
-      'lewis6991/spellsitter.nvim',
     },
     after = { 'nvim-treesitter', 'telescope.nvim', 'nvim-cmp', 'neorg-telescope' }, -- Ensures that neorg loads after nvim-treesitter
   })
@@ -352,12 +339,6 @@ local function my_plugins()
     'stevearc/overseer.nvim',
     config = function()
       require('overseer').setup({})
-    end,
-  })
-  use({
-    'stevearc/resession.nvim',
-    config = function()
-      require('resession').setup({})
     end,
   })
 

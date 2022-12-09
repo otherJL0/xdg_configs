@@ -30,6 +30,7 @@ for _, extension in ipairs({
   'fzf',
   'live_grep_args',
   'project',
+  'noice',
 }) do
   telescope.load_extension(extension)
 end
