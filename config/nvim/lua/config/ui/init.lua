@@ -1,2 +1,2 @@
-require("config.tui.hlslens")
-require("config.tui.noice")
+require("config.ui.hlslens")
+require("config.ui.noice")
