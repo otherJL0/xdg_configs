@@ -39,6 +39,7 @@ paq({
   "MunifTanjim/nui.nvim",
   "folke/trouble.nvim",
   "folke/todo-comments.nvim",
+  "nvim-tree/nvim-web-devicons",
 
   -- Search
   "nvim-telescope/telescope.nvim",
