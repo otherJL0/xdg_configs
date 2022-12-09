@@ -1,7 +1,7 @@
 local paq = require("paq")
 paq({
   "savq/paq-nvim",
-  -- Programming Language
+  -- tree-sitter
   {
     "nvim-treesitter/nvim-treesitter",
     run = function()
@@ -9,18 +9,18 @@ paq({
     end,
   },
   "numToStr/Comment.nvim",
-  "theHamsta/nvim-semantic-tokens",
-
-  -- Overrides
-  "miversen33/import.nvim",
-  "rcarriga/nvim-notify",
-  "ja-ford/delaytrain.nvim",
-  "folke/noice.nvim",
+  "p00f/nvim-ts-rainbow",
   "nvim-treesitter/nvim-treesitter-refactor",
   "nvim-treesitter/nvim-treesitter-textobjects",
   "nvim-treesitter/playground",
   "danymat/neogen",
   "andymass/vim-matchup",
+  "nvim-treesitter/nvim-treesitter-context",
+
+  -- Overrides
+  "rcarriga/nvim-notify",
+  "ja-ford/delaytrain.nvim",
+  "folke/noice.nvim",
 
   -- Visual
   { "catppuccin/nvim", as = "catppuccin" },
@@ -32,12 +32,12 @@ paq({
   "kevinhwang91/nvim-hlslens",
   "petertriho/nvim-scrollbar",
   "nvim-zh/colorful-winsep.nvim",
-  "nvim-treesitter/nvim-treesitter-context",
-  "p00f/nvim-ts-rainbow",
+  "MunifTanjim/nui.nvim",
+
+  -- Search
   "nvim-telescope/telescope.nvim",
   "ggandor/leap.nvim",
   "ggandor/flit.nvim",
-  "MunifTanjim/nui.nvim",
 
   -- Notes
   "nvim-neorg/neorg",

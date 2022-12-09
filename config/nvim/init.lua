@@ -5,7 +5,6 @@ vim.opt.relativenumber = true
 vim.opt.cmdheight = 0
 
 vim.notify = require("notify")
-require("import")
 
 -- require('hlslens').setup()
 require("config.tui")
