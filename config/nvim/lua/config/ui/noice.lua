@@ -1,7 +1,9 @@
 require("noice").setup({
   cmdline = {
-    enabled = true, -- enables the Noice cmdline UI
-    view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+    -- enables the Noice cmdline UI
+    enabled = true,
+    -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+    view = "cmdline_popup",
     opts = {}, -- global options for the cmdline. See section on views
     ---@type table<string, CmdlineFormat>
     format = {
@@ -37,6 +39,22 @@ require("noice").setup({
     ---@type NoicePopupmenuItemKind|false
     -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
     kind_icons = {}, -- set to `false` to disable icons
+    relative = "editor",
+    position = {
+      row = 8,
+      col = "50%",
+    },
+    size = {
+      width = 60,
+      height = 10,
+    },
+    border = {
+      style = "rounded",
+      padding = { 0, 1 },
+    },
+    win_options = {
+      winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+    },
   },
   -- default options for require('noice').redirect
   -- see the section on Command Redirection
@@ -180,16 +198,48 @@ require("noice").setup({
     -- you can enable a preset by setting it to true, or a table that will override the preset config
     -- you can also add custom presets that you can enable/disable with enabled=true
     bottom_search = false, -- use a classic bottom cmdline for search
-    command_palette = false, -- position the cmdline and popupmenu together
-    long_message_to_split = false, -- long messages will be sent to a split
-    inc_rename = false, -- enables an input dialog for inc-rename.nvim
+    command_palette = true, -- position the cmdline and popupmenu together
+    long_message_to_split = true, -- long messages will be sent to a split
+    inc_rename = true, -- enables an input dialog for inc-rename.nvim
     lsp_doc_border = false, -- add a border to hover docs and signature help
   },
   throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
   ---@type NoiceConfigViews
-  views = {}, ---@see section on views
+  views = {
+    cmdline_popup = {
+      -- border = {
+      --   style = "none",
+      --   padding = { 2, 3 },
+      -- },
+      -- filter_options = {},
+      -- win_options = {
+      --   winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+      -- },
+      position = {
+        row = 5,
+        col = "50%",
+      },
+      size = {
+        width = 60,
+        height = "auto",
+      },
+    },
+  }, ---@see section on views
   ---@type NoiceRouteConfig[]
-  routes = {}, --- @see section on routes
+  routes = {
+    {
+      view = "notify",
+      filter = { event = "msg_showmode" },
+    },
+    {
+      filter = {
+        event = "msg_show",
+        kind = "",
+        find = "written",
+      },
+      opts = { skip = true },
+    },
+  }, --- @see section on routes
   ---@type table<string, NoiceFilter>
   status = {}, --- @see section on statusline components
   ---@type NoiceFormatOptions
