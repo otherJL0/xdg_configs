@@ -67,4 +67,14 @@ paq({
   "nvim-lua/plenary.nvim",
 
   "kkharji/sqlite.lua",
+  "L3MON4D3/LuaSnip",
+
+  "saadparwaiz1/cmp_luasnip",
+  "hrsh7th/cmp-cmdline",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-omni",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-nvim-lsp-document-symbol",
+  "hrsh7th/cmp-nvim-lsp-signature-help",
+  "hrsh7th/cmp-path",
 })
