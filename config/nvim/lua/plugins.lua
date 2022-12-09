@@ -65,4 +65,6 @@ paq({
   -- Testing
   "nvim-neotest/neotest",
   "nvim-lua/plenary.nvim",
+
+  "kkharji/sqlite.lua",
 })
