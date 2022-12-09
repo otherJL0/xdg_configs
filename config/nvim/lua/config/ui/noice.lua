@@ -1,3 +1,4 @@
+require("inc_rename").setup()
 require("noice").setup({
   cmdline = {
     -- enables the Noice cmdline UI

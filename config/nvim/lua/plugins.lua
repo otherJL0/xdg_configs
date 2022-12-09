@@ -40,6 +40,8 @@ paq({
   "folke/trouble.nvim",
   "folke/todo-comments.nvim",
   "nvim-tree/nvim-web-devicons",
+  "smjonas/inc-rename.nvim",
+  "jinh0/eyeliner.nvim",
 
   -- Search
   "nvim-telescope/telescope.nvim",
