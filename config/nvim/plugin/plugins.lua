@@ -2,7 +2,12 @@ local paq = require("paq")
 paq({
   "savq/paq-nvim",
   -- Programming Language
-  {"nvim-treesitter/nvim-treesitter", run=function() vim.cmd "TSUpdate" end},
+  {
+    "nvim-treesitter/nvim-treesitter",
+    run = function()
+      vim.cmd("TSUpdate")
+    end,
+  },
   "numToStr/Comment.nvim",
   "theHamsta/nvim-semantic-tokens",
 
@@ -17,9 +22,8 @@ paq({
   "danymat/neogen",
   "andymass/vim-matchup",
 
-
   -- Visual
-  {"catppuccin/nvim", as="catppuccin" },
+  { "catppuccin/nvim", as = "catppuccin" },
   "feline-nvim/feline.nvim",
   "lukas-reineke/headlines.nvim",
   "lukas-reineke/indent-blankline.nvim",
@@ -37,7 +41,7 @@ paq({
 
   -- Notes
   "nvim-neorg/neorg",
-  {"jbyuki/nabla.nvim", opt=true},
+  { "jbyuki/nabla.nvim", opt = true },
   "rcarriga/nvim-notify",
 
   -- Editing
