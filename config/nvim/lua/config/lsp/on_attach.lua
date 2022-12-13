@@ -46,16 +46,16 @@ function M.on_attach(_, bufnr)
   vim.diagnostic.config({
     virtual_text = false,
     virtual_lines = {
-      only_current_line = false,
+      only_current_line = true,
     },
   })
-  vim.keymap.set("", "<Leader>ll", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
-  vim.keymap.set("", "<Leader>la", function()
-    vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
-  end, { desc = "LSP Lines shows up on current line only" })
-  vim.keymap.set("", "<Leader>la", function()
-    vim.diagnostic.config({ virtual_lines = { only_current_line = false } })
-  end, { desc = "LSP Lines shows up on all lines" })
+  -- vim.keymap.set("", "<Leader>ll", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
+  -- vim.keymap.set("", "<Leader>la", function()
+  --   vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+  -- end, { desc = "LSP Lines shows up on current line only" })
+  -- vim.keymap.set("", "<Leader>la", function()
+  --   vim.diagnostic.config({ virtual_lines = { only_current_line = false } })
+  -- end, { desc = "LSP Lines shows up on all lines" })
 end
 
 return M
