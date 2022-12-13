@@ -2,10 +2,51 @@ vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
 
+local ts_patterns = {
+  ['class'] = 'Structure',
+  ['function'] = 'Function',
+  ['closure_expression'] = 'Function',
+  ['method'] = 'Function',
+  ['for'] = 'Repeat',
+  ['while'] = 'Repeat',
+  ['if'] = 'Conditional',
+  ['else'] = 'Conditional',
+  ['try'] = 'Exception',
+  ['except'] = 'Exception',
+  ['with'] = 'Keyword',
+  ['match'] = 'Conditional',
+  ['table'] = 'Structure',
+  ['import'] = 'Include',
+  ['var'] = 'Statement',
+  ['struct'] = 'Structure',
+  ['case'] = 'Label',
+  ['default'] = 'Label',
+  ['return'] = 'Keyword',
+  ['const'] = 'Keyword',
+  ['list'] = 'Structure',
+  ['object'] = 'Structure',
+  ['array'] = 'Structure',
+  ['expression_statement'] = 'Structure',
+  ['type_declaration'] = 'Structure',
+  ['value_declaration'] = 'Structure',
+  ['let_in_expr'] = 'Structure',
+  ['call_expression'] = 'Function',
+  ['tuple_expression'] = 'Structure',
+  ['jsx_element'] = 'Structure',
+  ['member'] = 'Structure',
+  ['block_mapping_pair'] = 'Structure',
+}
+
 require("indent_blankline").setup({
+  char = '▎',
   space_char_blankline = " ",
   show_current_context = true,
   show_current_context_start = true,
+  show_current_context_start_on_current_line = true,
+  show_first_indent_level = true,
+  use_treesiter_scope = true,
+  context_patterns = vim.tbl_keys(ts_patterns),
+  context_pattern_highlight = ts_patterns,
   colored_indent_levels = false,
 })
 
@@ -14,73 +55,8 @@ require("treesitter-context").setup({
   max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
   trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
   min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
-  patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-    -- For all filetypes
-    -- Note that setting an entry here replaces all other patterns for this entry.
-    -- By setting the 'default' entry below, you can control which nodes you want to
-    -- appear in the context window.
-    default = {
-      "class",
-      "function",
-      "method",
-      "for",
-      "while",
-      "if",
-      "switch",
-      "case",
-      "interface",
-      "struct",
-      "enum",
-    },
-    -- Patterns for specific filetypes
-    -- If a pattern is missing, *open a PR* so everyone can benefit.
-    tex = {
-      "chapter",
-      "section",
-      "subsection",
-      "subsubsection",
-    },
-    haskell = {
-      "adt",
-    },
-    rust = {
-      "impl_item",
-    },
-    terraform = {
-      "block",
-      "object_elem",
-      "attribute",
-    },
-    scala = {
-      "object_definition",
-    },
-    vhdl = {
-      "process_statement",
-      "architecture_body",
-      "entity_declaration",
-    },
-    markdown = {
-      "section",
-    },
-    elixir = {
-      "anonymous_function",
-      "arguments",
-      "block",
-      "do_block",
-      "list",
-      "map",
-      "tuple",
-      "quoted_content",
-    },
-    json = {
-      "pair",
-    },
-    typescript = {
-      "export_statement",
-    },
-    yaml = {
-      "block_mapping_pair",
-    },
+  patterns = {
+    default = vim.tbl_keys(ts_patterns),
   },
   exact_patterns = {
     -- Example for a specific filetype with Lua patterns
@@ -96,5 +72,5 @@ require("treesitter-context").setup({
   mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
   -- Separator between context and content. Should be a single character string, like '-'.
   -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
-  separator = nil,
+  separator = '─',
 })
