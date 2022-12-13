@@ -4,9 +4,13 @@ local lspconfig = setmetatable({}, {
     -- nvim-cmp supports additional completion capabilities
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+
     config.capabilities = capabilities
     config.on_attach = require("config.lsp.on_attach").on_attach
-    return config
+    return function()
+      vim.lsp.start(config)
+    end
   end,
 })
 

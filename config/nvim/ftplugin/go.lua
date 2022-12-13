@@ -1,2 +1,6 @@
-vim.opt.tabstop = 4
-vim.opt.expandtab = false
+vim.bo.tabstop = 4
+vim.bo.softtabstop = 4
+vim.bo.shiftwidth = 4
+vim.bo.expandtab = false
+
+require("config.lsp").golang()
