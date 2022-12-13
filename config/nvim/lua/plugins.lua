@@ -93,4 +93,5 @@ paq({
   "stevearc/overseer.nvim",
   "stevearc/resession.nvim",
   "akinsho/toggleterm.nvim",
+  "onsails/lspkind.nvim",
 })
