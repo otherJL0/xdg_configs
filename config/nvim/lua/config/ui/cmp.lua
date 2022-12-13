@@ -89,3 +89,48 @@ cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 --     { name = "cmdline" },
 --   }),
 -- })
+--
+--
+local colors = require("catppuccin.palettes").get_palette() -- fetch colors from palette
+require("catppuccin.lib.highlighter").syntax({
+  PmenuSel = { bg = "#282C34", fg = "NONE" },
+  Pmenu = { fg = "#C5CDD9", bg = "#22252A" },
+
+  CmpItemAbbrDeprecated = { fg = "#7E8294", bg = "NONE", style = {"strikethrough" }},
+  CmpItemAbbrMatch = { fg =colors.blue, bg = "NONE", style = {"bold" }},
+  CmpItemAbbrMatchFuzzy = { fg =colors.blue, bg = "NONE", style = {"bold" }},
+  CmpItemMenu = { fg =colors.mauve, bg = "NONE", style = {"italic" }},
+
+  CmpItemKindField = { fg = "#EED8DA", bg = colors.maroon},
+  CmpItemKindProperty = { fg = "#EED8DA", bg = colors.maroon},
+  CmpItemKindEvent = { fg = "#EED8DA", bg = colors.maroon},
+
+  CmpItemKindText = { fg = "#C3E88D", bg = colors.green},
+  CmpItemKindEnum = { fg = "#C3E88D", bg = colors.green},
+  CmpItemKindKeyword = { fg = "#C3E88D", bg = colors.green},
+
+  CmpItemKindConstant = { fg = "#FFE082", bg = colors.yellow},
+  CmpItemKindConstructor = { fg = "#FFE082", bg = colors.yellow},
+  CmpItemKindReference = { fg = "#FFE082", bg = colors.yellow},
+
+  CmpItemKindFunction = { fg =colors.rosewater, bg = colors.mauve},
+  CmpItemKindStruct = { fg =colors.rosewater, bg = colors.mauve},
+  CmpItemKindClass = { fg =colors.rosewater, bg = colors.mauve},
+  CmpItemKindModule = { fg =colors.rosewater, bg = colors.mauve},
+  CmpItemKindOperator = { fg =colors.rosewater, bg = colors.mauve},
+
+  CmpItemKindVariable = { fg = "#C5CDD9", bg = "#7E8294" },
+  CmpItemKindFile = { fg = "#C5CDD9", bg = "#7E8294" },
+
+  CmpItemKindUnit = { fg = "#F5EBD9", bg = colors.peach},
+  CmpItemKindSnippet = { fg = "#F5EBD9", bg = colors.peach},
+  CmpItemKindFolder = { fg = "#F5EBD9", bg = colors.peach},
+
+  CmpItemKindMethod = { fg = "#DDE5F5", bg = colors.blue},
+  CmpItemKindValue = { fg = "#DDE5F5", bg = colors.blue},
+  CmpItemKindEnumMember = { fg = "#DDE5F5", bg = colors.blue},
+
+  CmpItemKindInterface = { fg = "#D8EEEB", bg = colors.teal },
+  CmpItemKindColor = { fg = "#D8EEEB", bg = colors.teal},
+  CmpItemKindTypeParameter = { fg = "#D8EEEB", bg = colors.teal},
+})
