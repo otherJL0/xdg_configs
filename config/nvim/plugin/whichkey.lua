@@ -1,4 +1,7 @@
-require("which-key").setup({
+local wk = require("which-key")
+vim.opt.timeoutlen = 300
+
+wk.setup({
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -34,15 +37,15 @@ require("which-key").setup({
     group = "+", -- symbol prepended to a group
   },
   popup_mappings = {
-    scroll_down = '<c-d>', -- binding to scroll down inside the popup
-    scroll_up = '<c-u>', -- binding to scroll up inside the popup
+    scroll_down = "<c-d>", -- binding to scroll down inside the popup
+    scroll_up = "<c-u>", -- binding to scroll up inside the popup
   },
   window = {
     border = "none", -- none, single, double, shadow
     position = "bottom", -- bottom, top
     margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-    winblend = 0
+    winblend = 0,
   },
   layout = {
     height = { min = 4, max = 25 }, -- min and max height of the columns
@@ -51,7 +54,7 @@ require("which-key").setup({
     align = "left", -- align columns left, center or right
   },
   ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
-  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
+  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
   show_help = true, -- show help message on the command line when the popup is visible
   show_keys = true, -- show the currently pressed key and its label as a message in the command line
   triggers = "auto", -- automatically setup triggers
@@ -70,3 +73,35 @@ require("which-key").setup({
     filetypes = { "TelescopePrompt" },
   },
 })
+
+local telescope = setmetatable({}, {
+  ---@param theme string: default, ivy, dropdown, cursor
+  ---@return table: metatable with theme set
+  __index = function(_, theme)
+    return setmetatable({ theme = theme }, {
+      ---@param self table: Self
+      ---@param function_call string: Telescope action
+      ---@return function: Callback
+      __index = function(self, function_call)
+        return require("config.telescope")[self.theme][function_call]
+      end,
+    })
+  end,
+})
+
+wk.register({
+  ["<leader>f"] = {
+    name = "+file",
+    f = { telescope.ivy.find_files, "Find File" },
+    g = { telescope.ivy.live_grep_args, "Grep Files" },
+    h = { telescope.ivy.help_tags, "Search Neovim Docs" },
+    b = { telescope.ivy.buffers, "Search Neovim Docs" },
+    m = { telescope.ivy.man_pages, "Search Man Pages" },
+    p = { telescope.ivy.project, "Search Projects" },
+    j = { telescope.ivy.file_browser, "File Browser" },
+    F = { telescope.ivy.git_files, "Search files in git repo" },
+    G = { telescope.ivy.grep_string, "Grep string under cursor" },
+  },
+})
+
+vim.keymap.set("n", "<C-S-P>", telescope.dropdown.commands)

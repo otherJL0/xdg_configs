@@ -47,6 +47,8 @@ paq({
   "nvim-telescope/telescope.nvim",
   "nvim-telescope/telescope-file-browser.nvim",
   "nvim-telescope/telescope-live-grep-args.nvim",
+  "nvim-telescope/telescope-fzf-native.nvim",
+  "nvim-telescope/telescope-project.nvim",
   "ggandor/leap.nvim",
   "ggandor/flit.nvim",
 
@@ -96,5 +98,4 @@ paq({
   "onsails/lspkind.nvim",
   "windwp/nvim-autopairs",
   "RRethy/nvim-treesitter-endwise",
-
 })
