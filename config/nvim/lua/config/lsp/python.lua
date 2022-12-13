@@ -5,12 +5,7 @@ local venv =
 
 M.name = "pyright"
 M.cmd = { "pyright-langserver", "--stdio" }
-M.root_dir = vim.fs.dirname(
-  vim.fs.find(
-    { "requirements.txt", "pyproject.toml", "setup.cfg", "setup.py" },
-    { path = current_file, upward = true, type = "file" }
-  )[1]
-)
+M.root_dir = { "requirements.txt", "pyproject.toml", "setup.cfg", "setup.py" }
 
 M.settings = {
   python = {

@@ -6,6 +6,8 @@ local lspconfig = setmetatable({}, {
     capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
     capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+    config.root_dir = vim.fs.dirname(vim.fs.find(config.root_dir, { upward = true })[1])
+
     config.capabilities = capabilities
     config.on_attach = require("config.lsp.on_attach").on_attach
     return function()

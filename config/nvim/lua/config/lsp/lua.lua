@@ -22,10 +22,5 @@ return {
   name = "lua-language-server",
   cmd = { "lua-language-server" },
   before_init = require("neodev.lsp").before_init,
-  root_dir = vim.fs.dirname(
-    vim.fs.find(
-      { ".luarc.json", "luarc.jsonc", "stylua.toml", ".stylua.toml", "selene.toml", "selene.yml", "selene.yaml" },
-      { upward = true }
-    )[1]
-  ),
+  root_dir = { ".luarc.json", "luarc.jsonc", "stylua.toml", ".stylua.toml", "selene.toml", "selene.yml", "selene.yaml" },
 }
