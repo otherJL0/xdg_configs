@@ -5,6 +5,10 @@ end
 
 local luasnip = require("luasnip")
 local cmp = require("cmp")
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+
+require('nvim-autopairs').setup({})
+
 
 cmp.setup({
   snippet = {
@@ -66,6 +70,11 @@ cmp.setup({
     end,
   },
 })
+
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 -- cmp.setup.cmdline({ "/", "?" }, {

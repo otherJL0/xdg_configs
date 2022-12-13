@@ -94,4 +94,7 @@ paq({
   "stevearc/resession.nvim",
   "akinsho/toggleterm.nvim",
   "onsails/lspkind.nvim",
+  "windwp/nvim-autopairs",
+  "RRethy/nvim-treesitter-endwise",
+
 })

@@ -156,6 +156,9 @@ require("nvim-treesitter.configs").setup({
     enable = true,
     extended_mode = true,
   },
+  endwise = {
+    enable = true,
+  },
 })
 
 require("config.treesitter.comment")
