@@ -64,20 +64,17 @@ winbar.active[1][1] = {
 }
 
 winbar.active[1][2] = {
-  provider = navic.get_location,
+  provider = function()
+      return navic.get_location()
+  end,
   enabled = function()
     return navic.is_available()
   end,
   hl = {
     bg = clrs.overlay0,
-    fg = clrs.yellow,
   },
   left_sep = {
-    str = assets.slant_left_2,
-  },
-
-  right_sep = {
-    str = assets.slant_right,
+    str = assets.vertical_bar_medium,
   },
 }
 

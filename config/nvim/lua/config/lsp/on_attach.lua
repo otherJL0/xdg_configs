@@ -1,3 +1,7 @@
+local navic = require("nvim-navic")
+navic.setup({
+  highlight = true,
+})
 local M = {}
 
 function M.on_attach(client, bufnr)
@@ -50,7 +54,7 @@ function M.on_attach(client, bufnr)
     },
   })
   if client.server_capabilities.documentSymbolProvider then
-    require("nvim-navic").attach(client, bufnr)
+    navic.attach(client, bufnr)
 end
   -- vim.keymap.set("", "<Leader>ll", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
   -- vim.keymap.set("", "<Leader>la", function()

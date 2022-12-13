@@ -30,6 +30,10 @@ require("catppuccin").setup({
   color_overrides = {},
   custom_highlights = {},
   integrations = {
+    navic = {
+      enabled = true,
+      custom_bg = "NONE",
+    },
     aerial = false,
     barbar = false,
     beacon = false,
@@ -65,6 +69,21 @@ require("catppuccin").setup({
     vim_sneak = false,
     vimwiki = false,
     which_key = true,
+    native_lsp = {
+    enabled = true,
+    virtual_text = {
+        errors = { "italic" },
+        hints = { "italic" },
+        warnings = { "italic" },
+        information = { "italic" },
+    },
+    underlines = {
+        errors = { "underline" },
+        hints = { "underline" },
+        warnings = { "underline" },
+        information = { "underline" },
+    },
+},
   },
 })
 
