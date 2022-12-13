@@ -98,4 +98,6 @@ paq({
   "onsails/lspkind.nvim",
   "windwp/nvim-autopairs",
   "RRethy/nvim-treesitter-endwise",
+
+  "https://github.com/b0o/SchemaStore.nvim",
 })

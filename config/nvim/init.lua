@@ -3,10 +3,10 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cmdheight = 0
 vim.opt.laststatus = 3
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 
 -- Highlight current line and line number
-vim.opt.cursorlineopt = 'both'
+vim.opt.cursorlineopt = "both"
 vim.opt.cursorline = true
 
 vim.opt.wrap = false
@@ -16,14 +16,14 @@ vim.opt.splitright = true --New vsplits open right
 vim.opt.ignorecase = true -- Ignore case when searching
 vim.opt.smartcase = true -- Except when explicitly adding uppercase
 
-vim.opt.inccommand = 'nosplit' -- Highlight search/replace queries
+vim.opt.inccommand = "nosplit" -- Highlight search/replace queries
 vim.opt.showmatch = true -- Show matching bracket character when hovering
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  pattern = '*',
+vim.api.nvim_create_autocmd("TextYankPost", {
+  pattern = "*",
   callback = function()
     vim.highlight.on_yank()
-  end
+  end,
 })
 
 require("plugins")
