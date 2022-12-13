@@ -7,7 +7,6 @@ vim.opt.laststatus = 3
 require("plugins")
 vim.notify = require("notify")
 require("config.treesitter")
-require("config.lsp")
 require("config.colorscheme")
 
 require("config.ui")
