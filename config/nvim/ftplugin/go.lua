@@ -3,4 +3,4 @@ vim.bo.softtabstop = 4
 vim.bo.shiftwidth = 4
 vim.bo.expandtab = false
 
-require("config.lsp").golang()
+require("config.lsp").go()

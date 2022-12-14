@@ -55,7 +55,7 @@ function M.on_attach(client, bufnr)
   })
   if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)
-end
+  end
   -- vim.keymap.set("", "<Leader>ll", require("lsp_lines").toggle, { desc = "Toggle lsp_lines" })
   -- vim.keymap.set("", "<Leader>la", function()
   --   vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
