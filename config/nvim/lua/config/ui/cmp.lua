@@ -16,6 +16,7 @@ cmp.setup({
     end,
   },
   sources = cmp.config.sources({
+    { name = "luasnip" },
     { name = "nvim_lsp" },
   }),
 
@@ -44,6 +45,7 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     -- ... Your other mappings ...
   },
   view = {
