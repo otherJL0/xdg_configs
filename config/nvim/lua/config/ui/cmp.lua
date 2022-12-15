@@ -93,44 +93,44 @@ cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 --
 local colors = require("catppuccin.palettes").get_palette() -- fetch colors from palette
 require("catppuccin.lib.highlighter").syntax({
-  PmenuSel = { bg = "#282C34", fg = "NONE" },
-  Pmenu = { fg = "#C5CDD9", bg = "#22252A" },
+  PmenuSel = { bg = colors.surface0, fg = "NONE" },
+  Pmenu = { fg = colors.text, bg = colors.base },
 
-  CmpItemAbbrDeprecated = { fg = "#7E8294", bg = "NONE", style = { "strikethrough" } },
+  CmpItemAbbrDeprecated = { fg = colors.overlay1, bg = "NONE", style = { "strikethrough" } },
   CmpItemAbbrMatch = { fg = colors.blue, bg = "NONE", style = { "bold" } },
   CmpItemAbbrMatchFuzzy = { fg = colors.blue, bg = "NONE", style = { "bold" } },
-  CmpItemMenu = { fg = colors.mauve, bg = "NONE", style = { "italic" } },
+  CmpItemMenu = { fg = colors.lavender, bg = "NONE", style = { "italic" } },
 
-  CmpItemKindField = { fg = "#EED8DA", bg = colors.maroon },
-  CmpItemKindProperty = { fg = "#EED8DA", bg = colors.maroon },
-  CmpItemKindEvent = { fg = "#EED8DA", bg = colors.maroon },
+  CmpItemKindField = { fg = colors.surface0, bg = colors.maroon },
+  CmpItemKindProperty = { fg = colors.surface0, bg = colors.maroon },
+  CmpItemKindEvent = { fg = colors.surface0, bg = colors.maroon },
 
-  CmpItemKindText = { fg = "#C3E88D", bg = colors.green },
-  CmpItemKindEnum = { fg = "#C3E88D", bg = colors.green },
-  CmpItemKindKeyword = { fg = "#C3E88D", bg = colors.green },
+  CmpItemKindText = { fg = colors.surface0, bg = colors.green },
+  CmpItemKindEnum = { fg = colors.surface0, bg = colors.green },
+  CmpItemKindKeyword = { fg = colors.surface0, bg = colors.green },
 
-  CmpItemKindConstant = { fg = "#FFE082", bg = colors.yellow },
-  CmpItemKindConstructor = { fg = "#FFE082", bg = colors.yellow },
-  CmpItemKindReference = { fg = "#FFE082", bg = colors.yellow },
+  CmpItemKindConstant = { fg = colors.surface0, bg = colors.yellow },
+  CmpItemKindConstructor = { fg = colors.surface0, bg = colors.yellow },
+  CmpItemKindReference = { fg = colors.surface0, bg = colors.yellow },
 
-  CmpItemKindFunction = { fg = colors.rosewater, bg = colors.mauve },
-  CmpItemKindStruct = { fg = colors.rosewater, bg = colors.mauve },
-  CmpItemKindClass = { fg = colors.rosewater, bg = colors.mauve },
-  CmpItemKindModule = { fg = colors.rosewater, bg = colors.mauve },
-  CmpItemKindOperator = { fg = colors.rosewater, bg = colors.mauve },
+  CmpItemKindFunction = { fg = colors.surface0, bg = colors.mauve },
+  CmpItemKindStruct = { fg = colors.surface0, bg = colors.mauve },
+  CmpItemKindClass = { fg = colors.surface0, bg = colors.mauve },
+  CmpItemKindModule = { fg = colors.surface0, bg = colors.mauve },
+  CmpItemKindOperator = { fg = colors.surface0, bg = colors.mauve },
 
-  CmpItemKindVariable = { fg = "#C5CDD9", bg = "#7E8294" },
-  CmpItemKindFile = { fg = "#C5CDD9", bg = "#7E8294" },
+  CmpItemKindVariable = { fg = colors.surface0, bg = colors.overlay1 },
+  CmpItemKindFile = { fg = colors.surface0, bg = colors.overlay1 },
 
-  CmpItemKindUnit = { fg = "#F5EBD9", bg = colors.peach },
-  CmpItemKindSnippet = { fg = "#F5EBD9", bg = colors.peach },
-  CmpItemKindFolder = { fg = "#F5EBD9", bg = colors.peach },
+  CmpItemKindUnit = { fg = colors.surface0, bg = colors.peach },
+  CmpItemKindSnippet = { fg = colors.surface0, bg = colors.peach },
+  CmpItemKindFolder = { fg = colors.surface0, bg = colors.peach },
 
-  CmpItemKindMethod = { fg = "#DDE5F5", bg = colors.blue },
-  CmpItemKindValue = { fg = "#DDE5F5", bg = colors.blue },
-  CmpItemKindEnumMember = { fg = "#DDE5F5", bg = colors.blue },
+  CmpItemKindMethod = { fg = colors.surface0, bg = colors.blue },
+  CmpItemKindValue = { fg = colors.surface0, bg = colors.blue },
+  CmpItemKindEnumMember = { fg = colors.surface0, bg = colors.blue },
 
-  CmpItemKindInterface = { fg = "#D8EEEB", bg = colors.teal },
-  CmpItemKindColor = { fg = "#D8EEEB", bg = colors.teal },
-  CmpItemKindTypeParameter = { fg = "#D8EEEB", bg = colors.teal },
+  CmpItemKindInterface = { fg = colors.surface0, bg = colors.teal },
+  CmpItemKindColor = { fg = colors.surface0, bg = colors.teal },
+  CmpItemKindTypeParameter = { fg = colors.surface0, bg = colors.teal },
 })
