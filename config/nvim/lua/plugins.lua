@@ -72,7 +72,6 @@ paq({
   "williamboman/mason.nvim",
 
   "folke/which-key.nvim",
-  "mrjones2014/legendary.nvim",
 
   -- Testing
   "nvim-neotest/neotest",
