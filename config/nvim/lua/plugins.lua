@@ -100,6 +100,5 @@ paq({
   "RRethy/nvim-treesitter-endwise",
 
   "https://github.com/b0o/SchemaStore.nvim",
-  { "~whynothugo/lsp_lines.nvim", url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
   "NvChad/nvim-colorizer.lua",
 })
