@@ -1,4 +1,4 @@
-require('colorful-winsep').setup()
+require("colorful-winsep").setup()
 require("inc_rename").setup()
 require("config.ui.cmp")
 require("config.ui.noice")

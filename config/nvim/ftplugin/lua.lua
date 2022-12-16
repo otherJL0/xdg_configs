@@ -2,6 +2,13 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
+-- Add nvim/lua files to path
+vim.opt.path:append(vim.fn.stdpath("config") .. "/lua")
+-- Add packer fles to path
+vim.opt.path:append(vim.fn.stdpath("data") .. "/site/pack/*/*/*/lua")
+vim.opt.include = [[\v<((do|load)file|require)[^''"]*[''"]\zs[^''"]+]]
+vim.opt.includeexpr = [[tr(v:fname, '.', '/')]]
+
 local ls = require("luasnip")
 local s = ls.snippet
 -- local sn = ls.snippet_node
