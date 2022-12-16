@@ -18,7 +18,7 @@ vim.opt.smartcase = true -- Except when explicitly adding uppercase
 
 vim.opt.inccommand = "nosplit" -- Highlight search/replace queries
 vim.opt.showmatch = true -- Show matching bracket character when hovering
-vim.opt.signcolumn = "yes:3" -- Always show a sign column
+vim.opt.signcolumn = "yes:2" -- Always show a sign column
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
