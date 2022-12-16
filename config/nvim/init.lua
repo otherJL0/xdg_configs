@@ -43,7 +43,6 @@ vim.keymap.set({ "i", "c" }, "<A-f>", "<S-Right>")
 --
 --
 
-
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
