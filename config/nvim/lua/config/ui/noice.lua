@@ -128,11 +128,11 @@ require("noice").setup({
     },
     override = {
       -- override the default lsp markdown formatter with Noice
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
       -- override the lsp markdown formatter with Noice
-      ["vim.lsp.util.stylize_markdown"] = false,
+      ["vim.lsp.util.stylize_markdown"] = true,
       -- override cmp documentation with Noice (needs the other options to work)
-      ["cmp.entry.get_documentation"] = false,
+      ["cmp.entry.get_documentation"] = true,
     },
     hover = {
       enabled = true,
@@ -202,7 +202,7 @@ require("noice").setup({
     command_palette = true, -- position the cmdline and popupmenu together
     long_message_to_split = true, -- long messages will be sent to a split
     inc_rename = true, -- enables an input dialog for inc-rename.nvim
-    lsp_doc_border = false, -- add a border to hover docs and signature help
+    lsp_doc_border = true, -- add a border to hover docs and signature help
   },
   throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
   ---@type NoiceConfigViews
@@ -228,10 +228,6 @@ require("noice").setup({
   }, ---@see section on views
   ---@type NoiceRouteConfig[]
   routes = {
-    {
-      view = "notify",
-      filter = { event = "msg_showmode" },
-    },
     {
       filter = {
         event = "msg_show",
