@@ -34,6 +34,8 @@ paq({
   "SmiteshP/nvim-navic",
   "anuvyklack/windows.nvim",
   "kevinhwang91/nvim-hlslens",
+  "kevinhwang91/nvim-ufo",
+  "kevinhwang91/promise-async",
   "petertriho/nvim-scrollbar",
   "nvim-zh/colorful-winsep.nvim",
   "MunifTanjim/nui.nvim",
