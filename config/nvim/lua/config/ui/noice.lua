@@ -54,7 +54,7 @@ require("noice").setup({
       padding = { 0, 1 },
     },
     win_options = {
-      winhighlight = { Normal = { fg = "Normal" }, FloatBorder = "DiagnosticInfo" },
+      winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
     },
   },
   -- default options for require('noice').redirect
