@@ -54,7 +54,7 @@ require("noice").setup({
       padding = { 0, 1 },
     },
     win_options = {
-      winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+      winhighlight = { Normal = { fg = "Normal" }, FloatBorder = "DiagnosticInfo" },
     },
   },
   -- default options for require('noice').redirect
@@ -138,7 +138,14 @@ require("noice").setup({
       enabled = true,
       view = nil, -- when nil, use defaults from documentation
       ---@type NoiceViewOptions
-      opts = {}, -- merged with defaults from documentation
+      opts = {
+        size = {
+          max_width = 100,
+        },
+        win_options = {
+          winhighlight = { Normal = "Normal", FloatBorder = "NoicePopupBorder" },
+        },
+      }, -- merged with defaults from documentation
     },
     signature = {
       enabled = true,
