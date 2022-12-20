@@ -40,9 +40,6 @@ vim.keymap.set({ "i", "c" }, "<A-f>", "<Esc>")
 vim.keymap.set({ "i", "c" }, "<A-f>", "<S-Right>")
 vim.keymap.set({ "i", "c" }, "<A-f>", "<S-Right>")
 
---
---
-
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
@@ -50,7 +47,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-require("plugins")
+require("config.lazy")
+
 vim.notify = require("notify")
 require("config.treesitter")
 require("config.colorscheme")

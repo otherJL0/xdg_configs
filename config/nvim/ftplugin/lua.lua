@@ -9,42 +9,42 @@ vim.opt.path:append(vim.fn.stdpath("data") .. "/site/pack/*/*/*/lua")
 vim.opt.include = [[\v<((do|load)file|require)[^''"]*[''"]\zs[^''"]+]]
 vim.opt.includeexpr = [[tr(v:fname, '.', '/')]]
 
-local ls = require("luasnip")
-local s = ls.snippet
+-- local ls = require("luasnip")
+-- local s = ls.snippet
 -- local sn = ls.snippet_node
 -- local isn = ls.indent_snippet_node
-local t = ls.text_node
-local i = ls.insert_node
+-- local t = ls.text_node
+-- local i = ls.insert_node
 -- local f = ls.function_node
 -- local c = ls.choice_node
 -- local d = ls.dynamic_node
 
 require("config.lsp").lua()
 
-ls.add_snippets("lua", {
-  s({ trig = "lsp" }, {
-    t({ [[vim.lsp.start({]], "" }),
-    t({ [[  name = "]] }),
-    i(1),
-    t({ [[",]], "" }),
-    t({ [[  cmd = { "]] }),
-    i(2),
-    t({ [[" },]], "" }),
-    t({ [[  root_dir = vim.fs.dirname(vim.fs.find({ "]] }),
-    i(3),
-    t({ [[" }, { upward = true })[1])]], "" }),
-    t({ [[  init_options = {]], "" }),
-    t({ [[    ]] }),
-    i(4),
-    t({ "", "" }),
-    t({ [[  },]], "" }),
-    t({ [[  settings = {]], "" }),
-    t({ [[    ]] }),
-    i(5),
-    t({ "", "" }),
-    t({ [[  },]] }),
-    i(0),
-    t({ "", "" }),
-    t({ [[}]] }),
-  }),
-}, {})
+-- ls.add_snippets("lua", {
+--   s({ trig = "lsp" }, {
+--     t({ [[vim.lsp.start({]], "" }),
+--     t({ [[  name = "]] }),
+--     i(1),
+--     t({ [[",]], "" }),
+--     t({ [[  cmd = { "]] }),
+--     i(2),
+--     t({ [[" },]], "" }),
+--     t({ [[  root_dir = vim.fs.dirname(vim.fs.find({ "]] }),
+--     i(3),
+--     t({ [[" }, { upward = true })[1])]], "" }),
+--     t({ [[  init_options = {]], "" }),
+--     t({ [[    ]] }),
+--     i(4),
+--     t({ "", "" }),
+--     t({ [[  },]], "" }),
+--     t({ [[  settings = {]], "" }),
+--     t({ [[    ]] }),
+--     i(5),
+--     t({ "", "" }),
+--     t({ [[  },]] }),
+--     i(0),
+--     t({ "", "" }),
+--     t({ [[}]] }),
+--   }),
+-- }, {})
