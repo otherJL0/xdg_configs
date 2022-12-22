@@ -24,7 +24,8 @@ cmp.setup({
 
     -- ... Your other mappings ...
 
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    -- Select Next
+    ["<C-n>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -36,7 +37,8 @@ cmp.setup({
       end
     end, { "i", "s" }),
 
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    -- Select Previous
+    ["<C-p>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -45,8 +47,29 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
+
+    -- Next jumpable luasnip
+    ["<A-f>"] = cmp.mapping(function(fallback)
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, {"i", "s"}),
+
+    --Previous jumpable luasnip
+    ["<A-b>"] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    -- Confirm
     ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    -- ... Your other mappings ...
+    ["<C-y>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+
   },
   view = {
     -- can be "custom", "wildmenu" or "native"
