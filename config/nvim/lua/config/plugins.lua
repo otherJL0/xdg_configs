@@ -3,14 +3,14 @@ return {
   { "nvim-treesitter/nvim-treesitter" },
 
   {
-    'nvim-telescope/telescope-fzf-native.nvim',
+    "nvim-telescope/telescope-fzf-native.nvim",
     build = function()
       local Job = require("plenary.job")
       local path = vim.fn.stdpath("data") .. "/lazy/telescope-fzf-native.nvim"
       local jobs = {
-        setup = { '-S.', '-Bbuild', '-DCMAKE_BUILD_TYPE=Release' },
-        build = { '--build', 'build', '--config', 'Release' },
-        install = { '--install', 'build', '--prefix', 'build' },
+        setup = { "-S.", "-Bbuild", "-DCMAKE_BUILD_TYPE=Release" },
+        build = { "--build", "build", "--config", "Release" },
+        install = { "--install", "build", "--prefix", "build" },
       }
       for stage, args in ipairs(jobs) do
         Job:new({
@@ -19,7 +19,7 @@ return {
           cwd = path,
           on_exit = function(_, _)
             vim.notify(string.format("Completed stage %s", stage))
-          end
+          end,
         }):sync()
       end
     end,

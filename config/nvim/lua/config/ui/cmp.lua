@@ -55,7 +55,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, {"i", "s"}),
+    end, { "i", "s" }),
 
     --Previous jumpable luasnip
     ["<A-b>"] = cmp.mapping(function(fallback)
@@ -69,7 +69,6 @@ cmp.setup({
     -- Confirm
     ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ["<C-y>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-
   },
   view = {
     -- can be "custom", "wildmenu" or "native"
