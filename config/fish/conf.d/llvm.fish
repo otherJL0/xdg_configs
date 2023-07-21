@@ -14,14 +14,10 @@ end
 set -gx CMAKE_EXPORT_COMPILE_COMMANDS 1
 set -gx CMAKE_BUILD_TYPE Release
 set -gx CMAKE_DISABLE32BIT ON
-set -gx CMAKE_C_COMPILER_LAUNCHER sccache
-set -gx CMAKE_CXX_COMPILER_LAUNCHER sccache
+set -gx CMAKE_C_COMPILER_LAUNCHER ccache
+set -gx CMAKE_CXX_COMPILER_LAUNCHER ccache
 
 
 # CCACHE
 set -gx CCACHE_MAXSIZE 100G
 set -gx CCACHE_DIR ~/.cache/ccache
-set -gx SCCACHE_MAXSIZE 100G
-set -gx SCCACHE_DIR ~/.cache/sccache
-
-
