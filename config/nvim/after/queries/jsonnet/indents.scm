@@ -1,5 +1,0 @@
-(member) @indent
-[
-    "}"
-    "]"
-] @branch

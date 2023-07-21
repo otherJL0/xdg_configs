@@ -1,3 +1,8 @@
-packer_compiled.lua
-packer_compiled.vim
-compiled.lua
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
