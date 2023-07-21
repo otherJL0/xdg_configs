@@ -10,6 +10,25 @@ return {
         end,
         desc = "Find Plugin File",
       },
+      {
+        "<leader>fh",
+        function()
+          require("telescope.builtin").help_tags({ cwd = require("lazy.core.config").options.root })
+        end,
+        desc = "Find Plugin File",
+      },
+      {
+        "<leader>fg",
+        function()
+          require("telescope").extensions.live_grep_args.live_grep_args()
+        end,
+      },
+      {
+        "<leader>fj",
+        function()
+          require("telescope").extensions.file_browser.file_browser()
+        end,
+      },
     },
     -- change some options
     opts = {
@@ -20,13 +39,25 @@ return {
         winblend = 0,
       },
       pickers = {
-        find_files = {
+        help_tags = { theme = "ivy" },
+        find_files = { theme = "ivy" },
+        git_files = { theme = "ivy" },
+        grep_string = { theme = "ivy" },
+      },
+      extensions = {
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          overrride_file_sorter = true,
+        },
+        live_grep_args = {
+          auto_quoting = false,
           theme = "ivy",
         },
-        git_files = {
-          theme = "ivy",
-        },
-        grep_string = {
+        file_browser = {
+          highjack_netrw = true,
+          auto_depth = true,
+          hidden = true,
           theme = "ivy",
         },
       },
@@ -35,13 +66,11 @@ return {
 
   -- add telescope-fzf-native
   {
-    "telescope.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      config = function()
-        require("telescope").load_extension("fzf")
-      end,
-    },
+    "nvim-telescope/telescope-fzf-native.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    build = "make",
   },
+
+  { "nvim-telescope/telescope-file-browser.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
+  { "nvim-telescope/telescope-live-grep-args.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
 }

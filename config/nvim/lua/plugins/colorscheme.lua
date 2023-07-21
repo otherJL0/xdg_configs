@@ -29,6 +29,12 @@ return {
           },
         },
         navic = { enabled = true, custom_bg = "lualine" },
+        barbecue = {
+          dim_dirname = true, -- directory name is dimmed by default
+          bold_basename = true,
+          dim_context = false,
+          alt_background = false,
+        },
         neotest = true,
         noice = true,
         notify = true,
