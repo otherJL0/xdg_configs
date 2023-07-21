@@ -1,6 +1,6 @@
 command_timeout = 5000
 scan_timeout = 5000
-format = """$container$all$character$directory$git_branch$git_metrics$git_status"""
+format = """$container$all$character$directory$git_branch$git_metrics$git_status$env_var"""
 # right_format = """$aws $kubernetes"""
 continuation_prompt = "▶▶"
 add_newline = true
@@ -136,6 +136,11 @@ symbol = "  "
 detect_extensions = []
 version_format = "${major}.${minor}"
 format = '[$symbol($version)]($style)'
+
+[env_var.NODE_ENV]
+variable = "NODE_ENV"
+style = "green bold"
+format = "[\\[NODE_ENV=$env_value\\]]($style) "
 
 [ocaml]
 format = '[$symbol($version)(\($switch_indicator$switch_name\))]($style)'

@@ -6,7 +6,7 @@
 
 [core]
     quotepath = true
-    pager = delta
+    ; pager = diftastic
     editor = nvim
     commitGraph = true
     sparseCheckout = true
@@ -36,8 +36,7 @@
     keepBackup = false
 
 [diff]
-    ; external = diffsitter
-    tool = diffsitter
+    tool = difftastic
     algorithm = histogram
     colorMoved = default
     mnemonicPrefix = true
@@ -46,9 +45,6 @@
 [difftool]
     prompt = false
     keepBackup = false
-
-[difftool "diffsitter"]
-    cmd = diffsitter "$LOCAL" "$REMOTE"
 
 [difftool "difftastic"]
     cmd = difft "$LOCAL" "$REMOTE"
@@ -101,9 +97,9 @@
 	process = git-lfs filter-process
 	required = true
 [alias]
-	patch = add --patch
-	unstage = reset HEAD --
-	nuke = clean -fdx
+    patch = add --patch
+    unstage = reset HEAD --
+    nuke = clean -fdx
     showtrackedignored = ls-files -i --exclude-standard
     me = !git log --author=\"$(git config user.name)\"
     f = fetch --all --prune
@@ -111,5 +107,8 @@
     c = commit -m
     tree = log --oneline --decorate --all --graph
     difft = difftool
+
 [gpg]
 	format = ssh
+[scalar]
+	repo = /Users/jolopez/git/voxsupFrontend2
