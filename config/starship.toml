@@ -19,6 +19,9 @@ vimcmd_visual_symbol = "[ ](fg:black bg:yellow)"
 vimcmd_replace_symbol = "[R](fg:black bg:purple)"
 vimcmd_replace_one_symbol = "[r](fg:black bg:purple)"
 
+[c]
+symbol = "🐉"
+commands = [['clang', '--version']]
 
 [cmake]
 symbol = " △ "
