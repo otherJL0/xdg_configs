@@ -1,3 +1,45 @@
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+parser_config.gotmpl = {
+  install_info = {
+    url = "https://github.com/ngalaiko/tree-sitter-go-template",
+    files = { "src/parser.c" },
+  },
+  filetype = "gotmpl",
+  used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml" },
+}
+
+parser_config.jinja2 = {
+  install_info = {
+    url = "~/git/gh/otherJL0/tree-sitter-jinja2",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = "jinja2",
+  used_by = { "jinja2", "yaml" },
+}
+
+parser_config.mlir = {
+  install_info = {
+    url = "~/git/gh/llvm/llvm-project/mlir/utils/tree-sitter-mlir/",
+    files = { "src/parser.c" },
+    -- generate_requires_npm = false,
+    requires_generate_from_grammar = true,
+  },
+  filetype = "mlir",
+}
+-- parser_config.requirement = {
+--   install_info = {
+--     url = "~/git/gh/otherJL0/tree-sitter-requirements",
+--     files = { "src/parser.c" },
+--     branch = "main",
+--     generate_requires_npm = false,
+--     requires_generate_from_grammar = true,
+--   },
+--   filetype = "requirement",
+--   -- used_by = { "jinja2", "yaml" },
+-- }
+
 require("nvim-treesitter.configs").setup({
   -- A list of parser names, or "all"
   ensure_installed = {
@@ -43,6 +85,7 @@ require("nvim-treesitter.configs").setup({
     "http",
     "java",
     "javascript",
+    "jinja2",
     "jq",
     "jsdoc",
     "json",
@@ -61,6 +104,7 @@ require("nvim-treesitter.configs").setup({
     "menhir",
     "mermaid",
     "meson",
+    "mlir",
     "nickel",
     "ninja",
     "nix",
@@ -73,6 +117,7 @@ require("nvim-treesitter.configs").setup({
     "python",
     "ql",
     "query",
+    -- "requirement",
     "regex",
     "rst",
     "ruby",
@@ -122,6 +167,31 @@ require("nvim-treesitter.configs").setup({
       node_decremental = "grm",
     },
   },
+
+  textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+        ["al"] = "@loop.outer",
+        ["il"] = "@loop.inner",
+      },
+    },
+    lsp_interop = {
+      enable = true,
+      -- border = "none",
+      floating_preview_opts = {},
+      peek_definition_code = {
+        ["<leader>df"] = "@function.outer",
+        ["<leader>dF"] = "@class.outer",
+      },
+    },
+  },
+
   refactor = {
     highlight_definitions = {
       enable = true,
@@ -158,6 +228,14 @@ require("nvim-treesitter.configs").setup({
   },
   endwise = {
     enable = true,
+  },
+  playground = {
+    enable = true,
+  },
+  query_linter = {
+    enable = true,
+    use_virtual_text = true,
+    lint_events = { "BufWrite", "CursorHold" },
   },
 })
 

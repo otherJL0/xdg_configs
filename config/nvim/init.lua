@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -54,3 +56,15 @@ require("config.treesitter")
 require("config.colorscheme")
 
 require("config.ui")
+
+vim.g.node_host_prog = vim.env.HOME .. "/.volta/bin/node"
+-- vim.notify(vim.inspect(vim.g.node_host_prog))
+-- vim.api.nvim_create_user_command("ServerCapabilities", function()
+--   for i, server in ipairs(vim.lsp.get_client_by_id()) do
+--     if server.name == "null-ls" then
+--       goto continue
+--     end
+--     vim.notify(vim.inspect(server.server_capabilities))
+--     ::continue::
+--   end
+-- end, {})

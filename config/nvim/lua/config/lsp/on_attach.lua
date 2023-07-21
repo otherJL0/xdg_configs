@@ -4,6 +4,8 @@ navic.setup({
 })
 local M = {}
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 function M.on_attach(client, bufnr)
   -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
@@ -53,6 +55,17 @@ function M.on_attach(client, bufnr)
 
   if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)
+  end
+
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({ bufnr = bufnr })
+      end,
+    })
   end
 end
 

@@ -38,7 +38,8 @@ local ts_patterns = {
 }
 
 require("indent_blankline").setup({
-  char = "▎",
+  char = "▏",
+  context_char = "▏",
   space_char_blankline = " ",
   show_current_context = true,
   show_current_context_start = true,
@@ -64,7 +65,6 @@ require("treesitter-context").setup({
     -- exactly match "impl_item" only)
     -- rust = true,
   },
-
   -- [!] The options below are exposed but shouldn't require your attention,
   --     you can safely ignore them.
 

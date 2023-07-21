@@ -8,26 +8,6 @@ M.cmd = { "pyright-langserver", "--stdio" }
 M.root_dir = { "requirements.txt", "pyproject.toml", "setup.cfg", "setup.py" }
 
 M.settings = {
-  python = {
-    analysis = {
-      autoImportCompletions = true,
-      autoSearchPaths = true,
-      diagnosticMode = "workspace",
-      typeCheckingMode = "strict",
-      useLibraryCodeForTypes = true,
-      diagnosticSeverityOverrides = {
-        reportCallInDefaultInitializer = "warning",
-        reportImplicitStringConcatenation = "warning",
-        reportMissingTypeStubs = "none",
-        reportPropertyTypeMismatch = "warning",
-        reportUninitializedInstanceVariable = "warning",
-        reportUnknownMemberType = "warning",
-        reportUnknownVariableType = "warning",
-        reportUnnecessaryTypeIgnoreComment = "warning",
-        reportUnusedCallResult = false,
-      },
-    },
-  },
 }
 
 if venv then

@@ -1,0 +1,13 @@
+-- vim.lsp.start({
+--   name = "codeium",
+--   cmd = function(dispatchers)
+--     return {
+--       request = function() end,
+--       notify = function() end,
+--       is_closing = function() end,
+--       terminate = function() end,
+--     }
+--   end,
+--   root_dir = vim.fs.dirname(vim.fs.find({ ".git/" }, { upward = true })[1]),
+--   on_attach = require("config.lsp.on_attach").on_attach,
+-- })

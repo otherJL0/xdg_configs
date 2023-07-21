@@ -28,7 +28,6 @@ require("catppuccin").setup({
     operators = {},
   },
   color_overrides = {},
-  custom_highlights = {},
   integrations = {
     navic = {
       enabled = true,
@@ -85,6 +84,11 @@ require("catppuccin").setup({
       },
     },
   },
+  -- custom_highlights = function(colors)
+  --   return {
+  --     LspInlayHint = { fg = colors.teal, bg = colors.mantle, style = { "italic" } },
+  --   }
+  -- end,
 })
 
 -- setup must be called before loading
