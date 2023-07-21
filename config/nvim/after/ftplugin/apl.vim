@@ -1,1 +1,0 @@
-setlocal keymap=apl
