@@ -14,6 +14,18 @@ return {
       },
     },
   },
+  {
+    "akinsho/git-conflict.nvim",
+    opts = {
+      default_mappings = true, -- disable buffer local mapping created by this plugin
+      default_commands = true, -- disable commands created by this plugin
+      disable_diagnostics = false, -- This will disable the diagnostics in a buffer whilst it is conflicted
+      highlights = { -- They must have background color, otherwise the default color will be used
+        incoming = "DiffAdd",
+        current = "DiffText",
+      },
+    },
+  },
 
   {
     "sindrets/diffview.nvim",
@@ -67,8 +79,8 @@ return {
           folder_statuses = "only_folded", -- One of 'never', 'only_folded' or 'always'.
         },
         win_config = { -- See ':h diffview-config-win_config'
-          position = "left",
-          width = 35,
+          position = "bottom",
+          height = 16,
           win_opts = {},
         },
       },
