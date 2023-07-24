@@ -77,6 +77,12 @@ return {
     },
   },
 
+  {
+    "nvim-zh/colorful-winsep.nvim",
+    config = true,
+    event = { "WinNew" },
+  },
+
   -- default config
   -- {
   --   "3rd/image.nvim",
