@@ -45,6 +45,26 @@ return {
     },
   },
 
+  -- {
+  --   "shellRaining/hlchunk.nvim",
+  --   event = { "UIEnter" },
+  --   opts = {
+  --     chunk = {
+  --       enable = true,
+  --       use_treesitter = true,
+  --     },
+  --     indent = {
+  --       enable = false,
+  --       use_treesitter = false,
+  --       chars = { "▎" },
+  --     },
+  --     line_num = {
+  --       enable = true,
+  --       use_treesitter = true,
+  --     },
+  --   },
+  -- },
+
   {
     "lukas-reineke/indent-blankline.nvim",
     opts = {
