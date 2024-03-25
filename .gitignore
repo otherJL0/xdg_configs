@@ -8,3 +8,4 @@ history
 log
 *.spl
 config.yml
+.DS_Store
