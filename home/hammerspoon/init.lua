@@ -22,9 +22,9 @@ local function tile_window(direction)
 			-- and a monitor exists to the left of this widow,
 			-- move window to the right half of the left monitor
 			if window_layout:equals(hs.layout.left50) and window_screen:toWest() then
-				window:moveOneScreenWest({ noResize = false, ensureInScreenBounds = true })
+				window:moveOneScreenWest({})
 				window:move(hs.layout.right50)
-			else
+			elseif not window_layout:equals(hs.layout.left50) then
 				window:move(hs.layout.left50)
 			end
 		elseif direction == "right" then
@@ -34,7 +34,7 @@ local function tile_window(direction)
 			if window_layout:equals(hs.layout.right50) and window_screen:toEast() then
 				window:moveOneScreenEast({ noResize = false, ensureInScreenBounds = true })
 				window:move(hs.layout.left50)
-			else
+			elseif not window_layout:equals(hs.layout.right50) then
 				window:move(hs.layout.right50)
 			end
 		elseif direction == "top" then
@@ -67,13 +67,13 @@ local function change_window_focus(direction)
 		local window = hs.window.focusedWindow()
 
 		if direction == "left" then
-			window:focusWindowWest(nil, false, false)
+			window:focusWindowWest(nil, true, true)
 		elseif direction == "right" then
-			window:focusWindowEast(nil, false, false)
+			window:focusWindowEast(nil, true, true)
 		elseif direction == "top" then
-			window:focusWindowNorth(nil, false, false)
+			window:focusWindowNorth(nil, true, true)
 		elseif direction == "bottom" then
-			window:focusWindowSouth(nil, false, false)
+			window:focusWindowSouth(nil, true, true)
 		end
 	end
 end

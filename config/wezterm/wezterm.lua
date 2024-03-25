@@ -16,5 +16,6 @@ config.font_size = 12.0
 config.show_new_tab_button_in_tab_bar = false
 config.show_tab_index_in_tab_bar = false
 config.window_close_confirmation = "NeverPrompt"
+config.send_composed_key_when_right_alt_is_pressed = false
 
 return config

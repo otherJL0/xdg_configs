@@ -21,9 +21,6 @@
 [add.interactive]
     useBuiltin = true
 
-[mergetool "fugitive"]
-    cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
-
 [mergetool "diffview"]
     cmd = nvim -f -c \"DiffviewOpen\"
 
@@ -36,7 +33,7 @@
     keepBackup = false
 
 [diff]
-    tool = difftastic
+    tool = difft
     algorithm = histogram
     colorMoved = default
     mnemonicPrefix = true
@@ -54,13 +51,6 @@
     difftool = true
 
 
-[delta]
-    line-numbers = true
-    side-by-side = true
-    navigate = true
-    keep-plus-minus-markers = false
-    commit-style = raw
-
 [pull]
 	rebase = true
     twohead = ort
@@ -75,7 +65,8 @@
 	autocorrect = prompt
 
 [push]
-    default = current
+    autoSetupRemote = true
+    default = upstream
     negotiate = true
 
 [rebase]

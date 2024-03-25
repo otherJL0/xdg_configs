@@ -72,7 +72,9 @@ fish_add_path -P $HOME/.cache/coursier/jvm/openjdk@1.11.0-2/bin
 fish_add_path -P $HOME/.cache/nvim/packer_hererocks/2.1.0-beta3/bin
 fish_add_path -P /usr/local/bin/
 
-function add_tea_environment --on-variable PWD; tea -Eds | source; end  #tea
+function add_tea_environment --on-variable PWD
+    tea -Eds | source
+end #tea
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
@@ -83,3 +85,9 @@ set --export PATH $BUN_INSTALL/bin $PATH
 set -x PATH "/Library/Frameworks/Python.framework/Versions/3.8/bin" "$PATH"
 
 alias assume="source /opt/homebrew/opt/granted/bin/assume.fish"
+
+# Setting PATH for Python 3.10
+# The original version is saved in /Users/jolopez/.config/fish/config.fish.pysave
+set -x PATH "/Library/Frameworks/Python.framework/Versions/3.10/bin" "$PATH"
+
+[ -f ~/.inshellisense/key-bindings.fish ] && source ~/.inshellisense/key-bindings.fish

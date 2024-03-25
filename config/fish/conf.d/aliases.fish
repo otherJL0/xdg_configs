@@ -25,7 +25,7 @@ function ls --wraps ls --description 'alias ls'
         set flags $flags --sort time
     end
 
-    exa $flags $argv
+    eza $flags $argv
 end
 
 function ll --wraps ls --description 'alias ll'
@@ -51,5 +51,5 @@ function ll --wraps ls --description 'alias ll'
         set flags $flags --sort time
     end
 
-    exa $flags $argv
+    eza $flags $argv
 end
