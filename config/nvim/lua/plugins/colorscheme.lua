@@ -14,6 +14,7 @@ return {
         alpha = true,
         cmp = true,
         gitsigns = true,
+        headlines = true,
         illuminate = true,
         indent_blankline = {
           enabled = true,

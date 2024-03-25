@@ -43,6 +43,7 @@ return {
         find_files = { theme = "ivy" },
         git_files = { theme = "ivy" },
         grep_string = { theme = "ivy" },
+        buffers = { theme = "ivy" },
       },
       extensions = {
         fzf = {
